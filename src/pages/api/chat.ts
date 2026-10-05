@@ -20,6 +20,7 @@ export const prerender = false;
 
 const maxBodyBytes = 24_000;
 const maxSources = 6;
+const budget = { deepenBy: 13_000, verifyBy: 17_000 };
 
 const turn = z.discriminatedUnion("role", [
   z.object({ role: z.literal("user"), text: z.string().trim().min(1).max(2000) }),
@@ -168,7 +169,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
             messages,
             maxRetries: 1,
             temperature: 0.2,
-            abortSignal: signal,
+            abortSignal: AbortSignal.any([signal, AbortSignal.timeout(15_000)]),
             providerOptions: resolved.providerOptions,
           });
 
@@ -178,12 +179,15 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
             const text = await draft.text;
             if (!text.trim()) throw new Error("empty_draft");
             const reviewStarted = Date.now();
-            checks = await verify({ question, draft: text, evidence, fast, fallback: resolved });
+            const deadline = started + budget.verifyBy;
+            checks = await verify({ question, draft: text, evidence, fast, fallback: resolved, deadline });
             const missing = checks.filter((check) => check.status !== "found").length;
-            if ((missing >= 2 || missing / Math.max(checks.length, 1) >= 0.3 || !checks.length) && (await reading)) {
+            const remaining = started + budget.deepenBy - Date.now();
+            const needsPages = missing >= 2 || missing / Math.max(checks.length, 1) >= 0.3 || !checks.length;
+            if (needsPages && remaining > 0 && (await Promise.race([reading, new Promise<boolean>((resolve) => setTimeout(() => resolve(false), remaining))]))) {
               deepened = true;
               evidence = evidenceOf(found!.candidates);
-              checks = await verify({ question, draft: text, evidence, fast, fallback: resolved });
+              checks = await verify({ question, draft: text, evidence, fast, fallback: resolved, deadline });
             }
             supporting = supporters(found?.candidates ?? [], checks).map((candidate) => candidate.url);
             const review = { model: resolved.model, providerOptions: resolved.providerOptions, question, draft: text, evidence, language: site.locale };

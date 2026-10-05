@@ -76,9 +76,9 @@ type Options = {
   language: string;
 };
 
-export async function verify({ question, draft, evidence, fast, fallback }: Pick<Options, "question" | "draft" | "evidence"> & { fast: Resolved; fallback: Resolved }) {
+export async function verify({ question, draft, evidence, fast, fallback, deadline }: Pick<Options, "question" | "draft" | "evidence"> & { fast: Resolved; fallback: Resolved; deadline: number }) {
   if (!evidence) return [];
-  const attempt = async (resolved: Resolved, system: string, prompt: string) => {
+  const attempt = async (resolved: Resolved, system: string, prompt: string, timeoutMs: number) => {
     const { output } = await generateText({
       model: resolved.model,
       system,
@@ -87,14 +87,15 @@ export async function verify({ question, draft, evidence, fast, fallback }: Pick
       temperature: 0,
       providerOptions: resolved.providerOptions,
       maxRetries: 1,
-      abortSignal: AbortSignal.timeout(12_000),
+      abortSignal: AbortSignal.timeout(timeoutMs),
     });
     return output.claims;
   };
   const ask = async (system: string, prompt: string) => {
-    for (const resolved of [fast, fast, fallback]) {
+    for (const [resolved, timeoutMs] of [[fast, 6000], [fallback, 8000]] as const) {
+      if (resolved === fallback && Date.now() > deadline) break;
       try {
-        return await attempt(resolved, system, prompt);
+        return await attempt(resolved, system, prompt, timeoutMs);
       } catch (error) {
         console.error("[ventanilla] verify attempt failed", resolved.id, error instanceof Error ? error.message.slice(0, 120) : error);
       }
@@ -104,7 +105,7 @@ export async function verify({ question, draft, evidence, fast, fallback }: Pick
 
   const first = checkClaims(evidence, await ask(verifyInstructions, context(question, evidence, draft)));
   const missing = first.filter((check) => check.status !== "found");
-  if (!missing.length) return first;
+  if (!missing.length || Date.now() > deadline) return first;
   const retried = checkClaims(
     evidence,
     await ask(retryInstructions, `EVIDENCE:\n${evidence}\n\nUNMATCHED:\n${JSON.stringify(missing.map(({ claim, terms, missing }) => ({ claim, terms, missing })))}`),

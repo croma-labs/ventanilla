@@ -21,7 +21,7 @@ export type Route = { inScope: boolean; authorities: string[]; queries: string[]
 
 export type Research = { route: Route | null; candidates: Candidate[]; considered: number; timings: Record<string, number> };
 
-const deadlines = { search: 10_000, dataset: 8_000, read: 7_000 };
+const deadlines = { route: 4_000, search: 8_000, dataset: 7_000, judge: 5_000, read: 7_000 };
 const maxEvidence = 30_000;
 const keepScore = 2;
 
@@ -129,7 +129,7 @@ export async function research({
     temperature: 0,
     providerOptions: fast.providerOptions,
     maxRetries: 1,
-    abortSignal: AbortSignal.timeout(6000),
+    abortSignal: AbortSignal.timeout(deadlines.route),
   })
     .then(({ output }) => ({
       inScope: output.in_scope,
@@ -180,7 +180,7 @@ export async function research({
     temperature: 0,
     providerOptions: fast.providerOptions,
     maxRetries: 1,
-    abortSignal: AbortSignal.timeout(8000),
+    abortSignal: AbortSignal.timeout(deadlines.judge),
   })
     .then(({ output }) => new Map(output.scores.map((entry) => [entry.id, entry.score])))
     .catch(() => null);
