@@ -4,6 +4,8 @@ Answers about government services, from official sources only. Colombia first.
 
 [gov.usecroma.com](https://gov.usecroma.com) · Sources by [Croma](https://docs.usecroma.com) · Not an official government site.
 
+![Ventanilla: ask about Colombian government services and get answers from official sources](.github/assets/hero.jpg)
+
 ## Run
 
 ```bash
