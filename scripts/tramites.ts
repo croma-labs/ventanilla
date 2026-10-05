@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import type { TramiteContent } from "../src/countries/types.ts";
-import { ask, under, type Reply } from "./ask.ts";
+import { ask, host, under, type Reply } from "./ask.ts";
 
 const country = process.env.COUNTRY ?? "co";
 const base = process.env.EVAL_URL ?? "http://localhost:5201";
@@ -19,7 +19,8 @@ const grade = (reply: Reply, domains: readonly string[]) => {
   const checks = reply.metadata.diagnostics?.checks ?? [];
   const supported = checks.filter((check) => check.status === "found").length;
   const competent = reply.sources.some(({ url }) => domains.some((domain) => under(url, domain)));
-  const passes = reply.metadata.verified === true && competent && checks.length >= bar.claims && supported / checks.length >= bar.support && reply.answer.length >= bar.length;
+  const staging = [...reply.sources.map(({ url }) => url), ...reply.answer.matchAll(/\]\((https?:[^)]+)\)/g).map(([, url]) => url)].some((url) => /^(stage|staging|test|dev|qa|beta)[.-]/.test(host(url)));
+  const passes = reply.metadata.verified === true && competent && !staging && checks.length >= bar.claims && supported / checks.length >= bar.support && reply.answer.length >= bar.length;
   return { passes, claims: checks.length, supported, competent, score: checks.length ? supported / checks.length : 0 };
 };
 

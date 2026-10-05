@@ -43,6 +43,8 @@ const authorities: Authority[] = [
   { domain: "gov.co", covers: "portal único del Estado: guía general de trámites y servicios" },
   { domain: "supernotariado.gov.co", covers: "certificado de tradición y libertad de inmuebles, registro de propiedad, notarías, escrituras" },
   { domain: "prosperidadsocial.gov.co", covers: "Renta Ciudadana, devolución del IVA, programas sociales y transferencias monetarias" },
+  { domain: "icfes.gov.co", covers: "pruebas Saber 11, Saber Pro y Saber TyT: inscripción, citación y resultados" },
+  { domain: "fiscalia.gov.co", covers: "denuncias penales, denuncia virtual, consulta de noticias criminales, víctimas" },
 ];
 
 export const sources: ResearchConfig = {

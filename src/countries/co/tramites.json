@@ -942,5 +942,425 @@
     "verifiedAt": "2026-10-05",
     "claims": 6,
     "supported": 6
+  },
+  "salario-minimo": {
+    "answer": "El salario mínimo legal mensual vigente para 2026 es de **$1.750.905** y el auxilio de transporte es de **$200.000**.\n\n### Detalles\n- El incremento del salario mínimo es del 23%, según el [Departamento Nacional de Planeación](https://www.dnp.gov.co/Prensa_/Noticias/Paginas/incremento-salario-minimo-apuesta-gobierno-ingresos-dignos-productividad.aspx).\n- El auxilio de transporte se fija en $200.000 para quienes devengan hasta dos salarios mínimos, según el [Decreto 1573 de 2024](https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=256836).",
+    "sources": [
+      {
+        "title": "Decreto 1573 de 2024 - Gestor Normativo",
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=256836"
+      },
+      {
+        "title": "El incremento del salario mínimo es una apuesta del gobierno nacional para garantizar ingresos dignos y mejorar la productividad del país",
+        "url": "https://www.dnp.gov.co/Prensa_/Noticias/Paginas/incremento-salario-minimo-apuesta-gobierno-ingresos-dignos-productividad.aspx"
+      },
+      {
+        "title": "Alocución de Año Nuevo y anuncio del salario vital para 2026 del presidente de la República, Gustavo Petro Urrego",
+        "url": "https://www.presidencia.gov.co/prensa/Paginas/Alocucion-de-Anio-Nuevo-y-anuncio-del-salario-vital-para-2026-del-presidente-251229.aspx"
+      },
+      {
+        "title": "Decreto 2293 de 2023 - Gestor Normativo - FunciÃ³n PÃºblica",
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=227490"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 8,
+    "supported": 7
+  },
+  "prima-de-servicios": {
+    "answer": "La prima de servicios equivale a 30 días de salario por año en el sector privado y a 15 días de remuneración en el sector público.\n\n### Sector privado\n- **Cuándo:** La mitad máximo el 30 de junio y la otra mitad a más tardar los primeros 20 días de diciembre.\n- **Cuánto:** 30 días de salario, **proporcional** si trabajaste menos de un año.\n\n### Sector público\n- **Cuándo:** En los primeros 15 días del mes de julio.\n- **Cuánto:** 15 días de remuneración, proporcional si trabajaste menos de seis meses.\n\nPuedes consultar más detalles en la [página del Ministerio de Justicia](https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/Que-es-la-prima-de-servicios-y-que-hacer-si-no-se-reconoce-o-paga.aspx) o en la [Función Pública](https://www1.funcionpublica.gov.co/preguntas-frecuentes/-/asset_publisher/sqxafjubsrEu/content/prima-de-servicios).",
+    "sources": [
+      {
+        "title": "Ministerio de Justicia y del Derecho",
+        "url": "https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/Que-es-la-prima-de-servicios-y-que-hacer-si-no-se-reconoce-o-paga.aspx"
+      },
+      {
+        "title": "Prima de Servicios y Prima de Navidad - Función Pública",
+        "url": "https://www1.funcionpublica.gov.co/preguntas-frecuentes/-/asset_publisher/sqxafjubsrEu/content/prima-de-servicios"
+      },
+      {
+        "title": "Uberlod . 1",
+        "url": "https://dapre.presidencia.gov.co/normativa/normativa/DECRETO%201152%20DEL%2020%20DE%20AGOSTO%20DE%202020.pdf"
+      },
+      {
+        "title": "Normograma del Ministerio de Relaciones Exteriores",
+        "url": "https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/decreto_1152_2020.pdf"
+      },
+      {
+        "title": "Concepto 023891 de 2021 Departamento Administrativo de la FunciÃ³n PÃºblica - Gestor Normativo - FunciÃ³n PÃºblica",
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=159296"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 9,
+    "supported": 9
+  },
+  "vacaciones": {
+    "answer": "Un trabajador en Colombia tiene derecho a **15 días hábiles** de vacaciones remuneradas por cada año de servicios.\n\n### Detalles según el sector\n*   **Trabajadores privados:** El [Código Sustantivo del Trabajo](http://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo_pr006.html) establece que estos 15 días deben ser consecutivos y se causan tras un año de servicio.\n*   **Empleados públicos:** El [Decreto 1045 de 1978](https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_1045_1978.htm) otorga 15 días hábiles, pero en entidades con jornada de lunes a viernes, el sábado no se computa como día hábil para el cálculo de las vacaciones.",
+    "sources": [
+      {
+        "title": "Compilación jurídica de la Cancillería de Colombia - Decreto 1045 de 1978",
+        "url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_1045_1978.htm"
+      },
+      {
+        "title": "Leyes desde 1992 - Vigencia expresa y control de ...",
+        "url": "http://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo_pr006.html"
+      },
+      {
+        "title": "Gestor Normativo de la CRA - Concepto 154241 de 2020 DAFP",
+        "url": "https://normas.cra.gov.co/gestor/docs/concepto_dafp_0154241_2020.htm"
+      },
+      {
+        "title": "Código Sustantivo del Trabajo",
+        "url": "https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/codigo_sustantivo_trabajo_pr006.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 5,
+    "supported": 5
+  },
+  "retirar-cesantias": {
+    "answer": "Puedes retirar tus cesantías de forma parcial o definitiva en casos como la terminación del contrato de trabajo, la muerte del trabajador, la sustitución de empleadores, el servicio militar, la educación, el ahorro programado o la compra y financiación de vivienda.\n\n### Casos específicos\n- **Retiro parcial:** Para educación (matrícula o pensión), compra de vivienda o lote, construcción o mejoras de vivienda, y liberación de gravámenes hipotecarios.\n- **Retiro definitivo:** Al finalizar la relación laboral, por fallecimiento del trabajador o en caso de prestar servicio militar.\n\nPara más detalles sobre los requisitos de cada caso, puedes consultar la [guía del Fondo Nacional del Ahorro](https://stage.bogota.gov.co/servicios/guia-de-tramites-y-servicios/retiro-de-cesantias-del-fondo-nacional-del-ahorro) o la información del Ministerio de Justicia.",
+    "sources": [
+      {
+        "title": "Retiro de cesantías del Fondo Nacional del Ahorro. | Portal Bogotá - Entorno de Staging",
+        "url": "https://stage.bogota.gov.co/servicios/guia-de-tramites-y-servicios/retiro-de-cesantias-del-fondo-nacional-del-ahorro"
+      },
+      {
+        "title": "Ministerio de Justicia y del Derecho",
+        "url": "https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/%C2%BFC%C3%B3mo-puedo-retirar-mis-cesant%C3%ADas-para-educaci%C3%B3n-o-vivienda.aspx"
+      },
+      {
+        "title": "AuthApp",
+        "url": "https://visorsuit.funcionpublica.gov.co/auth/visor?fi=241"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 7,
+    "supported": 6
+  },
+  "jornada-laboral": {
+    "answer": "La jornada laboral máxima ordinaria en Colombia es de **42 horas semanales**, según la [Ley 2101 de 2021](https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=166506).\n\n### Implementación gradual\nLa reducción se aplica de forma gradual por el empleador:\n- A los 2 años de vigencia: 47 horas semanales.\n- A los 3 años de vigencia: 46 horas semanales.\n- A partir del 4.º año: se reducen 2 horas anuales hasta llegar a las 42 horas.",
+    "sources": [
+      {
+        "title": "Ley 2101 de 2021 - Gestor Normativo",
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=166506"
+      },
+      {
+        "title": "Leyes desde 1992 - Vigencia expresa y control de constitucionalidad [LEY_2101_2021]",
+        "url": "http://secretariasenado.gov.co/senado/basedoc/ley_2101_2021.html"
+      },
+      {
+        "title": "Compilación sobre Disposiciones Legales Aplicables a los Servicios Publicos Domiciliarios - Ley 2101 de 2021",
+        "url": "https://normograma.superservicios.gov.co/NORMOGRAMA/compilacion/docs/ley_2101_2021.htm"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 5,
+    "supported": 4
+  },
+  "licencia-de-maternidad": {
+    "answer": "La licencia de maternidad en Colombia dura **18 semanas** en total, según la [Ley 1822 de 2017](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/INEC/IGUB/ley-1822-2017.pdf).\n\n### Distribución y casos especiales\n- **Preparto:** 1 semana obligatoria antes del parto (2 semanas por indicación médica).\n- **Posparto:** 17 semanas, o 16/18 según decisión médica.\n- **Parto múltiple:** Se adicionan 2 semanas, para un total de 20.\n- **Prematuros:** Se suman las semanas faltantes hasta el término a las 18 base.\n\nPuedes consultar más detalles en la página de [Licencia de maternidad - Mitos y creencias](https://minsalud.gov.co/salud/publica/PI/Paginas/licencia-maternidad.aspx) del Ministerio de Salud.",
+    "sources": [
+      {
+        "title": "Páginas - Licencia de maternidad - Mitos y creencias",
+        "url": "https://minsalud.gov.co/salud/publica/PI/Paginas/licencia-maternidad.aspx"
+      },
+      {
+        "title": "[PDF] ley-1822-2017.pdf - Ministerio de Salud y Protección Social",
+        "url": "https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/INEC/IGUB/ley-1822-2017.pdf"
+      },
+      {
+        "title": "Sin título 1",
+        "url": "https://www.minsalud.gov.co/salud/Documents/Contenidos/Lactancia6.aspx"
+      },
+      {
+        "title": "24 Reconocimiento y Pago de Licencias de Maternidad y Paternodad",
+        "url": "https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/circular-externa-024-de-2017.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 6,
+    "supported": 6
+  },
+  "divorcio-notaria": {
+    "answer": "Para divorciarte de mutuo acuerdo ante notario, debes contratar obligatoriamente un abogado que presente la solicitud, ya que el notario es quien formaliza la escritura pública.\n\n### Requisitos y plazos\n- **Documentos:** Registros civiles de nacimiento y matrimonio, copias de cédulas, poder al abogado y acuerdo de divorcio.\n- **Con hijos menores:** Incluye registro de nacimiento, acuerdo de custodia, cuota de alimentos y régimen de visitas. El notario notificará al Defensor de Familia, quien tiene 15 días para dar concepto.\n- **Con bienes:** Anexa la liquidación y el acuerdo de repartición.\n- **Plazo:** El trámite dura entre 10 días (sin hijos) y 30 días (con hijos).\n\nPuedes consultar más detalles en la página del [Ministerio de Justicia](https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/Divorcio-ante-Notar%C3%ADa.aspx).",
+    "sources": [
+      {
+        "title": "Ministerio de Justicia y del Derecho",
+        "url": "https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/Divorcio-ante-Notar%C3%ADa.aspx"
+      },
+      {
+        "title": "Páginas - Divorcio-ante-Notaría.aspx",
+        "url": "https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/Forms/DispForm.aspx?ID=841"
+      },
+      {
+        "title": "Decreto 4436 de 2005 - Gestor Normativo - FunciÃ³n PÃºblica",
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=18346"
+      },
+      {
+        "title": "Decreto  4436 de 2005 Nivel Nacional",
+        "url": "https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?dt=S&i=18346"
+      },
+      {
+        "title": "Ley 2442 de 2024 - Gestor Normativo",
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=257036"
+      },
+      {
+        "title": "Normograma de la Administradora Colombiana de Pensiones - Colpensiones",
+        "url": "https://normativa.colpensiones.gov.co/colpens/docs/pdf/decreto_1069_2015_pr033.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 12,
+    "supported": 11
+  },
+  "adopcion": {
+    "answer": "Para adoptar en Colombia, debes ser plenamente capaz, tener mínimo 25 años cumplidos y al menos 15 años más que el adoptable.\n\n### Requisitos legales\n- Demostrar idoneidad física, mental, moral y social para ofrecer una familia estable.\n- Si eres pareja, demostrar una convivencia ininterrumpida de por lo menos dos (2) años.\n- El trámite se inicia ante el [ICBF](https://www.icbf.gov.co/adopciones) más cercano a tu residencia.\n\n### Importante\n- El proceso es **gratuito**; el ICBF no cobra nada por adelantar la adopción.\n- Si resides en el exterior, verifica si tu país está adherido al Convenio de La Haya en la [página del ICBF](https://www.icbf.gov.co/adopcion-para-residentes-en-el-exterior).",
+    "sources": [
+      {
+        "title": "Adopción para Residentes en el Exterior | Portal ICBF",
+        "url": "https://www.icbf.gov.co/adopcion-para-residentes-en-el-exterior"
+      },
+      {
+        "title": "Adopciones | Portal ICBF - Instituto Colombiano de ...",
+        "url": "https://www.icbf.gov.co/adopciones"
+      },
+      {
+        "title": "¿Cuáles son los requisitos básicos para adoptar? - ICBF",
+        "url": "https://www.icbf.gov.co/adopciones/requisitos-basicos"
+      },
+      {
+        "title": "¿Cuáles son los requisitos generales para adoptar? - ICBF",
+        "url": "https://www.icbf.gov.co/cuales-son-los-requisitos-generales-para-adoptar"
+      },
+      {
+        "title": "Generalidades | Portal ICBF - Instituto Colombiano de Bienestar Familiar ICBF",
+        "url": "https://www.icbf.gov.co/programas-y-estrategias/proteccion/subdireccion-de-adopciones/lineamiento-archivo/generalidades"
+      },
+      {
+        "title": "Adopción para Residentes en Colombia | Portal ICBF - Instituto Colombiano de Bienestar Familiar ICBF",
+        "url": "https://www.icbf.gov.co/portafolio-de-servicios-icbf/adopcion-para-residentes-en-colombia"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 10,
+    "supported": 10
+  },
+  "cambio-de-nombre": {
+    "answer": "Para cambiar tu nombre legalmente en Colombia, debes otorgar una **escritura pública** ante un notario, trámite que la ley permite realizar por una sola vez.\n\n### Cómo hacerlo\n- Acude a una notaría con tu cédula de ciudadanía vigente y una copia de tu Registro Civil de Nacimiento.\n- El notario consignará el cambio en la escritura pública.\n- Con esa escritura, solicita la corrección en la notaría donde está tu registro civil original.\n- Finalmente, lleva la copia del nuevo registro civil a la [Registraduría Nacional del Estado Civil](https://www.registraduria.gov.co/) para rectificar tu documento de identidad.\n\nSi eres indígena, los trámites notariales para este cambio están **exentos de pago**, según el [Ministerio de Justicia y del Derecho](https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/%C2%BFC%C3%B3mo-puedo-hacer-el-cambio-de-nombre-si-soy-ind%C3%ADgena.aspx).",
+    "sources": [
+      {
+        "title": "Ruta cambio de nombre y componente sexo",
+        "url": "https://www.registraduria.gov.co/"
+      },
+      {
+        "title": "Ministerio de Justicia y del Derecho",
+        "url": "https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/%C2%BFC%C3%B3mo-puedo-hacer-el-cambio-de-nombre-si-soy-ind%C3%ADgena.aspx"
+      },
+      {
+        "title": "Cambio de Nombre | Cancillería",
+        "url": "https://www.cancilleria.gov.co/tt_ss/cambio-nombre"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 7,
+    "supported": 6
+  },
+  "pasaporte-menor-de-edad": {
+    "answer": "Para sacar el pasaporte de un menor, debes diligenciar la solicitud electrónica y luego asistir presencialmente a una oficina de la [Cancillería](https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/preguntas-frecuentes) acompañado por uno de los padres o un apoderado legal.\n\n### Requisitos principales\n- El menor debe estar acompañado por un padre, madre o representante legal identificado con su **cédula de ciudadanía** original y vigente.\n- Presentar copia auténtica (fiel copia) del registro civil de nacimiento del menor, expedido por Notaría, Registraduría o Cónsul, con espacio para notas.\n- Si el menor tiene entre 7 y 17 años, llevar también la tarjeta de identidad original.\n- Si ya tiene pasaporte anterior, presentarlo; si se perdió o fue hurtado, decláralo bajo gravedad de juramento en la oficina.\n\n### Cómo hacerlo\n- Diligencia la solicitud por medio electrónico para agilizar el trámite.\n- Dirígete a la oficina de pasaportes para la toma de huellas, firma y verificación de documentos.\n- El pasaporte estará disponible para reclamarlo a partir de 48 horas hábiles, y solo lo entregan a quien acompañó al menor en la solicitud.",
+    "sources": [
+      {
+        "title": "Preguntas Frecuentes - Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/preguntas-frecuentes"
+      },
+      {
+        "title": "Compilación jurídica de la Cancillería de Colombia - Resolución 8327 de 2017 MR",
+        "url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_8327_2017.htm"
+      },
+      {
+        "title": "Tipos de Pasaportes y sus Requisitos",
+        "url": "https://santander.gov.co/publicaciones/8004/tipos-de-pasaportes-y-sus-requisitos/"
+      },
+      {
+        "title": "Requisitos para menor de edad",
+        "url": "https://pasaportes.sanandres.gov.co/publicaciones/4/requisitos-para-menor-de-edad/"
+      },
+      {
+        "title": "Detalle de los requisitos para adquirir el Pasaporte",
+        "url": "https://pasaportes.risaralda.gov.co/publicaciones/2/detalle-de-los-requisitos-para-adquirir-el-pasaporte/"
+      },
+      {
+        "title": "Requisitos para expedición de pasaporte",
+        "url": "https://pasaportesatlantico.gov.co/publicaciones/2/requisitos-para-expedicion-de-pasaporte/"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 12,
+    "supported": 11
+  },
+  "consultar-vehiculo-runt": {
+    "answer": "Puedes consultar la información básica de un vehículo en el RUNT ingresando la placa y el número de documento del propietario.\n\n### Cómo hacerlo\n- Ingresa a la [consulta por placa](https://www.runt.gov.co/actores/ciudadano/consulta-de-vehiculos-por-placa) en la página oficial del RUNT.\n- Diligencia los campos obligatorios: número de placa y número de documento del propietario.\n- Si necesitas un historial detallado, solicita el [Histórico Vehicular](https://www.runt.gov.co/actores/ciudadano/consulta-historico-vehicular).\n- Para el histórico, no es obligatorio ser el propietario, solo necesitas la placa.\n- El pago se realiza de forma electrónica y el documento llega a tu correo electrónico.",
+    "sources": [
+      {
+        "title": "comosolicitarhistoricovehicular10",
+        "url": "https://www.runt.gov.co/sites/default/files/2024-01/bloques/anexos/C%C3%B3mo%20solicitar%20el%20Hist%C3%B3rico%20Vehicular.pdf"
+      },
+      {
+        "title": "La Concesión RUNT 2.0 S.A.S. le responde lo siguiente:",
+        "url": "https://www.runt.gov.co/sites/default/files/documentos/Saliente_CSR2.2024.32273.pdf"
+      },
+      {
+        "title": "https://www.runt.gov.co/actores/ciudadano/consulta-de-vehiculos-por-placa Si el enlace no abre, recomendamos copiar la dirección web y pegarla en el navegador.",
+        "url": "https://www.runt.gov.co/sites/default/files/Comunicado%20050%20de%202026.pdf"
+      },
+      {
+        "title": "RUNT2-IN-1010 Consulta vehículo Consulta Ciudadano V1",
+        "url": "https://www.runt.gov.co/sites/default/files/RUNT2-IN-1010%20Consulta%20veh%C3%ADculo%20Consulta%20Ciudadano%20V1.pdf"
+      },
+      {
+        "title": "https://www.runt.gov.co/actores/ciudadano/consulta-de-vehiculos-por-placa",
+        "url": "https://www.runt.gov.co/sites/default/files/Comunicado%20030%20de%202024.pdf"
+      },
+      {
+        "title": "Instructivo Consulta Automotores",
+        "url": "https://www.runt.gov.co/sites/default/files/RUNT.I.541%20Instructivo%20Consulta%20Automotores%20V2_CIUDADANOS.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 8,
+    "supported": 8
+  },
+  "resultados-icfes": {
+    "answer": "Puedes consultar tus resultados de la prueba Saber 11 ingresando al portal del [Icfes](https://www.icfes.gov.co/evaluaciones-icfes/resultados/) con tu usuario y contraseña en PRISMA o a través del banner de consulta directa.\n\n### Cómo hacerlo\n- Ingresa a la sección de [resultados](https://www.icfes.gov.co/evaluaciones-icfes/resultados/) y selecciona el período correspondiente a tu examen.\n- Si no recuerdas tu número de registro, puedes consultarlo en la misma página del [Icfes](https://www.icfes.gov.co/evaluaciones-icfes/resultados/).\n- Los resultados son descargables en cualquier momento y gozan de plena validez según la Resolución 675 de 2019.\n- Para exámenes anteriores a 2014-1, recuerda usar el navegador **Mozilla Firefox** para evitar inconvenientes en la descarga.",
+    "sources": [
+      {
+        "title": "Resultados - ICFES",
+        "url": "https://www.icfes.gov.co/evaluaciones-icfes/resultados/"
+      },
+      {
+        "title": "Icfes Instituto Colombiano para la Evaluación de la Educación - Resultados",
+        "url": "https://www.icfes.gov.co/resultados.html"
+      },
+      {
+        "title": "Inscripción, aplicación y resultados del Examen de Estado de la Educación Media Saber 11° - ICFES",
+        "url": "https://www.icfes.gov.co/atencion-y-servicios-a-la-ciudadania/tramites/inscripcion-aplicacion-y-resultados-del-examen-de-estado-de-la-educacion-media-saber-11/"
+      },
+      {
+        "title": "Resultados examen Saber 11° - ICFES",
+        "url": "https://www.icfes.gov.co/evaluaciones-icfes/saber-11/resultados-examen-saber-11/"
+      },
+      {
+        "title": "Back up resultados - ICFES",
+        "url": "https://www.icfes.gov.co/back-up-resultados/"
+      },
+      {
+        "title": "Pruebas saber | Ministerio de Educación Nacional",
+        "url": "https://www.mineducacion.gov.co/1780/w3-article-397384.html?_noredirect=1"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 8,
+    "supported": 8
+  },
+  "mi-casa-ya": {
+    "answer": "Para aplicar al subsidio de vivienda Mi Casa Ya, debes acercarte a un establecimiento de crédito, entidad de economía solidaria o caja de compensación familiar de tu preferencia.\n\n### Requisitos\n- Contar con clasificación en **Sisbén IV** entre A1 y D20.\n- No ser propietario de vivienda en el territorio nacional.\n- No haber sido beneficiario de un subsidio familiar de vivienda (excepto en modalidad de mejoramiento o arrendamiento).\n- No haber sido beneficiario de la cobertura a la tasa de interés.\n- Contar con un crédito hipotecario o leasing habitacional aprobado y vigente.\n\n### Cómo hacerlo\n- Acude a la entidad financiera o caja de compensación para postularte.\n- La entidad realiza la primera verificación de requisitos en la plataforma del [Ministerio de Vivienda](https://www.minvivienda.gov.co/viceministerio-de-vivienda/mi-casa-ya/subsidio-familiar-de-vivienda-nueva-0).\n- Si cumples los requisitos, gestiona el crédito hipotecario con dicha entidad.\n- La entidad carga en la plataforma el avalúo del inmueble y la carta de aprobación vigente del crédito.\n\nLas postulaciones son permanentes.",
+    "sources": [
+      {
+        "title": "Subsidio Familiar de Vivienda Nueva - Minvivienda",
+        "url": "https://www.minvivienda.gov.co/viceministerio-de-vivienda/mi-casa-ya/subsidio-familiar-de-vivienda-nueva-0"
+      },
+      {
+        "title": "CIRCULAR NO. 0001 DE 2023",
+        "url": "https://minvivienda.gov.co/sites/default/files/normativa/0001-10-04-2023-circular-operativa-mi-casa-ya.pdf"
+      },
+      {
+        "title": "Subsidio Familiar de Vivienda Nueva-cloned | Minvivienda",
+        "url": "https://www.minvivienda.gov.co/viceministerio-de-vivienda/mi-casa-ya/subsidio-familiar-de-vivienda-nueva-cloned"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 5,
+    "supported": 5
+  },
+  "devolucion-del-iva": {
+    "answer": "La compensación o devolución del IVA es un programa de transferencias monetarias no condicionadas que busca reducir el impacto del impuesto en los hogares más pobres del país.\n\n### ¿Quiénes la reciben?\nLos beneficiarios son los hogares clasificados en el Sisbén o el Registro Social de Hogares, según la Resolución 0552 de 2024:\n- **Pobreza extrema:** Categorías AO1, A02, A03, A04, A05 y hogares indígenas.\n- **Pobreza moderada:** Categorías BO1, B02, B03 y B04.\n\nEl monto se actualiza anualmente con la UVT y es igual para todos los hogares beneficiarios, sin importar su ubicación. Puedes consultar más detalles en la página de [Devolución del IVA](https://prosperidadsocial.gov.co/iva/) de Prosperidad Social.",
+    "sources": [
+      {
+        "title": "Devolución del IVA",
+        "url": "https://prosperidadsocial.gov.co/iva/"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 6,
+    "supported": 6
+  },
+  "denuncia-virtual": {
+    "answer": "Puedes presentar una denuncia virtual ante la Fiscalía usando la herramienta [Denuncia Fácil](https://www.fiscalia.gov.co/colombia/servicios-de-informacion-al-ciudadano/donde-y-como-denunciar/) o ante la Policía a través del [Sistema Nacional de Denuncia Virtual](https://www.policia.gov.co/sistema-nacional-denuncia-virtual-adenunciar).\n\n### Requisitos y alcance\n- La denuncia debe contener una relación clara de los hechos y hacerse **bajo juramento**.\n- Si eres la víctima, **debes identificarte** para garantizar tus derechos en el proceso penal.\n- La Policía solo acepta denuncias virtuales por hurto a comercio, personas o residencias, delitos informáticos, explotación sexual infantil y extorsión.\n- Para otros delitos, debes acudir personalmente a un punto de recepción de la [Fiscalía](https://www.fiscalia.gov.co/colombia/servicios-de-informacion-al-ciudadano/donde-y-como-denunciar/) o la Policía.\n\nRecibirás el número de incidente por correo electrónico y, si procede, el Número Único de Noticia Criminal (NUNC) en 24 horas.",
+    "sources": [
+      {
+        "title": "Sistema Nacional de Denuncia Virtual ¡ADenunciar!",
+        "url": "https://www.policia.gov.co/sistema-nacional-denuncia-virtual-adenunciar"
+      },
+      {
+        "title": "Fiscalía General de la Nación",
+        "url": "https://www.fiscalia.gov.co/colombia/servicios-de-informacion-al-ciudadano/donde-y-como-denunciar/"
+      },
+      {
+        "title": "Crear Denuncia",
+        "url": "https://sicecon.fiscalia.gov.co/denuncia/LlenarFormulario"
+      },
+      {
+        "title": "Fiscalía General de la Nación",
+        "url": "https://www.fiscalia.gov.co/colombia/transparencia-y-acceso-a-informacion-publica/mecanismos-para-la-atencion-al-ciudadano/"
+      },
+      {
+        "title": "Fiscalía General de la Nación",
+        "url": "https://www.fiscalia.gov.co/colombia/menu-atencion-y-servicios-a-la-ciudadania/"
+      },
+      {
+        "title": "DENUNCIA VIRTUAL - POLICÍA NACIONAL DE COLOMBIA",
+        "url": "https://adenunciar.policia.gov.co/Adenunciar/"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 12,
+    "supported": 12
+  },
+  "consultar-procesos-judiciales": {
+    "answer": "Puedes consultar el estado de un proceso judicial a través de la Consulta de Procesos Nacional Unificada (CPNU) en el portal de la [Rama Judicial](https://www.ramajudicial.gov.co/).\n\n### Cómo hacerlo\n- Ingresa al [sistema de consulta](https://consultaprocesos.ramajudicial.gov.co/Procesos/Index) y busca por **Número de Radicación**, Nombre o Razón Social.\n- Si conoces el radicado, usa este [acceso directo](https://consultaprocesos.ramajudicial.gov.co/Procesos/NumeroRadicacion).\n- También puedes consultar por ciudadano en el sistema [TYBA](https://procesojudicial.ramajudicial.gov.co/justicia21/Administracion/Ciudadanos/frmConsulta.aspx) ingresando tu tipo y número de identificación.",
+    "sources": [
+      {
+        "title": "Consulta de Procesos Judiciales - TYBA",
+        "url": "https://procesojudicial.ramajudicial.gov.co/justicia21/Administracion/Ciudadanos/frmConsulta.aspx"
+      },
+      {
+        "title": "¿Cómo puedo consultar un proceso judicial en el Portal Web de la Rama Judicial? - ¿Cómo puedo consultar un proceso judicial en el Portal Web de la Rama Judicial? - Ventanilla de servicios",
+        "url": "https://www.ramajudicial.gov.co/web/ventanilla/-/%C2%BFc%C3%B3mo-puedo-consultar-un-proceso-judicial-en-el-portal-web-de-la-rama-judicial-"
+      },
+      {
+        "title": "Tipos de Consulta | Manual de Usuario CPNU",
+        "url": "https://consultaprocesos.ramajudicial.gov.co/manual/consulta.html"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 4,
+    "supported": 4
+  },
+  "certificado-camara-de-comercio": {
+    "answer": "Puedes obtenerlo de forma virtual a través de la Ventanilla Única Empresarial (VUE) o en cualquier Cámara de Comercio del país.\n\n### Cómo hacerlo\n- Ingresa al [portal de la VUE](https://www.vue.gov.co/tramites-y-consultas/compra-de-certificados-de-existencia-y-representacion-legal--matricula-mercantil-y-otros-certificados-de-las-camaras-de-comercio) y digita el NIT o nombre de la empresa.\n- Selecciona la opción \"Ver certificados\" y elige el **Certificado de Existencia y Representación Legal**.\n- Realiza el pago electrónico (PSE o tarjeta) y descarga el documento al finalizar la transacción.\n\n### Requisitos\n- Número de identificación (NIT) o nombre de la entidad registrada.\n- Matrícula o registro activo o cancelado en alguna Cámara de Comercio.\n- Conexión a internet y medio de pago habilitado.\n\nRecuerda que los certificados pueden adquirirse ante cualquier Cámara de Comercio, independiente de su jurisdicción, según lo establecido por la [Superintendencia de Sociedades](https://ree.rues.org.co/rsc/ref/circular_externa_100_000002_del_25_de_abril_de_2022.pdf).",
+    "sources": [
+      {
+        "title": "Compra de Certificados de Existencia y Representación ...",
+        "url": "https://www.vue.gov.co/tramites-y-consultas/compra-de-certificados-de-existencia-y-representacion-legal--matricula-mercantil-y-otros-certificados-de-las-camaras-de-comercio"
+      },
+      {
+        "title": "CIRCULAR EXTERNA",
+        "url": "https://ree.rues.org.co/rsc/ref/circular_externa_100_000002_del_25_de_abril_de_2022.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 8,
+    "supported": 6
   }
 }
