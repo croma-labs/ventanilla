@@ -1,11 +1,13 @@
 import { assistant } from "@country/assistant";
 import { site } from "@country/site";
+import { waitUntil } from "@vercel/functions";
 import type { APIRoute } from "astro";
 import { streamText, type ModelMessage } from "ai";
 import { z } from "zod";
 import { scrub } from "../../lib/pii";
 import type { Grounding, UiChunk } from "../../lib/ui-stream";
 import { recall, remember } from "../../server/answers";
+import { pendingWork } from "../../server/croma";
 import { safeEqual } from "../../server/crypto";
 import { suggestFollowUps } from "../../server/follow-ups";
 import { admit, anonymousKey, sameOrigin, signAnswer, verifyAnswer } from "../../server/guard";
@@ -110,6 +112,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       let checks: Check[] = [];
       let reviewMs = 0;
       let deepened = false;
+      let reading: Promise<boolean> = Promise.resolve(false);
       let supporting: string[] = [];
 
       const write = (delta: string | undefined) => {
@@ -157,7 +160,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
             searchUpdate("done");
             evidence = evidenceOf(found.candidates);
           }
-          const reading = found?.candidates.length ? deepen(assistant.sources, found.candidates, context) : Promise.resolve(false);
+          if (found?.candidates.length) reading = deepen(assistant.sources, found.candidates, context);
 
           const draft = streamText({
             model: resolved.model,
@@ -222,6 +225,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         controller.enqueue(encoder.encode("data: [DONE]\n\n"));
         controller.close();
       } catch {}
+      waitUntil(Promise.allSettled([reading, ...pendingWork()]));
       console.info(
         JSON.stringify({
           event: "chat",

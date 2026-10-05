@@ -22,6 +22,8 @@ type Job = { job?: { status?: string; status_url?: string }; data?: unknown; err
 
 const inflight = new Map<string, Promise<unknown>>();
 
+export const pendingWork = () => [...inflight.values()];
+
 const sleep = (ms: number, signal: AbortSignal) =>
   new Promise<void>((resolve, reject) => {
     const timer = setTimeout(resolve, ms);
