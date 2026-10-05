@@ -1,0 +1,23 @@
+name: Add a country
+description: Propose a new country layer
+labels: [country]
+body:
+  - type: input
+    id: country
+    attributes:
+      label: Country and ISO code
+      placeholder: Perú (pe)
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Official sources
+      description: Croma endpoints and official domain suffixes (e.g. gob.pe) the assistant should rely on. Only informational, person-free endpoints.
+    validations:
+      required: true
+  - type: textarea
+    id: pii
+    attributes:
+      label: Personal data to detect
+      description: ID numbers, tax IDs, phone and plate formats the browser and server must block.

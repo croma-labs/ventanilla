@@ -34,8 +34,8 @@ const reply = (status: number, error: string, headers: Record<string, string> = 
 
 const official = (url: string) => {
   try {
-    const host = new URL(url).hostname;
-    return site.officialSuffixes.some((suffix) => (suffix.startsWith(".") ? host.endsWith(suffix) : host === suffix || host.endsWith(`.${suffix}`)));
+    const { protocol, hostname: host } = new URL(url);
+    return protocol === "https:" && site.officialSuffixes.some((suffix) => (suffix.startsWith(".") ? host.endsWith(suffix) : host === suffix || host.endsWith(`.${suffix}`)));
   } catch {
     return false;
   }
@@ -72,6 +72,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   const started = Date.now();
   if (!sameOrigin(request)) return reply(403, "forbidden");
   if (!request.headers.get("content-type")?.includes("application/json")) return reply(415, "unsupported_media_type");
+  if (Number(request.headers.get("content-length") ?? 0) > maxBodyBytes) return reply(413, "too_large");
   const raw = await request.text();
   if (raw.length > maxBodyBytes) return reply(413, "too_large");
 

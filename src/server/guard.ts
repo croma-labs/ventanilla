@@ -6,9 +6,16 @@ const windows = [
   { name: "d", seconds: 86_400, limit: Number(process.env.LIMIT_PER_DAY ?? 80) },
 ] as const;
 
-export async function anonymousKey(address: string) {
+const network = (address: string) => {
+  if (!address.includes(":") || address.startsWith("::ffff:")) return address.replace(/^::ffff:/, "");
+  const [head, tail = ""] = address.split("::");
+  const groups = [...head.split(":"), ...Array(Math.max(0, 8 - head.split(":").length - (tail ? tail.split(":").length : 0))).fill("0"), ...(tail ? tail.split(":") : [])];
+  return `${groups.slice(0, 4).join(":")}::/64`;
+};
+
+export async function anonymousKey(address: string, scope = "client") {
   const day = new Date().toISOString().slice(0, 10);
-  return (await hmac(`client:${day}:${address}`)).slice(0, 32);
+  return (await hmac(`${scope}:${day}:${network(address)}`)).slice(0, 32);
 }
 
 export async function admit(key: string) {

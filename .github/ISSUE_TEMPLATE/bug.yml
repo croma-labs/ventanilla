@@ -1,0 +1,18 @@
+name: Bug
+description: Something broken or a wrong answer
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Include the question you asked, the answer and the sources shown. Remove any personal data first (cédula, phone, plate, address).
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: For a wrong answer, link the official page that says otherwise.
+    validations:
+      required: true
