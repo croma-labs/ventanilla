@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a vulnerability
+    url: https://github.com/croma-labs/ventanilla/security/advisories/new
+    about: Please report security issues privately, not as public issues.

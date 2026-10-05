@@ -70,7 +70,7 @@ const structured = {
     <link rel="alternate" hreflang="x-default" href={url} />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    {indexable && <script type="application/ld+json" set:html={JSON.stringify(structured)} />}
+    {indexable && <script type="application/ld+json" set:html={JSON.stringify(structured).replace(/</g, "\\u003c")} />}
     <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href={url} />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />

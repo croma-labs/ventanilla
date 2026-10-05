@@ -67,7 +67,7 @@ async function request(path: string, body: unknown, idempotencyKey: string, quot
   }
   let job = (await response.json()) as Job;
   const statusUrl = job.job?.status_url ?? response.headers.get("location");
-  if (!statusUrl) throw new CromaError(502, "missing_status_url");
+  if (!statusUrl || new URL(statusUrl, base).origin !== new URL(base).origin) throw new CromaError(502, "missing_status_url");
   let wait = Number(response.headers.get("retry-after")) || 2;
   for (;;) {
     await sleep(wait * 1000, signal);

@@ -23,6 +23,30 @@ const score = (rel: string, sizes: string, href: string) => {
   return 100 + Math.min(size, 256);
 };
 
+async function read(response: Response, limit: number) {
+  const reader = response.body?.getReader();
+  if (!reader) return null;
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.length;
+    if (size > limit) {
+      await reader.cancel();
+      return null;
+    }
+    chunks.push(value);
+  }
+  const bytes = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.length;
+  }
+  return bytes;
+}
+
 async function get(url: string, signal: AbortSignal) {
   const response = await fetch(url, { headers: { "User-Agent": userAgent, Accept: "text/html,image/*;q=0.9,*/*;q=0.5" }, redirect: "follow", signal });
   if (!response.ok || !response.url.startsWith("https://")) return null;
@@ -31,7 +55,7 @@ async function get(url: string, signal: AbortSignal) {
 
 async function candidates(origin: string, signal: AbortSignal) {
   const page = await get(origin, signal).catch(() => null);
-  const html = page ? (await page.text()).slice(0, 300_000) : "";
+  const html = page ? new TextDecoder().decode((await read(page, 1_000_000)) ?? new Uint8Array()).slice(0, 300_000) : "";
   const base = page?.url ?? origin;
   const links = [...html.matchAll(/<link\b[^>]*>/gi)]
     .map(([tag]) => ({
@@ -52,7 +76,8 @@ export async function fetchIcon(domain: string, timeoutMs = 8000): Promise<Icon 
     for (const url of (await candidates(origin, signal).catch(() => [])).slice(0, 5)) {
       const response = await get(url, signal).catch(() => null);
       if (!response) continue;
-      const bytes = new Uint8Array(await response.arrayBuffer());
+      const bytes = await read(response, maxBytes);
+      if (!bytes) continue;
       const type = sniff(bytes);
       if (!type) continue;
       if (bytes.length <= 64 || bytes.length > maxBytes) continue;
