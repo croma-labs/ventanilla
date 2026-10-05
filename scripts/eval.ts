@@ -22,7 +22,17 @@ const matches = (pattern: string, text: string) => new RegExp(plain(pattern), "i
 const host = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 const under = (url: string, domain: string) => host(url) === domain || host(url).endsWith(`.${domain}`);
 
-async function ask(question: string) {
+async function ask(question: string, retries = 1): Promise<Awaited<ReturnType<typeof once>>> {
+  try {
+    return await once(question);
+  } catch (error) {
+    const network = error instanceof TypeError && /fetch failed|terminated/.test(error.message);
+    if (network && retries > 0) return ask(question, retries - 1);
+    throw error;
+  }
+}
+
+async function once(question: string) {
   const started = Date.now();
   const response = await fetch(`${base}/api/chat`, {
     method: "POST",
