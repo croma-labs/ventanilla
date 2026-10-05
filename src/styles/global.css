@@ -347,6 +347,10 @@
   .shooting-star-trail { animation: 0.85s cubic-bezier(0.4, 0, 0.8, 1) both shooting-star-flight; }
 }
 
+[data-slot="ask-dock"] {
+  /* Lift above the on-screen keyboard; the keyboard already covers the home-indicator inset. */
+  translate: 0 min(0px, calc(env(safe-area-inset-bottom) - var(--keyboard-inset, 0px)));
+}
 [data-slot="ask-dock"] [data-slot="ask-pill"] {
   transform-origin: 50% 100%;
   transition:

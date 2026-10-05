@@ -29,6 +29,22 @@ export default function AskDock() {
   const dock = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+    const sync = () => {
+      const inset = Math.max(0, innerHeight - viewport.height - viewport.offsetTop);
+      dock.current?.style.setProperty("--keyboard-inset", `${Math.round(inset)}px`);
+    };
+    sync();
+    viewport.addEventListener("resize", sync);
+    viewport.addEventListener("scroll", sync);
+    return () => {
+      viewport.removeEventListener("resize", sync);
+      viewport.removeEventListener("scroll", sync);
+    };
+  }, []);
+
+  useEffect(() => {
     const hero = document.querySelector<HTMLElement>('[data-slot="hero-ask-pill"]');
     if (!hero) return setAside(false);
     const sync = () => {
