@@ -6,7 +6,7 @@ export type Store = {
   incr(key: string, ttlSeconds: number): Promise<number>;
 };
 
-const prefix = `ventanilla:${process.env.COUNTRY ?? "co"}:`;
+const prefix = `ventanilla:${process.env.VERCEL_ENV === "production" ? "" : "dev:"}${process.env.COUNTRY ?? "co"}:`;
 
 function memoryStore(capacity = 2000): Store {
   const entries = new Map<string, { value: unknown; expires: number }>();
