@@ -19,7 +19,7 @@ type ComposerProps = {
 };
 
 const shell: Record<Variant, string> = {
-  hero: "min-h-14 rounded-32 py-2.5 pr-3 pl-6 shadow-composer-sm outline-2 outline-ring max-md:p-3 mobile:min-h-0 mobile:rounded-[48px] mobile:py-[23px] mobile:pr-[23px] mobile:pl-10 mobile:shadow-none",
+  hero: "min-h-14 rounded-32 py-2.5 pr-3 pl-6 shadow-composer-sm outline-2 outline-ring max-md:p-3 max-md:outline-1 max-md:outline-border-secondary max-md:focus-within:outline-2 max-md:focus-within:outline-ring mobile:min-h-0 mobile:rounded-[48px] mobile:py-[23px] mobile:pr-[23px] mobile:pl-10 mobile:shadow-none",
   dock: "min-h-14 rounded-32 py-2.5 pr-3 pl-6 shadow-composer-sm outline-1 outline-border-secondary focus-within:outline-2 focus-within:outline-ring sm:shadow-elevation-1 mobile:rounded-[48px] mobile:py-[22px] mobile:pr-6 mobile:pl-8",
 };
 
@@ -101,6 +101,7 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
               <textarea
                 ref={textarea}
                 rows={1}
+                enterKeyHint="send"
                 value={value}
                 onChange={(event) => setValue(event.target.value)}
                 onKeyDown={onKeyDown}

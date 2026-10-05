@@ -12,7 +12,7 @@ const smootherstep = (t: number) => 10 * t ** 2 - 20 * t ** 3 + 15 * t ** 4 - 4 
 const overshoot = (t: number) => smootherstep(t) + 0.65 * t ** 3 * (1 - t) ** 2;
 const standard = [0.25, 0.1, 0.25, 1] as const;
 
-const fill = "#002664";
+const fill = "#0e1a33";
 
 const backdrop: Variants = {
   closed: { opacity: 0 },

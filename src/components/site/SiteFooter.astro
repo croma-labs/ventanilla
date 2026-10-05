@@ -6,7 +6,7 @@ import CromaCredit from "./CromaCredit";
 
 const inlineLink = `inline-block rounded-xs underline-offset-4 hover:underline ${focusRing}`;
 const external = (href: string) => (href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {});
-const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="size-10 text-blue-700" ');
+const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="h-7 w-[42px]" ');
 ---
 
 <footer data-slot="site-footer" class="bg-surface-footer py-24 text-pretty text-black site-desktop:pt-56 site-desktop:pb-30">

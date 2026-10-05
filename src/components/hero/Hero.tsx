@@ -21,7 +21,7 @@ function Backdrop({ index, progress }: { index: number; progress: MotionValue<nu
   const opacity = useTransform(progress, (position) => Math.max(0, 1 - Math.abs(wrap(-count / 2, count / 2, index - position))));
   return (
     <motion.div aria-hidden className="absolute inset-0 will-change-[opacity]" style={{ opacity }}>
-      <div className="absolute inset-0 bg-cover bg-center blur-3xl saturate-150" style={{ backgroundImage: wash(heroCards[index]) }} />
+      <div className="absolute inset-0 bg-cover bg-center blur-3xl" style={{ backgroundImage: wash(heroCards[index]) }} />
     </motion.div>
   );
 }
@@ -122,9 +122,9 @@ export default function Hero() {
       <section className="relative isolate flex flex-col items-center rounded-40 pt-40 pb-10 mobile:min-h-[calc(100svh-92px)] mobile:justify-center mobile:rounded-48 mobile:px-8 mobile:pt-36 mobile:pb-36">
         <div
           aria-hidden
-          className="squircle pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-40 [clip-path:inset(0_round_var(--radius-40))] mobile:rounded-48 mobile:[clip-path:inset(0_round_var(--radius-48))]"
+          className="squircle pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-40 bg-linear-to-b from-[#f4f5f7] to-[#f8f8f9] [clip-path:inset(0_round_var(--radius-40))] mobile:rounded-48 mobile:[clip-path:inset(0_round_var(--radius-48))]"
         >
-          <div className="absolute top-[-16%] left-[-12%] h-[132%] w-[124%] opacity-30">
+          <div className="absolute top-[-16%] left-[-12%] h-[132%] w-[124%] opacity-[0.07] saturate-0">
             {heroCards.map((card, index) => (
               <Backdrop key={card.slug} index={index} progress={progress} />
             ))}

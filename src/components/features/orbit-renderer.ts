@@ -41,7 +41,7 @@ export function drawTile({ label, domain }: OrbitSite, icon: HTMLImageElement | 
   context.beginPath();
   context.roundRect(0, 0, tileSize.width, tileSize.height, 28);
   context.fill();
-  context.fillStyle = "#f4efe6";
+  context.fillStyle = "#f2f3f5";
   context.beginPath();
   context.roundRect(0, 0, tileSize.width, 52, [28, 28, 0, 0]);
   context.fill();
@@ -66,7 +66,7 @@ export function drawTile({ label, domain }: OrbitSite, icon: HTMLImageElement | 
   context.fillStyle = "#0e1a33";
   context.font = `400 ${label.length > 12 ? 40 : 50}px "Instrument Serif", serif`;
   context.fillText(label, icon ? 172 : 36, 138, tileSize.width - (icon ? 200 : 64));
-  context.fillStyle = "#ece6da";
+  context.fillStyle = "#e6e7ea";
   [0, 1].forEach((row) => {
     context.beginPath();
     context.roundRect(36, 240 + row * 30, row === 1 ? 220 : 408, 12, 6);
