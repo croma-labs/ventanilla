@@ -144,7 +144,7 @@ export default function Hero() {
           <div className="relative w-full">
             <div
               data-site-hero-enter="2"
-              className="absolute inset-x-4 top-4 z-20"
+              className="z-20 max-md:relative max-md:mx-3 max-md:mb-4 mobile:absolute mobile:inset-x-4 mobile:top-4"
               onPointerEnter={() => setHovered(true)}
               onPointerLeave={() => setHovered(false)}
             >
@@ -158,11 +158,11 @@ export default function Hero() {
             </div>
 
             <div role="region" aria-roledescription="carousel" aria-label={site.ui.examples}>
-              <div data-site-hero-enter="3">
+              <div data-site-hero-enter="3" className="max-md:mx-3">
                 <div
                   ref={viewport}
                   data-slot="carousel-content"
-                  className="squircle relative isolate cursor-grab touch-pan-y touch-pinch-zoom overflow-hidden rounded-40 shadow-hero-photo active:cursor-grabbing mobile:rounded-[calc(58px*var(--corner-scale))]"
+                  className="squircle relative isolate cursor-grab touch-pan-y touch-pinch-zoom overflow-hidden rounded-24 shadow-hero-photo active:cursor-grabbing mobile:rounded-[calc(58px*var(--corner-scale))]"
                 >
                   <div className="flex">
                     {heroCards.map((card, index) => (
@@ -173,7 +173,7 @@ export default function Hero() {
                         aria-label={label(index)}
                         aria-hidden={index !== selected}
                         data-slot="carousel-item"
-                        className="relative aspect-400/493 min-w-0 shrink-0 grow-0 basis-full mobile:aspect-551/367"
+                        className="relative aspect-3/2 min-w-0 shrink-0 grow-0 basis-full mobile:aspect-551/367"
                       >
                         <Slide index={index} mounted={mounted.has(index)} />
                       </div>

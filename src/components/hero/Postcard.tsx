@@ -18,7 +18,7 @@ export const wash = ({ image, tone = fallbackTone }: HeroCard) => {
 function Caption({ card }: { card: HeroCard }) {
   const entity = card.entity ? site.entities[card.entity] : undefined;
   return (
-    <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-3 px-7 pt-24 pb-7 mobile:gap-4 mobile:px-11 mobile:pb-10">
+    <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-2 px-5 pt-14 pb-4 mobile:gap-4 mobile:px-11 mobile:pt-24 mobile:pb-10">
       <div aria-hidden className="absolute inset-0 -z-10 bg-linear-to-t from-[#120a04]/75 via-[#120a04]/30 to-transparent" />
       {entity && card.entity && (
         <span className="flex items-center gap-2 rounded-full bg-white/14 py-1 pr-3.5 pl-1 text-[13px] leading-none font-medium text-white/95 ring-1 ring-white/20 backdrop-blur-md">
@@ -29,7 +29,7 @@ function Caption({ card }: { card: HeroCard }) {
           {entity.name}
         </span>
       )}
-      <p className="font-serif-display text-[clamp(3rem,9vw,5.75rem)] leading-[0.92] tracking-[-0.02em] text-balance text-white drop-shadow-[0_2px_24px_rgb(0_0_0/0.25)]">
+      <p className="font-serif-display text-[clamp(2.25rem,9vw,5.75rem)] leading-[0.92] tracking-[-0.02em] text-balance text-white drop-shadow-[0_2px_24px_rgb(0_0_0/0.25)]">
         {card.title}
       </p>
     </div>
