@@ -23,7 +23,8 @@ const lead = summaryOf(tramite.answer);
 const description = lead.length < 110 ? `${lead} ${copy.tail}` : lead;
 const photo = tramite.image ? `/hero/${site.code}/${tramite.image}` : null;
 const verified = copy.verified.replace("{date}", dateLabel(tramite.verifiedAt));
-const related = published.filter((other) => other.slug !== tramite.slug).slice(0, 6);
+const others = published.filter((other) => other.slug !== tramite.slug);
+const related = [...others.filter((other) => other.category === tramite.category), ...others.filter((other) => other.category !== tramite.category)].slice(0, 6);
 const askHref = `/?q=${encodeURIComponent(tramite.question)}`;
 
 const schema = [

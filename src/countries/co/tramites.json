@@ -450,5 +450,497 @@
     "verifiedAt": "2026-10-04",
     "claims": 6,
     "supported": 5
+  },
+  "renovar-pasaporte": {
+    "answer": "Para renovar tu pasaporte vencido, debes diligenciar el [formulario de solicitud en línea](https://tramitesmre.cancilleria.gov.co/tramites/enlinea/pasaporte/solicitar.xhtml) y luego recoger la libreta de manera presencial en la oficina que selecciones.\n\n### Requisitos y pasos\n- **Identificación:** Presenta tu cédula de ciudadanía vigente o la contraseña expedida por la Registraduría acompañada del certificado de vigencia, según los [requisitos de la Cancillería](https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/requisitos).\n- **Foto:** Adjunta una fotografía reciente (no mayor a 6 meses) que cumpla con los estándares de la OACI, como indica la [guía de Pasaporte en Línea](https://cancilleria.gov.co/sites/default/files/FOTOS2024/2026/PAS-PasaporteLineaWeb.pdf).\n- **Entrega:** Recoge el documento en la sede elegida; si es por renovación, debes presentar el pasaporte anterior salvo que sea por pérdida o hurto.\n- **Plazo de reposición:** Si encuentras errores en los datos, tienes un mes desde la entrega para solicitar la reposición.\n\nPuedes consultar el estado de tu trámite en la [página de la Cancillería](https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes).",
+    "sources": [
+      {
+        "title": "Pasaportes - Bogotá",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes"
+      },
+      {
+        "title": "Requisitos | Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/requisitos"
+      },
+      {
+        "title": "Pasaporte en Línea",
+        "url": "https://cancilleria.gov.co/sites/default/files/FOTOS2024/2026/PAS-PasaporteLineaWeb.pdf"
+      },
+      {
+        "title": "Pasaportes | Cancillería",
+        "url": "https://cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 8,
+    "supported": 8
+  },
+  "apostillar-documentos": {
+    "answer": "Para apostillar un documento colombiano, debes ingresar al [sistema en línea de la Cancillería](https://tramites.cancilleria.gov.co/apostillalegalizacion/solicitud/inicio.aspx) y cargar el archivo digitalizado.\n\n### Requisitos y pasos\n- El documento debe estar en **PDF**, legible por ambas caras y no superar los 11 MB.\n- Debe contener nombre, cargo, entidad, fecha y firma manuscrita del funcionario o particular.\n- Si es un registro civil, primero solicita la copia auténtica y diligencia el [formulario de la Registraduría](https://apostilla.registraduria.gov.co/index) para obtener un código de solicitud.\n- Si es un documento notarial, pide a la notaría que lo firme digitalmente para recibir un código de 21 caracteres.\n- Selecciona el tipo de documento y el país de destino en el portal de la [Cancillería](https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/apostilla-y-legalizacion-en-linea).\n- La expedición es inmediata tras realizar el pago respectivo en la plataforma.",
+    "sources": [
+      {
+        "title": "Crear solicitud apostilla/legalización",
+        "url": "https://tramites.cancilleria.gov.co/apostillalegalizacion/solicitud/inicio.aspx"
+      },
+      {
+        "title": "Apostilla y legalización en línea | Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/apostilla-y-legalizacion-en-linea"
+      },
+      {
+        "title": "Pasos para hacer su trámite",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/apostilla-y-legalizacion-en-linea/pasos-para-hacer-su-tramite"
+      },
+      {
+        "title": "Página 1 | 14",
+        "url": "https://www.cancilleria.gov.co/sites/default/files/FOTOS2025/Guia%20Apostilla%20y%20Legalizaci%C3%B3n%20de%20Registros%20Civiles.pdf"
+      },
+      {
+        "title": "Requisitos | Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/apostilla-y-legalizacion-en-linea/requisitos"
+      },
+      {
+        "title": "Documentos expedidos o firmados en Notarías colombianas | Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/documentos-expedidos-o-firmados-en-notarias-colombianas"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 12,
+    "supported": 12
+  },
+  "visa-colombiana": {
+    "answer": "Para vivir en Colombia de forma permanente, debes solicitar la **Visa de Residente (tipo R)** a través de la plataforma digital del Ministerio de Relaciones Exteriores.\n\n### Cómo hacerlo\n- Ingresa al [formulario de solicitud de visa](https://tramitesmre.cancilleria.gov.co/tramites/enlinea/solicitarVisa.xhtml) y diligencia los datos con exactitud.\n- Adjunta los documentos digitalizados en PDF y una fotografía en JPG (máx. 300 KB).\n- Si estás en Colombia, elige \"Oficina en Bogotá\"; si estás en el exterior, selecciona el consulado más cercano a tu residencia.\n\n### Requisitos clave\n- Pasaporte vigente por mínimo 6 meses, en buen estado y con hojas libres.\n- Si estás en Colombia, demuestra tu situación migratoria regular.\n- Documentos extranjeros deben tener apostilla o legalización y traducción oficial al castellano.\n\nConsulta los requisitos específicos de tu caso en la [Resolución 5477 de 2022](https://cancilleria.gov.co/sites/default/files/Normograma/docs/resolucion_minrelaciones_5477_2022.htm).",
+    "sources": [
+      {
+        "title": "Ministerio de Relaciones Exteriores - Normograma [RESOLUCION 5477 de 2022 Ministerio de Relaciones Exteriores]",
+        "url": "https://cancilleria.gov.co/sites/default/files/Normograma/docs/resolucion_minrelaciones_5477_2022.htm"
+      },
+      {
+        "title": "ABC de Solicitud de Visa para Colombia - Bogotá - Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/visa/abece-de-visas"
+      },
+      {
+        "title": "Instrucciones y requisitos generales para presentar una solicitud de visa | Cancillería",
+        "url": "https://www.cancilleria.gov.co/node/18162"
+      },
+      {
+        "title": "Visa de Residente (tipo R) - Cancillería",
+        "url": "https://www.cancilleria.gov.co/node/26934"
+      },
+      {
+        "title": "Compilación jurídica de la Cancillería de Colombia - Resolución 5477 de 2022 MRE",
+        "url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_5477_2022.htm"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 12,
+    "supported": 9
+  },
+  "permiso-proteccion-temporal": {
+    "answer": "El Permiso por Protección Temporal (PPT) es un documento de identificación gratuito expedido por [Migración Colombia](https://www.migracioncolombia.gov.co/tramites-y-servicios/tramites-de-regularizacion/ppt) para regularizar la situación migratoria de ciudadanos venezolanos.\n\n### Cómo consultarlo\nPuedes verificar el estado de tu trámite en línea a través de la [plataforma de validación del PPT](https://apps.migracioncolombia.gov.co/migracion-ppt/), donde se mostrará si está **Aprobado**, **Impreso** o **En proceso**.\n\nSi necesitas una constancia oficial, puedes solicitar la [certificación de estado](https://apps.migracioncolombia.gov.co/consultaCedulas/public/consultarCertificadoEstadoPPT.jsf) ingresando el número de tu PPT y la fecha de expedición; este certificado tiene una validez de 30 días calendario.",
+    "sources": [
+      {
+        "title": "Permiso por Protección Temporal (PPT) - Migración Colombia",
+        "url": "https://www.migracioncolombia.gov.co/tramites-y-servicios/tramites-de-regularizacion/ppt"
+      },
+      {
+        "title": "Realice aquí la validación de su PPT",
+        "url": "https://apps.migracioncolombia.gov.co/migracion-ppt/"
+      },
+      {
+        "title": "Certificados - Migración Colombia",
+        "url": "https://apps.migracioncolombia.gov.co/consultaCedulas/public/consultarCertificadoEstadoPPT.jsf"
+      },
+      {
+        "title": "Permiso por Protección Temporal (PPT) - Migración Colombia",
+        "url": "https://portal.migracioncolombia.gov.co/tramites-y-servicios/tramites-de-regularizacion/ppt"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 3,
+    "supported": 3
+  },
+  "tarjeta-de-identidad": {
+    "answer": "Para sacar la tarjeta de identidad por primera vez, debes llevar al menor (que debe tener 7 años cumplidos) a una [Registraduría](https://www.registraduria.gov.co/Tarjeta-de-identidad-Primera-vez-7595.html) o Consulado, y el trámite es **gratuito**.\n\n### Requisitos\n- Copia del registro civil de nacimiento con espacio de notas.\n- Conocer el grupo sanguíneo y factor RH del menor.\n- Presentarse con el menor y un padre o representante legal.\n- En consulados sin tecnología digital, llevar 3 fotos 4x5 cm.\n\n### Cómo hacerlo\n- Solicita cita en [Agendamiento de citas](https://agenda.registraduria.gov.co/agenda/) si la oficina lo requiere.\n- El proceso tarda entre 30 y 45 días hábiles en oficinas digitales, o de 2 a 3 meses en otras.\n- Consulta el estado del documento en [Estado de documentos](https://wsp.registraduria.gov.co/estado_docs/documento/consultar/).",
+    "sources": [
+      {
+        "title": "Tarjeta de identidad - Primera vez",
+        "url": "https://www.registraduria.gov.co/Tarjeta-de-identidad-Primera-vez-7595.html"
+      },
+      {
+        "title": "Tarjeta de identidad - Bogotá",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/tramites-en-el-exterior/tarjeta-de-identidad"
+      },
+      {
+        "title": "Portal | Detalle de Tramite",
+        "url": "https://bogota.gov.co/servicios/tramites/tarjeta-de-identidad"
+      },
+      {
+        "title": "Tarjeta de identidad | Colombia Ágil",
+        "url": "https://www.colombiaagil.gov.co/tramites/intervenciones/tarjeta-de-identidad"
+      },
+      {
+        "title": "Cómo solicitar la Tarjeta de Identidad en el Consulado General de Colombia en Caracas | Consulados Cancillería Colombia",
+        "url": "https://caracas.consulado.gov.co/sala-de-prensa/noticias/como-solicitar-la-tarjeta-de-identidad-en-el-consulado-general-de-colombia-en-caracas"
+      },
+      {
+        "title": "Paso a paso para trámites de tarjeta de identidad | Consulados Cancillería Colombia",
+        "url": "https://quito.consulado.gov.co/sala-de-prensa/noticias/paso-paso-para-tramites-de-tarjeta-de-identidad-0"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 12,
+    "supported": 11
+  },
+  "certificado-tradicion-y-libertad": {
+    "answer": "Puedes obtener el certificado de tradición y libertad de forma gratuita o con costo a través de la plataforma oficial de la [Superintendencia de Notariado y Registro](https://certificados.supernotariado.gov.co/certificado).\n\n### Cómo hacerlo\n- Ingresa al portal y selecciona la opción para generar el certificado.\n- Consulta los datos del inmueble, realiza el pago (si aplica) y descarga el documento.\n- El trámite en línea tiene una duración aproximada de **5 minutos**.\n\n### Requisitos\n- Tener el número de **matrícula inmobiliaria** del inmueble.\n- Disponer de Adobe Acrobat Reader para visualizar el archivo.\n\nEl costo varía según la tarifa vigente; por ejemplo, en Bogotá se ha reportado un valor de $35.900 para 2025, aunque la entidad cobra $19.200 por el documento base. Verifica siempre la [Resolución de Tarifas Registrales](https://www.supernotariado.gov.co/atencion-servicios-ciudadania/tramites-y-servicios/) actualizada.",
+    "sources": [
+      {
+        "title": "Certificado de tradición y libertad, consultas de índices de propietarios y certificados de no propiedad",
+        "url": "https://certificados.supernotariado.gov.co/certificado"
+      },
+      {
+        "title": "Trámites y Servicios",
+        "url": "https://www.supernotariado.gov.co/atencion-servicios-ciudadania/tramites-y-servicios/"
+      },
+      {
+        "title": "Certificado de tradición y libertad, consultas de índices de propietarios y certificados de no propiedad",
+        "url": "https://certificados.supernotariado.gov.co/certificado/inicio.snr"
+      },
+      {
+        "title": "Superintendencia de Notariado y Registro",
+        "url": "https://servicios.supernotariado.gov.co/"
+      },
+      {
+        "title": "Así puedes descargar el certificado de tradición y libertad en Bogotá | Bogota.gov.co",
+        "url": "https://bogota.gov.co/mi-ciudad/asi-puedes-descargar-el-certificado-de-tradicion-y-libertad-en-bogota"
+      },
+      {
+        "title": "Trámites y servicios",
+        "url": "https://www.gov.co/tramites-y-servicios/supernotariado"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 12,
+    "supported": 11
+  },
+  "consultar-grupo-sisben": {
+    "answer": "Puedes consultar tu grupo del Sisbén en línea a través de la página oficial del [Sisbén](https://www.sisben.gov.co/Paginas/preguntas-comunidad.html).\n\n### Cómo hacerlo\n- Ingresa a [www.sisben.gov.co](https://www.sisben.gov.co/Paginas/preguntas-comunidad.html), selecciona el tipo de documento, digita tu número de identificación y haz clic en \"Consulta\".\n- El sistema genera un **documento oficial** que valida tu clasificación en la Base Nacional Certificada publicada por el DNP.\n\nExisten cuatro grupos de clasificación: A, B, C y D. Si encuentras alguna inconsistencia o deseas actualizar tu información, debes acercarte a la oficina del Sisbén de tu municipio, según indica la [página de consulta](https://www.sisben.gov.co/paginas/consulta-tu-grupo.html).",
+    "sources": [
+      {
+        "title": "Preguntas Frecuentes",
+        "url": "https://www.sisben.gov.co/Paginas/preguntas-comunidad.html"
+      },
+      {
+        "title": "Bienvenido a la página del Sisbén IV",
+        "url": "https://www.sisben.gov.co/paginas/consulta-tu-grupo.html"
+      },
+      {
+        "title": "​¿Dónde puedo consultar mi clasificación en el Sisbén? ​",
+        "url": "https://www.dnp.gov.co/atencion-al-ciudadano/Paginas/donde-puedo-consultar-mi-clasificacion-en-el-sisben.aspx"
+      },
+      {
+        "title": "Consulta tu grupo Sisbén",
+        "url": "https://portal-sisben.sisben.gov.co/Paginas/consulta-tu-grupo.html"
+      },
+      {
+        "title": "Bienvenido a la página del Sisbén IV",
+        "url": "https://portal.sisben.gov.co/paginas/consulta-tu-grupo.html"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 6,
+    "supported": 5
+  },
+  "consultar-afiliacion-eps": {
+    "answer": "Puedes consultar a qué EPS estás afiliado a través del [Sistema de Afiliación Transaccional (SAT)](https://www.minsalud.gov.co/Proteccion-Social/Paginas/afiliacion-transaccional-sat.aspx).\n\n### Cómo hacerlo\n- Ingresa al portal del SAT con tu documento de identidad para revisar el **estado actual de tu afiliación** y el historial de inscripciones.\n- Si tu EPS anterior fue liquidada o retirada, verifica tu asignación a una EPS receptora en la [página de consulta de afiliados del Ministerio de Salud](https://www.minsalud.gov.co/paginas/consulta-afiliados.aspx).\n\nRecuerda que, tras una asignación forzada, tienes 90 días calendario para trasladarte de EPS si lo deseas.",
+    "sources": [
+      {
+        "title": "Sistema de Afiliación Transaccional (SAT)",
+        "url": "https://www.minsalud.gov.co/Proteccion-Social/Paginas/afiliacion-transaccional-sat.aspx"
+      },
+      {
+        "title": "Asignación EPS",
+        "url": "https://www.minsalud.gov.co/paginas/consulta-afiliados.aspx"
+      },
+      {
+        "title": "Asignación EPS",
+        "url": "https://www.minsalud.gov.co/Proteccion-Social/Paginas/asignacion-eps.aspx"
+      },
+      {
+        "title": "Consulta-Afiliados",
+        "url": "https://www.minsalud.gov.co/Paginas/consulta-afiliados.aspx"
+      },
+      {
+        "title": "Consulta-Afiliados",
+        "url": "https://www.minsalud.gov.co/paginas/Consulta-Afiliados.aspx"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 5,
+    "supported": 5
+  },
+  "queja-eps-supersalud": {
+    "answer": "Primero debes comunicarte con tu EPS; si no recibes respuesta oportuna o estás en desacuerdo, puedes acudir a la [Superintendencia Nacional de Salud](https://www.supersalud.gov.co/es-co/atencion-ciudadano/preguntas-frecuentes).\n\n### Cómo hacerlo\n- Rellena el [formulario web de PQRD](https://superargo.supersalud.gov.co/2/formularioWeb/) en la página oficial.\n- Incluye tu nombre, identificación, datos de contacto, descripción clara del motivo y el nombre de tu EPS.\n- También puedes llamar a la línea gratuita 018000513700.\n\nPuedes dar seguimiento a tu radicado en [superargo.supersalud.gov.co](https://superargo.supersalud.gov.co/2/formularioWeb/pqrd.php) usando el número de radicado y tus datos de identificación.",
+    "sources": [
+      {
+        "title": "Gestión Documental y Trámites",
+        "url": "https://superargo.supersalud.gov.co/2/formularioWeb/"
+      },
+      {
+        "title": "Supersalud | Preguntas frecuentes",
+        "url": "https://www.supersalud.gov.co/es-co/atencion-ciudadano/preguntas-frecuentes"
+      },
+      {
+        "title": "Documento institucional en word",
+        "url": "https://docs.supersalud.gov.co/PortalWeb/Comunicaciones/OtrasPublicacionesComunicaciones/guion-reclamaciones-en-salud.pdf"
+      },
+      {
+        "title": "¡CONOCE MÁS A LA SUPERSALUD!",
+        "url": "https://docs.supersalud.gov.co/PortalWeb/ProteccionUsuario/Carta%20de%20Derechos%20y%20Deberes/Cartilla%20General%20web.pdf"
+      },
+      {
+        "title": "Peticiones, Quejas y Reclamos",
+        "url": "https://www.minsalud.gov.co/Atencion-y-servicios-a-la-ciudadania/Paginas/peticiones-quejas-reclamos.aspx"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 5,
+    "supported": 4
+  },
+  "historia-laboral-colpensiones": {
+    "answer": "Puedes consultar tu historia laboral y semanas cotizadas en la [Sede Electrónica de Colpensiones](https://sede.colpensiones.gov.co/).\n\n### Cómo hacerlo\n- Ingresa a [www.colpensiones.gov.co](https://www.colpensiones.gov.co) y haz clic en Zona Transaccional > Sede Electrónica.\n- Si no tienes cuenta, usa el enlace \"registrarse\" con tu número de documento.\n- Una vez dentro, busca la opción **Historia Laboral Unificada** en la columna de consultas.\n- Ahí verás tus aportes, salarios y el total de semanas cotizadas; puedes descargar el documento o enviarlo a tu correo.\n\nSi encuentras errores, solicita la corrección en línea a través del Portal de Trámites o acércate a un Punto de Atención Colpensiones (PAC) con tu documento de identidad.",
+    "sources": [
+      {
+        "title": "Iniciar sesión - Colpensiones",
+        "url": "https://sede.colpensiones.gov.co/"
+      },
+      {
+        "title": "¿Cómo consultar y descargar la Historia Laboral?",
+        "url": "https://www.colpensiones.gov.co/educacion/publicaciones/2901/como-consultar-y-descargar-la-historia-laboral/"
+      },
+      {
+        "title": "Controla tu Historia Laboral en 5 pasos",
+        "url": "https://www.colpensiones.gov.co/educacion/publicaciones/4750/controla-tu-historia-laboral-en-5-pasos/"
+      },
+      {
+        "title": "Revisa el extracto más importante de tu vida: ¡tu Historia ...",
+        "url": "https://www.colpensiones.gov.co/educacion/publicaciones/4872/revisa-el-extracto-mas-importante-de-tu-vida-tu-historia-laboral/"
+      },
+      {
+        "title": "Historia Laboral",
+        "url": "https://www.colpensiones.gov.co/preguntas-frecuentes/297/historia-laboral/"
+      },
+      {
+        "title": "¿Cómo consultar y descargar la Historia Laboral?",
+        "url": "https://www.colpensiones.gov.co/publicaciones/2901/como-consultar-y-descargar-la-historia-laboral/"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 9,
+    "supported": 8
+  },
+  "declaracion-de-renta": {
+    "answer": "Debes declarar renta si en 2025 cumpliste al menos una de estas condiciones: fuiste responsable de IVA, tu patrimonio superó los $224.096.000, o tus ingresos, consumos o consignaciones bancarias superaron los $69.719.000.\n\n### Condiciones para declarar\n- Ser responsable del IVA al 31 de diciembre de 2025.\n- Tener un patrimonio bruto superior a 4.500 UVT ($224.096.000).\n- Haber tenido ingresos brutos, consumos con tarjeta, compras totales o consignaciones bancarias superiores a 1.400 UVT ($69.719.000).\n\nPuedes verificar tu obligación y presentar tu declaración en el [portal de la DIAN](https://micrositios.dian.gov.co/renta-personas-naturales-ag-2025/).",
+    "sources": [
+      {
+        "title": "Declaración de Renta Personas Naturales 2025 | DIAN",
+        "url": "https://micrositios.dian.gov.co/renta-personas-naturales-ag-2025/"
+      },
+      {
+        "title": "Renta 2025 Personas Naturales: Todo lo que debe saber",
+        "url": "https://micrositios.dian.gov.co/renta-personas-naturales-ag-2025/todo-lo-que-usted-debe-saber-sobre-renta/"
+      },
+      {
+        "title": "Prepárese para la Declaración de Renta 2025",
+        "url": "https://micrositios.dian.gov.co/renta-personas-naturales-ag-2025/preparese-para-la-declaracion/"
+      },
+      {
+        "title": "Prensa\n            \n            \n            Comunicado de Prensa No. 090",
+        "url": "https://www.dian.gov.co/Prensa/Paginas/NG-Comunicado-de-Prensa-090-2026.aspx"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 5,
+    "supported": 4
+  },
+  "factura-electronica": {
+    "answer": "Para habilitarte, debes registrar tu software de facturación en la [DIAN](https://www.dian.gov.co) y superar un set de pruebas.\n\n### Requisitos previos\n- Tener el **correo electrónico** actualizado en el RUT (tuyo o del representante legal).\n- Contar con un software de facturación: [Facturación Gratuita DIAN](https://www.dian.gov.co/impuestos/factura-electronica/como-hacerlo/Paginas/ser-facturador-electronico.aspx), Proveedor Tecnológico o Desarrollo Propio.\n- Disponer de un certificado de firma digital (gratuito si usas el servicio de la DIAN).\n- Tener acceso a un dispositivo con internet.\n\n### Pasos para habilitarte\n1. Ingresa a la opción \"Habilitación\" en [Factura Electrónica](https://www.dian.gov.co) y genera el token de acceso que llega a tu correo.\n2. Formaliza el registro y selecciona el \"Modo de operación\" (tu software).\n3. Realiza el set de pruebas enviando los documentos electrónicos requeridos (por ejemplo, 4 documentos si usas el servicio gratuito).\n4. Una vez aprobado, selecciona la fecha de inicio para actualizar el RUT y solicita los rangos de numeración en MUISCA.",
+    "sources": [
+      {
+        "title": "Páginas - Ser Facturador Electrónico",
+        "url": "https://www.dian.gov.co/impuestos/factura-electronica/como-hacerlo/Paginas/ser-facturador-electronico.aspx"
+      },
+      {
+        "title": "Proceso de registro y habilitación como facturador electrónico",
+        "url": "https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/proceso-de-registro-y-habilitacion-como-facturador-electronico/"
+      },
+      {
+        "title": "Instructivo de Registro y Habilitación en Factura Electrónica DIAN",
+        "url": "https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/instructivo-de-registro-y-habilitacion-en-factura-electronica-dian/"
+      },
+      {
+        "title": "Requerimientos para ser facturador electrónico - Sistema de Facturación Electrónica",
+        "url": "https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/requerimientos-para-ser-facturador-electronico/"
+      },
+      {
+        "title": "Prepárate: Pasos para ser Facturador Electrónico",
+        "url": "https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/preparate-pasos-para-ser-facturador-electronico/"
+      },
+      {
+        "title": "Prensa\n            \n            \n            ¡3 pasos para facturar electrónicamente!",
+        "url": "https://www.dian.gov.co/Prensa/Paginas/NG-3-pasos-para-facturar-electronicamente.aspx"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 12,
+    "supported": 12
+  },
+  "registrar-marca": {
+    "answer": "Para registrar una marca en Colombia, debes presentar la solicitud ante la [Superintendencia de Industria y Comercio](https://www.sic.gov.co/marcas), un trámite que tiene un **costo** y una duración aproximada de 6 meses.\n\n### Pasos clave\n- Consulta los antecedentes marcarios en la [Oficina Virtual SIPI](https://www.sic.gov.co/marcas) para evitar conflictos con marcas existentes.\n- Clasifica tus productos o servicios según la Clasificación Internacional de Niza.\n- Presenta la solicitud de forma electrónica o física, pagando la tasa única que cubre el examen, la publicación en la Gaceta y el certificado.\n- Sigue el proceso de publicación (30 días hábiles) y posibles oposiciones de terceros.\n\nPuedes revisar los [pasos detallados](https://www.sic.gov.co/tema/propiedad-Industrial/pasos-para-solicitar-el-registro-de-una-marca) y los [requisitos específicos](https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/tramites/registro-de-marca-de-productos-y-servicios-y-lema-comercial) en la página oficial.",
+    "sources": [
+      {
+        "title": "Superintendencia de Industria y Comercio",
+        "url": "https://www.sic.gov.co/marcas"
+      },
+      {
+        "title": "Registro de marca de productos y servicios y lema comercial",
+        "url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/tramites/registro-de-marca-de-productos-y-servicios-y-lema-comercial"
+      },
+      {
+        "title": "Superintendencia de Industria y Comercio",
+        "url": "https://www.sic.gov.co/tema/propiedad-Industrial/pasos-para-solicitar-el-registro-de-una-marca"
+      },
+      {
+        "title": "Superintendencia de Industria y Comercio",
+        "url": "https://www.sic.gov.co/node/83"
+      },
+      {
+        "title": "Superintendencia de Industria y Comercio",
+        "url": "https://www.sic.gov.co/marcas/antes-de-solicitar"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 7,
+    "supported": 6
+  },
+  "derecho-de-peticion": {
+    "answer": "Puedes presentar tu derecho de petición verbalmente o por escrito a través de cualquier medio idóneo, y la autoridad debe resolverlo de fondo en un plazo máximo de **quince (15) días** siguientes a su recepción.\n\n### Cómo hacerlo\n- Puedes hacerlo de forma verbal (debiendo quedar constancia) o por escrito, sin necesidad de invocar explícitamente el artículo 23 de la Constitución.\n- Las autoridades pueden exigir que ciertas peticiones sean por escrito y deben poner a tu disposición formularios gratuitos.\n- Si la petición es incompleta, la entidad te requerirá completarla en un término máximo de un mes.\n\n### Plazos específicos\n- **Información o documentos:** 10 días. Si no responden, se entiende aceptada la solicitud y las copias se entregarán en 3 días más.\n- **Consultas:** 30 días.\n- Si no es posible resolver en el plazo, la entidad debe informarte los motivos y señalar una nueva fecha que no exceda el doble del tiempo inicial.\n\nPuedes consultar los detalles normativos en la [Ley 1755 de 2015](https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=65334) o en la [Guía Disciplinaria de la Procuraduría](https://apps.procuraduria.gov.co/guia/gd_734/docs/l1755015.html).",
+    "sources": [
+      {
+        "title": "Guía Disciplinaria de la Procuraduría General de la Nación [LEY_1755_2015]",
+        "url": "https://apps.procuraduria.gov.co/guia/gd_734/docs/l1755015.html"
+      },
+      {
+        "title": "Ley 1755 de 2015 - Gestor Normativo",
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=65334"
+      },
+      {
+        "title": "Ley 1755 de 2015 - Gestor Normativo - FunciÃ³n PÃºblica",
+        "url": "https://www1.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=65334"
+      },
+      {
+        "title": "Concepto 189541 de 2023 Departamento Administrativo de la FunciÃ³n PÃºblica - Gestor Normativo - FunciÃ³n PÃºblica",
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=222791"
+      },
+      {
+        "title": "Preguntas Frecuentes",
+        "url": "https://dapre.presidencia.gov.co/AtencionCiudadana/preguntas-frecuentes"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 12,
+    "supported": 12
+  },
+  "antecedentes-fiscales": {
+    "answer": "Puedes obtener el certificado de antecedentes fiscales de forma gratuita a través de la página web o de manera presencial en Bogotá.\n\n### Cómo hacerlo\n- **En línea:** Ingresa al [portal de la Contraloría](https://www.contraloria.gov.co/control-fiscal/responsabilidad-fiscal/certificado-de-antecedentes-fiscales) y digita tu número de cédula para descargar el documento con firma digital.\n- **Presencial:** Dirígete al Centro de Servicio al Ciudadano en la Carrera 69 No. 44 – 35, Piso 1, en Bogotá, de lunes a viernes de 8:00 a.m. a 5:00 p.m., llevando una fotocopia de tu documento de identidad.\n- **Para Embajadas:** Si el certificado es para misiones consulares y requiere firma original, debes solicitarlo presencialmente o por correo a boletin_responsables_fiscales@contraloria.gov.co, y reclamarlo a los **tres (3) días hábiles** siguientes.",
+    "sources": [
+      {
+        "title": "Certificado de Antecedentes Fiscales - Contraloria",
+        "url": "https://www.contraloria.gov.co/control-fiscal/responsabilidad-fiscal/certificado-de-antecedentes-fiscales"
+      },
+      {
+        "title": "¿Cómo adquirir el certificado de la Contraloría? - Función Pública",
+        "url": "https://www1.funcionpublica.gov.co/preguntas-frecuentes/-/asset_publisher/sqxafjubsrEu/content/-como-adquirir-el-certificado-de-la-contraloria-/28585938"
+      },
+      {
+        "title": "Certificado de Antecedentes de Responsabilidad Fiscal que expide la Contraloría General de la República | Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/certificado-de-antecedentes-de-responsabilidad-fiscal-que-expide-la-contraloria-general-de-la-republica"
+      },
+      {
+        "title": "Certificado de Antecedentes de Responsabilidad Fiscal con destino a Embajadas y Consulados - Contraloria",
+        "url": "https://www.contraloria.gov.co/certificado-de-antecedentes-de-responsabilidad-fiscal-con-destino-a-embajadas-y-consulados"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 12,
+    "supported": 11
+  },
+  "credito-icetex": {
+    "answer": "Para solicitar un crédito educativo del ICETEX, debes ingresar a la página oficial, elegir tu línea de financiamiento y diligenciar el formulario de solicitud paso a paso.\n\n### Cómo hacerlo\n- Ingresa a [www.icetex.gov.co](https://web.icetex.gov.co) y ve a la sección \"Créditos\" > \"Planes de Financiamiento\".\n- Selecciona la opción \"Solicitar tu crédito\" y completa el validador de datos personales.\n- Usa el simulador de crédito para revisar las condiciones y registra tu correo y celular.\n- Diligencia el 100% del formulario y confirma el estudio crediticio.\n- Carga los documentos requeridos en la plataforma de cargue documental.\n\nPuedes consultar el [Instructivo paso a paso](https://web.icetex.gov.co/documents/20122/915955/instructivo-paso-a-paso-diligenciamiento-del-formulario.pdf) para más detalles.",
+    "sources": [
+      {
+        "title": "Instructivo paso a paso",
+        "url": "https://web.icetex.gov.co/documents/20122/915955/instructivo-paso-a-paso-diligenciamiento-del-formulario.pdf"
+      },
+      {
+        "title": "Solicitud del crédito - ICETEX",
+        "url": "https://web.icetex.gov.co/atencion-al-ciudadano/preguntas-frecuentes/solicitud-del-credito"
+      },
+      {
+        "title": "Paso a paso para solicitud de crédito ...",
+        "url": "https://web.icetex.gov.co/documents/20122/571373/pregrado-paso-a-paso-solicitud-credito-icetex.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 6,
+    "supported": 5
+  },
+  "cursos-sena": {
+    "answer": "Para inscribirte a un curso gratuito del SENA, debes registrarte en la plataforma [Betowa](https://betowa.sena.edu.co) y completar el proceso dentro de las fechas de la convocatoria.\n\n### Cómo hacerlo\n- Ingresa a [betowa.sena.edu.co](https://betowa.sena.edu.co) y haz clic en \"Registrarse\" para crear tu cuenta, según el [Manual de Registro](https://www.sena.edu.co/es-co/Documents/manual_registro_betowa.pdf).\n- Busca el programa de tu interés y selecciona \"Inscribirse\" durante los días definidos en la oferta, como indica la guía de [Inscripción a programas](https://www.sena.edu.co/es-co/formacion/Paginas/inscripcionProgramas.aspx).\n- Recibirás la confirmación por correo electrónico y podrás imprimir el comprobante desde la misma plataforma.\n\n### Requisitos\n- Ser mayor de 14 años y tener documento de identidad válido (cédula o tarjeta de identidad).\n- Contar con una dirección de correo electrónico personal.\n- Cumplir con los requisitos académicos adicionales que exija cada programa.\n\nEl trámite es **gratis** y no requiere intermediarios.",
+    "sources": [
+      {
+        "title": "Inscripción a programas de formación profesional",
+        "url": "https://www.sena.edu.co/es-co/formacion/Paginas/inscripcionProgramas.aspx"
+      },
+      {
+        "title": "MANUAL DE REGISTRO",
+        "url": "https://www.sena.edu.co/es-co/Documents/manual_registro_betowa.pdf"
+      },
+      {
+        "title": "Preguntas frecuentes",
+        "url": "https://www.sena.edu.co/es-co/ciudadano/SiteAssets/preguntasFrecuentes.html"
+      },
+      {
+        "title": "Convocatoria abierta presencial y a distancia en el SENA en Bogotá | Bogota.gov.co",
+        "url": "https://bogota.gov.co/mi-ciudad/educacion/convocatoria-abierta-presencial-y-distancia-en-el-sena-en-bogota"
+      },
+      {
+        "title": "El SENA abre la tercera convocatoria de formación virtual ¡Inscríbete | Bogota.gov.co",
+        "url": "https://bogota.gov.co/servicios/oportunidades-y-apoyos/el-sena-abre-la-tercera-convocatoria-de-formacion-virtual-inscribete-es-gratis"
+      },
+      {
+        "title": "SENA Colombia",
+        "url": "https://www.sena.edu.co/transparencia/tramites-opa"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 11,
+    "supported": 11
+  },
+  "renta-ciudadana": {
+    "answer": "Renta Ciudadana es el programa central del Sistema de Transferencias para garantizar la movilidad social de los hogares en pobreza extrema y moderada.\n\n### Cómo saber si eres beneficiario\nNo hay un proceso de inscripción abierto; [Prosperidad Social](https://prosperidadsocial.gov.co/sgpp/transferencias/renta-ciudadana/beneficiarios-y-lineas-de-intervencion/) identifica y vincula a los hogares automáticamente mediante registros administrativos. Para ser seleccionado, tu hogar debe cumplir con:\n- Tener un registro **SISBÉN IV** (Registro Social de Hogares) vigente.\n- O estar en listados de población indígena validados por el Ministerio del Interior.\n\nLa selección y conformación de las bases de datos se realiza cada 6 meses, incluyendo periódicamente nuevos hogares que cumplan los requisitos. Puedes consultar los detalles oficiales en la [página de beneficiarios y líneas de intervención](https://prosperidadsocial.gov.co/sgpp/transferencias/renta-ciudadana/beneficiarios-y-lineas-de-intervencion/).",
+    "sources": [
+      {
+        "title": "Beneficiarios y líneas de intervención - Prosperidad Social",
+        "url": "https://prosperidadsocial.gov.co/sgpp/transferencias/renta-ciudadana/beneficiarios-y-lineas-de-intervencion/"
+      },
+      {
+        "title": "Renta Ciudadana para hogares en situación de pobreza | Portal",
+        "url": "https://bogota.gov.co/servicios/tramites/renta-ciudadana"
+      }
+    ],
+    "verifiedAt": "2026-10-05",
+    "claims": 6,
+    "supported": 6
   }
 }

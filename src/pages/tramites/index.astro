@@ -8,6 +8,9 @@ import { focusRing } from "../../lib/ui";
 import { pathOf, published } from "../../lib/tramites";
 
 const copy = site.tramitesPage;
+const groups = Object.entries(copy.categories)
+  .map(([key, label]) => ({ key, label, items: published.filter((tramite) => tramite.category === key) }))
+  .filter((group) => group.items.length);
 const origin = Astro.site ?? new URL(Astro.url.origin);
 const url = new URL("/tramites", origin).href;
 const home = new URL("/", origin).href;
@@ -49,7 +52,17 @@ const schema = [
         </nav>
         <h1 class="mt-6 font-serif-display text-[clamp(2.75rem,8vw,5rem)] leading-[0.95] tracking-[-0.02em] text-text-primary">{copy.heading}</h1>
         <p class="mt-5 max-w-2xl type-body-m text-pretty text-text-secondary mobile:text-xl">{copy.intro}</p>
-        <TramiteCards items={published} />
+        <nav aria-label={copy.heading} class="mt-8 flex flex-wrap gap-2">
+          {groups.map((group) => (
+            <a href={`#${group.key}`} class={`rounded-full border border-border-tertiary px-4 py-2 type-body-s font-medium text-text-primary hover:bg-surface-muted ${focusRing}`}>{group.label}</a>
+          ))}
+        </nav>
+        {groups.map((group) => (
+          <section id={group.key} class="mt-16 scroll-mt-28" aria-labelledby={`${group.key}-title`}>
+            <h2 id={`${group.key}-title`} class="font-serif-display text-4xl text-text-primary">{group.label}</h2>
+            <TramiteCards items={group.items} />
+          </section>
+        ))}
         <p class="mt-12 max-w-2xl type-body-s text-pretty text-text-secondary">{copy.disclaimer}</p>
       </div>
     </main>

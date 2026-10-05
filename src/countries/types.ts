@@ -8,7 +8,7 @@ export type Entity = { name: string; short: string; iconFrom?: string };
 
 export type Link = { label: string; href: string };
 
-export type Tramite = { slug: string; title: string; question: string; entity: string; domains: readonly string[]; image?: string; hold?: string };
+export type Tramite = { slug: string; category: string; title: string; question: string; entity: string; domains: readonly string[]; image?: string; hold?: string };
 
 export type TramiteContent = { answer: string; sources: { title: string; url: string }[]; verifiedAt: string; claims: number; supported: number };
 
@@ -41,6 +41,7 @@ export type Site = {
     popular: string;
     all: string;
     disclaimer: string;
+    categories: Record<string, string>;
   };
   entities: Record<string, Entity>;
   officialSuffixes: readonly string[];

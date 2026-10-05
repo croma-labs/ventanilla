@@ -41,6 +41,8 @@ const authorities: Authority[] = [
   { domain: "bogota.gov.co", covers: "trámites y servicios de la Alcaldía de Bogotá" },
   { domain: "movilidadbogota.gov.co", covers: "tránsito en Bogotá, pico y placa, patios" },
   { domain: "gov.co", covers: "portal único del Estado: guía general de trámites y servicios" },
+  { domain: "supernotariado.gov.co", covers: "certificado de tradición y libertad de inmuebles, registro de propiedad, notarías, escrituras" },
+  { domain: "prosperidadsocial.gov.co", covers: "Renta Ciudadana, devolución del IVA, programas sociales y transferencias monetarias" },
 ];
 
 export const sources: ResearchConfig = {
