@@ -4,7 +4,7 @@ import HomePage from "../components/HomePage.astro";
 import Base from "../layouts/Base.astro";
 ---
 
-<Base title={site.meta.chatTitle} description={site.meta.description}>
+<Base title={site.meta.chatTitle} description={site.meta.description} indexable={false}>
   <script is:inline>document.documentElement.dataset.phase = "chat";</script>
   <HomePage />
 </Base>

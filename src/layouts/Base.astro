@@ -9,12 +9,46 @@ import sans from "@fontsource-variable/inter-tight/files/inter-tight-latin-wght-
 interface Props {
   title: string;
   description: string;
+  indexable?: boolean;
+  canonical?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, indexable = true, canonical: canonicalPath } = Astro.props;
 const origin = Astro.site ?? new URL(Astro.url.origin);
 const image = new URL("/og.jpg", origin).href;
-const url = new URL(Astro.url.pathname, origin).href;
+const url = new URL(canonicalPath ?? Astro.url.pathname, origin).href;
+const home = new URL("/", origin).href;
+const structured = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${home}#website`,
+      url: home,
+      name: site.brand.name,
+      description: site.meta.description,
+      inLanguage: site.locale,
+      publisher: { "@id": `${home}#publisher` },
+    },
+    {
+      "@type": "WebApplication",
+      "@id": `${home}#app`,
+      name: site.brand.name,
+      url: home,
+      description: `${site.meta.description} ${site.brand.notice}`,
+      applicationCategory: "ReferenceApplication",
+      operatingSystem: "Web",
+      inLanguage: site.locale,
+      isAccessibleForFree: true,
+      offers: { "@type": "Offer", price: "0", priceCurrency: "COP" },
+      audience: { "@type": "Audience", geographicArea: { "@type": "Country", name: "Colombia" } },
+      keywords: site.meta.keywords.join(", "),
+      image: image,
+      publisher: { "@id": `${home}#publisher` },
+    },
+    { "@type": "Organization", "@id": `${home}#publisher`, name: site.meta.publisher.name, url: site.meta.publisher.url },
+  ],
+};
 ---
 
 <!doctype html>
@@ -23,11 +57,17 @@ const url = new URL(Astro.url.pathname, origin).href;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="referrer" content="no-referrer" />
-    <meta name="robots" content="noai, noimageai" />
+    <meta name="robots" content={indexable ? "index, follow, max-image-preview:large, max-snippet:-1, noai, noimageai" : "noindex, follow, noai, noimageai"} />
     <link rel="preload" href={serif} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={sans} as="font" type="font/woff2" crossorigin />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={site.meta.keywords.join(", ")} />
+    <link rel="alternate" hreflang={site.locale} href={url} />
+    <link rel="alternate" hreflang="x-default" href={url} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    {indexable && <script type="application/ld+json" set:html={JSON.stringify(structured)} />}
     <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href={url} />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />

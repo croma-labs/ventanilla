@@ -17,9 +17,11 @@ export const site: Site = {
     handledBy: "Lo atiende",
   },
   meta: {
-    title: name,
+    title: `Trámites en Colombia, claros y con fuentes oficiales | ${name}`,
     chatTitle: `Conversación | ${name}`,
-    description: "Respuestas claras sobre trámites, normas y servicios del Estado colombiano, citando solo fuentes oficiales.",
+    description: "Cómo sacar el pasaporte, la cédula, el RUT o la licencia de conducción, cambiarte de EPS o pagar un comparendo. Respuestas claras que citan solo fuentes oficiales.",
+    keywords: ["trámites Colombia", "pasaporte", "cédula", "RUT", "licencia de conducción", "EPS", "comparendo", "Sisbén", "pensión", "tutela", "gov.co"],
+    publisher: { name: "Croma", url: "https://usecroma.com" },
   },
   hero: {
     greeting: "Hola, Colombia",
