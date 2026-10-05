@@ -11,11 +11,13 @@ interface Props {
   description: string;
   indexable?: boolean;
   canonical?: string;
+  image?: { path: string; width: number; height: number; alt: string };
+  schema?: Record<string, unknown>[];
 }
 
-const { title, description, indexable = true, canonical: canonicalPath } = Astro.props;
+const { title, description, indexable = true, canonical: canonicalPath, image: share, schema = [] } = Astro.props;
 const origin = Astro.site ?? new URL(Astro.url.origin);
-const image = new URL("/og.jpg", origin).href;
+const image = new URL(share?.path ?? "/og.jpg", origin).href;
 const url = new URL(canonicalPath ?? Astro.url.pathname, origin).href;
 const home = new URL("/", origin).href;
 const structured = {
@@ -47,6 +49,7 @@ const structured = {
       publisher: { "@id": `${home}#publisher` },
     },
     { "@type": "Organization", "@id": `${home}#publisher`, name: site.meta.publisher.name, url: site.meta.publisher.url },
+    ...schema,
   ],
 };
 ---
@@ -80,9 +83,9 @@ const structured = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url} />
     <meta property="og:image" content={image} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={`${site.brand.name}: ${site.brand.tagline}`} />
+    <meta property="og:image:width" content={String(share?.width ?? 1200)} />
+    <meta property="og:image:height" content={String(share?.height ?? 630)} />
+    <meta property="og:image:alt" content={share?.alt ?? `${site.brand.name}: ${site.brand.tagline}`} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

@@ -1,0 +1,454 @@
+{
+  "pasaporte-primera-vez": {
+    "answer": "Para sacar tu primer pasaporte, debes diligenciar la solicitud en línea y luego presentarte personalmente en la oficina elegida para la toma de huellas, foto y firma.\n\n### Cómo hacerlo\n- Inicia el trámite en el [formulario en línea](https://tramitesmre.cancilleria.gov.co/tramites/enlinea/pasaporte/solicitar.xhtml).\n- Adjunta una foto reciente (máximo 6 meses) que cumpla con los estándares de la OACI.\n- Preséntate en la oficina con tu **cédula de ciudadanía** vigente o, si es tu primera vez, con la contraseña original de la Registraduría y copia del registro civil de nacimiento.\n- Si tienes un pasaporte anterior, entrégalo; si lo perdiste, infórmalo bajo juramento.\n\nLa entrega en Bogotá tarda 24 horas hábiles tras el pago, mientras que en la Red CADE y Gobernaciones es de 48 horas. Consulta los [requisitos completos](https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/requisitos) antes de ir.",
+    "sources": [
+      {
+        "title": "Requisitos | Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/requisitos"
+      },
+      {
+        "title": "Pasaportes - Bogotá - Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes"
+      },
+      {
+        "title": "MANUAL DEL USUARIO",
+        "url": "https://www.cancilleria.gov.co/sites/default/files/FOTOS2018/manual_del_usuario_pasaporte.pdf"
+      },
+      {
+        "title": "Normograma del Ministerio de Relaciones Exteriores",
+        "url": "https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/resolucion_minrelaciones_6888_2021.pdf"
+      },
+      {
+        "title": "",
+        "url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/resolucion_minrelaciones_10077_2017.htm"
+      },
+      {
+        "title": "Pasaporte en Línea",
+        "url": "https://cancilleria.gov.co/sites/default/files/FOTOS2024/2026/PAS-PasaporteLineaWeb.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 12,
+    "supported": 12
+  },
+  "cedula-primera-vez": {
+    "answer": "Para sacar la cédula de ciudadanía por primera vez debes tener 18 años cumplidos y asistir de forma presencial a una [Registraduría](https://www.registraduria.gov.co/Cedula-digital-Primera-vez-7585.html) o consulado, sin costo y sin agendamiento.\n\n### Requisitos\n- Presentar copia del registro civil de nacimiento o tarjeta de identidad biométrica.\n- Confirmar tu RH y grupo sanguíneo.\n- No llevar fotos, ya que se toman digitalmente en la sede.\n\n### Cómo hacerlo\n- Acude a la sede en orden de llegada para el enrolamiento de datos.\n- Recibirás una contraseña ese mismo día como documento provisional.\n- La cédula física con hologramas se entrega aproximadamente 45 días después.\n\nPuedes consultar el estado de tu trámite en la página de [Estado del Trámite](https://wsp.registraduria.gov.co/estado_docs/documento/consultar/).",
+    "sources": [
+      {
+        "title": "Cédula de ciudadanía digital – Primera vez",
+        "url": "https://www.registraduria.gov.co/Cedula-digital-Primera-vez-7585.html"
+      },
+      {
+        "title": "Cédula de ciudadanía - Registraduría Nacional del Estado Civil",
+        "url": "https://www.registraduria.gov.co/-Cedula-de-ciudadania-.html"
+      },
+      {
+        "title": "Obtención de cédula por primera vez | Portal",
+        "url": "https://bogota.gov.co/servicios/tramites/cedula-de-ciudadania-por-primera-vez"
+      },
+      {
+        "title": "Cedula de ciudadanía | Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/tramites-en-el-exterior/cedula-de-ciudadania"
+      },
+      {
+        "title": "Primera Vez | Cancillería",
+        "url": "https://www.cancilleria.gov.co/tt_ss/primera-vez-0"
+      },
+      {
+        "title": "Cédula por primera vez | Bogota.gov.co",
+        "url": "https://bogota.gov.co/mi-ciudad/gestion-publica/cedula-por-primera-vez"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 12,
+    "supported": 12
+  },
+  "duplicado-cedula": {
+    "answer": "Puedes solicitar el **duplicado** de tu cédula de ciudadanía en línea a través de la [Registraduría Nacional del Estado Civil](https://epagos.registraduria.gov.co/tramites_web/index.php) o, si resides en el exterior, en el Consulado más cercano.\n\n### Cómo hacerlo\n- **En Colombia:** Completa la solicitud y realiza el pago por PSE en el portal oficial.\n- **En el exterior:** Hazlo en línea (requiere cuenta bancaria en Colombia) o presencialmente en el Consulado, presentando un documento que te identifique como colombiano.\n\n### Costos\n- **En Colombia:** El valor es de **$67.350 COP**, según la [Resolución 1500 de 2026](https://www.cancilleria.gov.co/normograma/compilacion/docs/resolucion_registraduria_1500_2026.htm).\n- **En el exterior:** El costo es de **67,55 USD** en las oficinas consulares.\n\nRecuerda indicar una oficina registral en Colombia como lugar de entrega; si estás fuera, puedes solicitar el traslado del documento al Consulado sin costo adicional.",
+    "sources": [
+      {
+        "title": "Trámites web - RNEC",
+        "url": "https://epagos.registraduria.gov.co/tramites_web/index.php"
+      },
+      {
+        "title": "Compilación jurídica de la Cancillería de Colombia - Resolución 1500 de 2026 RNEC",
+        "url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/resolucion_registraduria_1500_2026.htm"
+      },
+      {
+        "title": "Cedula de ciudadanía | Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/tramites-en-el-exterior/cedula-de-ciudadania"
+      },
+      {
+        "title": "DUPLICADO DE CÉDULA DE CIUDADANÍA | Cancillería",
+        "url": "https://www.cancilleria.gov.co/duplicado-cedula-ciudadania"
+      },
+      {
+        "title": "Duplicado | Cancillería",
+        "url": "https://www.cancilleria.gov.co/node/6340"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 10,
+    "supported": 10
+  },
+  "licencia-de-conduccion": {
+    "answer": "Para sacar tu licencia de conducción por primera vez, debes cumplir requisitos legales, aprobar exámenes y realizar el trámite ante la entidad de tránsito de tu ciudad.\n\n### Requisitos básicos\n- Saber leer y escribir y tener **16 años** (particular) o **18 años** (público).\n- Estar inscrito en el [RUNT](https://www.runt.com.co).\n- Estar a paz y salvo por multas de tránsito.\n- Aprobar el examen de aptitud física, mental y de coordinación motriz.\n- Obtener el certificado de aptitud en conducción de un centro autorizado.\n- Aprobar el examen teórico y práctico de conducción.\n\n### Cómo hacerlo\n- Agenda cita en la entidad de tránsito de tu ciudad, por ejemplo, en la [Ventanilla Única de Servicios de Bogotá](https://vus.circulemosdigital.com.co/#/login) o consulta la [guía de Medellín](https://www.medellin.gov.co/es/tramites-y-servicios/licencia-de-conduccion/).\n- Presenta tu documento de identidad y los certificados obtenidos.\n- Paga la tarifa del trámite en el módulo dispuesto para ello.\n\nLos costos varían según la ciudad y el tipo de vehículo; verifica los valores actualizados en el portal de tu entidad de tránsito.",
+    "sources": [
+      {
+        "title": "Licencia de Conducción: requisitos y preguntas frecuentes",
+        "url": "https://www.medellin.gov.co/es/tramites-y-servicios/licencia-de-conduccion/"
+      },
+      {
+        "title": "Cómo sacar, renovar o recategorizar licencia de conducción en Bogotá | Bogota.gov.co",
+        "url": "https://bogota.gov.co/mi-ciudad/movilidad/como-sacar-renovar-o-recategorizar-licencia-de-conduccion-en-bogota"
+      },
+      {
+        "title": "Ministerio de Justicia y del Derecho",
+        "url": "https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/%C2%BFCu%C3%A1les-son-los-requisitos-para-obtener-una-licencia-de-conducci%C3%B3n-para-veh%C3%ADculos-automotores.aspx"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 12,
+    "supported": 11
+  },
+  "rut": {
+    "answer": "Puedes sacar tu RUT de forma virtual y gratuita a través del portal de la DIAN.\n\n### Cómo hacerlo\n1. Ingresa a la [inscripción virtual RUT](https://muisca.dian.gov.co/WebRutVirtualInscripcion/) y selecciona \"Persona natural\".\n2. Escribe tu número de cédula de ciudadanía y acepta el tratamiento de datos.\n3. Elige el motivo de inscripción, registra tu correo electrónico y valida el código que recibirás.\n4. Diligencia tus datos sensibles, ubicación, contacto y actividades económicas.\n5. Selecciona tus responsabilidades tributarias y envía el formulario.\n\nSolo necesitas tener a la mano tu documento de identidad vigente, ya que los datos se validan en línea con la Registraduría, según el [Abecé RUT en línea](https://www.dian.gov.co/impuestos/Documents/Abece-Inscripcion-en-linea-RUT.pdf). Una vez completado, podrás descargar tu RUT desde el portal o recibirlo por correo electrónico.",
+    "sources": [
+      {
+        "title": "Abece_RUT_linea vertical",
+        "url": "https://www.dian.gov.co/impuestos/Documents/Abece-Inscripcion-en-linea-RUT.pdf"
+      },
+      {
+        "title": "VIRTUAL",
+        "url": "https://www.dian.gov.co/impuestos/personas/Documents/Paso_a_paso_RUT_virtual.pdf"
+      },
+      {
+        "title": "Servicio en Línea RUT",
+        "url": "https://www.dian.gov.co/atencionciudadano/LMDP/Cercania-al-Ciudadano/Asistencia-al-Usuario/Manuales/MN-CAC-0001.pdf"
+      },
+      {
+        "title": "CARTILLA DE INSCRIPCIÓN EN EL RUT PARA NATURALES Y/O PERSONAS JURÍDICAS, NATURALES NO RESPONSABLES DE IVA Y CÁMARA DE COMERCIO",
+        "url": "https://www.dian.gov.co/atencionciudadano/LMDP/Cercania-al-Ciudadano/Asistencia-al-Usuario/Cartillas/CT-CAC-0002.pdf"
+      },
+      {
+        "title": "Inscripción y actualización RUT - RUT",
+        "url": "https://www.dian.gov.co/impuestos/RUT/Paginas/Inscripcion-y-Actualizacion-RUT.aspx"
+      },
+      {
+        "title": "¿Cómo sacar o actualizar el RUT en 2026? Guía paso a paso para hacer el trámite - Canal Capital",
+        "url": "https://www.canalcapital.gov.co/actualidad/como-sacar-o-actualizar-rut-paso-a-paso-tramite/"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 12,
+    "supported": 12
+  },
+  "cambiar-de-eps": {
+    "answer": "Puedes cambiar de EPS de forma presencial o en línea a través del portal [www.miseguridadsocial.gov.co](https://www.miseguridadsocial.gov.co), siempre que cumplas con los requisitos legales establecidos por la [Supersalud](https://www.supersalud.gov.co/es-co/transparencia-y-acceso-a-la-informacion-publica/informacion-especifica-para-grupos-de-interes/preguntas-y-respuestas-frecuentes).\n\n### Requisitos\n- Haber estado inscrito en la EPS actual por un mínimo de **360 días** (continuos o discontinuos).\n- Que ningún miembro de tu núcleo familiar esté internado en una institución prestadora de servicios de salud.\n- Si eres cotizante independiente, estar a paz y salvo con las cotizaciones.\n- Incluir a todo el núcleo familiar en la solicitud de traslado.\n\n### Cómo hacerlo\n- **En línea:** Ingresa al portal oficial y completa los datos para realizar el traslado.\n- **Presencial:** Diligencia el formulario de afiliación en la oficina de la nueva EPS.\n\nEl traslado será efectivo el primer día del mes siguiente si solicitas el trámite dentro de los primeros cinco días del mes; de lo contrario, se aplicará desde el primer día del mes subsiguiente, según lo indica la [Secretaría de Salud de Manizales](https://centrodeinformacion.manizales.gov.co/ejercer-el-derecho-al-cambio-de-eps-proceso-sencillo-y-eficaz-por-los-canales-oficiales/).",
+    "sources": [
+      {
+        "title": "Supersalud | Preguntas frecuentes",
+        "url": "https://www.supersalud.gov.co/es-co/transparencia-y-acceso-a-la-informacion-publica/informacion-especifica-para-grupos-de-interes/preguntas-y-respuestas-frecuentes"
+      },
+      {
+        "title": "Ejercer el derecho al cambio de EPS, proceso sencillo y eficaz, por los canales oficiales – Centro de Información",
+        "url": "https://centrodeinformacion.manizales.gov.co/ejercer-el-derecho-al-cambio-de-eps-proceso-sencillo-y-eficaz-por-los-canales-oficiales/"
+      },
+      {
+        "title": "Supersalud | Preguntas frecuentes",
+        "url": "https://www.supersalud.gov.co/es-co/atencion-ciudadano/preguntas-frecuentes"
+      },
+      {
+        "title": "Conozca el paso a paso para realizar el cambio de EPS",
+        "url": "https://crm.canalcapital.gov.co/servicios/conozca-el-paso-paso-realizar-el-cambio-eps"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 8,
+    "supported": 6
+  },
+  "registrar-empresa": {
+    "answer": "Para registrar una empresa en Colombia, debes constituir la sociedad mediante escritura pública (o documento privado para SAS y microempresas) e inscribirla en el registro mercantil de la Cámara de Comercio.\n\n### Pasos clave\n- Verifica la disponibilidad del nombre en el [Registro Único Empresarial y Social (RUES)](https://ree.rues.org.co/rsc/ref/Titulo_VIII_Camaras_de_Comercio_25_Nov_2016_FINAL_Cicrular_02_del_23_Nov_2016.pdf).\n- Diligencia el [Formulario RUES](https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica) y preséntalo en la Cámara de Comercio con jurisdicción en tu domicilio principal.\n- Calcula el costo del trámite con el preliquidador disponible en la [VUE](https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica).\n\nLa inscripción es obligatoria para que el contrato social sea **oponible a terceros**.",
+    "sources": [
+      {
+        "title": "INDICE",
+        "url": "https://ree.rues.org.co/rsc/ref/Titulo_VIII_Camaras_de_Comercio_25_Nov_2016_FINAL_Cicrular_02_del_23_Nov_2016.pdf"
+      },
+      {
+        "title": "Creación de empresa Persona Natural y Jurídica SAS | VUE",
+        "url": "https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica"
+      },
+      {
+        "title": "",
+        "url": "https://www.supersociedades.gov.co/documents/107391/159040/OFICIO+220-70377.pdf/1deb32cc-0aca-72aa-cb1b-43d123a4e39c?download=true&t=1670906369267"
+      },
+      {
+        "title": "Abece-Constitucion-Sociedades.pdf",
+        "url": "https://www.supersociedades.gov.co/documents/guest/Prensa/Publicaciones%20e%20Informes/Publicaciones/Revistas/2021/Abece-Constitucion-Sociedades.pdf"
+      },
+      {
+        "title": "Tipos de Empresa  | VUE",
+        "url": "https://www.vue.gov.co/servicios-a-la-ciudadania/preguntas-frecuentes/tipo-de-empresa"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 9,
+    "supported": 9
+  },
+  "pagar-comparendo": {
+    "answer": "Puedes consultar y pagar tu comparendo de tránsito en línea a través de la [Secretaría Distrital de Movilidad](https://www.movilidadbogota.gov.co/consulta-de-comparendos) o la aplicación Mi Movilidad a un clic.\n\n### Cómo hacerlo\n- Ingresa a [movilidadbogota.gov.co](https://www.movilidadbogota.gov.co/consulta-de-comparendos) y selecciona \"Consulta y pago de comparendos\".\n- Digita tu número de cédula y la placa del vehículo, completa el captcha y haz clic en consultar.\n- Si tienes comparendos, ve al detalle y elige pagar por **PSE** o descarga el volante de pago.\n\n### Dónde pagar\n- En línea mediante la plataforma PSE.\n- De forma presencial en Banco de Occidente, Banco Caja Social, puntos Éxito o corresponsales RED BANCO AMIGO.\n\nTen en cuenta que el sistema liquida los intereses al día, por lo que si pagas con volante impreso, debes hacerlo el mismo día en que lo generes.",
+    "sources": [
+      {
+        "title": "Consulta de comparendos – Secretaría Distrital de Movilidad",
+        "url": "https://www.movilidadbogota.gov.co/consulta-de-comparendos"
+      },
+      {
+        "title": "Cómo hacer la consulta y el pago de comparendos de tránsito en Bogotá | Bogota.gov.co",
+        "url": "https://bogota.gov.co/mi-ciudad/movilidad/como-hacer-la-consulta-y-el-pago-de-comparendos-de-transito-en-bogota"
+      },
+      {
+        "title": "Pasos para consultar y pagar multas de tránsito en Bogotá en 2025 | Bogota.gov.co",
+        "url": "https://bogota.gov.co/mi-ciudad/movilidad/pasos-para-consultar-y-pagar-multas-de-transito-en-bogota-en-2025"
+      },
+      {
+        "title": "Paso a paso para consultar y pagar comparendos de tránsito ...",
+        "url": "https://bogota.gov.co/mi-ciudad/movilidad/paso-paso-para-consultar-y-pagar-comparendos-de-transito-en-bogota"
+      },
+      {
+        "title": "¿Cómo consultar y pagar comparendos de tránsito en Bogotá? | Bogota.gov.co",
+        "url": "https://bogota.gov.co/mi-ciudad/movilidad/como-consultar-y-pagar-comparendos-de-transito-en-bogota"
+      },
+      {
+        "title": "Consulta y pagos de comparendos",
+        "url": "https://www.movilidadbogota.gov.co/web/search/content/CONSULTA%20Y%20PAGO%20DE"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 12,
+    "supported": 12
+  },
+  "cedula-de-extranjeria": {
+    "answer": "Para obtener la cédula de extranjería, debes ser mayor de 7 años y tener una visa vigente de más de 3 meses, tramitando el [Formulario Único de Trámites (FUT)](https://portal.migracioncolombia.gov.co/tramites-y-servicios/tramites-generales/cedula-de-extranjeria) en línea.\n\n### Cómo hacerlo\n- Diligencia el FUT adjuntando un PDF con la imagen de tu pasaporte y visa.\n- Agende una cita en el Centro Facilitador de Servicios Migratorios (CFSM) más cercano.\n- Asista con su pasaporte original y vigente para la toma de huellas y fotografía.\n- Realice el pago de **294.000 pesos** (tarifa general 2026) mediante tarjeta o consignación bancaria.\n\n### Plazos y entrega\n- Debes solicitarla máximo 15 días calendario después de ingresar al país o de expedirse la visa.\n- El documento físico se entrega en 10 días hábiles, aunque recibirás una contraseña digital con código QR válida de inmediato.",
+    "sources": [
+      {
+        "title": "Cédula de Extranjería - Migración Colombia",
+        "url": "https://portal.migracioncolombia.gov.co/tramites-y-servicios/tramites-generales/cedula-de-extranjeria"
+      },
+      {
+        "title": "Cédula de Extranjería - Migración Colombia",
+        "url": "https://www.migracioncolombia.gov.co/tramites-y-servicios/tramites-generales/cedula-de-extranjeria"
+      },
+      {
+        "title": "Organismo de seguridad con personería jurídica , autonomía administrativa, financiera y patrimonio independiente, con jurisdicción en todo el territorio nacional.",
+        "url": "https://unidad-administrativa-especial-migracion-colombia.micolombiadigital.gov.co/cedula-de-extranjeria/tramite-de-cedula-de-extranjeria-ce"
+      },
+      {
+        "title": "Ministerio de Justicia y del Derecho",
+        "url": "https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/Que-es-la-Cedula-de-Extranjeria-y-como-obtenerla.aspx"
+      },
+      {
+        "title": "AuthApp",
+        "url": "https://visorsuit.funcionpublica.gov.co/auth/visor?fi=703"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 11,
+    "supported": 11
+  },
+  "inscripcion-sisben": {
+    "answer": "Para inscribirte en el Sisbén, debes solicitar la aplicación de la encuesta, un trámite que **no tiene costo**.\n\n### Cómo hacerlo\n- En Bogotá, puedes solicitarla virtualmente en la [Secretaría Distrital de Planeación](https://www.sdp.gov.co/gestion-estudios-estrategicos/sisben/preguntas-frecuentes) o en los puntos de la Red CADE.\n- En Medellín, agenda tu cita en [Ficho Digital](https://distritodemedellinvirtual.sistemasentry.com.co/Visionweb.new/solicitarcita) o preséntate en la oficina local.\n- En otros municipios, acércate a la oficina del Sisbén o usa el [Portal Ciudadano](https://portalciudadano.sisben.gov.co).\n\n### Requisitos\n- La solicitud debe ser presentada por un residente del hogar mayor de 18 años.\n- Debes llevar tu cédula de ciudadanía y los documentos de identidad de todos los integrantes del hogar.\n- Debes residir en un hogar particular y no en lugares especiales de alojamiento.",
+    "sources": [
+      {
+        "title": "Preguntas frecuentes | Secretaría Distrital de Planeación",
+        "url": "https://www.sdp.gov.co/gestion-estudios-estrategicos/sisben/preguntas-frecuentes"
+      },
+      {
+        "title": "Trámites destacados",
+        "url": "https://portal.sisben.gov.co/paginas/tramites-destacados.html"
+      },
+      {
+        "title": "¿Cómo solicito la encuesta del Sisbén? - Alcaldía de Medellín",
+        "url": "https://www.medellin.gov.co/es/preguntas-frecuentes/como-solicito-la-encuesta-del-sisben/"
+      },
+      {
+        "title": "Preguntas Frecuentes",
+        "url": "https://www.sisben.gov.co/Paginas/preguntas-metodologia.html"
+      },
+      {
+        "title": "Sisbén IV - Inicio",
+        "url": "https://portal.sisben.gov.co/paginas/landing.html"
+      },
+      {
+        "title": "Trámites destacados",
+        "url": "https://www.sisben.gov.co/Paginas/tramites-destacados.html"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 12,
+    "supported": 12
+  },
+  "semanas-para-pension": {
+    "answer": "Necesitas **1.300 semanas cotizadas** (aproximadamente 26 años) para acceder a la pensión de vejez en Colpensiones.\n\n### Requisitos adicionales\n- **Edad:** 57 años si eres mujer o 62 años si eres hombre.\n- **Documentos:** Debes presentar tu documento de identidad, el formato de solicitud de prestaciones económicas, la información de tu EPS y la declaración de no pensión.\n\nPuedes consultar los pasos detallados en la página de [Pasos para obtener la pensión de vejez](https://www.colpensiones.gov.co/pensiones/publicaciones/3083/pasos-para-obtener-la-pension-de-vejez/).",
+    "sources": [
+      {
+        "title": "Pasos para obtener la pensión de vejez",
+        "url": "https://www.colpensiones.gov.co/pensiones/publicaciones/3083/pasos-para-obtener-la-pension-de-vejez/"
+      },
+      {
+        "title": "Cómo funciona el sistema pensional Colombiano",
+        "url": "https://www.colpensiones.gov.co/educacion/publicaciones/2841/como-funciona-el-sistema-pensional-colombiano/"
+      },
+      {
+        "title": "Tipos de pensiones",
+        "url": "https://www.colpensiones.gov.co/educacion/publicaciones/2856/tipos-de-pensiones/"
+      },
+      {
+        "title": "Prestaciones económicas",
+        "url": "https://www.colpensiones.gov.co/publicaciones/457/prestaciones-economicas/"
+      },
+      {
+        "title": "[DOC30] - Colpensiones - Administradora Colombiana de Pensiones",
+        "url": "https://normativa.colpensiones.gov.co/colpens/docs/doc30.htm"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 4,
+    "supported": 4
+  },
+  "accion-de-tutela": {
+    "answer": "Puedes presentar una acción de tutela de forma verbal o escrita ante cualquier juez del lugar donde ocurrió la violación, sin necesidad de abogado.\n\n### Cómo hacerlo\n- Redacta un escrito o acude personalmente indicando los hechos, el derecho vulnerado y los datos de identificación.\n- Asegúrate de que no exista otro medio judicial eficaz para proteger tu derecho, salvo que haya un **perjuicio irremediable**.\n- Si prefieres hacerlo digitalmente, puedes usar la [Recepción Tutela en Línea](https://www.ramajudicial.gov.co/web/consejo-superior-de-la-judicatura/ventanilla-de-servicios/-/asset_publisher/TIpGpe2ENeIh/content/id/144991791) del Consejo Superior de la Judicatura.\n\nEl juez debe decidir dentro de los **10 días** siguientes a la solicitud. Para más detalles sobre los requisitos formales, consulta las [Preguntas Frecuentes de la Corte Constitucional](https://www.ramajudicial.gov.co/web/corte-constitucional/portal/corporacion/secretaria-general/preguntas-frecuentes).",
+    "sources": [
+      {
+        "title": "Preguntas Frecuentes - Corte Constitucional",
+        "url": "https://www.ramajudicial.gov.co/web/corte-constitucional/portal/corporacion/secretaria-general/preguntas-frecuentes"
+      },
+      {
+        "title": "Recepción Tutela en Línea - Consejo Superior de la Judicatura",
+        "url": "https://www.ramajudicial.gov.co/web/consejo-superior-de-la-judicatura/ventanilla-de-servicios/-/asset_publisher/TIpGpe2ENeIh/content/id/144991791"
+      },
+      {
+        "title": "Ministerio de Justicia y del Derecho",
+        "url": "https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/Como-debo-presentar-una-accion-de-tutela-para-proteger-mis-derechos-fundamentales.aspx"
+      },
+      {
+        "title": "Ministerio de Justicia y del Derecho",
+        "url": "https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/Acci%C3%B3n-de-tutela.aspx"
+      },
+      {
+        "title": "Gestor Normativo de la CRA - Decreto 2591 de 1991",
+        "url": "https://normas.cra.gov.co/gestor/docs/decreto_2591_1991.htm"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 8,
+    "supported": 8
+  },
+  "licencia-de-paternidad": {
+    "answer": "La licencia de paternidad en Colombia dura **dos (2) semanas** para los trabajadores afiliados al sistema de seguridad social, según la [Ley 2114 de 2021](https://cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/ley_2114_2021.pdf).\n\n### Duración y ampliación\n*   El derecho base es de **dos (2) semanas** remuneradas.\n*   Se amplía en **una (1) semana** por cada punto porcentual de disminución de la tasa de desempleo estructural, sin superar las **cinco (5) semanas** en total.\n*   Para servidores públicos, el [Decreto 2126 de 2023](https://normograma.supersalud.gov.co/compilacion/docs/decreto_2126_2023.htm) establece que debe disfrutarse durante los **treinta (30) días** siguientes al nacimiento o adopción.\n\n### Requisitos\n*   El padre debe haber cotizado durante el período de gestación, incluido el mes de inicio de la licencia.\n*   Si cotizó por un período inferior, el reconocimiento será **proporcional**.\n*   El soporte válido es el Registro Civil de Nacimiento, presentado a la EPS a más tardar dentro de los **30 días** siguientes al nacimiento.",
+    "sources": [
+      {
+        "title": "Compilación Jurídica SuperSalud - Decreto 2126 de 2023",
+        "url": "https://normograma.supersalud.gov.co/compilacion/docs/decreto_2126_2023.htm"
+      },
+      {
+        "title": "Normograma del Ministerio de Relaciones Exteriores",
+        "url": "https://cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/ley_2114_2021.pdf"
+      },
+      {
+        "title": "Rï¿½GIMEN LEGAL DE BOGOTï¿½ D.C.",
+        "url": "https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=152364"
+      },
+      {
+        "title": "------------",
+        "url": "https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/decreto-2126-de-2023.pdf"
+      },
+      {
+        "title": "Sentencia C-663/09",
+        "url": "https://www.corteconstitucional.gov.co/relatoria/2009/C-663-09.htm"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 11,
+    "supported": 11
+  },
+  "regimen-simple": {
+    "answer": "El Régimen Simple de Tributación (RST) es un sistema de pago de impuestos que se declara anualmente y se paga con anticipos bimestrales, sustituyendo al Impuesto sobre la Renta.\n\n### Quién puede inscribirse\n- Personas naturales que desarrollen empresa o profesión liberal.\n- Personas jurídicas de naturaleza societaria cuyos socios sean personas naturales residentes en Colombia.\n- Deben haber obtenido ingresos brutos inferiores a **100.000 UVT** en el año gravable anterior.\n- No pueden optar quienes tengan relación laboral asalariada o desarrollen actividades como microcrédito o servicios financieros.\n\nPuedes verificar tu elegibilidad y realizar la inscripción en el [Portal Transaccional de la DIAN](https://www.dian.gov.co/impuestos/Regimen-Simple-de-Tributacion-RST/Documents/RST-2024.pdf) o a través de la app DIAN.",
+    "sources": [
+      {
+        "title": "RÉGIMEN SIMPLE DE TRIBUTACIÓN - RST",
+        "url": "https://www.dian.gov.co/impuestos/Regimen-Simple-de-Tributacion-RST/Documents/RST-2024.pdf"
+      },
+      {
+        "title": "Quienes pueden optar por el simple - RST",
+        "url": "https://micrositios.dian.gov.co/regimen-simple-tributacion/quienes-pueden-optar-por-el-simple/"
+      },
+      {
+        "title": "Tributación",
+        "url": "https://www.dian.gov.co/impuestos/Rutadelaformalizacion/Material-de-apoyo-RST.pdf"
+      },
+      {
+        "title": "Régimen simple de tributación rst - RST",
+        "url": "https://micrositios.dian.gov.co/regimen-simple-tributacion/regimen-simple-de-tributacion-rst/"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 7,
+    "supported": 6
+  },
+  "convalidar-titulo": {
+    "answer": "La convalidación es el reconocimiento que el **Ministerio de Educación Nacional** otorga a títulos de educación superior extranjeros para que tengan validez en Colombia.\n\n### Cómo hacerlo\nEl trámite es **personal y completamente en línea** a través del sistema de convalidaciones del [Ministerio de Educación Nacional](https://www.mineducacion.gov.co/portal/salaprensa/Comunicados/427912:Cuidado-con-estafas-en-el-proceso-de-convalidacion-de-titulos-asi-funciona-el-tramite-oficial-en-Colombia). Debes crear un usuario, diligenciar la solicitud, cargar los documentos y realizar el pago.\n\n### Requisitos\n- Diploma legalizado por vía diplomática o con sello de apostilla.\n- Certificado de calificaciones o plan de estudios legalizado.\n- Copia del documento de identidad (cédula, pasaporte o extranjería).\n- Pago de la tarifa: $960.539 para pregrado o $1.091.474 para posgrado.\n\nEl tiempo de respuesta varía entre 60, 120 o 180 días según la evaluación técnica.",
+    "sources": [
+      {
+        "title": "Cuidado con estafas en el proceso de convalidación de títulos, así funciona el trámite oficial en Colombia | Ministerio de Educación Nacional",
+        "url": "https://www.mineducacion.gov.co/portal/salaprensa/Comunicados/427912:Cuidado-con-estafas-en-el-proceso-de-convalidacion-de-titulos-asi-funciona-el-tramite-oficial-en-Colombia"
+      },
+      {
+        "title": "Conozca el proceso | Ministerio de Educación Nacional",
+        "url": "https://www.mineducacion.gov.co/portal/convalidaciones/Convalidaciones-Educacion-Superior/350670:Conozca-el-proceso"
+      },
+      {
+        "title": "CONVALIDACIONES DE TÍTULOS OBTENIDOS EN EL EXTERIOR | Ministerio de Educación Nacional",
+        "url": "https://www.mineducacion.gov.co/1780/w3-article-387723.html"
+      },
+      {
+        "title": "Convalidación de títulos otorgados por instituciones de educación superior extranjeras | Ministerio de Educación Nacional",
+        "url": "https://www.mineducacion.gov.co/portal/196471:Convalidacion-de-titulos-otorgados-por-instituciones-de-educacion-superior-extranjeras"
+      },
+      {
+        "title": "..::Ministerio de Educación Nacional::.. - Convalidación de títulos otorgados por instituciones de educación superior extranjeras",
+        "url": "https://www.mineducacion.gov.co/1621/article-196471.html"
+      },
+      {
+        "title": "Convalidación de títulos otorgados por instituciones de ...",
+        "url": "https://www.mineducacion.gov.co/portal/Educacion-superior/Informacion-Destacada/196471:Convalidacion-de-titulos-otorgados-por-instituciones-de-educacion-superior-extranjeras"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 9,
+    "supported": 8
+  },
+  "antecedentes-judiciales": {
+    "answer": "Puedes consultar y descargar tu certificado de antecedentes judiciales de forma **gratuita** en la [página de la Policía Nacional](https://antecedentes.policia.gov.co:7005/WebJudicial/).\n\n### Cómo hacerlo\n- Ingresa al portal y acepta los términos de uso.\n- Escribe tu número de cédula de ciudadanía o extranjería y el código de seguridad.\n- Haz clic en \"Consultar\" para ver el resultado.\n- Usa el comando \"Ctrl + P\" (Windows) o \"CMD + P\" (Mac) para imprimirlo o guardarlo como PDF.\n\nRecuerda que este trámite es gratuito y solo necesitas tu documento de identidad.",
+    "sources": [
+      {
+        "title": "Consulta de Antecedentes Judiciales",
+        "url": "https://antecedentes.policia.gov.co:7005/WebJudicial/"
+      },
+      {
+        "title": "¿Sabe cómo obtener el certificado de antecedentes judiciales ...",
+        "url": "https://www.policia.gov.co/noticia/sabe-como-obtener-certificado-antecedentes-judiciales-desde-portal-web-policia-nacional"
+      },
+      {
+        "title": "Ministerio de Justicia y del Derecho",
+        "url": "https://www.minjusticia.gov.co/programas-co/LegalApp/Paginas/Antecedentes-judiciales.aspx"
+      },
+      {
+        "title": "CERTIFICADO DE ANTECEDENTES JUDICIALES | Cancillería",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/certificado-de-antecedentes-judiciales-0"
+      }
+    ],
+    "verifiedAt": "2026-10-04",
+    "claims": 6,
+    "supported": 5
+  }
+}

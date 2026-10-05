@@ -5,6 +5,7 @@ import { site } from "@country/site";
 import { cn } from "../../lib/cn";
 import { usePageVisible, useReducedMotion } from "../../lib/hooks";
 import { wrap } from "../../lib/math";
+import { submitQuestion } from "../../lib/chat-store";
 import { buttonBase, glassControl } from "../../lib/ui";
 import { ChevronLeftIcon, ChevronRightIcon, PauseIcon, PlayIcon } from "../icons";
 import Composer from "./Composer";
@@ -48,6 +49,13 @@ export default function Hero() {
   const [dragging, setDragging] = useState(false);
 
   const pause = useCallback(() => setPaused(true), []);
+
+  useEffect(() => {
+    const question = new URLSearchParams(location.search).get("q")?.trim().slice(0, 500);
+    if (!question) return;
+    history.replaceState(null, "", "/");
+    submitQuestion(question, null);
+  }, []);
 
   useEffect(() => {
     if (!api) return;

@@ -1,0 +1,58 @@
+---
+import { site } from "@country/site";
+import SiteFooter from "../../components/site/SiteFooter.astro";
+import SiteHeader from "../../components/site/SiteHeader.astro";
+import TramiteCards from "../../components/tramites/TramiteCards.astro";
+import Base from "../../layouts/Base.astro";
+import { focusRing } from "../../lib/ui";
+import { pathOf, published } from "../../lib/tramites";
+
+const copy = site.tramitesPage;
+const origin = Astro.site ?? new URL(Astro.url.origin);
+const url = new URL("/tramites", origin).href;
+const home = new URL("/", origin).href;
+const schema = [
+  {
+    "@type": "CollectionPage",
+    "@id": `${url}#page`,
+    url,
+    name: copy.heading,
+    description: copy.description,
+    inLanguage: site.locale,
+    isPartOf: { "@id": `${home}#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: published.map((tramite, index) => ({ "@type": "ListItem", position: index + 1, name: tramite.title, url: new URL(pathOf(tramite.slug), origin).href })),
+    },
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: copy.home, item: home },
+      { "@type": "ListItem", position: 2, name: copy.heading, item: url },
+    ],
+  },
+];
+---
+
+<Base title={copy.title} description={copy.description} schema={schema}>
+  <div class="relative flex min-h-dvh flex-col bg-background-primary text-primary">
+    <SiteHeader />
+    <main id="landing-main" tabindex="-1" class="flex-1 pt-28 pb-24 outline-none mobile:pt-40">
+      <div class="mx-auto w-full max-w-[1080px] px-4 mobile:px-6">
+        <nav aria-label="Migas de pan" class="type-body-s text-text-secondary">
+          <ol class="flex items-center gap-1.5">
+            <li><a href="/" class={`rounded-4 underline-offset-4 hover:underline ${focusRing}`}>{copy.home}</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" class="text-text-primary">{copy.heading}</li>
+          </ol>
+        </nav>
+        <h1 class="mt-6 font-serif-display text-[clamp(2.75rem,8vw,5rem)] leading-[0.95] tracking-[-0.02em] text-text-primary">{copy.heading}</h1>
+        <p class="mt-5 max-w-2xl type-body-m text-pretty text-text-secondary mobile:text-xl">{copy.intro}</p>
+        <TramiteCards items={published} />
+        <p class="mt-12 max-w-2xl type-body-s text-pretty text-text-secondary">{copy.disclaimer}</p>
+      </div>
+    </main>
+    <SiteFooter />
+  </div>
+</Base>

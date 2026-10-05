@@ -1,0 +1,20 @@
+---
+import { site } from "@country/site";
+import { focusRing } from "../../lib/ui";
+import { published } from "../../lib/tramites";
+import TramiteCards from "./TramiteCards.astro";
+
+const copy = site.tramitesPage;
+---
+
+{
+  published.length > 0 && (
+    <section id="tramites" class="site-container scroll-mt-24 pb-24 mobile:pb-40" aria-labelledby="popular">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <h2 id="popular" class="type-site-5 text-text-primary">{copy.popular}</h2>
+        <a href="/tramites" class={`rounded-4 type-site-link text-text-primary underline-offset-4 hover:underline ${focusRing}`}>{copy.all}</a>
+      </div>
+      <TramiteCards items={published.slice(0, 6)} />
+    </section>
+  )
+}

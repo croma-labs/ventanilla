@@ -8,6 +8,10 @@ export type Entity = { name: string; short: string; iconFrom?: string };
 
 export type Link = { label: string; href: string };
 
+export type Tramite = { slug: string; title: string; question: string; entity: string; domains: readonly string[]; image?: string; hold?: string };
+
+export type TramiteContent = { answer: string; sources: { title: string; url: string }[]; verifiedAt: string; claims: number; supported: number };
+
 export type Site = {
   code: string;
   lang: string;
@@ -19,6 +23,25 @@ export type Site = {
   features: readonly FeatureRow[];
   orbit: readonly { label: string; domain: string }[];
   showcase: readonly string[];
+  tramitesPage: {
+    title: string;
+    heading: string;
+    intro: string;
+    description: string;
+    tail: string;
+    home: string;
+    suffix: string;
+    verified: string;
+    sources: string;
+    answer: string;
+    askTitle: string;
+    askBody: string;
+    askCta: string;
+    related: string;
+    popular: string;
+    all: string;
+    disclaimer: string;
+  };
   entities: Record<string, Entity>;
   officialSuffixes: readonly string[];
   pii: readonly Detector[];

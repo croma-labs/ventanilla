@@ -8,7 +8,8 @@
     "preview": "astro preview --port 5201",
     "check": "astro check",
     "icons": "node scripts/icons.ts",
-    "eval": "node --env-file-if-exists=.env.local scripts/eval.ts"
+    "eval": "node --env-file-if-exists=.env.local scripts/eval.ts",
+    "tramites": "node --env-file-if-exists=.env.local scripts/tramites.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.71",

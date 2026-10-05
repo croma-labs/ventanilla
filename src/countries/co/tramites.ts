@@ -1,0 +1,21 @@
+import type { Tramite } from "../types";
+
+export const tramites: readonly Tramite[] = [
+  { slug: "pasaporte-primera-vez", title: "Cómo sacar el pasaporte por primera vez", question: "¿Cómo saco el pasaporte colombiano por primera vez?", entity: "cancilleria.gov.co", domains: ["cancilleria.gov.co"], image: "pasaporte" },
+  { slug: "cedula-primera-vez", title: "Cómo sacar la cédula por primera vez", question: "¿Cómo saco la cédula de ciudadanía por primera vez?", entity: "registraduria.gov.co", domains: ["registraduria.gov.co"], image: "cedula" },
+  { slug: "duplicado-cedula", title: "Cómo pedir el duplicado de la cédula", question: "Perdí mi cédula, ¿cómo pido el duplicado?", entity: "registraduria.gov.co", domains: ["registraduria.gov.co"] },
+  { slug: "licencia-de-conduccion", title: "Cómo sacar la licencia de conducción por primera vez", question: "¿Cómo saco la licencia de conducción por primera vez?", entity: "runt.gov.co", domains: ["runt.gov.co", "movilidadbogota.gov.co", "bogota.gov.co"], image: "licencia" },
+  { slug: "rut", title: "Cómo sacar el RUT como persona natural", question: "¿Cómo saco el RUT como persona natural?", entity: "dian.gov.co", domains: ["dian.gov.co"], image: "rut" },
+  { slug: "cambiar-de-eps", title: "Cómo cambiarse de EPS", question: "¿Cómo me cambio de EPS?", entity: "minsalud.gov.co", domains: ["minsalud.gov.co", "miseguridadsocial.gov.co", "supersalud.gov.co"], image: "eps" },
+  { slug: "registrar-empresa", title: "Cómo registrar una empresa", question: "¿Cómo registro una empresa en Colombia?", entity: "rues.org.co", domains: ["rues.org.co", "ccb.org.co", "gov.co", "dian.gov.co", "supersociedades.gov.co"], image: "empresa" },
+  { slug: "pagar-comparendo", title: "Cómo consultar y pagar un comparendo", question: "¿Cómo consulto y pago un comparendo de tránsito?", entity: "simit.org.co", domains: ["simit.org.co", "runt.gov.co", "movilidadbogota.gov.co"], image: "comparendo" },
+  { slug: "cedula-de-extranjeria", title: "Cómo sacar la cédula de extranjería", question: "Soy extranjero, ¿cómo saco la cédula de extranjería?", entity: "migracioncolombia.gov.co", domains: ["migracioncolombia.gov.co", "cancilleria.gov.co"], image: "extranjeria" },
+  { slug: "inscripcion-sisben", title: "Cómo inscribirse en el Sisbén", question: "¿Cómo me inscribo en el Sisbén?", entity: "sisben.gov.co", domains: ["sisben.gov.co", "dnp.gov.co"] },
+  { slug: "semanas-para-pension", title: "Cuántas semanas se necesitan para pensionarse", question: "¿Cuántas semanas cotizadas necesito para pensionarme en Colpensiones?", entity: "colpensiones.gov.co", domains: ["colpensiones.gov.co", "mintrabajo.gov.co", "funcionpublica.gov.co"], hold: "Ley 2381 de 2024 lowers the weeks women need from 2026; the answer cites the flat 1.300" },
+  { slug: "libreta-militar", title: "Cómo definir la situación militar", question: "¿Cómo defino mi situación militar y saco la libreta militar?", entity: "libretamilitar.mil.co", domains: ["libretamilitar.mil.co", "ejercito.mil.co"] },
+  { slug: "accion-de-tutela", title: "Cómo presentar una acción de tutela", question: "¿Cómo presento una acción de tutela?", entity: "ramajudicial.gov.co", domains: ["corteconstitucional.gov.co", "ramajudicial.gov.co", "funcionpublica.gov.co"] },
+  { slug: "licencia-de-paternidad", title: "Cuánto dura la licencia de paternidad", question: "¿Cuánto dura la licencia de paternidad en Colombia?", entity: "mintrabajo.gov.co", domains: ["funcionpublica.gov.co", "mintrabajo.gov.co", "minsalud.gov.co", "secretariasenado.gov.co"] },
+  { slug: "regimen-simple", title: "Qué es el Régimen Simple de Tributación", question: "¿Qué es el régimen simple de tributación y quién puede inscribirse?", entity: "dian.gov.co", domains: ["dian.gov.co", "funcionpublica.gov.co"] },
+  { slug: "convalidar-titulo", title: "Cómo convalidar un título obtenido en el exterior", question: "¿Cómo convalido un título universitario obtenido en el exterior?", entity: "mineducacion.gov.co", domains: ["mineducacion.gov.co"] },
+  { slug: "antecedentes-judiciales", title: "Cómo consultar el certificado de antecedentes judiciales", question: "¿Cómo consulto el certificado de antecedentes judiciales?", entity: "policia.gov.co", domains: ["policia.gov.co"] },
+];

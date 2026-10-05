@@ -81,6 +81,25 @@ export const site: Site = {
     { label: "MinEducación", domain: "mineducacion.gov.co" }, { label: "MinVivienda", domain: "minvivienda.gov.co" }, { label: "UGPP", domain: "ugpp.gov.co" },
     { label: "Policía", domain: "policia.gov.co" }, { label: "RUES", domain: "rues.org.co" }, { label: "Libreta Militar", domain: "libretamilitar.mil.co" },
   ],
+  tramitesPage: {
+    title: "Guías de trámites en Colombia | Ventanilla",
+    heading: "Trámites en Colombia",
+    intro: "Guías cortas de los trámites más buscados, escritas a partir de las páginas oficiales de cada entidad y verificadas contra ellas.",
+    description: "Guías claras de los trámites más buscados en Colombia: pasaporte, cédula, RUT, licencia de conducción, EPS, Sisbén y más, con fuentes oficiales.",
+    tail: "Pasos, requisitos y enlaces a las fuentes oficiales.",
+    home: "Inicio",
+    suffix: "en Colombia",
+    verified: "Verificado el {date} contra fuentes oficiales",
+    sources: "Fuentes oficiales",
+    answer: "Lo que debes saber",
+    askTitle: "¿Tu caso es distinto?",
+    askBody: "Pregúntale a Ventanilla con tus palabras. Responde citando solo fuentes oficiales y no te pide datos personales.",
+    askCta: "Preguntar a Ventanilla",
+    related: "Otros trámites",
+    popular: "Trámites más buscados",
+    all: "Ver todos los trámites",
+    disclaimer: "Ventanilla es un proyecto independiente, no un sitio oficial. Antes de hacer el trámite, confirma requisitos, costos y plazos en la página oficial de la entidad.",
+  },
   showcase: ["registraduria.gov.co", "cancilleria.gov.co", "sena.edu.co", "corteconstitucional.gov.co", "procuraduria.gov.co", "policia.gov.co", "dane.gov.co", "ramajudicial.gov.co", "minsalud.gov.co"],
   entities: {
     "gov.co": { name: "Portal del Estado colombiano", short: "GOV" },
@@ -129,6 +148,7 @@ export const site: Site = {
   pii: detectors,
   nav: {
     primary: [
+      { label: "Trámites", href: "/tramites" },
       { label: "Cómo funciona", href: "/#how-it-works" },
       { label: "Privacidad", href: "/#privacidad" },
       { label: "Datos por Croma", href: "https://usecroma.com" },

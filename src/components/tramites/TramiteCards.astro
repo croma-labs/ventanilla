@@ -1,0 +1,36 @@
+---
+import { site } from "@country/site";
+import { focusRing } from "../../lib/ui";
+import { pathOf, type Published } from "../../lib/tramites";
+
+interface Props {
+  items: readonly Published[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 site-desktop:grid-cols-3">
+  {
+    items.map((tramite) => (
+      <li>
+        <a href={pathOf(tramite.slug)} class={`group flex h-full flex-col overflow-hidden rounded-24 border border-border-tertiary bg-background-primary transition-shadow hover:shadow-elevation-1 ${focusRing}`}>
+          {tramite.image ? (
+            <img src={`/hero/${site.code}/${tramite.image}-480.webp`} alt="" width="480" height="320" loading="lazy" decoding="async" class="aspect-3/2 w-full object-cover" />
+          ) : (
+            <span class="flex aspect-3/2 w-full items-center justify-center bg-surface-muted">
+              <img src={tramite.agency.icon} alt="" width="72" height="72" loading="lazy" class="size-18 object-contain" />
+            </span>
+          )}
+          <span class="flex flex-1 flex-col gap-3 p-5">
+            <span class="font-serif-display text-[1.65rem] leading-[1.05] text-balance text-text-primary">{tramite.title}</span>
+            <span class="mt-auto inline-flex items-center gap-2 type-body-s text-text-secondary">
+              <img src={tramite.agency.icon} alt="" width="20" height="20" loading="lazy" class="size-5 rounded-full bg-white object-contain" />
+              {tramite.agency.name}
+            </span>
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

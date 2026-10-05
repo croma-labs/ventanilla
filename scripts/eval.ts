@@ -1,14 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { ask as request, under } from "./ask.ts";
 
 type Case = { id: string; question: string; domains?: string[]; facts?: string[]; forbidden?: string[]; expect?: "answer" | "decline" | "conversational" };
-
-type Diagnostics = {
-  route?: { authorities: string[] };
-  considered?: number;
-  kept?: { url: string; score: number; authority: boolean; read: boolean }[];
-  checks?: { claim: string; status: string }[];
-  timings?: Record<string, number>;
-};
 
 const country = process.env.COUNTRY ?? "co";
 const base = process.env.EVAL_URL ?? "http://localhost:5201";
@@ -19,40 +12,7 @@ const only = process.argv.slice(2);
 const cases: Case[] = JSON.parse(await readFile(new URL(`../evals/${country}.json`, import.meta.url), "utf8"));
 const plain = (text: string) => text.normalize("NFD").replace(/[̀-ͯ]/g, "");
 const matches = (pattern: string, text: string) => new RegExp(plain(pattern), "i").test(plain(text));
-const host = (url: string) => new URL(url).hostname.replace(/^www\./, "");
-const under = (url: string, domain: string) => host(url) === domain || host(url).endsWith(`.${domain}`);
-
-async function ask(question: string, retries = 1): Promise<Awaited<ReturnType<typeof once>>> {
-  try {
-    return await once(question);
-  } catch (error) {
-    const network = error instanceof TypeError && /fetch failed|terminated/.test(error.message);
-    if (network && retries > 0) return ask(question, retries - 1);
-    throw error;
-  }
-}
-
-async function once(question: string) {
-  const started = Date.now();
-  const response = await fetch(`${base}/api/chat`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "x-eval-key": key! },
-    body: JSON.stringify({ messages: [{ role: "user", text: question }] }),
-    signal: AbortSignal.timeout(90_000),
-  });
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  let answer = "";
-  let sources: string[] = [];
-  let metadata: { verified?: boolean; diagnostics?: Diagnostics } = {};
-  for (const block of (await response.text()).split("\n\n")) {
-    if (!block.startsWith("data: ") || block === "data: [DONE]") continue;
-    const chunk = JSON.parse(block.slice(6));
-    if (chunk.type === "text-delta") answer += chunk.delta;
-    if (chunk.type === "data-search") sources = chunk.data.groundings.map((grounding: { url: string }) => grounding.url);
-    if (chunk.type === "finish") metadata = chunk.messageMetadata ?? {};
-  }
-  return { answer, sources, metadata, ms: Date.now() - started };
-}
+const ask = (question: string) => request(base, key!, question);
 
 const results = [];
 for (const test of cases.filter((test) => !only.length || only.includes(test.id))) {
@@ -65,7 +25,7 @@ for (const test of cases.filter((test) => !only.length || only.includes(test.id)
       id: test.id,
       ms,
       cited: sources.length,
-      competent: test.domains ? sources.some((url) => test.domains!.some((domain) => under(url, domain))) : null,
+      competent: test.domains ? sources.some(({ url }) => test.domains!.some((domain) => under(url, domain))) : null,
       routed: test.domains ? (diagnostics.route?.authorities ?? []).some((domain) => test.domains!.includes(domain)) : null,
       facts: (test.facts ?? []).filter((fact) => !matches(fact, answer)),
       leaked: (test.forbidden ?? []).filter((pattern) => matches(pattern, answer)),
