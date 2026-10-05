@@ -2,7 +2,7 @@ export type Grounding = { title: string; url: string; currency: "verified" | "un
 
 export type SearchData = { status: "searching" | "done"; groundings: Grounding[]; resultCount?: number };
 
-export type MessageMetadata = { answerComplete?: boolean; followUpSuggestions?: string[]; signature?: string; verified?: boolean; conversational?: boolean };
+export type MessageMetadata = { answerComplete?: boolean; followUpSuggestions?: string[]; signature?: string; verified?: boolean; conversational?: boolean; diagnostics?: unknown };
 
 export type UiChunk =
   | { type: "start"; messageId: string }

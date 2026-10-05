@@ -2,7 +2,7 @@ import { anthropic } from "@ai-sdk/anthropic";
 import { createGroq } from "@ai-sdk/groq";
 import type { LanguageModel } from "ai";
 
-type Resolved = { model: LanguageModel; id: string; providerOptions: Record<string, Record<string, string | boolean>> };
+export type Resolved = { model: LanguageModel; id: string; providerOptions: Record<string, Record<string, string | boolean>> };
 
 export function resolveModel(): Resolved | null {
   const preferred = process.env.AI_PROVIDER;
@@ -19,4 +19,14 @@ export function resolveModel(): Resolved | null {
     return { model: anthropic(id), id, providerOptions: {} };
   }
   return null;
+}
+
+export function resolveFastModel(fallback: Resolved): Resolved {
+  if (!process.env.GROQ_API_KEY) return fallback;
+  const id = process.env.GROQ_FAST_MODEL ?? "openai/gpt-oss-20b";
+  return {
+    model: createGroq({ apiKey: process.env.GROQ_API_KEY })(id),
+    id,
+    providerOptions: { groq: { reasoningEffort: process.env.FAST_REASONING ?? "medium", structuredOutputs: true, strictJsonSchema: true } },
+  };
 }

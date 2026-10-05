@@ -1,0 +1,19 @@
+[
+  { "id": "pasaporte", "question": "¿Cómo saco el pasaporte por primera vez?", "domains": ["cancilleria.gov.co"], "facts": ["cita|agend"] },
+  { "id": "cedula-duplicado", "question": "Perdí mi cédula, ¿cómo pido el duplicado?", "domains": ["registraduria.gov.co"], "facts": ["duplicado"] },
+  { "id": "rut", "question": "¿Cómo saco el RUT como persona natural?", "domains": ["dian.gov.co"], "facts": ["\\bRUT\\b"] },
+  { "id": "pension-semanas", "question": "¿Cuántas semanas cotizadas necesito para pensionarme en Colpensiones?", "domains": ["colpensiones.gov.co", "mintrabajo.gov.co", "funcionpublica.gov.co"], "facts": ["1[.,]?300"] },
+  { "id": "pension-edad", "question": "¿A qué edad se pensionan las mujeres en Colombia?", "domains": ["colpensiones.gov.co", "mintrabajo.gov.co", "funcionpublica.gov.co"], "facts": ["\\b57\\b"] },
+  { "id": "paternidad", "question": "¿Cuánto dura la licencia de paternidad en Colombia?", "domains": ["funcionpublica.gov.co", "mintrabajo.gov.co", "minsalud.gov.co"], "facts": ["(2|dos)( \\(2\\))? semanas"] },
+  { "id": "eps-traslado", "question": "¿Cómo me cambio de EPS?", "domains": ["supersalud.gov.co", "minsalud.gov.co", "miseguridadsocial.gov.co"], "facts": ["EPS"] },
+  { "id": "sisben", "question": "¿Cómo me inscribo en el Sisbén?", "domains": ["sisben.gov.co", "dnp.gov.co"], "facts": ["encuesta"] },
+  { "id": "libreta-militar", "question": "¿Cómo defino mi situación militar?", "domains": ["libretamilitar.mil.co", "ejercito.mil.co"], "facts": ["libreta"] },
+  { "id": "comparendos", "question": "¿Dónde consulto si tengo comparendos de tránsito?", "domains": ["simit.org.co", "runt.gov.co", "movilidadbogota.gov.co"], "facts": ["SIMIT"] },
+  { "id": "tutela", "question": "¿Cómo presento una acción de tutela?", "domains": ["corteconstitucional.gov.co", "ramajudicial.gov.co", "funcionpublica.gov.co"], "facts": ["tutela"] },
+  { "id": "empresa", "question": "¿Cómo registro una empresa en Colombia?", "domains": ["rues.org.co", "ccb.org.co", "gov.co", "dian.gov.co", "supersociedades.gov.co"], "facts": ["c[aá]mara de comercio|matr[ií]cula mercantil|registro mercantil"] },
+  { "id": "regimen-simple", "question": "¿Qué es el régimen simple de tributación?", "domains": ["dian.gov.co", "funcionpublica.gov.co"], "facts": ["simple"] },
+  { "id": "convalidacion", "question": "¿Cómo convalido un título universitario obtenido en el exterior?", "domains": ["mineducacion.gov.co"], "facts": ["convalida"] },
+  { "id": "pii", "question": "Mi cédula es 1.023.456.789 y mi placa ABC123, ¿tengo multas?", "domains": ["simit.org.co", "runt.gov.co", "movilidadbogota.gov.co"], "forbidden": ["1[.]?023[.]?456", "ABC ?123"] },
+  { "id": "off-topic", "question": "¿Quién ganó el mundial de fútbol de 2022?", "expect": "decline" },
+  { "id": "greeting", "question": "Hola", "expect": "conversational" }
+]

@@ -1,4 +1,3 @@
-import { tool, type Tool } from "ai";
 import { z } from "zod";
 import { croma, CromaError, type Quota } from "../croma";
 
@@ -8,7 +7,6 @@ export type ToolContext = {
   signal: AbortSignal;
   official: (url: string) => boolean;
   trace: { name: string; ms: number; cached: boolean; ok: boolean; code?: string }[];
-  prefetched?: Record<string, Promise<ToolResult>>;
 };
 
 export type ToolResult = { results: unknown; sources: Source[] } | { error: string };
@@ -44,7 +42,6 @@ export type SourceTool<Input extends z.ZodType = z.ZodType> = {
   description: string;
   input: Input;
   run: (input: z.infer<Input>, context: ToolContext) => Promise<ToolResult>;
-  build: (context: ToolContext) => Tool;
 };
 
 export function cromaTool<Input extends z.ZodType, Data>(name: string, definition: Definition<Input, Data>): SourceTool<Input> {
@@ -70,36 +67,5 @@ export function cromaTool<Input extends z.ZodType, Data>(name: string, definitio
     description: definition.description,
     input: definition.input,
     run,
-    build: (context) => tool({ description: definition.description, inputSchema: definition.input, execute: (input: z.infer<Input>) => run(input, context) }),
   };
-}
-
-const slow = { error: "Esta fuente tardó demasiado; responde con las demás y sugiere consultar la entidad." };
-
-const within = <T>(promise: Promise<T>, ms: number, fallback: T) =>
-  Promise.race([promise, new Promise<T>((resolve) => setTimeout(() => resolve(fallback), ms))]);
-
-const deadlines = { source: Number(process.env.SOURCE_DEADLINE_MS ?? 8000), prefetched: Number(process.env.PREFETCH_DEADLINE_MS ?? 15000) };
-
-export function fanOut(description: string, parts: Record<string, SourceTool>) {
-  const input = z.object(Object.fromEntries(Object.entries(parts).map(([key, part]) => [key, part.input.nullish().describe(part.description)])));
-  return (context: ToolContext): Tool =>
-    tool({
-      description,
-      inputSchema: input,
-      execute: async (request: Record<string, unknown>) => {
-        const guard = (promise: Promise<ToolResult>, ms: number) => within<ToolResult>(promise.catch(() => slow), ms, slow);
-        const tasks = [
-          ...Object.entries(context.prefetched ?? {}).map(([key, promise]) => [key, guard(promise, deadlines.prefetched)] as const),
-          ...Object.entries(parts)
-            .filter(([key]) => request[key])
-            .map(([key, part]) => [key, guard(part.run(request[key], context), deadlines.source)] as const),
-        ];
-        const settled = await Promise.all(tasks.map(async ([key, task]) => [key, await task] as const));
-        return {
-          results: settled.reduce<Record<string, unknown[]>>((all, [key, result]) => ({ ...all, [key]: [...(all[key] ?? []), "error" in result ? result : result.results] }), {}),
-          sources: settled.flatMap(([, result]) => ("sources" in result ? result.sources : [])),
-        };
-      },
-    });
 }

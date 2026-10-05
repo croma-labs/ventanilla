@@ -1,6 +1,6 @@
-import { createGroq } from "@ai-sdk/groq";
 import { generateText, Output, streamText, type LanguageModel } from "ai";
 import { z } from "zod";
+import type { Resolved } from "./model";
 
 const maxEvidence = 28_000;
 const maxClaims = 12;
@@ -76,26 +76,30 @@ type Options = {
   language: string;
 };
 
-export async function verify({ model, providerOptions, question, draft, evidence }: Omit<Options, "language">) {
+export async function verify({ question, draft, evidence, fast, fallback }: Pick<Options, "question" | "draft" | "evidence"> & { fast: Resolved; fallback: Resolved }) {
   if (!evidence) return [];
-  const fast = process.env.GROQ_API_KEY ? createGroq({ apiKey: process.env.GROQ_API_KEY })(process.env.GROQ_FAST_MODEL ?? "openai/gpt-oss-20b") : null;
+  const attempt = async (resolved: Resolved, system: string, prompt: string) => {
+    const { output } = await generateText({
+      model: resolved.model,
+      system,
+      prompt,
+      output: Output.object({ schema: claimsSchema }),
+      temperature: 0,
+      providerOptions: resolved.providerOptions,
+      maxRetries: 1,
+      abortSignal: AbortSignal.timeout(12_000),
+    });
+    return output.claims;
+  };
   const ask = async (system: string, prompt: string) => {
-    try {
-      const { output } = await generateText({
-        model: fast ?? model,
-        system,
-        prompt,
-        output: Output.object({ schema: claimsSchema }),
-        temperature: 0,
-        providerOptions: fast ? { groq: { reasoningEffort: "low", structuredOutputs: true, strictJsonSchema: true } } : providerOptions,
-        maxRetries: 1,
-        abortSignal: AbortSignal.timeout(12_000),
-      });
-      return output.claims;
-    } catch (error) {
-      console.error("[ventanilla] verify failed", error instanceof Error ? error.message.slice(0, 200) : error);
-      return [];
+    for (const resolved of [fast, fast, fallback]) {
+      try {
+        return await attempt(resolved, system, prompt);
+      } catch (error) {
+        console.error("[ventanilla] verify attempt failed", resolved.id, error instanceof Error ? error.message.slice(0, 120) : error);
+      }
     }
+    return [];
   };
 
   const first = checkClaims(evidence, await ask(verifyInstructions, context(question, evidence, draft)));
@@ -107,6 +111,11 @@ export async function verify({ model, providerOptions, question, draft, evidence
   );
   const recovered = new Map(retried.filter((check) => check.status === "found").map((check) => [check.claim, check]));
   return first.map((check) => recovered.get(check.claim) ?? check);
+}
+
+export function supporters<T extends { url: string; text: string }>(candidates: T[], checks: Check[]) {
+  const found = checks.filter((check) => check.status === "found");
+  return candidates.filter((candidate) => found.some((check) => checkClaims(candidate.text, [{ claim: check.claim, terms: check.terms }])[0].status === "found"));
 }
 
 export function rewrite({ model, providerOptions, question, draft, evidence, language, checks, signal }: Options & { checks: Check[]; signal: AbortSignal }) {
