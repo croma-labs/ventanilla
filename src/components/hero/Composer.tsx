@@ -66,6 +66,7 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
     const text = value.trim() || fallback;
     if (!text) return;
     submitQuestion(text, snapshotOrigin(form.current));
+    if (matchMedia("(hover: none), (pointer: coarse)").matches) (document.activeElement as HTMLElement | null)?.blur();
     setAttempted(false);
     setValue("");
   };
@@ -83,7 +84,7 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
         onSubmit={submit}
         onPointerDownCapture={onInteract}
         onKeyDownCapture={onInteract}
-        onClick={() => textarea.current?.focus()}
+        onClick={(event) => !(event.target as HTMLElement).closest("button, a") && textarea.current?.focus()}
         className={cn(
           "group relative z-10 flex w-full cursor-text flex-col items-stretch overflow-clip border border-transparent bg-background-primary transition-[outline-color] duration-700 ease-out-quint",
           shell[variant],

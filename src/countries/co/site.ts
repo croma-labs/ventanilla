@@ -11,6 +11,7 @@ export const site: Site = {
     name,
     tagline: "Lo que necesites del Estado, empieza aquí.",
     notice: "Proyecto independiente. No es un sitio oficial del Gobierno de Colombia.",
+    noticeShort: "Proyecto independiente, no es un sitio oficial.",
     disclaimer: "Ventanilla es un proyecto independiente. No es un sitio oficial del Gobierno de Colombia. Las respuestas citan fuentes públicas consultadas a través de Croma.",
     poweredBy: "Datos por",
     handledBy: "Lo atiende",

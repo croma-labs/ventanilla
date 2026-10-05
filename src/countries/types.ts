@@ -12,7 +12,7 @@ export type Site = {
   code: string;
   lang: string;
   locale: string;
-  brand: { name: string; tagline: string; notice: string; disclaimer: string; poweredBy: string; handledBy: string };
+  brand: { name: string; tagline: string; notice: string; noticeShort: string; disclaimer: string; poweredBy: string; handledBy: string };
   meta: { title: string; chatTitle: string; description: string };
   hero: { greeting: string; subtitle: string; tryPrefix: string; cards: readonly HeroCard[] };
   manifesto: { lead: string; beforeSources: string; beforePrivacy: string; afterPrivacy: string; flag: readonly string[] };

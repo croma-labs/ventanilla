@@ -20,7 +20,8 @@ const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="size-8 
         <span aria-hidden="true" class="flex h-2.5 w-4 flex-col overflow-hidden rounded-[2px]">
           {site.manifesto.flag.map((color) => <span class="flex-1" style={{ backgroundColor: color }} />)}
         </span>
-        {site.brand.notice}
+        <span class="max-mobile:hidden">{site.brand.notice}</span>
+        <span class="mobile:hidden">{site.brand.noticeShort}</span>
         <span aria-hidden="true" class="max-mobile:hidden">·</span>
         <CromaCredit className="max-mobile:hidden" />
       </p>
