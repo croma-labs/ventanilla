@@ -1,6 +1,7 @@
 import { execFile } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { promisify } from "node:util";
+import sharp from "sharp";
 import { fetchIcon, sniff } from "../src/server/icons.ts";
 
 const country = process.env.COUNTRY ?? "co";
@@ -25,6 +26,14 @@ async function viaCurl(domain: string) {
   return null;
 }
 
+const compact = (bytes: Uint8Array) =>
+  sharp(bytes)
+    .trim()
+    .resize(128, 128, { fit: "inside", withoutEnlargement: true })
+    .webp({ quality: 85, effort: 6 })
+    .toBuffer()
+    .catch(() => null);
+
 const source = await readFile(new URL(`src/countries/${country}/site.ts`, root), "utf8");
 const block = source.slice(source.indexOf("entities:"), source.indexOf("officialSuffixes:"));
 const domains = [...block.matchAll(/"([a-z0-9.-]+\.[a-z]{2,})":\s*\{/g)].map(([, domain]) => domain);
@@ -40,8 +49,9 @@ for (const domain of only.length ? only : domains.filter((domain) => !manifest[d
     failed.push(domain);
     continue;
   }
-  const path = `/icons/${country}/${domain}.${extensions[icon.type] ?? "png"}`;
-  await writeFile(new URL(`public${path}`, root), icon.bytes);
+  const optimized = icon.type === "image/x-icon" || icon.type === "image/vnd.microsoft.icon" ? null : await compact(icon.bytes);
+  const path = `/icons/${country}/${domain}.${optimized ? "webp" : (extensions[icon.type] ?? "png")}`;
+  await writeFile(new URL(`public${path}`, root), optimized ?? icon.bytes);
   manifest[domain] = path;
   console.log(`ok   ${domain} -> ${path}`);
 }

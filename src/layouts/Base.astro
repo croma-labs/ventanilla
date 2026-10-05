@@ -3,6 +3,8 @@ import "@fontsource-variable/inter-tight/wght.css";
 import "@fontsource/instrument-serif/400.css";
 import { site } from "@country/site";
 import "../styles/global.css";
+import serif from "@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url";
+import sans from "@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url";
 
 interface Props {
   title: string;
@@ -22,6 +24,8 @@ const url = new URL(Astro.url.pathname, origin).href;
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="referrer" content="no-referrer" />
     <meta name="robots" content="noai, noimageai" />
+    <link rel="preload" href={serif} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={sans} as="font" type="font/woff2" crossorigin />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#ffffff" />

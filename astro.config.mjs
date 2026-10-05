@@ -14,6 +14,7 @@ export default defineConfig({
   output: "static",
   adapter: vercel(),
   devToolbar: { enabled: false },
+  build: { inlineStylesheets: "always" },
   security: { checkOrigin: true },
   integrations: [react()],
   vite: {
