@@ -1,5 +1,5 @@
 import useEmblaCarousel from "embla-carousel-react";
-import { motion, useAnimationFrame, useMotionValue, useTransform, type MotionValue } from "motion/react";
+import { useAnimationFrame, useMotionValue } from "motion/react";
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { site } from "@country/site";
 import { cn } from "../../lib/cn";
@@ -8,7 +8,7 @@ import { wrap } from "../../lib/math";
 import { buttonBase, glassControl } from "../../lib/ui";
 import { ChevronLeftIcon, ChevronRightIcon, PauseIcon, PlayIcon } from "../icons";
 import Composer from "./Composer";
-import Postcard, { wash } from "./Postcard";
+import Postcard from "./Postcard";
 import PromptTicker from "./PromptTicker";
 
 const heroCards = site.hero.cards;
@@ -16,15 +16,6 @@ const autoplayMs = 4000;
 const count = heroCards.length;
 const label = (index: number) => site.ui.example.replace("{n}", String(index + 1)).replace("{total}", String(count)).replace("{text}", heroCards[index].prompt);
 const prompts = heroCards.map((card) => card.prompt);
-
-function Backdrop({ index, progress }: { index: number; progress: MotionValue<number> }) {
-  const opacity = useTransform(progress, (position) => Math.max(0, 1 - Math.abs(wrap(-count / 2, count / 2, index - position))));
-  return (
-    <motion.div aria-hidden className="absolute inset-0 will-change-[opacity]" style={{ opacity }}>
-      <div className="absolute inset-0 bg-cover bg-center blur-3xl" style={{ backgroundImage: wash(heroCards[index]) }} />
-    </motion.div>
-  );
-}
 
 function Slide({ index, mounted }: { index: number; mounted: boolean }) {
   return <div className="absolute inset-0 overflow-hidden">{mounted && <Postcard card={heroCards[index]} detail priority={index === 0} />}</div>;
@@ -120,16 +111,6 @@ export default function Hero() {
   return (
     <div data-slot="carousel" data-has-own-composer className="relative mb-4 flex flex-col mobile:mx-8 mobile:mb-8" onKeyDownCapture={onKeyDownCapture}>
       <section className="relative isolate flex flex-col items-center rounded-40 pt-40 pb-10 mobile:min-h-[calc(100svh-92px)] mobile:justify-center mobile:rounded-48 mobile:px-8 mobile:pt-36 mobile:pb-36">
-        <div
-          aria-hidden
-          className="squircle pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-40 bg-linear-to-b from-[#f4f5f7] to-[#f8f8f9] [clip-path:inset(0_round_var(--radius-40))] mobile:rounded-48 mobile:[clip-path:inset(0_round_var(--radius-48))]"
-        >
-          <div className="absolute top-[-16%] left-[-12%] h-[132%] w-[124%] opacity-[0.07] saturate-0">
-            {heroCards.map((card, index) => (
-              <Backdrop key={card.slug} index={index} progress={progress} />
-            ))}
-          </div>
-        </div>
 
         <div className="flex w-full max-w-[687.5px] flex-col items-center gap-[62px] mobile:gap-12">
           <div className="landing-heading flex w-full flex-col items-center gap-4 px-8 text-center mobile:gap-5 mobile:px-0">

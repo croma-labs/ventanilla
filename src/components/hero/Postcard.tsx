@@ -9,8 +9,7 @@ const photo = (name: string, size = "") => `/hero/${site.code}/${name}${size}.we
 
 const fallbackTone = ["#0e1a33", "#003893", "#fcd116"] as const;
 
-export const wash = ({ image, tone = fallbackTone }: HeroCard) => {
-  if (image) return `url(${photo(image, "-blur")})`;
+const wash = ({ tone = fallbackTone }: HeroCard) => {
   const [deep, mid, light] = tone;
   return `radial-gradient(120% 90% at 85% 10%, ${light} 0%, transparent 55%), radial-gradient(90% 80% at 10% 100%, ${mid} 0%, transparent 60%), linear-gradient(160deg, ${mid} 0%, ${deep} 70%)`;
 };
