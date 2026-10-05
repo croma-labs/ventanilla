@@ -1,0 +1,10 @@
+---
+import { site } from "@country/site";
+import HomePage from "../components/HomePage.astro";
+import Base from "../layouts/Base.astro";
+---
+
+<Base title={site.meta.chatTitle} description={site.meta.description}>
+  <script is:inline>document.documentElement.dataset.phase = "chat";</script>
+  <HomePage />
+</Base>

@@ -1,0 +1,9 @@
+---
+import { site } from "@country/site";
+import HomePage from "../components/HomePage.astro";
+import Base from "../layouts/Base.astro";
+---
+
+<Base title={site.meta.title} description={site.meta.description}>
+  <HomePage />
+</Base>

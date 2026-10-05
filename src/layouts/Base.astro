@@ -1,0 +1,29 @@
+---
+import "@fontsource-variable/inter-tight/wght.css";
+import "@fontsource/instrument-serif/400.css";
+import { site } from "@country/site";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="robots" content="noai, noimageai" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="font-body text-primary antialiased">
+    <slot />
+  </body>
+</html>

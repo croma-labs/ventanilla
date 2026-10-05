@@ -1,0 +1,23 @@
+---
+import Features from "./features/Features.astro";
+import Hero from "./hero/Hero";
+import Manifesto from "./manifesto/Manifesto";
+import ChatSurface from "./chat/ChatSurface";
+import AskDock from "./site/AskDock";
+import SiteFooter from "./site/SiteFooter.astro";
+import SiteHeader from "./site/SiteHeader.astro";
+---
+
+<div class="relative flex min-h-dvh flex-col bg-background-primary text-primary">
+  <SiteHeader />
+  <div data-slot="home-landing" class="flex min-h-0 flex-1 flex-col">
+    <main id="landing-main" tabindex="-1" class="flex flex-col text-pretty outline-none">
+      <Hero client:load />
+      <Manifesto client:visible />
+      <Features />
+    </main>
+    <SiteFooter />
+  </div>
+  <ChatSurface client:load />
+</div>
+<AskDock client:load />

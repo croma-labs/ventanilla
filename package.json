@@ -1,0 +1,44 @@
+{
+  "name": "ventanilla",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port 5201",
+    "build": "astro build",
+    "preview": "astro preview --port 5201",
+    "check": "astro check",
+    "icons": "node scripts/icons.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.71",
+    "@ai-sdk/groq": "^4.0.54",
+    "@astrojs/react": "^7.0.0",
+    "@astrojs/vercel": "^11.0.11",
+    "@base-ui/react": "^1.8.0",
+    "@fontsource-variable/inter-tight": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@upstash/redis": "^1.39.0",
+    "ai": "^7.0.127",
+    "astro": "^7.3.5",
+    "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
+    "motion": "^13.5.0",
+    "ogl": "^1.0.11",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/node": "^24.19.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}

@@ -1,0 +1,37 @@
+---
+import { site } from "@country/site";
+import mark from "../../assets/svg/mark.svg?raw";
+import MenuSheet from "./MenuSheet";
+
+const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="size-8 shrink-0 text-blue-700" ');
+---
+
+<a
+  href="#landing-main"
+  class="fixed top-3 left-3 z-[60] -translate-y-[300%] rounded-full bg-blue-700 px-5 py-3 font-medium text-white transition-transform focus-visible:translate-y-0"
+>
+  Saltar al contenido
+</a>
+<div data-slot="nav-header-flow" class="min-h-10">
+  <div class="relative z-30 bg-background-primary">
+    <div data-slot="gov-banner-row">
+      <p class="type-body-s flex min-h-10 items-center justify-center gap-2 px-4 text-center text-text-secondary">
+        <span aria-hidden="true" class="flex h-2.5 w-4 flex-col overflow-hidden rounded-[2px]">
+          {site.manifesto.flag.map((color) => <span class="flex-1" style={{ backgroundColor: color }} />)}
+        </span>
+        {site.brand.notice}
+      </p>
+    </div>
+    <div class="site-header-wrap absolute inset-x-0 top-full">
+      <header
+        class="site-header relative mx-(--site-header-inset) mt-4 grid w-[calc(100%-2*var(--site-header-inset))] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 p-6 [--site-header-inset:0.75rem] max-mobile:p-3 mobile:[--site-header-inset:3.5rem]"
+      >
+        <a href="/" aria-label={`${site.brand.name}, inicio`} class="flex max-w-full min-w-0 items-center gap-2.5 rounded-4">
+          <Fragment set:html={markMarkup} />
+          <span class="font-serif-display text-[1.75rem] leading-none tracking-[-0.01em] text-text-primary">{site.brand.name}</span>
+        </a>
+        <MenuSheet client:load pathname={Astro.url.pathname} />
+      </header>
+    </div>
+  </div>
+</div>

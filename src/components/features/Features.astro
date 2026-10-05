@@ -1,0 +1,53 @@
+---
+import browser from "../../assets/svg/browser-feature.svg?raw";
+import { site } from "@country/site";
+import Monogram from "../chat/Monogram";
+import { focusRing } from "../../lib/ui";
+import FederalOrbit from "./FederalOrbit";
+import PrivacyCard from "./PrivacyCard";
+
+const card = "squircle relative aspect-square w-full max-w-md shrink-0 overflow-hidden rounded-site-bento";
+const link = `site-underline-link relative inline-block w-fit rounded-4 type-site-link text-text-primary ${focusRing}`;
+const browserMarkup = browser.replace("<svg ", '<svg aria-hidden="true" class="size-full" ');
+
+const rows = site.features;
+const sealEntities = Object.entries(site.entities).filter(([domain]) => domain.includes(".")).slice(1, 10);
+---
+
+<section id="how-it-works" class="site-container flex flex-col items-center gap-20 py-24 mobile:gap-30 mobile:pb-64">
+  {
+    rows.map((row) => (
+      <div id={row.key === "privacy" ? "privacidad" : undefined} class="site-grid w-full scroll-mt-24 items-center gap-y-10">
+        <div class="col-span-full flex min-w-0 justify-center site-desktop:col-span-4 site-desktop:col-start-3">
+          {row.key === "ask" && <FederalOrbit client:visible className={card} />}
+          {row.key === "privacy" && <PrivacyCard client:visible className={card} />}
+          {row.key === "sources" && (
+            <div class:list={[card, "bg-surface-muted"]}>
+              <div aria-hidden="true" class="absolute -inset-[18%] grid grid-cols-3 grid-rows-3 gap-8">
+                {sealEntities.map(([domain, entity]) => (
+                  <div class="relative min-h-0 min-w-0 rounded-full bg-white shadow-[0_8px_24px_rgb(1_14_36/12%)]">
+                    <div class="absolute inset-4">
+                      <Monogram seed={domain} label={entity.short} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {row.key === "browser" && <div data-slot="browser-feature" class={card} set:html={browserMarkup} />}
+        </div>
+        <div class="col-span-full flex w-full max-w-xs flex-col justify-center gap-8 justify-self-center site-desktop:col-span-4 site-desktop:col-start-8 site-desktop:max-w-none">
+          <div class="flex max-w-xs flex-col gap-6 mobile:max-w-77">
+            <h2 class="type-site-5 text-text-primary mobile:whitespace-pre-line">{row.title}</h2>
+            <p class="type-site-10 text-text-secondary">{row.body}</p>
+          </div>
+          {row.href ? (
+            <a href={row.href} class={link} {...(row.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{row.cta}</a>
+          ) : (
+            <button type="button" data-ask-focus class:list={[link, "cursor-pointer"]}>{row.cta}</button>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</section>

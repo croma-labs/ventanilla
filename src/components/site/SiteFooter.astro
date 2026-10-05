@@ -1,0 +1,42 @@
+---
+import { site } from "@country/site";
+import mark from "../../assets/svg/mark.svg?raw";
+import { focusRing } from "../../lib/ui";
+
+const inlineLink = `inline-block rounded-xs underline-offset-4 hover:underline ${focusRing}`;
+const external = (href: string) => (href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {});
+const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="size-10 text-blue-700" ');
+---
+
+<footer data-slot="site-footer" class="bg-surface-footer py-24 text-pretty text-black site-desktop:pt-56 site-desktop:pb-30">
+  <div class="site-container site-grid gap-y-20 site-desktop:gap-y-36">
+    <nav aria-label="Pie de página" class="col-span-full min-w-0 text-center wrap-anywhere">
+      <ul class="type-site-3 flex flex-col items-center gap-2.5 max-mobile:gap-6">
+        {
+          site.nav.primary.map((link) => (
+            <li class="max-w-full">
+              <a href={link.href} {...external(link.href)} class:list={["block max-w-full rounded-8 px-2 underline-offset-4 hover:underline focus-visible:underline", focusRing]}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="col-span-full flex min-w-0 flex-col items-center gap-6">
+      <p class="font-serif-display text-[clamp(4.5rem,18vw,15rem)] leading-[0.9] tracking-[-0.03em] text-text-primary">{site.brand.name}</p>
+      <div class="type-site-11 flex w-full min-w-0 flex-col items-center gap-6 pt-4 pb-8 text-center">
+        <p class="flex max-w-xl flex-col items-center gap-4 text-text-secondary">
+          <Fragment set:html={markMarkup} />
+          {site.brand.disclaimer}
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          {site.nav.legal.map((link) => <a href={link.href} {...external(link.href)} class={inlineLink}>{link.label}</a>)}
+          <span>
+            Datos por <a href="https://usecroma.com" target="_blank" rel="noopener noreferrer" class={inlineLink}>Croma</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
