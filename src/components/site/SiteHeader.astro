@@ -1,9 +1,10 @@
 ---
 import { site } from "@country/site";
 import mark from "../../assets/svg/mark.svg?raw";
+import CromaCredit from "./CromaCredit";
 import MenuSheet from "./MenuSheet";
 
-const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="size-8 shrink-0 text-blue-700" ');
+const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="size-8 shrink-0 text-blue-700 drop-shadow-[0_6px_14px_rgb(14_26_51/18%)]" ');
 ---
 
 <a
@@ -20,6 +21,8 @@ const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="size-8 
           {site.manifesto.flag.map((color) => <span class="flex-1" style={{ backgroundColor: color }} />)}
         </span>
         {site.brand.notice}
+        <span aria-hidden="true" class="max-mobile:hidden">·</span>
+        <CromaCredit className="max-mobile:hidden" />
       </p>
     </div>
     <div class="site-header-wrap absolute inset-x-0 top-full">

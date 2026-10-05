@@ -1,16 +1,16 @@
 import { AnimatePresence, motion, useTransform, type MotionValue } from "motion/react";
 import { useEffect, useId, useRef, useState } from "react";
 import { site } from "@country/site";
-import Monogram from "../chat/Monogram";
+import EntityIcon from "../chat/EntityIcon";
 import { useReducedMotion } from "../../lib/hooks";
 import { buttonBase } from "../../lib/ui";
 import { cn } from "../../lib/cn";
 import { Chip, useChipReveal, type Reveal } from "./reveal";
 
 const perPage = 3;
-const badgeAgencies = Object.entries(site.entities)
-  .filter(([domain]) => domain.includes("."))
-  .map(([domain, entity]) => ({ ...entity, domain }));
+const badgeAgencies = [...new Set([...site.showcase, ...site.orbit.map((entry) => entry.domain)])]
+  .filter((domain) => site.entities[domain])
+  .map((domain) => ({ ...site.entities[domain], domain }));
 const fan = 0.43;
 
 function useElementWidth(fallback: number) {
@@ -41,8 +41,8 @@ function Badge({ agency, index, progress }: { agency: (typeof badgeAgencies)[num
       exit={{ opacity: 0, y: 0 }}
       transition={{ duration: reduced ? 0 : 0.24, ease: [0.22, 1, 0.36, 1], delay: reduced ? 0 : index * 0.035 }}
     >
-      <span className="block size-full rounded-full bg-white p-[8%]">
-        <Monogram seed={agency.domain} label={agency.short} />
+      <span className="block size-full rounded-full bg-white p-[16%] ring-1 ring-[#0e1a33]/5">
+        <EntityIcon domain={agency.iconFrom ?? agency.domain} short={agency.short} className="rounded-none bg-transparent" />
       </span>
     </motion.span>
   );

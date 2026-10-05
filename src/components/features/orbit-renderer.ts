@@ -1,5 +1,5 @@
 import { Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
-import { orbitTiles, projectTile } from "../../data/orbit";
+import { iconOf, orbitSites, orbitTiles, projectTile, type OrbitSite } from "../../data/orbit";
 
 const vertex = /* glsl */ `
 attribute vec3 position;
@@ -23,41 +23,53 @@ void main() {
 
 export const tileSize = { width: 480, height: 334 };
 
-const hue = (seed: string) => [...seed].reduce((sum, char) => (sum * 31 + char.charCodeAt(0)) % 360, 7);
+const loadImage = (src: string) =>
+  new Promise<HTMLImageElement | null>((resolve) => {
+    const image = new Image();
+    image.decoding = "async";
+    image.onload = () => resolve(image);
+    image.onerror = () => resolve(null);
+    image.src = src;
+  });
 
-export function drawTile(label: string) {
+export function drawTile({ label, domain }: OrbitSite, icon: HTMLImageElement | null) {
   const canvas = document.createElement("canvas");
   canvas.width = tileSize.width;
   canvas.height = tileSize.height;
   const context = canvas.getContext("2d")!;
-  const h = hue(label);
   context.fillStyle = "#ffffff";
   context.beginPath();
   context.roundRect(0, 0, tileSize.width, tileSize.height, 28);
   context.fill();
-  context.fillStyle = "#f2f3f5";
+  context.fillStyle = "#f4efe6";
   context.beginPath();
   context.roundRect(0, 0, tileSize.width, 52, [28, 28, 0, 0]);
   context.fill();
-  ["#ff5f57", "#febc2e", "#28c840"].forEach((color, index) => {
+  ["#fcd116", "#003893", "#ce1126"].forEach((color, index) => {
     context.fillStyle = color;
     context.beginPath();
-    context.arc(30 + index * 22, 26, 7, 0, Math.PI * 2);
+    context.arc(30 + index * 20, 26, 6, 0, Math.PI * 2);
     context.fill();
   });
-  const band = context.createLinearGradient(0, 52, tileSize.width, 200);
-  band.addColorStop(0, `oklch(0.55 0.14 ${h})`);
-  band.addColorStop(1, `oklch(0.36 0.12 ${(h + 40) % 360})`);
-  context.fillStyle = band;
-  context.fillRect(0, 52, tileSize.width, 150);
-  context.fillStyle = "#ffffff";
-  context.font = `400 ${label.length > 14 ? 40 : 52}px "Instrument Serif", serif`;
+  context.fillStyle = "#0e1a3399";
+  context.font = '500 20px "Inter Tight Variable", sans-serif';
   context.textBaseline = "middle";
-  context.fillText(label, 32, 130, tileSize.width - 64);
-  context.fillStyle = "#e3e4e6";
-  [0, 1, 2].forEach((row) => {
+  context.fillText(domain, 104, 27, tileSize.width - 132);
+  if (icon) {
+    const box = 112;
+    const fit = Math.min(box / icon.naturalWidth, box / icon.naturalHeight);
+    const width = icon.naturalWidth * fit;
+    const height = icon.naturalHeight * fit;
+    context.imageSmoothingQuality = "high";
+    context.drawImage(icon, 36 + (box - width) / 2, 80 + (box - height) / 2, width, height);
+  }
+  context.fillStyle = "#0e1a33";
+  context.font = `400 ${label.length > 12 ? 40 : 50}px "Instrument Serif", serif`;
+  context.fillText(label, icon ? 172 : 36, 138, tileSize.width - (icon ? 200 : 64));
+  context.fillStyle = "#ece6da";
+  [0, 1].forEach((row) => {
     context.beginPath();
-    context.roundRect(32, 228 + row * 28, row === 2 ? 220 : 416, 12, 6);
+    context.roundRect(36, 240 + row * 30, row === 1 ? 220 : 408, 12, 6);
     context.fill();
   });
   return canvas;
@@ -70,9 +82,9 @@ export async function createOrbitRenderer(canvas: HTMLCanvasElement) {
 
   const scene = new Transform();
   const geometry = new Plane(gl);
-  await document.fonts.load('400 52px "Instrument Serif"').catch(() => undefined);
-  const labels = [...new Set(orbitTiles.map((tile) => tile.label))];
-  const textures = new Map(labels.map((label) => [label, new Texture(gl, { image: drawTile(label), minFilter: gl.LINEAR_MIPMAP_LINEAR })]));
+  await Promise.all([document.fonts.load('400 52px "Instrument Serif"'), document.fonts.load('500 20px "Inter Tight Variable"')]).catch(() => undefined);
+  const icons = await Promise.all(orbitSites.map((entry) => loadImage(iconOf(entry.domain))));
+  const textures = new Map(orbitSites.map((entry, index) => [entry, new Texture(gl, { image: drawTile(entry, icons[index]), minFilter: gl.LINEAR_MIPMAP_LINEAR })]));
 
   const meshes = orbitTiles.map((tile) => {
     const program = new Program(gl, {
@@ -82,7 +94,7 @@ export async function createOrbitRenderer(canvas: HTMLCanvasElement) {
       depthTest: false,
       depthWrite: false,
       cullFace: false,
-      uniforms: { uTexture: { value: textures.get(tile.label) }, uBounds: { value: [0, 0, 0, 0] }, uTint: { value: [1, 1] } },
+      uniforms: { uTexture: { value: textures.get(tile.site) }, uBounds: { value: [0, 0, 0, 0] }, uTint: { value: [1, 1] } },
     });
     program.setBlendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     const mesh = new Mesh(gl, { geometry, program });

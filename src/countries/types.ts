@@ -1,6 +1,6 @@
 import type { Detector } from "../lib/pii";
 
-export type HeroCard = { slug: string; title: string; prompt: string; alt: string; tone: readonly [string, string, string]; image?: string };
+export type HeroCard = { slug: string; title: string; prompt: string; alt: string; entity?: string; image?: string; tone?: readonly [string, string, string] };
 
 export type FeatureRow = { key: "ask" | "privacy" | "sources" | "browser"; title: string; body: string; cta: string; href?: string };
 
@@ -12,12 +12,13 @@ export type Site = {
   code: string;
   lang: string;
   locale: string;
-  brand: { name: string; tagline: string; notice: string; disclaimer: string };
+  brand: { name: string; tagline: string; notice: string; disclaimer: string; poweredBy: string; handledBy: string };
   meta: { title: string; chatTitle: string; description: string };
   hero: { greeting: string; subtitle: string; tryPrefix: string; cards: readonly HeroCard[] };
   manifesto: { lead: string; beforeSources: string; beforePrivacy: string; afterPrivacy: string; flag: readonly string[] };
   features: readonly FeatureRow[];
-  orbit: readonly string[];
+  orbit: readonly { label: string; domain: string }[];
+  showcase: readonly string[];
   entities: Record<string, Entity>;
   officialSuffixes: readonly string[];
   pii: readonly Detector[];

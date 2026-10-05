@@ -10,6 +10,7 @@ for (const [key, value] of Object.entries(loadEnv(process.env.NODE_ENV ?? "devel
 const country = process.env.COUNTRY ?? "co";
 
 export default defineConfig({
+  site: process.env.SITE_URL ?? "https://gov.usecroma.com",
   output: "static",
   adapter: vercel(),
   devToolbar: { enabled: false },

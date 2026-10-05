@@ -3,6 +3,7 @@ import { cn } from "../../lib/cn";
 import { focusRing } from "../../lib/ui";
 import { site } from "@country/site";
 import { ClockIcon, InfoIcon, LockOutlineIcon, ShieldIcon } from "../icons";
+import CromaCredit from "./CromaCredit";
 import FactsSheet, { type Fact } from "./FactsSheet";
 
 const privacyIcons = [ShieldIcon, LockOutlineIcon, ClockIcon];
@@ -56,6 +57,8 @@ export default function AiDisclaimer({ placeholder }: { placeholder: boolean }) 
             trigger={<button type="button" className={triggerClass}>{site.disclaimers.ai.title}</button>}
           />
         </span>
+        <span aria-hidden className="max-mobile:hidden">·</span>
+        <CromaCredit className="py-1.5 max-mobile:hidden" />
       </span>
     </p>
   );

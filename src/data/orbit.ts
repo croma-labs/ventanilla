@@ -1,8 +1,15 @@
+import icons from "@country/icons.json";
 import { site } from "@country/site";
 
 export const orbitSites = site.orbit;
 
-export type OrbitTile = { label: string; x: number; y: number; z: number; size: number };
+const vendored: Record<string, string> = icons;
+
+export const iconOf = (domain: string) => vendored[site.entities[domain]?.iconFrom ?? domain] ?? `/api/icon?d=${encodeURIComponent(domain)}`;
+
+export type OrbitSite = (typeof orbitSites)[number];
+
+export type OrbitTile = { site: OrbitSite; x: number; y: number; z: number; size: number };
 
 export type ProjectedTile = {
   x: number;
@@ -25,7 +32,7 @@ export const orbitTiles: OrbitTile[] = Array.from({ length: tileCount }, (_, t) 
   const theta = t * Math.PI * (3 - Math.sqrt(5));
   const ring = Math.sqrt(1 - y * y);
   return {
-    label: orbitSites[t % orbitSites.length],
+    site: orbitSites[t % orbitSites.length],
     x: ring * Math.cos(theta),
     y: y * 0.98,
     z: ring * Math.sin(theta),

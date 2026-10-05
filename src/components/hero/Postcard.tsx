@@ -1,28 +1,63 @@
+import { site } from "@country/site";
 import type { HeroCard } from "../../countries/types";
+import EntityIcon from "../chat/EntityIcon";
 
 const grain =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E\")";
 
-export const wash = ({ tone: [deep, mid, light] }: HeroCard) =>
-  `radial-gradient(120% 90% at 85% 10%, ${light} 0%, transparent 55%), radial-gradient(90% 80% at 10% 100%, ${mid} 0%, transparent 60%), linear-gradient(160deg, ${mid} 0%, ${deep} 70%)`;
+const photo = (name: string, size = "") => `/hero/${site.code}/${name}${size}.webp`;
 
-export default function Postcard({ card, detail }: { card: HeroCard; detail: boolean }) {
-  if (card.image) return <img alt={card.alt} src={card.image} className="absolute inset-0 size-full object-cover" decoding="async" draggable={false} />;
+const fallbackTone = ["#0e1a33", "#003893", "#fcd116"] as const;
+
+export const wash = ({ image, tone = fallbackTone }: HeroCard) => {
+  if (image) return `url(${photo(image, "-blur")})`;
+  const [deep, mid, light] = tone;
+  return `radial-gradient(120% 90% at 85% 10%, ${light} 0%, transparent 55%), radial-gradient(90% 80% at 10% 100%, ${mid} 0%, transparent 60%), linear-gradient(160deg, ${mid} 0%, ${deep} 70%)`;
+};
+
+function Caption({ card }: { card: HeroCard }) {
+  const entity = card.entity ? site.entities[card.entity] : undefined;
   return (
-    <div role="img" aria-label={card.alt} className="absolute inset-0 overflow-hidden" style={{ backgroundImage: wash(card) }}>
-      <div aria-hidden className="absolute inset-0 mix-blend-soft-light" style={{ backgroundImage: grain }} />
-      {detail && (
-        <>
-          <div aria-hidden className="absolute -top-[18%] -right-[12%] aspect-square w-[62%] rounded-full border border-white/25" />
-          <div aria-hidden className="absolute -top-[6%] right-[2%] aspect-square w-[38%] rounded-full border border-white/15" />
-          <p
-            aria-hidden
-            className="absolute right-8 bottom-6 left-8 font-serif-display text-[clamp(3.5rem,11vw,7.5rem)] leading-[0.92] tracking-[-0.02em] text-balance text-white/95 mobile:right-12 mobile:bottom-10 mobile:left-12"
-          >
-            {card.title}
-          </p>
-        </>
+    <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-3 px-7 pt-24 pb-7 mobile:gap-4 mobile:px-11 mobile:pb-10">
+      <div aria-hidden className="absolute inset-0 -z-10 bg-linear-to-t from-[#120a04]/75 via-[#120a04]/30 to-transparent" />
+      {entity && card.entity && (
+        <span className="flex items-center gap-2 rounded-full bg-white/14 py-1 pr-3.5 pl-1 text-[13px] leading-none font-medium text-white/95 ring-1 ring-white/20 backdrop-blur-md">
+          <span className="size-6 shrink-0 overflow-hidden rounded-full bg-white p-0.5">
+            <EntityIcon domain={entity.iconFrom ?? card.entity} short={entity.short} />
+          </span>
+          <span className="text-white/70">{site.brand.handledBy}</span>
+          {entity.name}
+        </span>
       )}
+      <p className="font-serif-display text-[clamp(3rem,9vw,5.75rem)] leading-[0.92] tracking-[-0.02em] text-balance text-white drop-shadow-[0_2px_24px_rgb(0_0_0/0.25)]">
+        {card.title}
+      </p>
+    </div>
+  );
+}
+
+export default function Postcard({ card, detail, priority = false }: { card: HeroCard; detail: boolean; priority?: boolean }) {
+  if (card.image)
+    return (
+      <div className="absolute inset-0 isolate overflow-hidden bg-[#2a1a0e]">
+        <img
+          alt={card.alt}
+          src={photo(card.image)}
+          srcSet={`${photo(card.image, "-800")} 800w, ${photo(card.image)} 1344w`}
+          sizes="(min-width: 768px) 688px, 100vw"
+          className="absolute inset-0 -z-20 size-full object-cover"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          decoding="async"
+          draggable={false}
+        />
+        {detail && <Caption card={card} />}
+      </div>
+    );
+  return (
+    <div role="img" aria-label={card.alt} className="absolute inset-0 isolate overflow-hidden" style={{ backgroundImage: wash(card) }}>
+      <div aria-hidden className="absolute inset-0 mix-blend-soft-light" style={{ backgroundImage: grain }} />
+      {detail && <Caption card={card} />}
     </div>
   );
 }

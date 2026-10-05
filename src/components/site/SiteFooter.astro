@@ -2,6 +2,7 @@
 import { site } from "@country/site";
 import mark from "../../assets/svg/mark.svg?raw";
 import { focusRing } from "../../lib/ui";
+import CromaCredit from "./CromaCredit";
 
 const inlineLink = `inline-block rounded-xs underline-offset-4 hover:underline ${focusRing}`;
 const external = (href: string) => (href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {});
@@ -25,6 +26,9 @@ const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="size-10
     </nav>
     <div class="col-span-full flex min-w-0 flex-col items-center gap-6">
       <p class="font-serif-display text-[clamp(4.5rem,18vw,15rem)] leading-[0.9] tracking-[-0.03em] text-text-primary">{site.brand.name}</p>
+      <span aria-hidden="true" class="flex h-1.5 w-32 overflow-hidden rounded-full">
+        <span class="flex-[2] bg-flag-yellow"></span><span class="flex-1 bg-flag-blue"></span><span class="flex-1 bg-flag-red"></span>
+      </span>
       <div class="type-site-11 flex w-full min-w-0 flex-col items-center gap-6 pt-4 pb-8 text-center">
         <p class="flex max-w-xl flex-col items-center gap-4 text-text-secondary">
           <Fragment set:html={markMarkup} />
@@ -32,9 +36,7 @@ const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="size-10
         </p>
         <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           {site.nav.legal.map((link) => <a href={link.href} {...external(link.href)} class={inlineLink}>{link.label}</a>)}
-          <span>
-            Datos por <a href="https://usecroma.com" target="_blank" rel="noopener noreferrer" class={inlineLink}>Croma</a>
-          </span>
+          <CromaCredit />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { site } from "@country/site";
 import { useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { orbitPeriodMs, orbitTiles, projectTile, restingAngle } from "../../data/orbit";
+import { iconOf, orbitPeriodMs, orbitTiles, projectTile, restingAngle } from "../../data/orbit";
 import { cn } from "../../lib/cn";
 import { usePageVisible, useReducedMotion } from "../../lib/hooks";
 import { buttonBase } from "../../lib/ui";
@@ -13,7 +13,7 @@ const round = (value: number, digits = 4) => Math.round(value * 10 ** digits) / 
 const staticTiles = orbitTiles.map((tile) => {
   const projected = projectTile(tile, restingAngle);
   return {
-    label: tile.label,
+    site: tile.site,
     left: `${round(projected.x * 100, 2)}%`,
     top: `${round(projected.y * 100, 2)}%`,
     width: `${round(projected.width * 100, 2)}%`,
@@ -31,10 +31,11 @@ function OrbitStatic() {
         <span
           key={index}
           aria-hidden
-          className="absolute grid -translate-1/2 place-items-center overflow-hidden rounded-[6%] bg-white px-[4%] text-center font-serif-display leading-none text-text-primary shadow-elevation-1 [container-type:inline-size]"
+          className="absolute flex -translate-1/2 items-center gap-[6%] overflow-hidden rounded-[6%] bg-white px-[7%] font-serif-display leading-none text-text-primary shadow-elevation-1 [container-type:inline-size]"
           style={{ left: tile.left, top: tile.top, width: tile.width, height: tile.height, opacity: tile.opacity, filter: tile.filter, zIndex: tile.zIndex }}
         >
-          <span style={{ fontSize: "13cqi" }}>{tile.label}</span>
+          <img src={iconOf(tile.site.domain)} alt="" className="aspect-square w-[24%] shrink-0 object-contain" />
+          <span style={{ fontSize: "11cqi" }}>{tile.site.label}</span>
         </span>
       ))}
     </>
@@ -104,7 +105,7 @@ export default function FederalOrbit({ className }: { className?: string }) {
         {!ready && <OrbitStatic />}
         {!failed && <canvas ref={canvas} className={cn("absolute inset-0 size-full", !ready && "invisible")} />}
       </div>
-      <p className="sr-only">An animated sphere of government website previews rotates, illustrating 29,000 websites brought together in one place.</p>
+      <p className="sr-only">Una esfera animada con las entidades del Estado colombiano que Ventanilla consulta.</p>
       {!reduced && !failed && (
         <div className="absolute right-6 bottom-6 z-10">
           <button

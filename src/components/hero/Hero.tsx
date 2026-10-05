@@ -21,13 +21,13 @@ function Backdrop({ index, progress }: { index: number; progress: MotionValue<nu
   const opacity = useTransform(progress, (position) => Math.max(0, 1 - Math.abs(wrap(-count / 2, count / 2, index - position))));
   return (
     <motion.div aria-hidden className="absolute inset-0 will-change-[opacity]" style={{ opacity }}>
-      <div className="absolute inset-0 blur-2xl" style={{ backgroundImage: wash(heroCards[index]) }} />
+      <div className="absolute inset-0 bg-cover bg-center blur-3xl saturate-150" style={{ backgroundImage: wash(heroCards[index]) }} />
     </motion.div>
   );
 }
 
 function Slide({ index, mounted }: { index: number; mounted: boolean }) {
-  return <div className="absolute inset-0 overflow-hidden">{mounted && <Postcard card={heroCards[index]} detail />}</div>;
+  return <div className="absolute inset-0 overflow-hidden">{mounted && <Postcard card={heroCards[index]} detail priority={index === 0} />}</div>;
 }
 
 function PlaybackIcon({ paused }: { paused: boolean }) {
@@ -124,7 +124,7 @@ export default function Hero() {
           aria-hidden
           className="squircle pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-40 [clip-path:inset(0_round_var(--radius-40))] mobile:rounded-48 mobile:[clip-path:inset(0_round_var(--radius-48))]"
         >
-          <div className="absolute top-[-16%] left-[-12%] h-[132%] w-[124%] opacity-10">
+          <div className="absolute top-[-16%] left-[-12%] h-[132%] w-[124%] opacity-30">
             {heroCards.map((card, index) => (
               <Backdrop key={card.slug} index={index} progress={progress} />
             ))}

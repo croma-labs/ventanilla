@@ -1,7 +1,7 @@
 ---
 import browser from "../../assets/svg/browser-feature.svg?raw";
 import { site } from "@country/site";
-import Monogram from "../chat/Monogram";
+import { iconOf } from "../../data/orbit";
 import { focusRing } from "../../lib/ui";
 import FederalOrbit from "./FederalOrbit";
 import PrivacyCard from "./PrivacyCard";
@@ -11,7 +11,7 @@ const link = `site-underline-link relative inline-block w-fit rounded-4 type-sit
 const browserMarkup = browser.replace("<svg ", '<svg aria-hidden="true" class="size-full" ');
 
 const rows = site.features;
-const sealEntities = Object.entries(site.entities).filter(([domain]) => domain.includes(".")).slice(1, 10);
+const showcase = site.showcase.map((domain) => ({ domain, icon: iconOf(domain) }));
 ---
 
 <section id="how-it-works" class="site-container flex flex-col items-center gap-20 py-24 mobile:gap-30 mobile:pb-64">
@@ -24,11 +24,9 @@ const sealEntities = Object.entries(site.entities).filter(([domain]) => domain.i
           {row.key === "sources" && (
             <div class:list={[card, "bg-surface-muted"]}>
               <div aria-hidden="true" class="absolute -inset-[18%] grid grid-cols-3 grid-rows-3 gap-8">
-                {sealEntities.map(([domain, entity]) => (
-                  <div class="relative min-h-0 min-w-0 rounded-full bg-white shadow-[0_8px_24px_rgb(1_14_36/12%)]">
-                    <div class="absolute inset-4">
-                      <Monogram seed={domain} label={entity.short} />
-                    </div>
+                {showcase.map(({ icon }) => (
+                  <div class="relative min-h-0 min-w-0 rounded-full bg-white shadow-[0_8px_24px_rgb(14_26_51/12%)] ring-1 ring-[#0e1a33]/5">
+                    <img src={icon} alt="" loading="lazy" decoding="async" class="absolute inset-[22%] size-[56%] object-contain" />
                   </div>
                 ))}
               </div>
