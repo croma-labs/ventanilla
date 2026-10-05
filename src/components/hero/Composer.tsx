@@ -52,8 +52,11 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
     const element = textarea.current;
     if (!element) return;
     element.style.height = "auto";
-    const lineHeight = parseFloat(getComputedStyle(element).lineHeight);
-    element.style.height = `${Math.min(element.scrollHeight, lineHeight * 3 + 16)}px`;
+    const style = getComputedStyle(element);
+    const lineHeight = parseFloat(style.lineHeight) || parseFloat(style.fontSize) * 1.5;
+    const max = lineHeight * 3 + 16;
+    element.style.height = `${Math.min(element.scrollHeight, max)}px`;
+    element.style.overflowY = element.scrollHeight > max + 1 ? "auto" : "hidden";
   }, [value]);
 
   const submit = (event?: { preventDefault: () => void }) => {
