@@ -7,7 +7,7 @@ export type CachedAnswer = { answer: string; groundings: Grounding[]; followUps:
 
 const ttl = Number(process.env.ANSWER_CACHE_SECONDS ?? 6 * 3600);
 
-const keyFor = async (question: string) => `answer:v8:${await sha256(keywords(question))}`;
+const keyFor = async (question: string) => `answer:v9:${await sha256(keywords(question))}`;
 
 export async function recall(question: string) {
   if (!ttl) return null;

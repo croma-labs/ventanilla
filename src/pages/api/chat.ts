@@ -57,14 +57,38 @@ async function toModelMessages(turns: z.infer<typeof payload>["messages"]) {
   return messages.at(-1)?.role === "user" ? messages : null;
 }
 
+const markdownLink = /\[([^\]]*)\]\((https?:\/\/[^)\s]+)\)/g;
+
+const sameUrl = (a: string, b: string) => a.replace(/\/$/, "") === b.replace(/\/$/, "");
+
+const hostLike = /^(?:https?:\/\/)?(?:www\.)?([a-z0-9-]+(?:\.[a-z0-9-]+){2,})(?:\/\S*)?$/i;
+
+const titleOf = (text: string) => {
+  const clean = text.replace(/[*_`]/g, "").trim();
+  const host = clean.match(hostLike)?.[1];
+  return host ? host.toLowerCase() : clean.charAt(0).toUpperCase() + clean.slice(1);
+};
+
+/** Every link the answer shows comes first (in reading order), so the interface can render it and list it; backing sources fill the remaining slots. */
 function rankSources(sources: Map<string, Source>, answer: string, live = false, supporting: string[] = []): Grounding[] {
   const all = [...sources.values()].filter((source) => official(source.url));
-  const cited = all.filter((source) => answer.includes(source.url));
-  const backing = all.filter((source) => !cited.includes(source) && supporting.includes(source.url));
-  const rest = all.filter((source) => !cited.includes(source) && !backing.includes(source));
-  return [...cited, ...backing, ...(live ? rest.slice(0, 3) : [])]
-    .slice(0, maxSources)
-    .map((source) => ({ title: source.title, url: source.url, currency: "verified" }));
+  const cited = new Map<string, Source>();
+  const used = new Set<Source>();
+  for (const [, text, url] of answer.matchAll(markdownLink)) {
+    if (!official(url) || cited.has(url)) continue;
+    const match = all.find((source) => sameUrl(source.url, url));
+    if (match) used.add(match);
+    cited.set(url, match ?? { title: titleOf(text) || new URL(url).hostname, url });
+  }
+  for (const source of all) {
+    if (used.has(source) || !answer.includes(source.url)) continue;
+    used.add(source);
+    cited.set(source.url, source);
+  }
+  const backing = all.filter((source) => !used.has(source) && supporting.includes(source.url));
+  const rest = all.filter((source) => !used.has(source) && !backing.includes(source));
+  const room = Math.max(0, maxSources - cited.size);
+  return [...cited.values(), ...[...backing, ...(live ? rest.slice(0, 3) : [])].slice(0, room)].map((source) => ({ title: source.title, url: source.url, currency: "verified" }));
 }
 
 const stripToolMarkup = (text: string) => text.replace(/<\/?(?:tool_call|function|parameter)[^>]*>/g, "");

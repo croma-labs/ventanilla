@@ -1,7 +1,7 @@
 import { site } from "@country/site";
 import type { Entity } from "../../countries/types";
 
-const hostOf = (url: string) => {
+export const hostOf = (url: string) => {
   try {
     return new URL(url).hostname.replace(/^www\./, "");
   } catch {
