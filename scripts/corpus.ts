@@ -33,7 +33,7 @@ async function pull() {
   await writeFile(corpusFiles.docs, docs.map((doc) => JSON.stringify(doc)).join("\n"));
   await writeFile(corpusFiles.index, JSON.stringify(index));
   await writeFile(corpusFiles.manifest, JSON.stringify({ ...manifest, pulled_at: new Date().toISOString() }, null, 2));
-  console.info(`corpus: ${docs.length} fichas (${manifest.scope}, ${manifest.generated_at}) indexed in ${Date.now() - started} ms`);
+  console.info(`corpus: ${docs.length} procedures (${manifest.scope}, ${manifest.generated_at}) indexed in ${Date.now() - started} ms`);
 }
 
 if (!token) {
