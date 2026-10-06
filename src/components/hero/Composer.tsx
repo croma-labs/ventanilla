@@ -1,7 +1,7 @@
 import { site } from "@country/site";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
-import { snapshotOrigin, submitQuestion, useChatBusy } from "../../lib/chat-store";
+import { snapshotOrigin, submitQuestion, useChatBusy, useChatPhase } from "../../lib/chat-store";
 import { cn } from "../../lib/cn";
 import { findSensitive } from "../../lib/pii";
 import { buttonBase } from "../../lib/ui";
@@ -47,6 +47,17 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
     if (!autoFocus || !matchMedia("(pointer: fine)").matches) return;
     textarea.current?.focus({ preventScroll: true });
   }, [autoFocus]);
+
+  const phase = useChatPhase();
+  const wasBusy = useRef(false);
+  useEffect(() => {
+    const finished = wasBusy.current && !busy;
+    wasBusy.current = busy;
+    if (!finished || variant !== "dock" || phase !== "chat" || !matchMedia("(pointer: fine)").matches) return;
+    const active = document.activeElement;
+    if (active instanceof HTMLElement && active !== textarea.current && active.matches("input, textarea, select, [contenteditable]")) return;
+    textarea.current?.focus({ preventScroll: true });
+  }, [busy, phase, variant]);
 
   useEffect(() => {
     const element = textarea.current;
