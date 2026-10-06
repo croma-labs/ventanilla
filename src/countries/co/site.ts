@@ -22,6 +22,7 @@ export const site: Site = {
     description: "Cómo sacar el pasaporte, la cédula, el RUT o la licencia de conducción, cambiarte de EPS o pagar un comparendo. Respuestas claras que citan solo fuentes oficiales.",
     keywords: ["trámites Colombia", "pasaporte", "cédula", "RUT", "licencia de conducción", "EPS", "comparendo", "Sisbén", "pensión", "tutela", "gov.co"],
     publisher: { name: "Croma", url: "https://usecroma.com" },
+    repo: { url: "https://github.com/croma-labs/ventanilla", label: "Código fuente en GitHub" },
   },
   hero: {
     greeting: "Hola, Colombia",
@@ -168,6 +169,7 @@ export const site: Site = {
       { label: "Cómo funciona", href: "/#how-it-works" },
       { label: "Privacidad", href: "/#privacidad" },
       { label: "Datos por Croma", href: "https://usecroma.com" },
+      { label: "GitHub", href: "https://github.com/croma-labs/ventanilla" },
     ],
     legal: [{ label: "Fuentes y cobertura", href: "https://docs.usecroma.com/guides/colombia/funcion-publica" }],
   },

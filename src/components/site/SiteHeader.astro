@@ -3,6 +3,7 @@ import { site } from "@country/site";
 import mark from "../../assets/svg/mark.svg?raw";
 import CromaCredit from "./CromaCredit";
 import MenuSheet from "./MenuSheet";
+import RepoBadge from "./RepoBadge";
 
 const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="h-6 w-9 shrink-0" ');
 ---
@@ -21,6 +22,8 @@ const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="h-6 w-9
         <span class="mobile:hidden">{site.brand.noticeShort}</span>
         <span aria-hidden="true" class="max-mobile:hidden">·</span>
         <CromaCredit className="max-mobile:hidden" />
+        <span aria-hidden="true" class="max-mobile:hidden">·</span>
+        <RepoBadge className="max-mobile:hidden" />
       </p>
     </div>
     <div class="site-header-wrap absolute inset-x-0 top-full">
