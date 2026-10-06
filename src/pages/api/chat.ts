@@ -231,8 +231,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         controller.enqueue(encoder.encode("data: [DONE]\n\n"));
         controller.close();
       } catch {}
-      const answered = !evaluation && !conversational && (outcome === "ok" || outcome === "cached");
-      waitUntil(Promise.allSettled([reading, ...pendingWork(), ...(answered ? [countQuery()] : [])]));
+      waitUntil(Promise.allSettled([reading, ...pendingWork(), ...(evaluation ? [] : [countQuery()])]));
       console.info(
         JSON.stringify({
           event: "chat",
