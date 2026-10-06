@@ -1,0 +1,16 @@
+---
+import icons from "@country/icons.json";
+import Monogram from "../chat/Monogram";
+
+interface Props {
+  domain: string;
+  short: string;
+  class?: string;
+}
+
+const { domain, short, class: className } = Astro.props;
+const vendored: Record<string, string> = icons;
+const src = vendored[domain];
+---
+
+{src ? <img src={src} alt="" width="32" height="32" loading="lazy" decoding="async" class={className} /> : <Monogram seed={domain} label={short} className={className} />}

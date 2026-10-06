@@ -3,6 +3,10 @@
     "answer": "Para sacar tu primer pasaporte, debes diligenciar la solicitud en línea y luego presentarte personalmente en la oficina elegida para la toma de huellas, foto y firma.\n\n### Cómo hacerlo\n- Inicia el trámite en el [formulario en línea](https://tramitesmre.cancilleria.gov.co/tramites/enlinea/pasaporte/solicitar.xhtml).\n- Adjunta una foto reciente (máximo 6 meses) que cumpla con los estándares de la OACI.\n- Preséntate en la oficina con tu **cédula de ciudadanía** vigente o, si es tu primera vez, con la contraseña original de la Registraduría y copia del registro civil de nacimiento.\n- Si tienes un pasaporte anterior, entrégalo; si lo perdiste, infórmalo bajo juramento.\n\nLa entrega en Bogotá tarda 24 horas hábiles tras el pago, mientras que en la Red CADE y Gobernaciones es de 48 horas. Consulta los [requisitos completos](https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/requisitos) antes de ir.",
     "sources": [
       {
+        "title": "Formulario en línea",
+        "url": "https://tramitesmre.cancilleria.gov.co/tramites/enlinea/pasaporte/solicitar.xhtml"
+      },
+      {
         "title": "Requisitos | Cancillería",
         "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/requisitos"
       },
@@ -37,6 +41,10 @@
       {
         "title": "Cédula de ciudadanía digital – Primera vez",
         "url": "https://www.registraduria.gov.co/Cedula-digital-Primera-vez-7585.html"
+      },
+      {
+        "title": "Estado del Trámite",
+        "url": "https://wsp.registraduria.gov.co/estado_docs/documento/consultar/"
       },
       {
         "title": "Cédula de ciudadanía - Registraduría Nacional del Estado Civil",
@@ -95,6 +103,14 @@
     "answer": "Para sacar tu licencia de conducción por primera vez, debes cumplir requisitos legales, aprobar exámenes y realizar el trámite ante la entidad de tránsito de tu ciudad.\n\n### Requisitos básicos\n- Saber leer y escribir y tener **16 años** (particular) o **18 años** (público).\n- Estar inscrito en el [RUNT](https://www.runt.com.co).\n- Estar a paz y salvo por multas de tránsito.\n- Aprobar el examen de aptitud física, mental y de coordinación motriz.\n- Obtener el certificado de aptitud en conducción de un centro autorizado.\n- Aprobar el examen teórico y práctico de conducción.\n\n### Cómo hacerlo\n- Agenda cita en la entidad de tránsito de tu ciudad, por ejemplo, en la [Ventanilla Única de Servicios de Bogotá](https://vus.circulemosdigital.com.co/#/login) o consulta la [guía de Medellín](https://www.medellin.gov.co/es/tramites-y-servicios/licencia-de-conduccion/).\n- Presenta tu documento de identidad y los certificados obtenidos.\n- Paga la tarifa del trámite en el módulo dispuesto para ello.\n\nLos costos varían según la ciudad y el tipo de vehículo; verifica los valores actualizados en el portal de tu entidad de tránsito.",
     "sources": [
       {
+        "title": "RUNT",
+        "url": "https://www.runt.com.co"
+      },
+      {
+        "title": "Ventanilla Única de Servicios de Bogotá",
+        "url": "https://vus.circulemosdigital.com.co/#/login"
+      },
+      {
         "title": "Licencia de Conducción: requisitos y preguntas frecuentes",
         "url": "https://www.medellin.gov.co/es/tramites-y-servicios/licencia-de-conduccion/"
       },
@@ -114,6 +130,10 @@
   "rut": {
     "answer": "Puedes sacar tu RUT de forma virtual y gratuita a través del portal de la DIAN.\n\n### Cómo hacerlo\n1. Ingresa a la [inscripción virtual RUT](https://muisca.dian.gov.co/WebRutVirtualInscripcion/) y selecciona \"Persona natural\".\n2. Escribe tu número de cédula de ciudadanía y acepta el tratamiento de datos.\n3. Elige el motivo de inscripción, registra tu correo electrónico y valida el código que recibirás.\n4. Diligencia tus datos sensibles, ubicación, contacto y actividades económicas.\n5. Selecciona tus responsabilidades tributarias y envía el formulario.\n\nSolo necesitas tener a la mano tu documento de identidad vigente, ya que los datos se validan en línea con la Registraduría, según el [Abecé RUT en línea](https://www.dian.gov.co/impuestos/Documents/Abece-Inscripcion-en-linea-RUT.pdf). Una vez completado, podrás descargar tu RUT desde el portal o recibirlo por correo electrónico.",
     "sources": [
+      {
+        "title": "Inscripción virtual RUT",
+        "url": "https://muisca.dian.gov.co/WebRutVirtualInscripcion/"
+      },
       {
         "title": "Abece_RUT_linea vertical",
         "url": "https://www.dian.gov.co/impuestos/Documents/Abece-Inscripcion-en-linea-RUT.pdf"
@@ -146,6 +166,10 @@
   "cambiar-de-eps": {
     "answer": "Puedes cambiar de EPS de forma presencial o en línea a través del portal [www.miseguridadsocial.gov.co](https://www.miseguridadsocial.gov.co), siempre que cumplas con los requisitos legales establecidos por la [Supersalud](https://www.supersalud.gov.co/es-co/transparencia-y-acceso-a-la-informacion-publica/informacion-especifica-para-grupos-de-interes/preguntas-y-respuestas-frecuentes).\n\n### Requisitos\n- Haber estado inscrito en la EPS actual por un mínimo de **360 días** (continuos o discontinuos).\n- Que ningún miembro de tu núcleo familiar esté internado en una institución prestadora de servicios de salud.\n- Si eres cotizante independiente, estar a paz y salvo con las cotizaciones.\n- Incluir a todo el núcleo familiar en la solicitud de traslado.\n\n### Cómo hacerlo\n- **En línea:** Ingresa al portal oficial y completa los datos para realizar el traslado.\n- **Presencial:** Diligencia el formulario de afiliación en la oficina de la nueva EPS.\n\nEl traslado será efectivo el primer día del mes siguiente si solicitas el trámite dentro de los primeros cinco días del mes; de lo contrario, se aplicará desde el primer día del mes subsiguiente, según lo indica la [Secretaría de Salud de Manizales](https://centrodeinformacion.manizales.gov.co/ejercer-el-derecho-al-cambio-de-eps-proceso-sencillo-y-eficaz-por-los-canales-oficiales/).",
     "sources": [
+      {
+        "title": "miseguridadsocial.gov.co",
+        "url": "https://www.miseguridadsocial.gov.co"
+      },
       {
         "title": "Supersalud | Preguntas frecuentes",
         "url": "https://www.supersalud.gov.co/es-co/transparencia-y-acceso-a-la-informacion-publica/informacion-especifica-para-grupos-de-interes/preguntas-y-respuestas-frecuentes"
@@ -263,6 +287,14 @@
         "url": "https://www.sdp.gov.co/gestion-estudios-estrategicos/sisben/preguntas-frecuentes"
       },
       {
+        "title": "Ficho Digital",
+        "url": "https://distritodemedellinvirtual.sistemasentry.com.co/Visionweb.new/solicitarcita"
+      },
+      {
+        "title": "Portal Ciudadano",
+        "url": "https://portalciudadano.sisben.gov.co"
+      },
+      {
         "title": "Trámites destacados",
         "url": "https://portal.sisben.gov.co/paginas/tramites-destacados.html"
       },
@@ -319,12 +351,12 @@
     "answer": "Puedes presentar una acción de tutela de forma verbal o escrita ante cualquier juez del lugar donde ocurrió la violación, sin necesidad de abogado.\n\n### Cómo hacerlo\n- Redacta un escrito o acude personalmente indicando los hechos, el derecho vulnerado y los datos de identificación.\n- Asegúrate de que no exista otro medio judicial eficaz para proteger tu derecho, salvo que haya un **perjuicio irremediable**.\n- Si prefieres hacerlo digitalmente, puedes usar la [Recepción Tutela en Línea](https://www.ramajudicial.gov.co/web/consejo-superior-de-la-judicatura/ventanilla-de-servicios/-/asset_publisher/TIpGpe2ENeIh/content/id/144991791) del Consejo Superior de la Judicatura.\n\nEl juez debe decidir dentro de los **10 días** siguientes a la solicitud. Para más detalles sobre los requisitos formales, consulta las [Preguntas Frecuentes de la Corte Constitucional](https://www.ramajudicial.gov.co/web/corte-constitucional/portal/corporacion/secretaria-general/preguntas-frecuentes).",
     "sources": [
       {
-        "title": "Preguntas Frecuentes - Corte Constitucional",
-        "url": "https://www.ramajudicial.gov.co/web/corte-constitucional/portal/corporacion/secretaria-general/preguntas-frecuentes"
-      },
-      {
         "title": "Recepción Tutela en Línea - Consejo Superior de la Judicatura",
         "url": "https://www.ramajudicial.gov.co/web/consejo-superior-de-la-judicatura/ventanilla-de-servicios/-/asset_publisher/TIpGpe2ENeIh/content/id/144991791"
+      },
+      {
+        "title": "Preguntas Frecuentes - Corte Constitucional",
+        "url": "https://www.ramajudicial.gov.co/web/corte-constitucional/portal/corporacion/secretaria-general/preguntas-frecuentes"
       },
       {
         "title": "Ministerio de Justicia y del Derecho",
@@ -347,12 +379,12 @@
     "answer": "La licencia de paternidad en Colombia dura **dos (2) semanas** para los trabajadores afiliados al sistema de seguridad social, según la [Ley 2114 de 2021](https://cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/ley_2114_2021.pdf).\n\n### Duración y ampliación\n*   El derecho base es de **dos (2) semanas** remuneradas.\n*   Se amplía en **una (1) semana** por cada punto porcentual de disminución de la tasa de desempleo estructural, sin superar las **cinco (5) semanas** en total.\n*   Para servidores públicos, el [Decreto 2126 de 2023](https://normograma.supersalud.gov.co/compilacion/docs/decreto_2126_2023.htm) establece que debe disfrutarse durante los **treinta (30) días** siguientes al nacimiento o adopción.\n\n### Requisitos\n*   El padre debe haber cotizado durante el período de gestación, incluido el mes de inicio de la licencia.\n*   Si cotizó por un período inferior, el reconocimiento será **proporcional**.\n*   El soporte válido es el Registro Civil de Nacimiento, presentado a la EPS a más tardar dentro de los **30 días** siguientes al nacimiento.",
     "sources": [
       {
-        "title": "Compilación Jurídica SuperSalud - Decreto 2126 de 2023",
-        "url": "https://normograma.supersalud.gov.co/compilacion/docs/decreto_2126_2023.htm"
-      },
-      {
         "title": "Normograma del Ministerio de Relaciones Exteriores",
         "url": "https://cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/ley_2114_2021.pdf"
+      },
+      {
+        "title": "Compilación Jurídica SuperSalud - Decreto 2126 de 2023",
+        "url": "https://normograma.supersalud.gov.co/compilacion/docs/decreto_2126_2023.htm"
       },
       {
         "title": "Rï¿½GIMEN LEGAL DE BOGOTï¿½ D.C.",
@@ -455,8 +487,8 @@
     "answer": "Para renovar tu pasaporte vencido, debes diligenciar el [formulario de solicitud en línea](https://tramitesmre.cancilleria.gov.co/tramites/enlinea/pasaporte/solicitar.xhtml) y luego recoger la libreta de manera presencial en la oficina que selecciones.\n\n### Requisitos y pasos\n- **Identificación:** Presenta tu cédula de ciudadanía vigente o la contraseña expedida por la Registraduría acompañada del certificado de vigencia, según los [requisitos de la Cancillería](https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/requisitos).\n- **Foto:** Adjunta una fotografía reciente (no mayor a 6 meses) que cumpla con los estándares de la OACI, como indica la [guía de Pasaporte en Línea](https://cancilleria.gov.co/sites/default/files/FOTOS2024/2026/PAS-PasaporteLineaWeb.pdf).\n- **Entrega:** Recoge el documento en la sede elegida; si es por renovación, debes presentar el pasaporte anterior salvo que sea por pérdida o hurto.\n- **Plazo de reposición:** Si encuentras errores en los datos, tienes un mes desde la entrega para solicitar la reposición.\n\nPuedes consultar el estado de tu trámite en la [página de la Cancillería](https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes).",
     "sources": [
       {
-        "title": "Pasaportes - Bogotá",
-        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes"
+        "title": "Formulario de solicitud en línea",
+        "url": "https://tramitesmre.cancilleria.gov.co/tramites/enlinea/pasaporte/solicitar.xhtml"
       },
       {
         "title": "Requisitos | Cancillería",
@@ -465,6 +497,10 @@
       {
         "title": "Pasaporte en Línea",
         "url": "https://cancilleria.gov.co/sites/default/files/FOTOS2024/2026/PAS-PasaporteLineaWeb.pdf"
+      },
+      {
+        "title": "Pasaportes - Bogotá",
+        "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes"
       },
       {
         "title": "Pasaportes | Cancillería",
@@ -481,6 +517,10 @@
       {
         "title": "Crear solicitud apostilla/legalización",
         "url": "https://tramites.cancilleria.gov.co/apostillalegalizacion/solicitud/inicio.aspx"
+      },
+      {
+        "title": "Formulario de la Registraduría",
+        "url": "https://apostilla.registraduria.gov.co/index"
       },
       {
         "title": "Apostilla y legalización en línea | Cancillería",
@@ -510,6 +550,10 @@
   "visa-colombiana": {
     "answer": "Para vivir en Colombia de forma permanente, debes solicitar la **Visa de Residente (tipo R)** a través de la plataforma digital del Ministerio de Relaciones Exteriores.\n\n### Cómo hacerlo\n- Ingresa al [formulario de solicitud de visa](https://tramitesmre.cancilleria.gov.co/tramites/enlinea/solicitarVisa.xhtml) y diligencia los datos con exactitud.\n- Adjunta los documentos digitalizados en PDF y una fotografía en JPG (máx. 300 KB).\n- Si estás en Colombia, elige \"Oficina en Bogotá\"; si estás en el exterior, selecciona el consulado más cercano a tu residencia.\n\n### Requisitos clave\n- Pasaporte vigente por mínimo 6 meses, en buen estado y con hojas libres.\n- Si estás en Colombia, demuestra tu situación migratoria regular.\n- Documentos extranjeros deben tener apostilla o legalización y traducción oficial al castellano.\n\nConsulta los requisitos específicos de tu caso en la [Resolución 5477 de 2022](https://cancilleria.gov.co/sites/default/files/Normograma/docs/resolucion_minrelaciones_5477_2022.htm).",
     "sources": [
+      {
+        "title": "Formulario de solicitud de visa",
+        "url": "https://tramitesmre.cancilleria.gov.co/tramites/enlinea/solicitarVisa.xhtml"
+      },
       {
         "title": "Ministerio de Relaciones Exteriores - Normograma [RESOLUCION 5477 de 2022 Ministerio de Relaciones Exteriores]",
         "url": "https://cancilleria.gov.co/sites/default/files/Normograma/docs/resolucion_minrelaciones_5477_2022.htm"
@@ -565,6 +609,14 @@
       {
         "title": "Tarjeta de identidad - Primera vez",
         "url": "https://www.registraduria.gov.co/Tarjeta-de-identidad-Primera-vez-7595.html"
+      },
+      {
+        "title": "Agendamiento de citas",
+        "url": "https://agenda.registraduria.gov.co/agenda/"
+      },
+      {
+        "title": "Estado de documentos",
+        "url": "https://wsp.registraduria.gov.co/estado_docs/documento/consultar/"
       },
       {
         "title": "Tarjeta de identidad - Bogotá",
@@ -683,12 +735,16 @@
     "answer": "Primero debes comunicarte con tu EPS; si no recibes respuesta oportuna o estás en desacuerdo, puedes acudir a la [Superintendencia Nacional de Salud](https://www.supersalud.gov.co/es-co/atencion-ciudadano/preguntas-frecuentes).\n\n### Cómo hacerlo\n- Rellena el [formulario web de PQRD](https://superargo.supersalud.gov.co/2/formularioWeb/) en la página oficial.\n- Incluye tu nombre, identificación, datos de contacto, descripción clara del motivo y el nombre de tu EPS.\n- También puedes llamar a la línea gratuita 018000513700.\n\nPuedes dar seguimiento a tu radicado en [superargo.supersalud.gov.co](https://superargo.supersalud.gov.co/2/formularioWeb/pqrd.php) usando el número de radicado y tus datos de identificación.",
     "sources": [
       {
+        "title": "Supersalud | Preguntas frecuentes",
+        "url": "https://www.supersalud.gov.co/es-co/atencion-ciudadano/preguntas-frecuentes"
+      },
+      {
         "title": "Gestión Documental y Trámites",
         "url": "https://superargo.supersalud.gov.co/2/formularioWeb/"
       },
       {
-        "title": "Supersalud | Preguntas frecuentes",
-        "url": "https://www.supersalud.gov.co/es-co/atencion-ciudadano/preguntas-frecuentes"
+        "title": "superargo.supersalud.gov.co",
+        "url": "https://superargo.supersalud.gov.co/2/formularioWeb/pqrd.php"
       },
       {
         "title": "Documento institucional en word",
@@ -713,6 +769,10 @@
       {
         "title": "Iniciar sesión - Colpensiones",
         "url": "https://sede.colpensiones.gov.co/"
+      },
+      {
+        "title": "colpensiones.gov.co",
+        "url": "https://www.colpensiones.gov.co"
       },
       {
         "title": "¿Cómo consultar y descargar la Historia Laboral?",
@@ -767,6 +827,10 @@
     "answer": "Para habilitarte, debes registrar tu software de facturación en la [DIAN](https://www.dian.gov.co) y superar un set de pruebas.\n\n### Requisitos previos\n- Tener el **correo electrónico** actualizado en el RUT (tuyo o del representante legal).\n- Contar con un software de facturación: [Facturación Gratuita DIAN](https://www.dian.gov.co/impuestos/factura-electronica/como-hacerlo/Paginas/ser-facturador-electronico.aspx), Proveedor Tecnológico o Desarrollo Propio.\n- Disponer de un certificado de firma digital (gratuito si usas el servicio de la DIAN).\n- Tener acceso a un dispositivo con internet.\n\n### Pasos para habilitarte\n1. Ingresa a la opción \"Habilitación\" en [Factura Electrónica](https://www.dian.gov.co) y genera el token de acceso que llega a tu correo.\n2. Formaliza el registro y selecciona el \"Modo de operación\" (tu software).\n3. Realiza el set de pruebas enviando los documentos electrónicos requeridos (por ejemplo, 4 documentos si usas el servicio gratuito).\n4. Una vez aprobado, selecciona la fecha de inicio para actualizar el RUT y solicita los rangos de numeración en MUISCA.",
     "sources": [
       {
+        "title": "DIAN",
+        "url": "https://www.dian.gov.co"
+      },
+      {
         "title": "Páginas - Ser Facturador Electrónico",
         "url": "https://www.dian.gov.co/impuestos/factura-electronica/como-hacerlo/Paginas/ser-facturador-electronico.aspx"
       },
@@ -803,12 +867,12 @@
         "url": "https://www.sic.gov.co/marcas"
       },
       {
-        "title": "Registro de marca de productos y servicios y lema comercial",
-        "url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/tramites/registro-de-marca-de-productos-y-servicios-y-lema-comercial"
-      },
-      {
         "title": "Superintendencia de Industria y Comercio",
         "url": "https://www.sic.gov.co/tema/propiedad-Industrial/pasos-para-solicitar-el-registro-de-una-marca"
+      },
+      {
+        "title": "Registro de marca de productos y servicios y lema comercial",
+        "url": "https://sedeelectronica.sic.gov.co/atencion-y-servicios-a-la-ciudadania/tramites/registro-de-marca-de-productos-y-servicios-y-lema-comercial"
       },
       {
         "title": "Superintendencia de Industria y Comercio",
@@ -827,12 +891,12 @@
     "answer": "Puedes presentar tu derecho de petición verbalmente o por escrito a través de cualquier medio idóneo, y la autoridad debe resolverlo de fondo en un plazo máximo de **quince (15) días** siguientes a su recepción.\n\n### Cómo hacerlo\n- Puedes hacerlo de forma verbal (debiendo quedar constancia) o por escrito, sin necesidad de invocar explícitamente el artículo 23 de la Constitución.\n- Las autoridades pueden exigir que ciertas peticiones sean por escrito y deben poner a tu disposición formularios gratuitos.\n- Si la petición es incompleta, la entidad te requerirá completarla en un término máximo de un mes.\n\n### Plazos específicos\n- **Información o documentos:** 10 días. Si no responden, se entiende aceptada la solicitud y las copias se entregarán en 3 días más.\n- **Consultas:** 30 días.\n- Si no es posible resolver en el plazo, la entidad debe informarte los motivos y señalar una nueva fecha que no exceda el doble del tiempo inicial.\n\nPuedes consultar los detalles normativos en la [Ley 1755 de 2015](https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=65334) o en la [Guía Disciplinaria de la Procuraduría](https://apps.procuraduria.gov.co/guia/gd_734/docs/l1755015.html).",
     "sources": [
       {
-        "title": "Guía Disciplinaria de la Procuraduría General de la Nación [LEY_1755_2015]",
-        "url": "https://apps.procuraduria.gov.co/guia/gd_734/docs/l1755015.html"
-      },
-      {
         "title": "Ley 1755 de 2015 - Gestor Normativo",
         "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=65334"
+      },
+      {
+        "title": "Guía Disciplinaria de la Procuraduría General de la Nación [LEY_1755_2015]",
+        "url": "https://apps.procuraduria.gov.co/guia/gd_734/docs/l1755015.html"
       },
       {
         "title": "Ley 1755 de 2015 - Gestor Normativo - FunciÃ³n PÃºblica",
@@ -879,6 +943,10 @@
     "answer": "Para solicitar un crédito educativo del ICETEX, debes ingresar a la página oficial, elegir tu línea de financiamiento y diligenciar el formulario de solicitud paso a paso.\n\n### Cómo hacerlo\n- Ingresa a [www.icetex.gov.co](https://web.icetex.gov.co) y ve a la sección \"Créditos\" > \"Planes de Financiamiento\".\n- Selecciona la opción \"Solicitar tu crédito\" y completa el validador de datos personales.\n- Usa el simulador de crédito para revisar las condiciones y registra tu correo y celular.\n- Diligencia el 100% del formulario y confirma el estudio crediticio.\n- Carga los documentos requeridos en la plataforma de cargue documental.\n\nPuedes consultar el [Instructivo paso a paso](https://web.icetex.gov.co/documents/20122/915955/instructivo-paso-a-paso-diligenciamiento-del-formulario.pdf) para más detalles.",
     "sources": [
       {
+        "title": "icetex.gov.co",
+        "url": "https://web.icetex.gov.co"
+      },
+      {
         "title": "Instructivo paso a paso",
         "url": "https://web.icetex.gov.co/documents/20122/915955/instructivo-paso-a-paso-diligenciamiento-del-formulario.pdf"
       },
@@ -899,12 +967,16 @@
     "answer": "Para inscribirte a un curso gratuito del SENA, debes registrarte en la plataforma [Betowa](https://betowa.sena.edu.co) y completar el proceso dentro de las fechas de la convocatoria.\n\n### Cómo hacerlo\n- Ingresa a [betowa.sena.edu.co](https://betowa.sena.edu.co) y haz clic en \"Registrarse\" para crear tu cuenta, según el [Manual de Registro](https://www.sena.edu.co/es-co/Documents/manual_registro_betowa.pdf).\n- Busca el programa de tu interés y selecciona \"Inscribirse\" durante los días definidos en la oferta, como indica la guía de [Inscripción a programas](https://www.sena.edu.co/es-co/formacion/Paginas/inscripcionProgramas.aspx).\n- Recibirás la confirmación por correo electrónico y podrás imprimir el comprobante desde la misma plataforma.\n\n### Requisitos\n- Ser mayor de 14 años y tener documento de identidad válido (cédula o tarjeta de identidad).\n- Contar con una dirección de correo electrónico personal.\n- Cumplir con los requisitos académicos adicionales que exija cada programa.\n\nEl trámite es **gratis** y no requiere intermediarios.",
     "sources": [
       {
-        "title": "Inscripción a programas de formación profesional",
-        "url": "https://www.sena.edu.co/es-co/formacion/Paginas/inscripcionProgramas.aspx"
+        "title": "Betowa",
+        "url": "https://betowa.sena.edu.co"
       },
       {
         "title": "MANUAL DE REGISTRO",
         "url": "https://www.sena.edu.co/es-co/Documents/manual_registro_betowa.pdf"
+      },
+      {
+        "title": "Inscripción a programas de formación profesional",
+        "url": "https://www.sena.edu.co/es-co/formacion/Paginas/inscripcionProgramas.aspx"
       },
       {
         "title": "Preguntas frecuentes",
@@ -947,12 +1019,12 @@
     "answer": "El salario mínimo legal mensual vigente para 2026 es de **$1.750.905** y el auxilio de transporte es de **$200.000**.\n\n### Detalles\n- El incremento del salario mínimo es del 23%, según el [Departamento Nacional de Planeación](https://www.dnp.gov.co/Prensa_/Noticias/Paginas/incremento-salario-minimo-apuesta-gobierno-ingresos-dignos-productividad.aspx).\n- El auxilio de transporte se fija en $200.000 para quienes devengan hasta dos salarios mínimos, según el [Decreto 1573 de 2024](https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=256836).",
     "sources": [
       {
-        "title": "Decreto 1573 de 2024 - Gestor Normativo",
-        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=256836"
-      },
-      {
         "title": "El incremento del salario mínimo es una apuesta del gobierno nacional para garantizar ingresos dignos y mejorar la productividad del país",
         "url": "https://www.dnp.gov.co/Prensa_/Noticias/Paginas/incremento-salario-minimo-apuesta-gobierno-ingresos-dignos-productividad.aspx"
+      },
+      {
+        "title": "Decreto 1573 de 2024 - Gestor Normativo",
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=256836"
       },
       {
         "title": "Alocución de Año Nuevo y anuncio del salario vital para 2026 del presidente de la República, Gustavo Petro Urrego",
@@ -999,12 +1071,12 @@
     "answer": "Un trabajador en Colombia tiene derecho a **15 días hábiles** de vacaciones remuneradas por cada año de servicios.\n\n### Detalles según el sector\n*   **Trabajadores privados:** El [Código Sustantivo del Trabajo](http://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo_pr006.html) establece que estos 15 días deben ser consecutivos y se causan tras un año de servicio.\n*   **Empleados públicos:** El [Decreto 1045 de 1978](https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_1045_1978.htm) otorga 15 días hábiles, pero en entidades con jornada de lunes a viernes, el sábado no se computa como día hábil para el cálculo de las vacaciones.",
     "sources": [
       {
-        "title": "Compilación jurídica de la Cancillería de Colombia - Decreto 1045 de 1978",
-        "url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_1045_1978.htm"
-      },
-      {
         "title": "Leyes desde 1992 - Vigencia expresa y control de ...",
         "url": "http://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo_pr006.html"
+      },
+      {
+        "title": "Compilación jurídica de la Cancillería de Colombia - Decreto 1045 de 1978",
+        "url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_1045_1978.htm"
       },
       {
         "title": "Gestor Normativo de la CRA - Concepto 154241 de 2020 DAFP",
@@ -1063,12 +1135,12 @@
     "answer": "La licencia de maternidad en Colombia dura **18 semanas** en total, según la [Ley 1822 de 2017](https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/INEC/IGUB/ley-1822-2017.pdf).\n\n### Distribución y casos especiales\n- **Preparto:** 1 semana obligatoria antes del parto (2 semanas por indicación médica).\n- **Posparto:** 17 semanas, o 16/18 según decisión médica.\n- **Parto múltiple:** Se adicionan 2 semanas, para un total de 20.\n- **Prematuros:** Se suman las semanas faltantes hasta el término a las 18 base.\n\nPuedes consultar más detalles en la página de [Licencia de maternidad - Mitos y creencias](https://minsalud.gov.co/salud/publica/PI/Paginas/licencia-maternidad.aspx) del Ministerio de Salud.",
     "sources": [
       {
-        "title": "Páginas - Licencia de maternidad - Mitos y creencias",
-        "url": "https://minsalud.gov.co/salud/publica/PI/Paginas/licencia-maternidad.aspx"
-      },
-      {
         "title": "[PDF] ley-1822-2017.pdf - Ministerio de Salud y Protección Social",
         "url": "https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/INEC/IGUB/ley-1822-2017.pdf"
+      },
+      {
+        "title": "Páginas - Licencia de maternidad - Mitos y creencias",
+        "url": "https://minsalud.gov.co/salud/publica/PI/Paginas/licencia-maternidad.aspx"
       },
       {
         "title": "Sin título 1",
@@ -1119,12 +1191,12 @@
     "answer": "Para adoptar en Colombia, debes ser plenamente capaz, tener mínimo 25 años cumplidos y al menos 15 años más que el adoptable.\n\n### Requisitos legales\n- Demostrar idoneidad física, mental, moral y social para ofrecer una familia estable.\n- Si eres pareja, demostrar una convivencia ininterrumpida de por lo menos dos (2) años.\n- El trámite se inicia ante el [ICBF](https://www.icbf.gov.co/adopciones) más cercano a tu residencia.\n\n### Importante\n- El proceso es **gratuito**; el ICBF no cobra nada por adelantar la adopción.\n- Si resides en el exterior, verifica si tu país está adherido al Convenio de La Haya en la [página del ICBF](https://www.icbf.gov.co/adopcion-para-residentes-en-el-exterior).",
     "sources": [
       {
-        "title": "Adopción para Residentes en el Exterior | Portal ICBF",
-        "url": "https://www.icbf.gov.co/adopcion-para-residentes-en-el-exterior"
-      },
-      {
         "title": "Adopciones | Portal ICBF - Instituto Colombiano de ...",
         "url": "https://www.icbf.gov.co/adopciones"
+      },
+      {
+        "title": "Adopción para Residentes en el Exterior | Portal ICBF",
+        "url": "https://www.icbf.gov.co/adopcion-para-residentes-en-el-exterior"
       },
       {
         "title": "¿Cuáles son los requisitos básicos para adoptar? - ICBF",
@@ -1202,6 +1274,14 @@
   "consultar-vehiculo-runt": {
     "answer": "Puedes consultar la información básica de un vehículo en el RUNT ingresando la placa y el número de documento del propietario.\n\n### Cómo hacerlo\n- Ingresa a la [consulta por placa](https://www.runt.gov.co/actores/ciudadano/consulta-de-vehiculos-por-placa) en la página oficial del RUNT.\n- Diligencia los campos obligatorios: número de placa y número de documento del propietario.\n- Si necesitas un historial detallado, solicita el [Histórico Vehicular](https://www.runt.gov.co/actores/ciudadano/consulta-historico-vehicular).\n- Para el histórico, no es obligatorio ser el propietario, solo necesitas la placa.\n- El pago se realiza de forma electrónica y el documento llega a tu correo electrónico.",
     "sources": [
+      {
+        "title": "Consulta por placa",
+        "url": "https://www.runt.gov.co/actores/ciudadano/consulta-de-vehiculos-por-placa"
+      },
+      {
+        "title": "Histórico Vehicular",
+        "url": "https://www.runt.gov.co/actores/ciudadano/consulta-historico-vehicular"
+      },
       {
         "title": "comosolicitarhistoricovehicular10",
         "url": "https://www.runt.gov.co/sites/default/files/2024-01/bloques/anexos/C%C3%B3mo%20solicitar%20el%20Hist%C3%B3rico%20Vehicular.pdf"
@@ -1299,12 +1379,12 @@
     "answer": "Puedes presentar una denuncia virtual ante la Fiscalía usando la herramienta [Denuncia Fácil](https://www.fiscalia.gov.co/colombia/servicios-de-informacion-al-ciudadano/donde-y-como-denunciar/) o ante la Policía a través del [Sistema Nacional de Denuncia Virtual](https://www.policia.gov.co/sistema-nacional-denuncia-virtual-adenunciar).\n\n### Requisitos y alcance\n- La denuncia debe contener una relación clara de los hechos y hacerse **bajo juramento**.\n- Si eres la víctima, **debes identificarte** para garantizar tus derechos en el proceso penal.\n- La Policía solo acepta denuncias virtuales por hurto a comercio, personas o residencias, delitos informáticos, explotación sexual infantil y extorsión.\n- Para otros delitos, debes acudir personalmente a un punto de recepción de la [Fiscalía](https://www.fiscalia.gov.co/colombia/servicios-de-informacion-al-ciudadano/donde-y-como-denunciar/) o la Policía.\n\nRecibirás el número de incidente por correo electrónico y, si procede, el Número Único de Noticia Criminal (NUNC) en 24 horas.",
     "sources": [
       {
-        "title": "Sistema Nacional de Denuncia Virtual ¡ADenunciar!",
-        "url": "https://www.policia.gov.co/sistema-nacional-denuncia-virtual-adenunciar"
-      },
-      {
         "title": "Fiscalía General de la Nación",
         "url": "https://www.fiscalia.gov.co/colombia/servicios-de-informacion-al-ciudadano/donde-y-como-denunciar/"
+      },
+      {
+        "title": "Sistema Nacional de Denuncia Virtual ¡ADenunciar!",
+        "url": "https://www.policia.gov.co/sistema-nacional-denuncia-virtual-adenunciar"
       },
       {
         "title": "Crear Denuncia",
@@ -1330,6 +1410,18 @@
   "consultar-procesos-judiciales": {
     "answer": "Puedes consultar el estado de un proceso judicial a través de la Consulta de Procesos Nacional Unificada (CPNU) en el portal de la [Rama Judicial](https://www.ramajudicial.gov.co/).\n\n### Cómo hacerlo\n- Ingresa al [sistema de consulta](https://consultaprocesos.ramajudicial.gov.co/Procesos/Index) y busca por **Número de Radicación**, Nombre o Razón Social.\n- Si conoces el radicado, usa este [acceso directo](https://consultaprocesos.ramajudicial.gov.co/Procesos/NumeroRadicacion).\n- También puedes consultar por ciudadano en el sistema [TYBA](https://procesojudicial.ramajudicial.gov.co/justicia21/Administracion/Ciudadanos/frmConsulta.aspx) ingresando tu tipo y número de identificación.",
     "sources": [
+      {
+        "title": "Rama Judicial",
+        "url": "https://www.ramajudicial.gov.co/"
+      },
+      {
+        "title": "Sistema de consulta",
+        "url": "https://consultaprocesos.ramajudicial.gov.co/Procesos/Index"
+      },
+      {
+        "title": "Acceso directo",
+        "url": "https://consultaprocesos.ramajudicial.gov.co/Procesos/NumeroRadicacion"
+      },
       {
         "title": "Consulta de Procesos Judiciales - TYBA",
         "url": "https://procesojudicial.ramajudicial.gov.co/justicia21/Administracion/Ciudadanos/frmConsulta.aspx"

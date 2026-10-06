@@ -6,7 +6,7 @@ import { cn } from "../../lib/cn";
 import { buttonBase, buttonSecondary, focusRing } from "../../lib/ui";
 import { CloseIcon } from "../icons";
 import EntityIcon from "./EntityIcon";
-import { groupByAgency } from "./sources";
+import { groupByAgency, hostOf } from "./sources";
 
 const outQuint = [0.22, 1, 0.36, 1] as const;
 
@@ -72,7 +72,7 @@ export function SourcesChip({ groundings }: { groundings: Grounding[] }) {
                         focusRing,
                       )}
                     >
-                      {cleanTitle(entry.title)}
+                      {cleanTitle(entry.title) || hostOf(entry.url)}
                     </a>
                   ))}
                 </div>

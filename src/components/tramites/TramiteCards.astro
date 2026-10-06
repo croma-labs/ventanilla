@@ -2,6 +2,7 @@
 import { site } from "@country/site";
 import { focusRing } from "../../lib/ui";
 import { pathOf, type Published } from "../../lib/tramites";
+import AgencyIcon from "./AgencyIcon.astro";
 
 interface Props {
   items: readonly Published[];
@@ -19,13 +20,13 @@ const { items } = Astro.props;
             <img src={`/hero/${site.code}/${tramite.image}-480.webp`} alt="" width="480" height="320" loading="lazy" decoding="async" class="aspect-3/2 w-full object-cover" />
           ) : (
             <span class="flex aspect-3/2 w-full items-center justify-center bg-surface-muted">
-              <img src={tramite.agency.icon} alt="" width="72" height="72" loading="lazy" class="size-18 object-contain" />
+              <AgencyIcon domain={tramite.agency.icon} short={tramite.agency.short} class="size-18 object-contain" />
             </span>
           )}
           <span class="flex flex-1 flex-col gap-3 p-5">
             <span class="font-serif-display text-[1.65rem] leading-[1.05] text-balance text-text-primary">{tramite.title}</span>
             <span class="mt-auto inline-flex items-center gap-2 type-body-s text-text-secondary">
-              <img src={tramite.agency.icon} alt="" width="20" height="20" loading="lazy" class="size-5 rounded-full bg-white object-contain" />
+              <AgencyIcon domain={tramite.agency.icon} short={tramite.agency.short} class="size-5 rounded-full bg-white object-contain" />
               {tramite.agency.name}
             </span>
           </span>

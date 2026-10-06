@@ -2,16 +2,13 @@ import content from "@country/tramites.json";
 import { tramites } from "@country/tramites";
 import { site } from "@country/site";
 import type { TramiteContent } from "../countries/types";
-import { iconOf } from "../data/orbit";
+import { agencyFor } from "../components/chat/sources";
 
 const verified: Record<string, TramiteContent> = content;
 
 export const published = tramites
   .filter((tramite) => verified[tramite.slug] && !tramite.hold)
-  .map((tramite) => {
-    const entity = site.entities[tramite.entity];
-    return { ...tramite, ...verified[tramite.slug], agency: { domain: tramite.entity, name: entity?.name ?? tramite.entity, icon: iconOf(tramite.entity) } };
-  });
+  .map((tramite) => ({ ...tramite, ...verified[tramite.slug], agency: agencyFor(`https://${tramite.entity}`) }));
 
 export type Published = (typeof published)[number];
 
