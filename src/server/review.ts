@@ -47,7 +47,7 @@ export function checkClaims(evidence: string, claims: Claim[]): Check[] {
 }
 
 const verifyInstructions = `You are the fact-checker of a public-services assistant. You receive EVIDENCE (raw results from official government sources) and a DRAFT answer.
-List every checkable claim in the DRAFT: requirements, steps, costs, amounts, dates, deadlines, percentages, norm or ruling numbers, entity and office names, and every URL.
+List the checkable claims in the DRAFT, at most 8, most important first: requirements, steps, costs, amounts, dates, deadlines, percentages, norm or ruling numbers, entity and office names, and URLs.
 For each claim give 2 to 4 short key terms as JavaScript regular expressions: the facts that must appear together in the official text for the claim to be true (numbers, amounts, named things, the key noun). Do not copy the draft's phrasing.
 Examples: "1.300 semanas" -> ["1[.,]?300", "semanas"]; "57 años mujeres, 62 hombres" -> ["57", "mujer", "62", "hombre"]; "costo $67.350" -> ["67[.,]?350"]; "Ley 1266 de 2008" -> ["1266", "2008"]; a URL -> [a distinctive path fragment].
 Matching ignores case and accents. Keep each term under 40 characters: no lookarounds, no backreferences, no nested quantifiers.`;
@@ -97,7 +97,7 @@ export async function verify({ question, draft, evidence, fast, fallback, deadli
       try {
         return await attempt(resolved, system, prompt, timeoutMs);
       } catch (error) {
-        console.error("[ventanilla] verify attempt failed", resolved.id, error instanceof Error ? error.message.slice(0, 120) : error);
+        console.warn("[ventanilla] verify attempt failed", resolved.id, error instanceof Error ? error.message.slice(0, 120) : error);
       }
     }
     return [];
