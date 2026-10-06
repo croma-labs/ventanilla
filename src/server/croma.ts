@@ -39,13 +39,15 @@ const quiet = async <T>(promise: Promise<T>) => {
 };
 
 const blockedKey = (quota: Quota) => `quota:${quota}`;
+/** The longest a quota stays marked exhausted: one probe per hour notices a raised limit instead of waiting for the monthly reset. */
+const blockAtMost = 3600_000;
 
 async function rememberQuota(quota: Quota | undefined, response: Response) {
   if (!quota) return;
   const remaining = response.headers.get("x-ratelimit-remaining");
   const reset = Date.parse(response.headers.get("x-ratelimit-reset") ?? "");
   const retryAfter = Number(response.headers.get("retry-after"));
-  const until = response.status === 429 ? Date.now() + (retryAfter > 0 ? retryAfter * 1000 : 60_000) : remaining === "0" && reset ? reset : 0;
+  const until = Math.min(response.status === 429 ? Date.now() + (retryAfter > 0 ? retryAfter * 1000 : 60_000) : remaining === "0" && reset ? reset : 0, Date.now() + blockAtMost);
   if (until > Date.now()) await quiet(store.set(blockedKey(quota), until, Math.ceil((until - Date.now()) / 1000)));
 }
 
