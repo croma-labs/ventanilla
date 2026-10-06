@@ -92,6 +92,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   const messages = await toModelMessages(parsed.data.messages);
   if (!messages) return reply(400, "invalid_request");
+  if (!evaluation) waitUntil(countQuery().catch(() => undefined));
 
   const encoder = new TextEncoder();
   const signal = request.signal;
@@ -231,7 +232,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         controller.enqueue(encoder.encode("data: [DONE]\n\n"));
         controller.close();
       } catch {}
-      waitUntil(Promise.allSettled([reading, ...pendingWork(), ...(evaluation ? [] : [countQuery()])]));
+      waitUntil(Promise.allSettled([reading, ...pendingWork()]));
       console.info(
         JSON.stringify({
           event: "chat",
