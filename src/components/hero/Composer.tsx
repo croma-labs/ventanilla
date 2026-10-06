@@ -79,6 +79,8 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
     <div data-slot={variant === "hero" ? "hero-ask-pill" : "ask-pill"} className="w-full">
       <form
         ref={form}
+        action="/"
+        method="get"
         data-slot="chat-input-shell"
         aria-label={site.ui.describe}
         onSubmit={submit}
@@ -100,6 +102,7 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
             <div className="peer relative flex min-w-0 flex-1">
               <textarea
                 ref={textarea}
+                name="q"
                 rows={1}
                 enterKeyHint="send"
                 value={value}
