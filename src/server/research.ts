@@ -123,15 +123,16 @@ export async function research({
   const started = Date.now();
   const mark = (name: string) => (timings[name] = Date.now() - started);
 
-  // A question the corpus already answers well never pays for a web search,
-  // and a first question it answers outright does not wait for the router.
+  // A first question the corpus answers outright needs neither the router nor a web search.
   const early = await searchCorpus([question], []);
   const earlyScore = early[0]?.corpusScore ?? 0;
   if (!conversation && earlyScore >= routeFreeScore) {
     mark("corpus");
     return { route: null, candidates: fromCorpus(early), considered: early.length, timings, corpus: true };
   }
-  const broad = earlyScore >= corpusScore ? Promise.resolve(null) : within(config.web.run({ query: question }, context), deadlines.search, null);
+  // Anything short of that keeps the full live search: a loose corpus match
+  // can still lose to the routed entities' own pages.
+  const broad = within(config.web.run({ query: question }, context), deadlines.search, null);
 
   const domains = config.authorities.map((authority) => authority.domain) as [string, ...string[]];
   const routeSchema = z.object({
