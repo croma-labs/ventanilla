@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
@@ -8,11 +9,12 @@ import { loadEnv } from "vite";
 for (const [key, value] of Object.entries(loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), ""))) process.env[key] ??= value;
 
 const country = process.env.COUNTRY ?? "co";
+const corpus = [".corpus/fichas.jsonl", ".corpus/index.json", ".corpus/manifest.json"].filter((file) => existsSync(file));
 
 export default defineConfig({
   site: process.env.SITE_URL ?? "https://gov.usecroma.com",
   output: "static",
-  adapter: vercel(),
+  adapter: vercel({ includeFiles: corpus }),
   devToolbar: { enabled: false },
   build: { inlineStylesheets: "always" },
   security: { checkOrigin: true },

@@ -9,12 +9,15 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev --port 5201",
+    "prebuild": "node --env-file-if-exists=.env.local scripts/corpus.ts",
     "build": "astro build",
     "preview": "astro preview --port 5201",
     "check": "astro check",
     "icons": "node scripts/icons.ts",
     "eval": "node --env-file-if-exists=.env.local scripts/eval.ts",
-    "tramites": "node --env-file-if-exists=.env.local scripts/tramites.ts"
+    "tramites": "node --env-file-if-exists=.env.local scripts/tramites.ts",
+    "corpus": "node --env-file-if-exists=.env.local scripts/corpus.ts",
+    "journal": "node --env-file-if-exists=.env.local scripts/journal.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.71",
@@ -27,11 +30,13 @@
     "@tailwindcss/vite": "^4.3.3",
     "@upstash/redis": "^1.39.0",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/blob": "^2.8.0",
     "@vercel/functions": "^3.9.11",
     "ai": "^7.0.127",
     "astro": "^7.3.5",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
+    "minisearch": "^7.2.0",
     "motion": "^14.0.0",
     "ogl": "^1.0.11",
     "react": "^19.3.0",
