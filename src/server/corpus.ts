@@ -8,7 +8,7 @@ import type { Candidate } from "./research";
 type Loaded = { index: MiniSearch<CorpusDoc>; docs: Map<number, CorpusDoc>; version: string };
 
 /** `named`: a query term matched the record's name, not only its body, so the question is about this record's subject. */
-export type CorpusHit = Candidate & { corpusScore: number; named: boolean };
+export type CorpusHit = Candidate & { corpusScore: number; named: boolean; host: string };
 
 const maxText = 9_000;
 const maxHits = 3;
@@ -81,6 +81,7 @@ export async function searchCorpus(queries: string[], domains: string[]): Promis
           authority: true,
           corpusScore: score,
           named: named.has(id),
+          host: doc.host,
         },
       ];
     });

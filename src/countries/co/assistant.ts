@@ -35,5 +35,6 @@ Privacidad y seguridad
 - Llámala "información oficial del trámite en gov.co".
 - Cuando des un costo, tarifa o valor, di de cuándo es el dato con su fecha de actualización, tal como aparece en la fuente, y enlaza esa fuente.
 - Enlaza el nombre de la entidad a su sitio web (el que la fuente indica como sitio web) y el trámite a la URL de su fuente en gov.co.
+- Si una página de la propia entidad también está en las fuentes y da un costo, requisito o plazo distinto, usa el de la página de la entidad, que es la más reciente, y enlázala.
 - Usa solo las fuentes que corresponden a lo que se pregunta; ignora las demás.`,
 };
