@@ -16,7 +16,8 @@
     "icons": "node scripts/icons.ts",
     "eval": "node --env-file-if-exists=.env.local scripts/eval.ts",
     "tramites": "node --env-file-if-exists=.env.local scripts/tramites.ts",
-    "corpus": "node --env-file-if-exists=.env.local scripts/corpus.ts"
+    "corpus": "node --env-file-if-exists=.env.local scripts/corpus.ts",
+    "journal": "node --env-file-if-exists=.env.local scripts/journal.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.71",

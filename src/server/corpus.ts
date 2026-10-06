@@ -5,7 +5,7 @@ import type { SearchResult } from "minisearch";
 import { corpusFiles, loadIndex, type CorpusDoc } from "./corpus-index.ts";
 import type { Candidate } from "./research";
 
-type Loaded = { index: MiniSearch<CorpusDoc>; docs: Map<number, CorpusDoc> };
+type Loaded = { index: MiniSearch<CorpusDoc>; docs: Map<number, CorpusDoc>; version: string };
 
 export type CorpusHit = Candidate & { corpusScore: number };
 
@@ -19,20 +19,28 @@ export function corpus() {
   loading ??= (async () => {
     try {
       const root = process.cwd();
-      const [json, lines] = await Promise.all([readFile(join(root, corpusFiles.index), "utf8"), readFile(join(root, corpusFiles.docs), "utf8")]);
+      const [json, lines, manifest] = await Promise.all([
+        readFile(join(root, corpusFiles.index), "utf8"),
+        readFile(join(root, corpusFiles.docs), "utf8"),
+        readFile(join(root, corpusFiles.manifest), "utf8").catch(() => "{}"),
+      ]);
       const docs = new Map<number, CorpusDoc>();
       for (const line of lines.split("\n")) {
         if (!line) continue;
         const doc = JSON.parse(line) as CorpusDoc;
         docs.set(doc.id, doc);
       }
-      return { index: loadIndex(json), docs };
+      const { sha256 = "" } = JSON.parse(manifest) as { sha256?: string };
+      return { index: loadIndex(json), docs, version: sha256.slice(0, 12) || "local" };
     } catch {
       return null;
     }
   })();
   return loading;
 }
+
+/** Which corpus this instance answers from; null without one. */
+export const corpusVersion = async () => (await corpus())?.version ?? null;
 
 const under = (host: string, domain: string) => host === domain || host.endsWith(`.${domain}`);
 

@@ -5,9 +5,11 @@ export type Store = {
   set(key: string, value: unknown, ttlSeconds: number): Promise<void>;
   incr(key: string, ttlSeconds: number): Promise<number>;
   bump(key: string): Promise<number>;
+  /** Appends to a list that expires `ttlSeconds` after its first entry. */
+  push(key: string, value: unknown, ttlSeconds: number): Promise<void>;
 };
 
-const prefix = `ventanilla:${process.env.VERCEL_ENV === "production" ? "" : "dev:"}${process.env.COUNTRY ?? "co"}:`;
+export const prefix = `ventanilla:${process.env.VERCEL_ENV === "production" ? "" : "dev:"}${process.env.COUNTRY ?? "co"}:`;
 
 function memoryStore(capacity = 2000): Store {
   const entries = new Map<string, { value: unknown; expires: number }>();
@@ -38,6 +40,11 @@ function memoryStore(capacity = 2000): Store {
       put(key, next, 10 * 365 * 24 * 3600);
       return next;
     },
+    push: async (key, value, ttlSeconds) => {
+      const entry = live(key);
+      if (entry) (entry.value as unknown[]).push(value);
+      else put(key, [value], ttlSeconds);
+    },
   };
 }
 
@@ -52,6 +59,9 @@ function redisStore(redis: Redis): Store {
       return count;
     },
     bump: (key) => redis.incr(prefix + key),
+    push: async (key, value, ttlSeconds) => {
+      await redis.pipeline().rpush(prefix + key, JSON.stringify(value)).expire(prefix + key, ttlSeconds, "NX").exec();
+    },
   };
 }
 
