@@ -89,7 +89,7 @@ export default function Hero() {
   useEffect(() => {
     setMounted((current) => {
       const next = new Set(current);
-      [-1, 0, 1].forEach((offset) => next.add(wrap(0, count, selected + offset)));
+      [-1, 0, 1, 2].forEach((offset) => next.add(wrap(0, count, selected + offset)));
       return next.size === current.size ? current : next;
     });
   }, [selected]);

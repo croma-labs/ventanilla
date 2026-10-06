@@ -39,17 +39,23 @@ export default function Postcard({ card, detail, priority = false }: { card: Her
   if (card.image)
     return (
       <div className="absolute inset-0 isolate overflow-hidden bg-[#2a1a0e]">
-        <img
-          alt={card.alt}
-          src={photo(card.image)}
-          srcSet={`${photo(card.image, "-480")} 480w, ${photo(card.image, "-640")} 640w, ${photo(card.image, "-800")} 800w, ${photo(card.image)} 1344w`}
-          sizes="(min-width: 768px) 688px, calc(100vw - 24px)"
-          className="absolute inset-0 -z-20 size-full object-cover"
-          loading={priority ? "eager" : "lazy"}
-          fetchPriority={priority ? "high" : "auto"}
-          decoding="async"
-          draggable={false}
-        />
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet={`${photo(card.image, "-480")} 480w, ${photo(card.image, "-640")} 640w, ${photo(card.image, "-800")} 800w`}
+            sizes="calc(100vw - 24px)"
+          />
+          <img
+            alt={card.alt}
+            src={photo(card.image)}
+            srcSet={`${photo(card.image, "-800")} 800w, ${photo(card.image)} 1344w`}
+            sizes="688px"
+            className="absolute inset-0 -z-20 size-full object-cover"
+            fetchPriority={priority ? "high" : "low"}
+            decoding="async"
+            draggable={false}
+          />
+        </picture>
         {detail && <Caption card={card} />}
       </div>
     );
