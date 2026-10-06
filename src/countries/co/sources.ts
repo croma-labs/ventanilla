@@ -11,7 +11,16 @@ const authorities: Authority[] = [
       { url: "https://www.registraduria.gov.co/-Tramites-de-la-cedula-de-ciudadania-.html", title: "Trámites de la cédula de ciudadanía · Registraduría" },
     ],
   },
-  { domain: "cancilleria.gov.co", covers: "pasaporte, apostilla y legalización de documentos, visas, consulados, colombianos en el exterior" },
+  {
+    domain: "cancilleria.gov.co",
+    covers: "pasaporte, apostilla y legalización de documentos, visas, consulados, colombianos en el exterior",
+    pages: [
+      { url: "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/requisitos", title: "Requisitos del pasaporte · Cancillería" },
+      { url: "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/costos-y-medios-de-pago", title: "Costos y medios de pago del pasaporte · Cancillería" },
+      { url: "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/lugares-de-expedicion", title: "Lugares de expedición del pasaporte · Cancillería" },
+      { url: "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/pasaportes/preguntas-frecuentes", title: "Preguntas frecuentes sobre el pasaporte · Cancillería" },
+    ],
+  },
   { domain: "migracioncolombia.gov.co", covers: "migración, extranjeros en Colombia, PPT y permisos, cédula de extranjería, salida del país de menores" },
   { domain: "dian.gov.co", covers: "RUT, impuestos, declaración de renta, IVA, régimen simple, facturación electrónica, aduanas" },
   { domain: "supersalud.gov.co", covers: "quejas contra EPS, derechos de los usuarios de salud, portabilidad, cambio de EPS" },

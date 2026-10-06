@@ -29,7 +29,7 @@ const keepScore = 2;
 const answersScore = 3;
 
 /** Corpus hits as candidates: the lexical score travels in the origin for the diagnostics, the judge decides the real score. */
-const asCandidates = (hits: CorpusHit[]): Candidate[] => hits.map(({ corpusScore, named, ...hit }) => ({ ...hit, origin: `corpus:${corpusScore.toFixed(1)}` }));
+const asCandidates = (hits: CorpusHit[]): Candidate[] => hits.map(({ corpusScore, named, host, ...hit }) => ({ ...hit, origin: `corpus:${corpusScore.toFixed(1)}` }));
 
 /** The records that answer on their own: the judge scores them as the answer and the question names their subject. A record matched only in its body shares words with the question, not its topic. */
 const answering = (hits: CorpusHit[], scores: Map<string, number> | null) =>
@@ -140,6 +140,18 @@ export async function research({
   const timings: Record<string, number> = {};
   const started = Date.now();
   const mark = (name: string) => (timings[name] = Date.now() - started);
+  /** The pages pinned on these authorities, read in full (cached a week, so usually instant). */
+  const pinnedPages = async (domains: string[]): Promise<Candidate[]> => {
+    const known = domains.flatMap((domain) => config.authorities.find((authority) => authority.domain === domain)?.pages ?? []);
+    const read = await Promise.all(
+      known.map(async (page) => {
+        const result = await within(config.read.run({ url: page.url }, context), deadlines.read, null);
+        const text = result && !("error" in result) ? (result.results as { text?: string }).text : undefined;
+        return text ? [{ id: `p-${page.url}`, origin: "pinned", title: page.title, url: page.url, text: clip(text, 9000) ?? "", read: true, authority: true }] : [];
+      }),
+    );
+    return read.flat();
+  };
 
   const domains = config.authorities.map((authority) => authority.domain) as [string, ...string[]];
   const routeSchema = z.object({
@@ -173,7 +185,11 @@ export async function research({
     const early = (await searchCorpus([question], [])).filter((hit) => hit.named);
     const answers = early.length ? answering(early, await scoreSources(question, asCandidates(early), fast)) : [];
     mark("corpus");
-    if (answers.length) return { route: null, candidates: answers, considered: early.length, timings, corpus: true };
+    if (answers.length) {
+      const hosts = early.filter((hit) => answers.some((answer) => answer.id === hit.id)).map((hit) => hit.host);
+      const domains = config.authorities.filter((authority) => hosts.some((host) => host && (host === authority.domain || host.endsWith(`.${authority.domain}`)))).map((authority) => authority.domain);
+      return { route: null, candidates: [...answers, ...(await pinnedPages(domains))], considered: early.length, timings, corpus: true };
+    }
   }
 
   const route = await routing;
@@ -192,12 +208,7 @@ export async function research({
     ]);
     return [...strict, ...loose.filter((candidate) => under(candidate.url, domain))];
   };
-  const known = (route?.authorities ?? []).flatMap((domain) => config.authorities.find((authority) => authority.domain === domain)?.pages ?? []);
-  const pinned = known.map(async (page) => {
-    const result = await within(config.read.run({ url: page.url }, context), deadlines.read, null);
-    const text = result && !("error" in result) ? (result.results as { text?: string }).text : undefined;
-    return text ? [{ id: "", origin: "pinned", title: page.title, url: page.url, text: clip(text, 9000) ?? "", read: true }] : [];
-  });
+  const pinned = pinnedPages(route?.authorities ?? []);
   const scoped = (route?.authorities ?? []).map(scopedSearch);
   const extra = (route?.queries.slice(1) ?? []).map((query) =>
     within(config.web.run({ query }, context), deadlines.search, null).then((result) => collect("web", result)),
@@ -206,7 +217,7 @@ export async function research({
     .filter(([, query]) => query)
     .map(([name, query]) => within(config.datasets[name].tool.run({ query }, context), deadlines.dataset, null).then((result) => collect(name, result)));
 
-  const gathered = (await Promise.all([broad.then((result) => collect("web", result)), ...scoped, ...extra, ...datasets, ...pinned])).flat();
+  const gathered = (await Promise.all([broad.then((result) => collect("web", result)), ...scoped, ...extra, ...datasets, pinned])).flat();
   mark("search");
 
   const unique = [...new Map(gathered.map((candidate) => [candidate.url, candidate])).values()].map((candidate, index) => ({
@@ -222,7 +233,8 @@ export async function research({
   const scores = await scoreSources(question, pool, fast);
   mark("judge");
   const answers = answering(hits, scores);
-  if (answers.length) return { route, candidates: answers, considered: pool.length, timings, corpus: true };
+  // The entity's own pages ride along: they carry fees and dates newer than the register's record.
+  if (answers.length) return { route, candidates: [...answers, ...unique.filter((candidate) => candidate.origin === "pinned")], considered: pool.length, timings, corpus: true };
 
   const relevant = pool
     .map((candidate) => ({ ...candidate, score: scores ? (scores.get(candidate.id) ?? 0) : candidate.authority ? keepScore : 1 }))
