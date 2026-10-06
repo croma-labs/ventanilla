@@ -36,7 +36,7 @@ const compact = (bytes: Uint8Array) =>
 
 const source = await readFile(new URL(`src/countries/${country}/site.ts`, root), "utf8");
 const block = source.slice(source.indexOf("entities:"), source.indexOf("officialSuffixes:"));
-const domains = [...block.matchAll(/"([a-z0-9.-]+\.[a-z]{2,})":\s*\{/g)].map(([, domain]) => domain);
+const domains = [...block.matchAll(/"([a-z0-9.-]+\.[a-z]{2,})":\s*\{([^}]*)\}/g)].filter(([, , body]) => !/\biconFrom\b/.test(body)).map(([, domain]) => domain);
 const manifestUrl = new URL(`src/countries/${country}/icons.json`, root);
 const manifest: Record<string, string> = JSON.parse(await readFile(manifestUrl, "utf8").catch(() => "{}"));
 const only = process.argv.slice(2);

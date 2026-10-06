@@ -3,10 +3,10 @@ import { site } from "@country/site";
 import Markdown from "../../components/chat/Markdown";
 import SiteFooter from "../../components/site/SiteFooter.astro";
 import SiteHeader from "../../components/site/SiteHeader.astro";
+import AgencyIcon from "../../components/tramites/AgencyIcon.astro";
 import TramiteCards from "../../components/tramites/TramiteCards.astro";
 import Base from "../../layouts/Base.astro";
 import { agencyFor } from "../../components/chat/sources";
-import { iconOf } from "../../data/orbit";
 import { focusRing } from "../../lib/ui";
 import { dateLabel, pathOf, published, summaryOf, type Published } from "../../lib/tramites";
 
@@ -86,7 +86,7 @@ const link = `rounded-4 underline-offset-4 hover:underline ${focusRing}`;
 
         <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 type-body-s text-text-secondary">
           <a href={`https://www.${tramite.agency.domain}`} target="_blank" rel="noopener noreferrer" class={`inline-flex items-center gap-2 rounded-full bg-surface-muted py-1 pr-3.5 pl-1 text-[13px] font-medium text-text-primary ${focusRing}`}>
-            <img src={tramite.agency.icon} alt="" width="24" height="24" class="size-6 rounded-full bg-white object-contain p-0.5" />
+            <AgencyIcon domain={tramite.agency.icon} short={tramite.agency.short} class="size-6 rounded-full bg-white object-contain p-0.5" />
             <span class="text-text-secondary">{site.brand.handledBy}</span>
             {tramite.agency.name}
           </a>
@@ -123,19 +123,22 @@ const link = `rounded-4 underline-offset-4 hover:underline ${focusRing}`;
           <h2 id="sources" class="font-serif-display text-3xl text-text-primary">{copy.sources}</h2>
           <ul class="mt-5 flex flex-col gap-3">
             {
-              tramite.sources.map((source) => (
-                <li>
-                  <a href={source.url} target="_blank" rel="noopener noreferrer" class={`group flex items-start gap-3 rounded-12 ${focusRing}`}>
-                    <span class="mt-0.5 size-7 shrink-0 overflow-hidden rounded-full bg-white p-1 ring-1 ring-black/5">
-                      <img src={iconOf(agencyFor(source.url).icon)} alt="" width="20" height="20" loading="lazy" class="size-full object-contain" />
-                    </span>
-                    <span class="flex min-w-0 flex-col">
-                      <span class="type-body-m text-pretty text-text-primary group-hover:underline">{source.title.trim() || agencyFor(source.url).name}</span>
-                      <span class="type-body-s text-text-secondary">{agencyFor(source.url).name} · {host(source.url)}</span>
-                    </span>
-                  </a>
-                </li>
-              ))
+              tramite.sources.map((source) => {
+                const agency = agencyFor(source.url);
+                return (
+                  <li>
+                    <a href={source.url} target="_blank" rel="noopener noreferrer" class={`group flex items-start gap-3 rounded-12 ${focusRing}`}>
+                      <span class="mt-0.5 size-7 shrink-0 overflow-hidden rounded-full bg-white p-1 ring-1 ring-black/5">
+                        <AgencyIcon domain={agency.icon} short={agency.short} class="size-full object-contain" />
+                      </span>
+                      <span class="flex min-w-0 flex-col">
+                        <span class="type-body-m text-pretty text-text-primary group-hover:underline">{source.title.trim() || agency.name}</span>
+                        <span class="type-body-s text-text-secondary">{agency.name} · {host(source.url)}</span>
+                      </span>
+                    </a>
+                  </li>
+                );
+              })
             }
           </ul>
         </section>
