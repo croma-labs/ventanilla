@@ -25,15 +25,15 @@ export type Research = { route: Route | null; candidates: Candidate[]; considere
 const deadlines = { route: 4_000, search: 8_000, dataset: 7_000, judge: 5_000, read: 7_000 };
 const maxEvidence = 30_000;
 const keepScore = 2;
-/** A corpus match at least this strong answers from the corpus alone; weaker ones fall back to live search. */
-const corpusScore = Number(process.env.CORPUS_MIN_SCORE ?? 60);
-/** A first question whose own words match the corpus this strongly needs no router to name the entity. */
-const routeFreeScore = Number(process.env.CORPUS_SKIP_ROUTE_SCORE ?? 120);
+/** The judge's score for a source that answers the question outright. Only corpus records scored so answer on their own. */
+const answersScore = 3;
 
-const fromCorpus = (hits: CorpusHit[]) =>
-  hits
-    .filter((hit) => hit.corpusScore >= hits[0].corpusScore * 0.5)
-    .map(({ corpusScore: score, ...hit }) => ({ ...hit, score: 3, origin: `corpus:${score.toFixed(1)}` }));
+/** Corpus hits as candidates: the lexical score travels in the origin for the diagnostics, the judge decides the real score. */
+const asCandidates = (hits: CorpusHit[]): Candidate[] => hits.map(({ corpusScore, named, ...hit }) => ({ ...hit, origin: `corpus:${corpusScore.toFixed(1)}` }));
+
+/** The records that answer on their own: the judge scores them as the answer and the question names their subject. A record matched only in its body shares words with the question, not its topic. */
+const answering = (hits: CorpusHit[], scores: Map<string, number> | null) =>
+  scores ? asCandidates(hits.filter((hit) => hit.named && scores.get(hit.id) === answersScore)).map((record) => ({ ...record, score: answersScore })) : [];
 
 const within = <T>(promise: Promise<T>, ms: number, fallback: T) =>
   Promise.race([promise.catch(() => fallback), new Promise<T>((resolve) => setTimeout(() => resolve(fallback), ms))]);
@@ -104,7 +104,25 @@ For every source return its id and a score:
 3 = directly answers the question (the specific procedure, requirement, cost or rule asked about)
 2 = clearly about the same topic and useful to answer it
 1 = same broad area but does not help answer this question
-0 = unrelated`;
+0 = unrelated
+Score 3 only when the source's own procedure is the one the citizen asks about. A prerequisite, a related procedure, or one for a different group of people scores 2 at most.
+A question that does not say which procedure, document, benefit or entity it is about cannot be answered by any source: score at most 1.`;
+
+/** The judge's score per candidate id, or null when it did not answer in time. */
+export async function scoreSources(question: string, candidates: Candidate[], fast: Resolved): Promise<Map<string, number> | null> {
+  if (!candidates.length) return new Map();
+  return generateText({
+    model: fast.model,
+    prompt: judge(question, candidates.slice(0, 24)),
+    output: Output.object({ schema: z.object({ scores: z.array(z.object({ id: z.string(), score: z.number() })) }) }),
+    temperature: 0,
+    providerOptions: fast.providerOptions,
+    maxRetries: 1,
+    abortSignal: AbortSignal.timeout(deadlines.judge),
+  })
+    .then(({ output }) => new Map(output.scores.map((entry) => [entry.id, entry.score])))
+    .catch(() => null);
+}
 
 export async function research({
   config,
@@ -123,17 +141,6 @@ export async function research({
   const started = Date.now();
   const mark = (name: string) => (timings[name] = Date.now() - started);
 
-  // A first question the corpus answers outright needs neither the router nor a web search.
-  const early = await searchCorpus([question], []);
-  const earlyScore = early[0]?.corpusScore ?? 0;
-  if (!conversation && earlyScore >= routeFreeScore) {
-    mark("corpus");
-    return { route: null, candidates: fromCorpus(early), considered: early.length, timings, corpus: true };
-  }
-  // Anything short of that keeps the full live search: a loose corpus match
-  // can still lose to the routed entities' own pages.
-  const broad = within(config.web.run({ query: question }, context), deadlines.search, null);
-
   const domains = config.authorities.map((authority) => authority.domain) as [string, ...string[]];
   const routeSchema = z.object({
     in_scope: z.boolean(),
@@ -141,7 +148,9 @@ export async function research({
     queries: z.array(z.string()),
     datasets: z.object(Object.fromEntries(Object.keys(config.datasets).map((name) => [name, z.string().nullable()]))),
   });
-  const route: Route | null = await generateText({
+  // The router, a broad web search and the corpus lookup all start together.
+  const broad = within(config.web.run({ query: question }, context), deadlines.search, null);
+  const routing: Promise<Route | null> = generateText({
     model: fast.model,
     prompt: plan(config, question, conversation),
     output: Output.object({ schema: routeSchema }),
@@ -157,12 +166,23 @@ export async function research({
       datasets: output.datasets as Record<string, string | null>,
     }))
     .catch(() => null);
+
+  // A first question whose own words find a corpus record the judge confirms needs neither the router nor the web.
+  // Lexical scores alone cannot tell: they grow with the corpus and reward shared filler words.
+  if (!conversation) {
+    const early = (await searchCorpus([question], [])).filter((hit) => hit.named);
+    const answers = early.length ? answering(early, await scoreSources(question, asCandidates(early), fast)) : [];
+    mark("corpus");
+    if (answers.length) return { route: null, candidates: answers, considered: early.length, timings, corpus: true };
+  }
+
+  const route = await routing;
   mark("route");
   if (route && !route.inScope) return { route, candidates: [], considered: 0, timings };
 
   const hits = await searchCorpus([...(route?.queries ?? []), question], route?.authorities ?? []);
+  const records = asCandidates(hits);
   mark("corpus");
-  if ((hits[0]?.corpusScore ?? 0) >= corpusScore) return { route, candidates: fromCorpus(hits), considered: hits.length, timings, corpus: true };
 
   const lead = route?.queries[0] || question;
   const scopedSearch = async (domain: string) => {
@@ -194,28 +214,23 @@ export async function research({
     id: `s${index}`,
     authority: route?.authorities.some((domain) => under(candidate.url, domain)) ?? false,
   }));
-  if (!unique.length) return { route, candidates: [], considered: 0, timings };
+  // Corpus records and web pages face the judge together; a record it scores as the answer answers alone,
+  // the rest of them stay in the pool as ordinary evidence.
+  const pool = [...records, ...unique];
+  if (!pool.length) return { route, candidates: [], considered: 0, timings };
 
-  const scores = await generateText({
-    model: fast.model,
-    prompt: judge(question, unique.slice(0, 24)),
-    output: Output.object({ schema: z.object({ scores: z.array(z.object({ id: z.string(), score: z.number() })) }) }),
-    temperature: 0,
-    providerOptions: fast.providerOptions,
-    maxRetries: 1,
-    abortSignal: AbortSignal.timeout(deadlines.judge),
-  })
-    .then(({ output }) => new Map(output.scores.map((entry) => [entry.id, entry.score])))
-    .catch(() => null);
+  const scores = await scoreSources(question, pool, fast);
   mark("judge");
+  const answers = answering(hits, scores);
+  if (answers.length) return { route, candidates: answers, considered: pool.length, timings, corpus: true };
 
-  const relevant = unique
+  const relevant = pool
     .map((candidate) => ({ ...candidate, score: scores ? (scores.get(candidate.id) ?? 0) : candidate.authority ? keepScore : 1 }))
     .filter((candidate) => candidate.score >= keepScore)
     .sort((a, b) => b.score - a.score || Number(b.authority) - Number(a.authority))
     .slice(0, 6);
 
-  return { route, candidates: relevant, considered: unique.length, timings };
+  return { route, candidates: relevant, considered: pool.length, timings };
 }
 
 export async function deepen(config: ResearchConfig, candidates: Candidate[], context: ToolContext) {

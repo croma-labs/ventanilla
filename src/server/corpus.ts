@@ -7,7 +7,8 @@ import type { Candidate } from "./research";
 
 type Loaded = { index: MiniSearch<CorpusDoc>; docs: Map<number, CorpusDoc>; version: string };
 
-export type CorpusHit = Candidate & { corpusScore: number };
+/** `named`: a query term matched the record's name, not only its body, so the question is about this record's subject. */
+export type CorpusHit = Candidate & { corpusScore: number; named: boolean };
 
 const maxText = 9_000;
 const maxHits = 3;
@@ -45,26 +46,24 @@ export const corpusVersion = async () => (await corpus())?.version ?? null;
 const under = (host: string, domain: string) => host === domain || host.endsWith(`.${domain}`);
 
 /**
- * The fichas that best answer the queries, from the entities the router named
+ * The records that best answer the queries, from the entities the router named
  * (all of them when it named none). Each query is searched on its own and a
- * ficha keeps its best score, so "requisitos" and "costo" queries both count.
+ * record keeps its best score, so "requisitos" and "costo" queries both count.
  */
 export async function searchCorpus(queries: string[], domains: string[]): Promise<CorpusHit[]> {
   const loaded = await corpus();
   if (!loaded) return [];
   const scoped = domains.filter((domain) => domain !== "gov.co");
-  const filter = scoped.length ? (result: SearchResult) => scoped.some((domain) => under(String(result.host ?? ""), domain)) : undefined;
+  // A record whose entity publishes no website cannot be scoped by domain, so it stays in every scope.
+  const filter = scoped.length ? (result: SearchResult) => !result.host || scoped.some((domain) => under(String(result.host), domain)) : undefined;
   const best = new Map<number, number>();
-  const run = (scope: typeof filter) => {
-    for (const query of queries) {
-      for (const result of loaded.index.search(query, { filter: scope })) {
-        best.set(result.id as number, Math.max(best.get(result.id as number) ?? 0, result.score));
-      }
+  const named = new Set<number>();
+  for (const query of queries) {
+    for (const result of loaded.index.search(query, { filter })) {
+      best.set(result.id as number, Math.max(best.get(result.id as number) ?? 0, result.score));
+      if (Object.values(result.match).some((fields) => fields.includes("name"))) named.add(result.id as number);
     }
-  };
-  run(filter);
-  // A ficha whose entity publishes no website cannot be scoped by domain.
-  if (!best.size && filter) run(undefined);
+  }
   return [...best.entries()]
     .sort((a, b) => b[1] - a[1])
     .slice(0, maxHits)
@@ -81,6 +80,7 @@ export async function searchCorpus(queries: string[], domains: string[]): Promis
           read: true,
           authority: true,
           corpusScore: score,
+          named: named.has(id),
         },
       ];
     });

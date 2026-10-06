@@ -18,7 +18,7 @@ export type CorpusLine = {
 export type CorpusDoc = { id: number; name: string; entity: string; host: string; url: string; path: string; modified: string; text: string };
 
 export const corpusDir = ".corpus";
-export const corpusFiles = { docs: `${corpusDir}/fichas.jsonl`, index: `${corpusDir}/index.json`, manifest: `${corpusDir}/manifest.json` };
+export const corpusFiles = { docs: `${corpusDir}/docs.jsonl`, index: `${corpusDir}/index.json`, manifest: `${corpusDir}/manifest.json` };
 
 const stopwords = new Set(
   "a al ante como con cual cuales cuando de del desde donde el ella en entre es esta este esto hay la las le les lo los me mi mis para pero por que se si sin sobre su sus te tu tus un una uno y o u ni ya mas muy hacer hago puedo debo necesito quiero saco sacar tramite tramites".split(" "),
@@ -37,7 +37,8 @@ export const indexOptions: Options<CorpusDoc> = {
   fields: ["name", "entity", "text"],
   storeFields: ["name", "entity", "host", "url", "path", "modified"],
   processTerm,
-  searchOptions: { boost: { name: 3, entity: 1.5 }, prefix: (term) => term.length > 3, fuzzy: (term) => (term.length > 5 ? 0.15 : false), combineWith: "OR" },
+  // No fuzzy matching: one edit on a six-letter stem turns "conduc" into "condic" and "cuesta" into "cuenta".
+  searchOptions: { boost: { name: 3, entity: 1.5 }, prefix: (term) => term.length > 3, combineWith: "OR" },
 };
 
 const hostOf = (url: string | undefined) => {
@@ -48,7 +49,7 @@ const hostOf = (url: string | undefined) => {
   }
 };
 
-/** The ficha's body without its header, which only repeats the fields stored beside it. */
+/** The record's body without its header, which only repeats the fields stored beside it. */
 const bodyOf = (markdown: string) => markdown.replace(/^---\n[\s\S]*?\n---\n/, "").trim();
 
 export function toDoc(line: CorpusLine): CorpusDoc {
