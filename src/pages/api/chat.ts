@@ -304,7 +304,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
           unsupported,
           timings: found?.timings,
           reviewMs,
-          tools: context.trace.map(({ name, ms, cached, ok }) => ({ name, ms, cached, ok })),
+          tools: context.trace.map(({ name, ms, cached, ok, code }) => ({ name, ms, cached, ok, code })),
         }),
       );
     },

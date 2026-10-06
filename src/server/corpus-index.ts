@@ -57,7 +57,7 @@ export function toDoc(line: CorpusLine): CorpusDoc {
   // What the answer needs to link the entity to its own site and to date a fee.
   const lead = [
     line.entity ? `Entidad: ${line.entity}${entityUrl ? ` (sitio web: ${entityUrl})` : ""}` : null,
-    modified ? `Ficha oficial actualizada el ${modified}` : null,
+    modified ? `Información oficial actualizada el ${modified}` : null,
   ].filter(Boolean);
   return {
     id: line.number,
