@@ -2,6 +2,7 @@
 import "@fontsource-variable/inter-tight/wght.css";
 import "@fontsource/instrument-serif/400.css";
 import { site } from "@country/site";
+import Analytics from "@vercel/analytics/astro";
 import "../styles/global.css";
 import serif from "@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url";
 import sans from "@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url";
@@ -93,5 +94,6 @@ const structured = {
   </head>
   <body class="font-body text-primary antialiased">
     <slot />
+    <Analytics />
   </body>
 </html>
