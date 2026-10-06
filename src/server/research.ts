@@ -1,5 +1,6 @@
 import { generateText, Output } from "ai";
 import { z } from "zod";
+import { searchCorpus } from "./corpus";
 import type { Resolved } from "./model";
 import type { Source, SourceTool, ToolContext, ToolResult } from "./tools/kit";
 import { clip } from "./tools/kit";
@@ -19,11 +20,13 @@ export type Candidate = { id: string; origin: string; title: string; url: string
 
 export type Route = { inScope: boolean; authorities: string[]; queries: string[]; datasets: Record<string, string | null> };
 
-export type Research = { route: Route | null; candidates: Candidate[]; considered: number; timings: Record<string, number> };
+export type Research = { route: Route | null; candidates: Candidate[]; considered: number; timings: Record<string, number>; corpus?: boolean };
 
 const deadlines = { route: 4_000, search: 8_000, dataset: 7_000, judge: 5_000, read: 7_000 };
 const maxEvidence = 30_000;
 const keepScore = 2;
+/** A corpus match at least this strong answers from the corpus alone; weaker ones fall back to live search. */
+const corpusScore = Number(process.env.CORPUS_MIN_SCORE ?? 60);
 
 const within = <T>(promise: Promise<T>, ms: number, fallback: T) =>
   Promise.race([promise.catch(() => fallback), new Promise<T>((resolve) => setTimeout(() => resolve(fallback), ms))]);
@@ -113,7 +116,9 @@ export async function research({
   const started = Date.now();
   const mark = (name: string) => (timings[name] = Date.now() - started);
 
-  const broad = within(config.web.run({ query: question }, context), deadlines.search, null);
+  // A question the corpus already answers well never pays for a web search.
+  const early = await searchCorpus([question], []);
+  const broad = (early[0]?.corpusScore ?? 0) >= corpusScore ? Promise.resolve(null) : within(config.web.run({ query: question }, context), deadlines.search, null);
 
   const domains = config.authorities.map((authority) => authority.domain) as [string, ...string[]];
   const routeSchema = z.object({
@@ -140,6 +145,13 @@ export async function research({
     .catch(() => null);
   mark("route");
   if (route && !route.inScope) return { route, candidates: [], considered: 0, timings };
+
+  const hits = await searchCorpus([...(route?.queries ?? []), question], route?.authorities ?? []);
+  mark("corpus");
+  if ((hits[0]?.corpusScore ?? 0) >= corpusScore) {
+    const strong = hits.filter((hit) => hit.corpusScore >= hits[0].corpusScore * 0.5);
+    return { route, candidates: strong.map(({ corpusScore: score, ...hit }) => ({ ...hit, score: 3, origin: `corpus:${score.toFixed(1)}` })), considered: hits.length, timings, corpus: true };
+  }
 
   const lead = route?.queries[0] || question;
   const scopedSearch = async (domain: string) => {

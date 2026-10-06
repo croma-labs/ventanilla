@@ -223,6 +223,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
             kept: found?.candidates.map(({ url, score, authority, read, origin }) => ({ url, score, authority, read, origin })),
             checks: checks.map(({ claim, status }) => ({ claim, status })),
             deepened,
+            corpus: !!found?.corpus,
             timings: { ...found?.timings, reviewMs, totalMs: Date.now() - started },
           }
         : undefined;
@@ -245,6 +246,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
           kept: found?.candidates.length,
           read: found?.candidates.filter((candidate) => candidate.read).length,
           deepened,
+          corpus: !!found?.corpus,
           inScope: found?.route?.inScope,
           cited: grounded.length,
           claims,
