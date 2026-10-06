@@ -1,6 +1,6 @@
 import { generateText, Output } from "ai";
 import { z } from "zod";
-import { searchCorpus } from "./corpus";
+import { searchCorpus, type CorpusHit } from "./corpus";
 import type { Resolved } from "./model";
 import type { Source, SourceTool, ToolContext, ToolResult } from "./tools/kit";
 import { clip } from "./tools/kit";
@@ -27,6 +27,13 @@ const maxEvidence = 30_000;
 const keepScore = 2;
 /** A corpus match at least this strong answers from the corpus alone; weaker ones fall back to live search. */
 const corpusScore = Number(process.env.CORPUS_MIN_SCORE ?? 60);
+/** A first question whose own words match the corpus this strongly needs no router to name the entity. */
+const routeFreeScore = Number(process.env.CORPUS_SKIP_ROUTE_SCORE ?? 120);
+
+const fromCorpus = (hits: CorpusHit[]) =>
+  hits
+    .filter((hit) => hit.corpusScore >= hits[0].corpusScore * 0.5)
+    .map(({ corpusScore: score, ...hit }) => ({ ...hit, score: 3, origin: `corpus:${score.toFixed(1)}` }));
 
 const within = <T>(promise: Promise<T>, ms: number, fallback: T) =>
   Promise.race([promise.catch(() => fallback), new Promise<T>((resolve) => setTimeout(() => resolve(fallback), ms))]);
@@ -116,9 +123,15 @@ export async function research({
   const started = Date.now();
   const mark = (name: string) => (timings[name] = Date.now() - started);
 
-  // A question the corpus already answers well never pays for a web search.
+  // A question the corpus already answers well never pays for a web search,
+  // and a first question it answers outright does not wait for the router.
   const early = await searchCorpus([question], []);
-  const broad = (early[0]?.corpusScore ?? 0) >= corpusScore ? Promise.resolve(null) : within(config.web.run({ query: question }, context), deadlines.search, null);
+  const earlyScore = early[0]?.corpusScore ?? 0;
+  if (!conversation && earlyScore >= routeFreeScore) {
+    mark("corpus");
+    return { route: null, candidates: fromCorpus(early), considered: early.length, timings, corpus: true };
+  }
+  const broad = earlyScore >= corpusScore ? Promise.resolve(null) : within(config.web.run({ query: question }, context), deadlines.search, null);
 
   const domains = config.authorities.map((authority) => authority.domain) as [string, ...string[]];
   const routeSchema = z.object({
@@ -148,10 +161,7 @@ export async function research({
 
   const hits = await searchCorpus([...(route?.queries ?? []), question], route?.authorities ?? []);
   mark("corpus");
-  if ((hits[0]?.corpusScore ?? 0) >= corpusScore) {
-    const strong = hits.filter((hit) => hit.corpusScore >= hits[0].corpusScore * 0.5);
-    return { route, candidates: strong.map(({ corpusScore: score, ...hit }) => ({ ...hit, score: 3, origin: `corpus:${score.toFixed(1)}` })), considered: hits.length, timings, corpus: true };
-  }
+  if ((hits[0]?.corpusScore ?? 0) >= corpusScore) return { route, candidates: fromCorpus(hits), considered: hits.length, timings, corpus: true };
 
   const lead = route?.queries[0] || question;
   const scopedSearch = async (domain: string) => {

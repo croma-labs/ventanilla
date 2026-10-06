@@ -53,6 +53,12 @@ const bodyOf = (markdown: string) => markdown.replace(/^---\n[\s\S]*?\n---\n/, "
 
 export function toDoc(line: CorpusLine): CorpusDoc {
   const entityUrl = line.markdown.match(/^url_entidad: (\S+)$/m)?.[1];
+  const modified = line.modified_at?.slice(0, 10) ?? "";
+  // What the answer needs to link the entity to its own site and to date a fee.
+  const lead = [
+    line.entity ? `Entidad: ${line.entity}${entityUrl ? ` (sitio web: ${entityUrl})` : ""}` : null,
+    modified ? `Ficha oficial actualizada el ${modified}` : null,
+  ].filter(Boolean);
   return {
     id: line.number,
     name: line.name ?? `Trámite ${line.number}`,
@@ -60,8 +66,8 @@ export function toDoc(line: CorpusLine): CorpusDoc {
     host: hostOf(entityUrl),
     url: line.official_url,
     path: line.path,
-    modified: line.modified_at?.slice(0, 10) ?? "",
-    text: bodyOf(line.markdown),
+    modified,
+    text: [...lead, bodyOf(line.markdown)].join("\n"),
   };
 }
 
