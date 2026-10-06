@@ -14,6 +14,7 @@ import { admit, anonymousKey, sameOrigin, signAnswer, verifyAnswer } from "../..
 import { resolveFastModel, resolveModel } from "../../server/model";
 import { deepen, evidenceOf, research, type Research } from "../../server/research";
 import { rewrite, supporters, verify, type Check } from "../../server/review";
+import { countQuery } from "../../server/stats";
 import type { Source, ToolContext } from "../../server/tools/kit";
 
 export const prerender = false;
@@ -230,7 +231,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         controller.enqueue(encoder.encode("data: [DONE]\n\n"));
         controller.close();
       } catch {}
-      waitUntil(Promise.allSettled([reading, ...pendingWork()]));
+      const answered = !evaluation && !conversational && (outcome === "ok" || outcome === "cached");
+      waitUntil(Promise.allSettled([reading, ...pendingWork(), ...(answered ? [countQuery()] : [])]));
       console.info(
         JSON.stringify({
           event: "chat",

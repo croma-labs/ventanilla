@@ -49,6 +49,8 @@ export type Site = {
   nav: { primary: readonly Link[]; legal: readonly Link[] };
   ui: Record<
     | "askAnything"
+    | "answered"
+    | "answeredOne"
     | "describe"
     | "ask"
     | "send"

@@ -4,6 +4,7 @@ export type Store = {
   get<T>(key: string): Promise<T | null>;
   set(key: string, value: unknown, ttlSeconds: number): Promise<void>;
   incr(key: string, ttlSeconds: number): Promise<number>;
+  bump(key: string): Promise<number>;
 };
 
 const prefix = `ventanilla:${process.env.VERCEL_ENV === "production" ? "" : "dev:"}${process.env.COUNTRY ?? "co"}:`;
@@ -32,6 +33,11 @@ function memoryStore(capacity = 2000): Store {
       else put(key, next, ttlSeconds);
       return next;
     },
+    bump: async (key) => {
+      const next = ((live(key)?.value as number) ?? 0) + 1;
+      put(key, next, 10 * 365 * 24 * 3600);
+      return next;
+    },
   };
 }
 
@@ -45,6 +51,7 @@ function redisStore(redis: Redis): Store {
       const [count] = await redis.pipeline().incr(prefix + key).expire(prefix + key, ttlSeconds, "NX").exec<[number, number]>();
       return count;
     },
+    bump: (key) => redis.incr(prefix + key),
   };
 }
 

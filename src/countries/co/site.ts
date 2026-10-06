@@ -173,6 +173,8 @@ export const site: Site = {
   },
   ui: {
     askAnything: "Pregunta lo que necesites…",
+    answered: "{n} preguntas respondidas",
+    answeredOne: "1 pregunta respondida",
     describe: "Describe lo que necesitas",
     ask: "Pregúntale a Ventanilla",
     send: "Enviar mensaje",

@@ -11,6 +11,7 @@ import { ChevronLeftIcon, ChevronRightIcon, PauseIcon, PlayIcon } from "../icons
 import Composer from "./Composer";
 import Postcard from "./Postcard";
 import PromptTicker from "./PromptTicker";
+import QueryCount from "./QueryCount";
 
 const heroCards = site.hero.cards;
 const autoplayMs = 4000;
@@ -197,6 +198,7 @@ export default function Hero() {
                   </button>
                 </div>
               </div>
+              <QueryCount />
             </div>
           </div>
         </div>
