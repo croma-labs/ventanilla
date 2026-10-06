@@ -8,6 +8,13 @@ updates:
     groups:
       minor-and-patch:
         update-types: [minor, patch]
+    ignore:
+      # Runtime is Node 24; bump with .nvmrc and engines.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+      # @astrojs/check peers on typescript 5 or 6.
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
