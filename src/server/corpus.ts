@@ -33,7 +33,8 @@ export function corpus() {
       }
       const { sha256 = "" } = JSON.parse(manifest) as { sha256?: string };
       return { index: loadIndex(json), docs, version: sha256.slice(0, 12) || "local" };
-    } catch {
+    } catch (error) {
+      if (process.env.VERCEL) console.warn("[ventanilla] corpus not loaded; answers use live search only:", error instanceof Error ? error.message.slice(0, 160) : "unknown");
       return null;
     }
   })();
