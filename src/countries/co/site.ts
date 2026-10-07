@@ -57,7 +57,7 @@ export const site: Site = {
     {
       key: "privacy",
       title: "Tu conversación es tuya.",
-      body: "No pedimos ni guardamos datos personales. Bloqueamos cédulas, teléfonos y direcciones antes de enviar, y la conversación desaparece al salir.",
+      body: "No pedimos datos personales. Bloqueamos cédulas, teléfonos y direcciones antes de enviar, y las preguntas se guardan sin ellos solo 7 días para mejorar las respuestas.",
       cta: "Sobre tu privacidad",
       href: "#privacidad",
     },
@@ -255,12 +255,12 @@ export const site: Site = {
           body: "Revisamos tu mensaje en el navegador y no lo enviamos si detectamos cédulas, teléfonos, correos, placas o direcciones. Revisa lo que escribes: podemos no detectarlo todo.",
         },
         {
-          heading: "Sin rastreo",
-          body: "No usamos cookies, analítica ni tu ubicación. Tu dirección IP se queda en nuestro servidor: las fuentes y el modelo de IA solo reciben la pregunta.",
+          heading: "Sin cookies",
+          body: "No usamos cookies ni tu ubicación. Contamos las visitas con Vercel Web Analytics, que no usa cookies ni te identifica. Tu dirección IP se queda en nuestro servidor: las fuentes y el modelo de IA solo reciben la pregunta.",
         },
         {
-          heading: "Retención mínima",
-          body: "No guardamos conversaciones. Las consultas a fuentes públicas se guardan en caché hasta 24 horas, identificadas por un hash, no por el texto.",
+          heading: "Retención corta",
+          body: "Guardamos cada pregunta, sin los datos personales detectados, y su respuesta durante 7 días para revisar y mejorar el servicio; no quedan asociadas a ti ni a tu dirección IP. Las respuestas y las consultas a fuentes públicas se guardan en caché hasta 30 días, identificadas por un hash, no por el texto.",
         },
       ],
     },
