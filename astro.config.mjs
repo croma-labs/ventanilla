@@ -5,11 +5,12 @@ import react from "@astrojs/react";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { loadEnv } from "vite";
+import { corpusFiles } from "./src/server/corpus-index.ts";
 
 for (const [key, value] of Object.entries(loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), ""))) process.env[key] ??= value;
 
 const country = process.env.COUNTRY ?? "co";
-const corpus = [".corpus/fichas.jsonl", ".corpus/index.json", ".corpus/manifest.json"].filter((file) => existsSync(file));
+const corpus = Object.values(corpusFiles).filter((file) => existsSync(file));
 
 export default defineConfig({
   site: process.env.SITE_URL ?? "https://gov.usecroma.com",
