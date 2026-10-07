@@ -13,6 +13,7 @@
     "build": "astro build",
     "preview": "astro preview --port 5201",
     "check": "astro check",
+    "test": "node --test \"tests/**/*.test.ts\"",
     "icons": "node scripts/icons.ts",
     "eval": "node --env-file-if-exists=.env.local scripts/eval.ts",
     "tramites": "node --env-file-if-exists=.env.local scripts/tramites.ts",
