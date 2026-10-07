@@ -266,7 +266,17 @@ export async function deepen(config: ResearchConfig, candidates: Candidate[], co
   return pages.length + records.length > 0;
 }
 
+/** Every source reaches the model as valid JSON: when they do not all fit, the longest texts are cut to the same length instead of the last sources being dropped. */
 export function evidenceOf(candidates: Candidate[]) {
-  const text = JSON.stringify(candidates.map(({ title, url, text, read, authority }) => ({ title, url, competent_entity: authority, full_page: !!read, text })));
-  return text.length > maxEvidence ? text.slice(0, maxEvidence) : text;
+  const render = (limit: number) =>
+    JSON.stringify(candidates.map(({ title, url, text, read, authority }) => ({ title, url, competent_entity: authority, full_page: !!read, text: text.length > limit ? `${text.slice(0, limit)}…` : text })));
+  let fits = 0;
+  let over = Math.max(0, ...candidates.map((candidate) => candidate.text.length));
+  if (render(over).length <= maxEvidence) return render(over);
+  while (over - fits > 1) {
+    const limit = Math.floor((fits + over) / 2);
+    if (render(limit).length <= maxEvidence) fits = limit;
+    else over = limit;
+  }
+  return render(fits);
 }
