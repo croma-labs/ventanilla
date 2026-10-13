@@ -34,7 +34,9 @@ Each country lives in `src/countries/<code>/`: copy, sources, privacy detectors,
 | Country | Code | Sources |
 | --- | --- | --- |
 | Colombia | `co` | gov.co, Función Pública, Corte Constitucional, DIAN, SUIT corpus |
-| El Salvador | `sv` | gob.sv, Simple.sv, Asamblea Legislativa, Corte Suprema de Justicia |
+| El Salvador | `sv` | gob.sv, Simple.sv, Asamblea Legislativa, Corte Suprema de Justicia, OMR corpus |
+
+El Salvador's procedures corpus is built from the Registro Nacional de Trámites with `npm run omr -- --upload` (needs `CORPUS_READ_WRITE_TOKEN`); rerun it to refresh.
 
 ## Contributing
 

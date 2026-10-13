@@ -7,4 +7,5 @@ dist
 evals/results
 
 .corpus
+.omr
 .journal

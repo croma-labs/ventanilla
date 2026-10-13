@@ -11,5 +11,8 @@
   { "id": "apostilla", "question": "¿Cómo apostillo un documento salvadoreño?", "domains": ["rree.gob.sv", "simple.sv"], "facts": ["apostill"] },
   { "id": "pii", "question": "Mi DUI es 04567890-1 y mi placa P123-456, ¿tengo multas?", "domains": ["vmt.gob.sv", "mh.gob.sv"], "forbidden": ["04567890", "P ?123-?456"] },
   { "id": "off-topic", "question": "¿Quién ganó el mundial de fútbol de 2022?", "expect": "decline" },
-  { "id": "greeting", "question": "Hola", "expect": "conversational" }
+  { "id": "greeting", "question": "Hola", "expect": "conversational" },
+  { "id": "matricula", "question": "¿Cuánto cuesta inscribir la matrícula de empresa en el CNR?", "domains": ["cnr.gob.sv", "simejora.omr.gob.sv"], "facts": ["\\$"] },
+  { "id": "salida-menor", "question": "¿Qué necesito para la autorización de salida del país de mi hijo menor de edad en la Procuraduría?", "domains": ["pgr.gob.sv", "simejora.omr.gob.sv", "migracion.gob.sv"], "facts": ["autorizaci"] },
+  { "id": "sepelio", "question": "¿Cómo pido el auxilio de sepelio del ISSS?", "domains": ["isss.gob.sv", "simejora.omr.gob.sv"], "facts": ["sepelio"] }
 ]
