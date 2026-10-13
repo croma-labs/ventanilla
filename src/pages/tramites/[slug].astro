@@ -42,7 +42,7 @@ const schema = [
     about: {
       "@type": "GovernmentService",
       name: tramite.title,
-      areaServed: { "@type": "Country", name: "Colombia" },
+      areaServed: { "@type": "Country", name: site.country },
       provider: { "@type": "GovernmentOrganization", name: tramite.agency.name, url: `https://www.${tramite.agency.domain}` },
     },
     citation: tramite.sources.map((source) => ({ "@type": "CreativeWork", name: source.title, url: source.url })),

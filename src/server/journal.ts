@@ -1,3 +1,4 @@
+import { site } from "@country/site";
 import { store } from "./store";
 
 /**
@@ -25,7 +26,7 @@ export type JournalEntry = {
 
 const retention = Number(process.env.JOURNAL_RETENTION_SECONDS ?? 7 * 24 * 3600);
 
-const dayOf = (date: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Bogota" }).format(date);
+const dayOf = (date: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: site.timeZone }).format(date);
 
 export const journalKey = (date: Date) => `journal:${dayOf(date)}`;
 

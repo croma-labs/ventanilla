@@ -5,6 +5,9 @@ const name = "Ventanilla";
 
 export const site: Site = {
   code: "co",
+  country: "Colombia",
+  currency: "COP",
+  timeZone: "America/Bogota",
   lang: "es",
   locale: "es-CO",
   brand: {
@@ -181,6 +184,7 @@ export const site: Site = {
     "distritodemedellinvirtual.sistemasentry.com.co": { name: "Alcaldía de Medellín", short: "MD", iconFrom: "medellin.gov.co" },
   },
   officialSuffixes: [".gov.co", ".mil.co", "rues.org.co", "ccb.org.co", "confecamaras.org.co", "simit.org.co", "sena.edu.co", "runt.com.co", "vus.circulemosdigital.com.co", "distritodemedellinvirtual.sistemasentry.com.co"],
+  liveIcons: true,
   pii: detectors,
   nav: {
     primary: [
@@ -235,6 +239,7 @@ export const site: Site = {
     badges: "Entidades: {list}",
     fingerprint: "Animar la huella",
     fingerprintDone: "Animación completa. Aparece un visto bueno.",
+    orbit: "Una esfera animada con las entidades del Estado colombiano que Ventanilla consulta.",
     orbitPlay: "Reproducir animación",
     orbitPause: "Pausar animación",
     star: "Lanzar una estrella fugaz",

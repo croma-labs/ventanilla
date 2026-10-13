@@ -1,0 +1,806 @@
+{
+  "dui-primera-vez": {
+    "answer": "El trámite de emisión de DUI por primera vez es **gratis** si lo realizas en El Salvador.\n\n### Cómo hacerlo\n- En el país: Presenta tu partida de nacimiento original en el [Registro Nacional de las Personas Naturales](https://www.rnpn.gob.sv/servicios/servicio-de-dui-a-domicilio/).\n- En el exterior: Paga $35.00 en el consulado el día de la cita y lleva tu partida de nacimiento, según el [Ministerio de Relaciones Exteriores](https://rree.gob.sv/servicios/dui-en-el-exterior/).\n- Si no tienes documento de identidad, acude acompañado de un padre o dos testigos salvadoreños.",
+    "sources": [
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/servicios/servicio-de-dui-a-domicilio/"
+      },
+      {
+        "title": "Ministerio de Relaciones Exteriores de El Salvador",
+        "url": "https://rree.gob.sv/servicios/dui-en-el-exterior/"
+      },
+      {
+        "title": "SOLICITUD DE DUI A DOMICILIO",
+        "url": "https://www.rnpn.gob.sv/wp-content/uploads/2024/07/solicitud-DUI-a-domicilio.pdf"
+      },
+      {
+        "title": "SOLICITUD DE DUI A DOMICILIO",
+        "url": "https://www.rnpn.gob.sv/wp-content/uploads/2024/06/Solicitud-DUI-a-domicilio.pdf"
+      },
+      {
+        "title": "Jornadas sabatinas para emisión del DUI en consulados salvadoreños benefician a diáspora en EE. UU. - Presidencia de la República de El Salvador",
+        "url": "https://www.presidencia.gob.sv/jornadas-sabatinas-para-emision-del-dui-en-consulados-salvadorenos-benefician-a-diaspora-en-ee-uu/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 4,
+    "supported": 4
+  },
+  "reposicion-dui": {
+    "answer": "Para reponer tu DUI debes pagar **$10.31** en un banco o en línea y presentar el recibo, según el [Registro Nacional de las Personas Naturales](https://www.rnpn.gob.sv/servicios/servicio-de-dui-a-domicilio/).\n\n### Opciones de trámite\n- En El Salvador, puedes usar un [kiosco automático](https://www.rnpn.gob.sv/rnpn-inauguro-kiosco-automatico-para-tramites-de-dui-en-las-instalaciones-del-cnr/) si ya realizaste el pago electrónico.\n- También puedes solicitar el [DUI a domicilio](https://www.rnpn.gob.sv/servicios/servicio-de-dui-a-domicilio/) anexando el croquis de tu dirección y el recibo de pago.\n- Si resides en Estados Unidos, puedes tramitar la reposición en línea a través de [dui.sv](https://www.rnpn.gob.sv/salvadorenos-en-cinco-ciudades-de-estados-unidos-ya-cuentan-con-servicio-de-impresion-del-dui-in-situ/) por $55, que incluye el envío.",
+    "sources": [
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/servicios/servicio-de-dui-a-domicilio/"
+      },
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/rnpn-inauguro-kiosco-automatico-para-tramites-de-dui-en-las-instalaciones-del-cnr/"
+      },
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/salvadorenos-en-cinco-ciudades-de-estados-unidos-ya-cuentan-con-servicio-de-impresion-del-dui-in-situ/"
+      },
+      {
+        "title": "SOLICITUD DE DUI A DOMICILIO",
+        "url": "https://www.rnpn.gob.sv/wp-content/uploads/2024/07/solicitud-DUI-a-domicilio.pdf"
+      },
+      {
+        "title": "SOLICITUD DE DUI A DOMICILIO",
+        "url": "https://www.rnpn.gob.sv/wp-content/uploads/2024/06/Solicitud-DUI-a-domicilio.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 4,
+    "supported": 4
+  },
+  "renovar-dui": {
+    "answer": "Para renovar tu DUI vencido debes pagar $10.31 en un banco o en línea y presentar el recibo junto con tu DUI vigente en un Duicentro.\n\n### Cómo hacerlo\n- Realiza el pago y presenta el recibo cancelado.\n- Si no tienes el DUI vigente, firma una **Declaración Jurada**.\n- Agenda cita en [www.dui-sv.com](https://www.dui-sv.com) o llama al 2555-1900.\n\n### Requisitos\n- Recibo de pago por $10.31.\n- DUI vigente o Declaración Jurada.\n\nNota: Si tu vencimiento es entre el 29 de noviembre de 2026 y el 28 de febrero de 2027, la renovación es **gratuita** si la inicias antes del 28 de noviembre de 2026, según las [Disposiciones Especiales y Transitorias](https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2026/05/113A93.PDF).",
+    "sources": [
+      {
+        "title": "DISPOSICIONES ESPECIALES Y TRANSITORIAS PARA LA RENOVACIÓN GRATUITA DEL DOCUMENTO ÚNICO DE IDENTIDAD CUYOS VENCIMIENTOS OCURRAN ENTRE EL 29 DE NOVIEMBRE DE 2026 Y EL 28 DE FEBRERO DE 2027",
+        "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/D/2/2020-2029/2026/05/113A93.PDF"
+      },
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/servicios/servicio-de-dui-a-domicilio/"
+      },
+      {
+        "title": "SOLICITUD DE DUI A DOMICILIO",
+        "url": "https://www.rnpn.gob.sv/wp-content/uploads/2024/07/solicitud-DUI-a-domicilio.pdf"
+      },
+      {
+        "title": "SOLICITUD DE DUI A DOMICILIO",
+        "url": "https://www.rnpn.gob.sv/wp-content/uploads/2024/06/Solicitud-DUI-a-domicilio.pdf"
+      },
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/extendemos-horarios-en-los-20-duicentros-a-nivel-nacional/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 7,
+    "supported": 6
+  },
+  "dui-a-domicilio": {
+    "answer": "Puedes solicitar el servicio de DUI a domicilio completando el [formulario en línea](https://forms.gle/US6gwSM48dD9BF8t5) o presentando la documentación en el DUI Centro más cercano, la oficina central del [Registro Nacional de las Personas Naturales](https://www.rnpn.gob.sv/servicios/servicio-de-dui-a-domicilio/) o en las sedes de Ciudad Mujer.\n\n### Requisitos\n- Solicitud llena y **croquis** del lugar a visitar.\n- Constancia médica que detalle la dificultad de salud o inmovilidad.\n- Partida de nacimiento original (solo para primera vez, que es **gratis**).\n- Recibo de pago en banco por $10.31 (para renovación, reposición o modificación).\n\nTambién puedes escribir al WhatsApp 7841-5168 para recibir orientación sobre este servicio.",
+    "sources": [
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/servicios/servicio-de-dui-a-domicilio/"
+      },
+      {
+        "title": "SOLICITUD DE DUI A DOMICILIO",
+        "url": "https://www.rnpn.gob.sv/wp-content/uploads/2024/07/solicitud-DUI-a-domicilio.pdf"
+      },
+      {
+        "title": "SOLICITUD DE DUI A DOMICILIO",
+        "url": "https://www.rnpn.gob.sv/wp-content/uploads/2024/06/Solicitud-DUI-a-domicilio.pdf"
+      },
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/dui-a-domicilio-para-carlos/"
+      },
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/rnpn-garantizo-el-derecho-a-la-identidad-e-identificacion-a-ciudadana-de-99-anos-en-isla-la-calzada/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 7,
+    "supported": 7
+  },
+  "partida-de-nacimiento": {
+    "answer": "La certificación de partida de nacimiento se gestiona en las oficinas del [RNPN](https://www.rnpn.gob.sv/servicios/certificacion-de-partidas-en-el-salvador/), ya que no existe un trámite en línea para la emisión del documento certificado.\n\n### Requisitos y costos\n- Debes presentar tu **DUI original y vigente** junto con una solicitud que incluya tu nombre, el de tus padres, y tu fecha y lugar de nacimiento.\n- El costo es de **$5.00**, pagadero en efectivo o por los canales electrónicos habilitados.\n- El tiempo de espera es de 2 horas desde el ingreso del formulario.\n\nPuedes verificar los datos de tu registro en el [portal de consulta en línea](https://consulta.rnpn.gob.sv/home), pero la obtención del documento oficial requiere la gestión presencial descrita.",
+    "sources": [
+      {
+        "title": "Certificación de partidas · RNPN",
+        "url": "https://www.rnpn.gob.sv/servicios/certificacion-de-partidas-en-el-salvador/"
+      },
+      {
+        "title": "Consulta Partida RNPN",
+        "url": "https://consulta.rnpn.gob.sv/home"
+      },
+      {
+        "title": "Consulta Partida RNPN",
+        "url": "https://consulta.rnpn.gob.sv/"
+      },
+      {
+        "title": "Sistema de Atención Ciudadana - Registro Nacional de las Personas Naturales",
+        "url": "https://atencion.rnpn.gob.sv/helpdesk/kb/faq.php?id=8"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 7,
+    "supported": 6
+  },
+  "pasaporte-primera-vez": {
+    "answer": "Para sacar tu pasaporte por primera vez, debes presentarte personalmente en una de las ocho sucursales de la [Dirección General de Migración y Extranjería](https://www.migracion.gob.sv/servicios/emision/) con tu DUI vigente y pagar la tarifa de $25.00.\n\n### Requisitos y proceso\n- Presenta tu Documento Único de Identidad (DUI) original, vigente y en buen estado.\n- Cancela $25.00 en efectivo o con tarjeta en las colecturías de las sucursales.\n- El trámite es por **orden de llegada**, sin necesidad de cita previa.\n- Si eres menor de edad, necesitas la partida de nacimiento (no mayor a un año) y la presencia de ambos padres o autorización notarial del ausente.\n\nPuedes consultar horarios y ubicaciones en la [página oficial de Migración](https://www.migracion.gob.sv/pasaportes-preguntas/).",
+    "sources": [
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/servicios/emision/"
+      },
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/pasaportes-preguntas/"
+      },
+      {
+        "title": "Expedición de Pasaportes Ordinarios para Salvadoreños en el Exterior.",
+        "url": "https://rree.gob.sv/servicios-consulares/pasaportes-se/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 6,
+    "supported": 6
+  },
+  "renovar-pasaporte": {
+    "answer": "Puedes renovar tu pasaporte salvadoreño de forma presencial en una de las ocho sucursales de la [Dirección General de Migración y Extranjería](https://www.migracion.gob.sv/servicios/renovacion/) o en línea si eres mayor de 18 años y te encuentras en el país.\n\n### Cómo hacerlo\n- **Presencial:** Acude a una sucursal con tu DUI vigente, tu pasaporte vencido o próximo a vencer y el comprobante de pago de **$25.00**.\n- **En línea:** Ingresa a [pasaporteenlinea.migracion.gob.sv](https://pasaporteenlinea.migracion.gob.sv), completa la solicitud, realiza el pago de **$25.00** y elige entre retiro en sucursal o entrega a domicilio (con costo adicional).\n\nLos pagos se realizan únicamente en efectivo o con tarjeta en las colecturías habilitadas.",
+    "sources": [
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/servicios/renovacion/"
+      },
+      {
+        "title": "pasaporteenlinea.migracion.gob.sv",
+        "url": "https://pasaporteenlinea.migracion.gob.sv"
+      },
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/servicios/solicitud-y-pago-de-renovacion-de-pasaporte-ordinario-en-linea/"
+      },
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/pasaportes-preguntas/"
+      },
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/sin-categoria/migracion-lanza-appweb-para-renovacion-de-pasaporte/"
+      },
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/servicios/emision/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 8,
+    "supported": 7
+  },
+  "pasaporte-menor-de-edad": {
+    "answer": "Para sacar el pasaporte de tu hijo menor de edad, debes presentarte con él y ambos padres en una sucursal de [Migración y Extranjería](https://www.migracion.gob.sv/servicios/emision/).\n\n### Requisitos\n- Partida de nacimiento original en buen estado.\n- DUI vigente y en original de ambos padres.\n- Comprobante de pago de **$25.00** (solo en efectivo o tarjeta en las colecturías de las sucursales).\n- Si un padre no puede asistir, lleva una autorización notarial o consular específica.\n\nEl trámite tiene un plazo de entrega de aproximadamente 20 minutos.",
+    "sources": [
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/servicios/emision/"
+      },
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/pasaportes-preguntas/"
+      },
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/noticias/que-necesito-para-tramitar-el-pasaporte-de-mi-hijo-por-primera-vez/"
+      },
+      {
+        "title": "Expedición de Pasaportes Ordinarios para Salvadoreños en el Exterior.",
+        "url": "https://rree.gob.sv/servicios-consulares/pasaportes-se/"
+      },
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/servicios/renovacion/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 6,
+    "supported": 6
+  },
+  "pasaporte-desde-el-exterior": {
+    "answer": "Para renovar tu pasaporte en el exterior, debes acudir al consulado salvadoreño con tu DUI vigente y el pasaporte vencido o próximo a vencer.\n\n### Requisitos y costos\n- **Mayores de edad:** Presenta tu Documento Único de Identidad (DUI) original y vigente, tu pasaporte original vencido o próximo a vencer, y el comprobante de pago.\n- **Menores de edad:** Requiere la presencia de ambos padres con su DUI o pasaporte vigente; si uno no puede asistir, debe llevar una autorización notarial o poder especial.\n- **Costos:** El trámite cuesta **$60 USD** si estás fuera del territorio centroamericano y **$40 USD** si estás dentro de Centroamérica.\n\nPuedes consultar los requisitos específicos en la página de [Expedición de Pasaportes Ordinarios para Salvadoreños en el Exterior](https://rree.gob.sv/servicios-consulares/pasaportes-se/).",
+    "sources": [
+      {
+        "title": "Expedición de Pasaportes Ordinarios para Salvadoreños en el Exterior.",
+        "url": "https://rree.gob.sv/servicios-consulares/pasaportes-se/"
+      },
+      {
+        "title": "Ministerio de Relaciones Exteriores de El Salvador",
+        "url": "https://rree.gob.sv/consulado-de-el-salvador-en-silver-spring-maryland-anuncia-jornada-extraordinaria-de-emision-de-pasaportes-y-dui/"
+      },
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/servicios/renovacion/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 5,
+    "supported": 5
+  },
+  "dui-desde-el-exterior": {
+    "answer": "Puedes renovar o reponer tu DUI en el exterior de forma presencial en un consulado o completamente en línea.\n\n### Opciones disponibles\n- **En línea:** Realiza el trámite a través de [dui.sv](https://dui.sv) desde tu móvil o tablet. El costo total es de **US$55**, que incluye el documento y el envío a tu domicilio.\n- **Presencial:** Acude a uno de los [centros de servicio](https://www.rnpn.gob.sv/centros-de-servicio-para-la-emision-del-dui-en-el-exterior/) en Estados Unidos, Canadá, México, Italia o España. El costo del trámite es de **US$35**, que se paga en el consulado el día de la cita.\n\nPara la renovación presencial, recuerda llevar tu DUI original y vencido. Si necesitas agendar una cita, puedes contactar al [RNPN](https://www.rnpn.gob.sv/programa-cita-para-tramite-de-dui-en-el-exterior/) o revisar la información en la [Cancillería](https://rree.gob.sv/servicios/dui-en-el-exterior/).",
+    "sources": [
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/centros-de-servicio-para-la-emision-del-dui-en-el-exterior/"
+      },
+      {
+        "title": "Registro Nacional de las Personas Naturales",
+        "url": "https://www.rnpn.gob.sv/programa-cita-para-tramite-de-dui-en-el-exterior/"
+      },
+      {
+        "title": "Ministerio de Relaciones Exteriores de El Salvador",
+        "url": "https://rree.gob.sv/servicios/dui-en-el-exterior/"
+      },
+      {
+        "title": "Ministerio de Relaciones Exteriores de El Salvador",
+        "url": "https://rree.gob.sv/gobierno-de-el-salvador-facilita-la-renovacion-y-reposicion-del-dui-para-salvadorenos-en-estados-unidos-a-traves-de-plataforma-en-linea/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 5,
+    "supported": 4
+  },
+  "apostillar-documentos": {
+    "answer": "Para apostillar un documento salvadoreño, debes verificar que el país de destino sea miembro del Convenio de La Haya, ya que el trámite es **gratuito** y lo gestiona el [Ministerio de Relaciones Exteriores](https://rree.gob.sv/autenticas-y-apostillas/).\n\n### Cómo hacerlo\n- Si resides en el exterior, puedes solicitar la [Apostilla Electrónica](https://apostilla.rree.gob.sv/) desde cualquier lugar.\n- Este servicio cubre documentos como partidas de nacimiento, títulos, antecedentes penales y solvencias de la PNC.\n- Una vez apostillado, el documento surte efecto inmediato en el país de destino sin necesidad de pasar por consulados.\n\nPuedes consultar el [procedimiento detallado](https://rree.gob.sv/autenticas-y-apostillas/) en la página oficial de la Cancillería.",
+    "sources": [
+      {
+        "title": "Ministerio de Relaciones Exteriores de El Salvador",
+        "url": "https://rree.gob.sv/autenticas-y-apostillas/"
+      },
+      {
+        "title": "Apostilla Electrónica",
+        "url": "https://apostilla.rree.gob.sv/"
+      },
+      {
+        "title": "Legalización de documentos (auténticas y apostillas)",
+        "url": "https://rree.gob.sv/servicios-oficinas-regionales/autenticas-y-apostillas-or/"
+      },
+      {
+        "title": "Gobierno habilita autenticación electrónica de documentos oficiales para salvadoreños en el exterior - Presidencia de la República de El Salvador",
+        "url": "https://www.presidencia.gob.sv/gobierno-habilita-autenticacion-electronica-de-documentos-oficiales-para-salvadorenos-en-el-exterior/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 8,
+    "supported": 8
+  },
+  "residencia-extranjeros": {
+    "answer": "Para solicitar la residencia temporal en El Salvador, debes identificar tu categoría, descargar el formulario y presentar la documentación ante la [Dirección General de Migración y Extranjería](https://www.migracion.gob.sv/servicios/residencias-temporales/).\n\n### Pasos del trámite\n- Identifica la categoría que se adapta a tu situación y descarga el formulario con los **requisitos**, plazos y aranceles en la [página de residencias temporales](https://www.migracion.gob.sv/servicios/residencias-temporales/).\n- Presenta la solicitud y la documentación que respalde tu petición ante la [Dirección General de Migración y Extranjería](https://www.migracion.gob.sv/noticias/como-puedo-convertirme-en-residente-temporal-en-el-salvador/).\n- Paga las tasas correspondientes y espera la evaluación de tu caso.\n- Si es aprobada, recibirás un carné de residencia temporal válido por un período específico, con posibilidad de prorrogarlo.\n\nRecuerda que los documentos emitidos en el extranjero deben estar autenticados o apostillados y traducidos al castellano.",
+    "sources": [
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/servicios/residencias-temporales/"
+      },
+      {
+        "title": "Dirección General de Migración y Extranjería",
+        "url": "https://www.migracion.gob.sv/noticias/como-puedo-convertirme-en-residente-temporal-en-el-salvador/"
+      },
+      {
+        "title": "FORMULARIO DE TRÁMITE DE PRÓRROGA DE PERMANENCIA DE NO RESIDENTE DE 1 HASTA 90 DÍAS. INSTRUCTIVO F- 44",
+        "url": "https://www.migracion.gob.sv/wp-content/uploads/2022/04/01-F.44-PRORROGA-DE-PERMANENCIA-DE-NO-RESIDENTE-DE-1-HASTA-90-DIAS-Modificado.pdf"
+      },
+      {
+        "title": "TRÁMITE DE PRÓRROGA DE PERMANENCIA DE RESIDENCIA TEMPORAL CON AUTORIZACIÓN PARA TRABAJAR INSTRUCTIVO F- 18",
+        "url": "https://www.migracion.gob.sv/wp-content/uploads/2022/01/F.18-PRORROGA-RESIDENCIA-TEMPORAL-AUTORIZACION-TRABAJAR-V6.pdf"
+      },
+      {
+        "title": "TRÁMITE DE PRÓRROGA DE PERMANENCIA DE RESIDENCIA TEMPORAL PARA PERSONAS TRABAJADORAS TRANSNACIONALES DE SERVICIO INSTRUCTIVO F- 17",
+        "url": "https://www.migracion.gob.sv/wp-content/uploads/2022/01/F.17-PRORROGA-RESIDENCIA-TEMPORAL-DE-TRANSNACIONALES-V6-1.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 6,
+    "supported": 6
+  },
+  "antecedentes-penales": {
+    "answer": "Puedes solicitar la constancia de antecedentes penales en línea a través de [Simple.sv](https://simple.sv/tramite/emision-de-certificacion-de-antecedentes-penales/nacionales-personas-naturales).\n\n### Cómo hacerlo\n- Inicia sesión con tu Identidad Digital y busca el trámite de [Emisión de Constancia de Antecedentes](https://simple.sv/instrucciones).\n- Completa los campos y realiza el pago de **$3.00** en línea.\n- Recibirás la confirmación por correo electrónico.\n\n### Requisitos\n- Tener tu DUI vigente y legible.\n- Contar con correo electrónico activo y teléfono celular para verificación.\n- Usar un dispositivo con cámara para la prueba de vida.\n\nSi necesitas la apostilla para uso en el extranjero, debes solicitarla durante el mismo proceso de emisión de la constancia.",
+    "sources": [
+      {
+        "title": "SIMPLE SV - Trámite Constancia de antecedentes penales",
+        "url": "https://simple.sv/tramite/emision-de-certificacion-de-antecedentes-penales/nacionales-personas-naturales"
+      },
+      {
+        "title": "Instrucciones y preguntas frecuentes - SIMPLE.SV",
+        "url": "https://simple.sv/instrucciones"
+      },
+      {
+        "title": "SIMPLE SV - Ventanilla Única",
+        "url": "https://simple.sv/tramites-filtrados/documentos-ciudadanos-y-migratorios/ins"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 8,
+    "supported": 8
+  },
+  "solvencia-pnc": {
+    "answer": "Para sacar la solvencia policial, debes agendar una cita en línea y presentar tu DUI original vigente en la [PNC](https://www.pnc.gob.sv/servicios/solvencial-policial/).\n\n### Cómo hacerlo\n- Agenda tu cita en el [portal de solvencias](https://solvencias.pnc.gob.sv/syspnc/) usando tu número de DUI.\n- Paga **$3.50** en la colecturía URAP el día del trámite.\n- El proceso toma entre 30 minutos y 1 hora.\n\n### Requisitos\n- DUI original vigente.\n- Ticket de cita.\n- Cumplir con las medidas sanitarias indicadas.\n\nSi eres salvadoreño en el exterior, realiza el trámite a través del consulado de El Salvador más cercano a tu residencia.",
+    "sources": [
+      {
+        "title": "POLICÍA NACIONAL CIVIL",
+        "url": "https://www.pnc.gob.sv/servicios/solvencial-policial/"
+      },
+      {
+        "title": "SOLVENCIAS PNC SV-P N C",
+        "url": "https://solvencias.pnc.gob.sv/syspnc/"
+      },
+      {
+        "title": "Solvencias | Unidad de acceso a la Información Publica",
+        "url": "https://transparencia.pnc.gob.sv/download/solvencias"
+      },
+      {
+        "title": "Solvencias | Unidad de acceso a la Información Publica",
+        "url": "https://transparencia.pnc.gob.sv/archivos/118"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 8,
+    "supported": 8
+  },
+  "cuota-alimenticia": {
+    "answer": "Para solicitar la cuota alimenticia, inicia el trámite en [Simple.sv](https://simple.sv/tramite/solicitud-de-fijacion-cuota-alimenticia/solicitud-de-fijacion-cuota-alimenticia) o acude a la [Procuraduría General de la República](https://www.pgr.gob.sv/download/formato-del-procedimiento-para-el-pago-de-cuota-alimenticia/).\n\n### Requisitos\n- Datos del solicitante, beneficiario y del obligado.\n- **Copia escaneada** de identificación o partida de nacimiento del beneficiario.\n- Valor de la cuota en dólares y breve narración del caso.\n\nLa Procuraduría gestiona la citación y coordina el pago mediante giros o transferencias. Puedes verificar tus depósitos en la [página de consulta de la PGR](https://www.pgr.gob.sv/Cpago/#/Login).",
+    "sources": [
+      {
+        "title": "SIMPLE SV - Trámite Fijación de cuota alimenticia a obligados nacionales y residentes en el extranjero",
+        "url": "https://simple.sv/tramite/solicitud-de-fijacion-cuota-alimenticia/solicitud-de-fijacion-cuota-alimenticia"
+      },
+      {
+        "title": "Procuraduría General de la República",
+        "url": "https://www.pgr.gob.sv/download/formato-del-procedimiento-para-el-pago-de-cuota-alimenticia/"
+      },
+      {
+        "title": "Página de consulta de la PGR",
+        "url": "https://www.pgr.gob.sv/Cpago/#/Login"
+      },
+      {
+        "title": "Procuraduría General de la República",
+        "url": "https://www.pgr.gob.sv/2023/05/31/consulta-tu-deposito-de-cuota-alimenticia/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 7,
+    "supported": 6
+  },
+  "denuncia-fiscalia": {
+    "answer": "Puedes presentar tu denuncia de forma verbal o escrita, personalmente o mediante un apoderado, ante cualquier oficina de la [Fiscalía General de la República](https://www.fiscalia.gob.sv/preguntas-frecuentes/), la Policía Nacional Civil o el Juez de Paz.\n\n### Cómo hacerlo\n- Acude a cualquiera de las **19 oficinas fiscales** del país, abiertas las 24 horas, los 7 días de la semana.\n- Lleva toda la prueba o evidencia documental disponible para fundamentar los hechos.\n- Identifica a los testigos con nombres y apellidos, e indica dónde pueden ser citados.\n- Proporciona los datos identificativos que tengas sobre la persona denunciada.\n- Consulta la ubicación de las oficinas en el [directorio de la FGR](https://www.fiscalia.gob.sv/servicios/).",
+    "sources": [
+      {
+        "title": "Preguntas más frecuentes |  Fiscalia General de la República",
+        "url": "https://www.fiscalia.gob.sv/preguntas-frecuentes/"
+      },
+      {
+        "title": "Servicios FGR |  Fiscalia General de la República",
+        "url": "https://www.fiscalia.gob.sv/servicios/"
+      },
+      {
+        "title": "Servicios de la FGR para la atención de la niñez, adolescencia y mujeres |  Fiscalia General de la República",
+        "url": "https://www.fiscalia.gob.sv/servicios-que-presta-la-fgr-para-la-atencion-de-la-ninez-adolescencia-y-mujeres/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 6,
+    "supported": 6
+  },
+  "reclamo-defensoria": {
+    "answer": "Puedes presentar tu reclamo en línea a través de la plataforma [Defensoría en Línea](https://enlinea.defensoria.gob.sv/Reclamos-en-linea).\n\n### Cómo hacerlo\n- Completa los tres pasos obligatorios: tus datos, los del proveedor y el detalle del reclamo.\n- Adjunta el **comprobante** (factura, contrato o recibo) y describe los hechos y la solución que solicitas.\n- Si prefieres atención presencial, puedes [agendar tu cita](https://www.defensoria.gob.sv/denuncia-aqui/) o contactar al Call Center 910 y al WhatsApp 7844-1482.\n\nUna vez registrado, la Defensoría comunicará tu denuncia al proveedor, quien tiene un plazo de 18 días hábiles para ofrecer alternativas de solución.",
+    "sources": [
+      {
+        "title": "Reclama en Linea",
+        "url": "https://enlinea.defensoria.gob.sv/Reclamos-en-linea"
+      },
+      {
+        "title": "Defensoria del Consumidor",
+        "url": "https://www.defensoria.gob.sv/denuncia-aqui/"
+      },
+      {
+        "title": "Defensoria del Consumidor",
+        "url": "https://enlinea.defensoria.gob.sv/"
+      },
+      {
+        "title": "Defensoria del Consumidor",
+        "url": "https://www.defensoria.gob.sv/servicios/enlinea/"
+      },
+      {
+        "title": "DEFENSORÍA EN LÍNEA",
+        "url": "https://www.defensoria.gob.sv/wp-content/uploads/2026/06/Manual-Defensoria-en-Linea-V2.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 6,
+    "supported": 6
+  },
+  "licencia-de-conducir": {
+    "answer": "Para sacar tu licencia de conducir por primera vez, debes tener al menos 18 años y aprobar los exámenes requeridos en el [SERTRACEN](https://www.sertracen.com.sv/index.php/primera-vez) y el Viceministerio de Transporte.\n\n### Requisitos y pasos\n- Presenta tu **DUI original** y partida de nacimiento (vigencia menor a 6 meses).\n- Aprueba los exámenes teórico y práctico en una escuela examinadora autorizada.\n- Aprueba los exámenes psicológico y teórico en el Viceministerio de Transporte.\n- Aprueba el examen visual en SERTRACEN.\n- Paga el costo del trámite de **$52.82**.\n- No debes tener esquelas pendientes de pago.\n\nPuedes descargar las solicitudes oficiales en la [página del Viceministerio de Transporte](https://www.vmt.gob.sv/documentos/).",
+    "sources": [
+      {
+        "title": "Primera Vez",
+        "url": "https://www.sertracen.com.sv/index.php/primera-vez"
+      },
+      {
+        "title": "Viceministerio de Transporte",
+        "url": "https://www.vmt.gob.sv/documentos/"
+      },
+      {
+        "title": "Trámites",
+        "url": "https://www.sertracen.com.sv/index.php/contactenos/41-tramites"
+      },
+      {
+        "title": "Clases de licencia",
+        "url": "https://www.sertracen.com.sv/index.php/tramite-de-licencias-de-conducir/clases-de-licencia"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 8,
+    "supported": 8
+  },
+  "renovar-licencia": {
+    "answer": "Para renovar tu licencia de conducir debes realizar el trámite de **refrenda** en [SERTRACEN](https://www.sertracen.com.sv/index.php/refrenda) o a través de su [portal web](https://portal.sertracen.com.sv/refrenda_licencia).\n\n### Requisitos y costos\n- Presenta tu licencia original y tu DUI vigente.\n- Debes aprobar el examen visual en SERTRACEN (costo $3.39).\n- El costo total del trámite es de $52.82.\n- Si tu licencia está vencida, se aplica una multa de $5.71.\n- No debes tener esquelas pendientes de pago.\n\nSi resides en el exterior, puedes iniciar la solicitud desde la página web de SERTRACEN y retirar el documento en el consulado correspondiente, según el [convenio con la Cancillería](https://rree.gob.sv/cancilleria-firma-convenio-con-el-ministerio-de-obras-publicas-y-de-transporte-para-la-renovacion-de-licencias-de-conducir-en-el-exterior/).",
+    "sources": [
+      {
+        "title": "Refrenda",
+        "url": "https://www.sertracen.com.sv/index.php/refrenda"
+      },
+      {
+        "title": "Portal Web Sertracen",
+        "url": "https://portal.sertracen.com.sv/refrenda_licencia"
+      },
+      {
+        "title": "Cancillería firma convenio con el Ministerio de Obras Públicas y de Transporte para la renovación de licencias de conducir en el exterior",
+        "url": "https://rree.gob.sv/cancilleria-firma-convenio-con-el-ministerio-de-obras-publicas-y-de-transporte-para-la-renovacion-de-licencias-de-conducir-en-el-exterior/"
+      },
+      {
+        "title": "A partir de hoy se puede refrendar la licencia de conducir o tarjeta de circulación en un quiosco digital de Sertracen - Presidencia de la República de El Salvador",
+        "url": "https://www.presidencia.gob.sv/a-partir-de-hoy-se-puede-refrendar-la-licencia-de-conducir-o-tarjeta-de-circulacion-en-un-quiosco-digital-de-sertracen/"
+      },
+      {
+        "title": "Ministerio de Relaciones Exteriores de El Salvador",
+        "url": "https://rree.gob.sv/cancilleria-lanza-fase-ii-del-convenio-con-el-ministerio-de-obras-publicas-y-de-transporte-para-la-renovacion-de-licencias-de-conducir-en-estados-unidos/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 7,
+    "supported": 7
+  },
+  "nit-y-dui": {
+    "answer": "Ya no necesitas un NIT separado; para las personas naturales salvadoreñas mayores de edad, tu **DUI vigente** es tu NIT.\n\n### Detalles clave\n- El reemplazo fue **automático y gratuito**, sin necesidad de contratar servicios de terceros.\n- Aplica a trámites tributarios, financieros, laborales y comerciales.\n- **Excepciones:** Menores de edad, extranjeros y personas jurídicas mantienen su NIT.\n\nPuedes verificar el estado de tu registro en la [consulta en línea del Ministerio de Hacienda](https://portaldgii.mh.gob.sv/ssc/serviciosinclave/consulta/duinit/).",
+    "sources": [
+      {
+        "title": "[Servicios en Línea]",
+        "url": "https://portaldgii.mh.gob.sv/ssc/serviciosinclave/consulta/duinit/"
+      },
+      {
+        "title": "Ministerio de Hacienda, El Salvador",
+        "url": "https://www.mh.gob.sv/con-el-reemplazo-del-nitdui-los-salvadorenos-solo-necesitan-un-documento-para-realizar-sus-tramites/"
+      },
+      {
+        "title": "Ministerio de Hacienda, El Salvador",
+        "url": "https://www.mh.gob.sv/ahora-los-salvadorenos-solo-necesitan-su-dui-vigente-para-realizar-sus-tramites/"
+      },
+      {
+        "title": "NIT Electrónico",
+        "url": "https://portaldgii.mh.gob.sv/sscenit/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 6,
+    "supported": 5
+  },
+  "declaracion-de-renta": {
+    "answer": "Presentas la declaración del Impuesto sobre la Renta (ISR) exclusivamente a través del sistema digital en la sección de “Servicios en Línea de la DGII”.\n\n### Cómo hacerlo\n- Ingresa a la [plataforma de Servicios en Línea](https://portaldgii.mh.gob.sv/ssc/pi/registro/) utilizando tu **DUI** y tu NIT.\n- El sistema calcula automáticamente tus ingresos, gastos e impuesto retenido para definir tu presentación.\n- La fecha límite para la declaración es el **2 de mayo**.\n\n### Requisitos\n- Tener tu Número de Identificación Tributaria (NIT) y tu DUI.\n- Si eres contribuyente de IVA, también necesitas tu Número de Registro de Contribuyente (NRC).\n- Para registrarte como declarante, puedes necesitar el folio de una declaración presentada en los últimos 10 años.\n\nPuedes descargar el [formulario F-11](https://www.mh.gob.sv/servicios/formularios-tributarios-para-descarga/) si lo requieres, aunque la presentación es obligatoriamente digital.",
+    "sources": [
+      {
+        "title": "[Servicios en Línea]",
+        "url": "https://portaldgii.mh.gob.sv/ssc/pi/registro/"
+      },
+      {
+        "title": "Ministerio de Hacienda, El Salvador",
+        "url": "https://www.mh.gob.sv/servicios/formularios-tributarios-para-descarga/"
+      },
+      {
+        "title": "Ministerio de Hacienda, El Salvador",
+        "url": "https://www.mh.gob.sv/realiza-tu-declaracion-del-impuesto-sobre-la-renta/"
+      },
+      {
+        "title": "DECLARACIÓN DEL IMPUESTO SOBRE LA RENTA Y CONTRIBUCION ESPECIAL",
+        "url": "https://www.mh.gob.sv/wp-content/uploads/2025/02/F11-V18.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 8,
+    "supported": 7
+  },
+  "factura-electronica": {
+    "answer": "Para registrarte como emisor de DTE, inicia el proceso en línea en el sitio de [Emisores DTE](https://admin.factura.gob.sv/).\n\n### Pasos clave\n- Selecciona \"Solicitud de Ingreso\" en el [Sistema de Facturación DTES](https://admin.factura.gob.sv/) y obtén tu **certificado de firma electrónica**.\n- Ejecuta las pruebas requeridas en el \"Ambiente para pruebas\" y envía la solicitud de autorización para operar en el \"Ambiente productivo\".\n\nDebes estar autorizado por la Dirección General de Impuestos Internos antes de emitir facturas legales. Consulta más detalles en la [página de Facturación Electrónica](https://www.mh.gob.sv/facturacion-electronica/) del Ministerio de Hacienda.",
+    "sources": [
+      {
+        "title": "Sistema de Facturación DTES",
+        "url": "https://admin.factura.gob.sv/"
+      },
+      {
+        "title": "Ministerio de Hacienda, El Salvador",
+        "url": "https://www.mh.gob.sv/facturacion-electronica/"
+      },
+      {
+        "title": "GUÍA RÁPIDA PARA EMITIR FACTURACIÓN",
+        "url": "https://www.mh.gob.sv/wp-content/uploads/2023/10/Guia-r%C3%A1pida-emitir-una-Factura-en-la-plataforma-Sistema-de-Facturaci%C3%B3n.pdf"
+      },
+      {
+        "title": "Presentación de PowerPoint",
+        "url": "https://www.taiia.gob.sv/wp-content/uploads/2023/03/FE-TAIIA-v2-28-03-2023-con-videos.pdf"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 12,
+    "supported": 11
+  },
+  "registrar-empresa": {
+    "answer": "Puedes registrar tu empresa de forma 100% en línea a través de la plataforma [CreaEmpresa](https://creaempresa.cnr.gob.sv/ServiciosOL/miEmpresa/servicios.htm), que integra los trámites del Registro de Comercio, Hacienda, ISSS y otras entidades.\n\n### Cómo hacerlo\n- Ingresa al portal [CreaEmpresa](https://creaempresa.cnr.gob.sv/ServiciosOL/miEmpresa/servicios.htm) y selecciona el tipo de sociedad (SAS, SA, RL, etc.).\n- Completa el formulario de constitución; para una SAS, no necesitas escritura pública.\n- El sistema emite automáticamente tu NIT, NRC, número patronal del ISSS y matrícula de empresa.\n- Si resides en el exterior, puedes usar firma electrónica certificada para realizar el trámite.\n\n### Requisitos\n- Salvadoreños: DUI homologado con el Ministerio de Hacienda.\n- Extranjeros: Número de Identificación Tributaria (NIT).\n- Para SAS: capital mínimo de $1.00 y formulario de constitución.",
+    "sources": [
+      {
+        "title": "CNR-CreaEmpresa",
+        "url": "https://creaempresa.cnr.gob.sv/ServiciosOL/miEmpresa/servicios.htm"
+      },
+      {
+        "title": "Centro Nacional de Registros",
+        "url": "https://www.cnr.gob.sv/creaempresa/"
+      },
+      {
+        "title": "Centro Nacional de Registros",
+        "url": "https://www.cnr.gob.sv/sociedades-por-acciones-simplificadas/"
+      },
+      {
+        "title": "Centro Nacional de Registros",
+        "url": "https://www.cnr.gob.sv/servicios/detalle-de-servicios-del-registro-de-comercio/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 5,
+    "supported": 4
+  },
+  "sociedad-sas": {
+    "answer": "Puedes constituir tu SAS de forma 100% en línea a través de la plataforma [CreaEmpresa](https://creaempresa.cnr.gob.sv/), sin necesidad de trámites presenciales.\n\n### Cómo hacerlo\n- Ingresa a [CreaEmpresa](https://creaempresa.cnr.gob.sv/) y completa el [formulario de constitución](https://www.cnr.gob.sv/download/formulario-de-constitucion-de-sociedad-sas/).\n- El capital social mínimo es de **$1.00** y puedes ser un único socio (unipersonal).\n- Si resides en el exterior, puedes usar tu firma electrónica certificada para realizar el trámite.\n- La plataforma gestiona automáticamente la emisión de tu NIT, NRC, registro en el ISSS y otros permisos municipales.\n\n### Costos\n- Durante el primer año de vigencia del Decreto Legislativo N° 905, el registro de constitución y la matrícula de empresa son **gratuitos**.\n- Si solicitas el depósito de balance inicial, el costo es de $17.14.",
+    "sources": [
+      {
+        "title": "CreaEmpresa",
+        "url": "https://creaempresa.cnr.gob.sv/"
+      },
+      {
+        "title": "Centro Nacional de Registros",
+        "url": "https://www.cnr.gob.sv/download/formulario-de-constitucion-de-sociedad-sas/"
+      },
+      {
+        "title": "Centro Nacional de Registros",
+        "url": "https://www.cnr.gob.sv/sociedades-por-acciones-simplificadas/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 4,
+    "supported": 3
+  },
+  "inscripcion-isss": {
+    "answer": "La inscripción de un trabajador la gestiona el **patrono** en el plazo de diez días desde tu ingreso, según el Art. 7 del Reglamento del ISSS.\n\n### Requisitos\n- [Aviso de Inscripción](https://www.isss.gob.sv/download/aviso-de-inscripcion-de-trabajador-al-regimen-general/) firmado y sellado por el empleador.\n- DUI original (o pasaporte/carné de residente si eres extranjero).\n- NIT, si lo posees.\n- Una fotografía reciente tamaño cédula.\n\nEl trámite es personal y se realiza en las oficinas del [Instituto Salvadoreño del Seguro Social](https://www.isss.gob.sv/servicios/inscripcion-de-trabajadores/).",
+    "sources": [
+      {
+        "title": "Instituto Salvadoreño del Seguro Social",
+        "url": "https://www.isss.gob.sv/download/aviso-de-inscripcion-de-trabajador-al-regimen-general/"
+      },
+      {
+        "title": "Instituto Salvadoreño del Seguro Social",
+        "url": "https://www.isss.gob.sv/servicios/inscripcion-de-trabajadores/"
+      },
+      {
+        "title": "Instituto Salvadoreño del Seguro Social",
+        "url": "https://www.isss.gob.sv/servicios/inscripcion-de-trabajadores-a-traves-de-nota-de-empresa/"
+      },
+      {
+        "title": "Instituto Salvadoreño del Seguro Social",
+        "url": "https://www.isss.gob.sv/servicios/instrucciones-para-el-llenado-del-formulario-aviso-de-inscripcion-de-trabajador-de-sector-domestico/"
+      },
+      {
+        "title": "Instituto Salvadoreño del Seguro Social",
+        "url": "https://www.isss.gob.sv/preguntas-frecuentes/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 7,
+    "supported": 7
+  },
+  "isss-independientes": {
+    "answer": "Para afiliarte al [ISSS como trabajador independiente](https://www.isss.gob.sv/programas/regimen-especial-para-trabajadores-independientes/), debes acercarte personalmente a una oficina administrativa, agencia o sucursal del país.\n\n### Requisitos\n- Tener entre 18 y 60 años.\n- Presentar tu **DUI original** (o documento de identidad si eres extranjero).\n- Llevar una **declaración jurada** de tu actividad económica, notariada y en original.\n- Tener una cuenta de correo electrónico personal.\n\nPuedes descargar los formularios de inscripción y la declaración jurada en la [página de descargas del ISSS](https://www.isss.gob.sv/guia-de-servicios/descargas/).",
+    "sources": [
+      {
+        "title": "Instituto Salvadoreño del Seguro Social",
+        "url": "https://www.isss.gob.sv/programas/regimen-especial-para-trabajadores-independientes/"
+      },
+      {
+        "title": "Instituto Salvadoreño del Seguro Social",
+        "url": "https://www.isss.gob.sv/guia-de-servicios/descargas/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 7,
+    "supported": 6
+  },
+  "aguinaldo": {
+    "answer": "Tu aguinaldo equivale a 15 días de salario si llevas de 1 a menos de 3 años, 19 días si llevas de 3 a menos de 10, y 21 días si llevas 10 o más; si llevas menos de un año, el monto es **proporcional**.\n\n### Plazo de pago\nLos empleadores deben pagarlo entre el **20 de octubre** y el **20 de diciembre**, según la reforma al Código de Trabajo. La entrega anticipada es opcional para las empresas privadas, pero si la realizan, debe ser por el monto completo.\n\nPuedes calcular tu monto estimado en la herramienta [Defiende tu Aguinaldo](https://defiendetuaguinaldo.mtps.gob.sv/).",
+    "sources": [
+      {
+        "title": "Defiende tu Aguinaldo",
+        "url": "https://defiendetuaguinaldo.mtps.gob.sv/"
+      },
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/2025/10/27/entrega-anticipada-de-aguinaldo-es-opcional-de-empresarios/"
+      },
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/2025/12/23/mtps-orienta-a-ciudadanos-sobre-el-pago-del-aguinaldo/"
+      },
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/2024/12/12/ministro-de-trabajo-pago-del-aguinaldo-se-debe-dar-entre-el-12-y-20-de-diciembre/"
+      },
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/2025/10/28/ministro-de-trabajo-continua-informando-sobre-reforma-que-amplia-periodo-del-pago-del-aguinaldo/"
+      },
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/2025/10/24/autonomas-e-instituciones-de-gobierno-recibira-este-dia-aguinaldo-2025/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 6,
+    "supported": 6
+  },
+  "vacaciones": {
+    "answer": "Un trabajador en El Salvador tiene derecho a **15 días** de vacaciones anuales remuneradas.\n\n### Requisitos y pago\n- Debes laborar un año continuo para el mismo empleador y haber trabajado al menos 200 días dentro de ese año.\n- El pago incluye tu salario ordinario más un **30%** adicional, según el [Código de Trabajo](https://www.csj.gob.sv/wp-content/uploads/2021/06/10-Co%CC%81digo-de-Trabajo-de-El-Salvador-Vacacio%CC%81n-anual-remunerada.pdf).\n- Puedes consultar más detalles en las [preguntas frecuentes del MTPS](https://www.mtps.gob.sv/preguntas-frecuentes/).",
+    "sources": [
+      {
+        "title": "Código de Trabajo de El Salvador Salarios, jornadas de trabajo, descansos semanales, vacaciones, asuetos y aguinaldos Vacación anual remunerada",
+        "url": "https://www.csj.gob.sv/wp-content/uploads/2021/06/10-Co%CC%81digo-de-Trabajo-de-El-Salvador-Vacacio%CC%81n-anual-remunerada.pdf"
+      },
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/preguntas-frecuentes/"
+      },
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/download/decreto-no-15-codigo-de-trabajo-de-el-salvador/"
+      },
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/2020/10/27/cuando-es-el-momento-de-pedir-mis-vacaciones-anuales/"
+      },
+      {
+        "title": "Código de Trabajo de El Salvador Salarios, jornadas de trabajo, descansos semanales, vacaciones, asuetos y aguinaldos - Corte Suprema de Justicia de El Salvador",
+        "url": "https://www.csj.gob.sv/codigo-de-trabajo-de-el-salvador-salarios-jornadas-de-trabajo-descansos-semanales-vacaciones-asuetos-y-aguinaldos-2/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 8,
+    "supported": 8
+  },
+  "salario-minimo": {
+    "answer": "El salario mínimo en El Salvador varía según el sector, con montos que van desde $272.53 hasta $408.80 mensuales, vigentes desde el 1 de junio de 2025.\n\n### Montos por sector\n- **Industria, comercio y servicio:** $408.80\n- **Maquila textil y confección:** $402.32\n- **Recolección de caña y beneficios de café:** $305.23\n- **Recolección de café, agropecuario, pesca y otras actividades agrícolas:** $272.53\n\nPuedes consultar la información oficial en el [Ministerio de Trabajo y Previsión Social](https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/).",
+    "sources": [
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/2025/05/27/aprueban-incremento-del-12-al-salario-minimo-solicitado-por-el-gobierno-del-presidente-nayib-bukele/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 5,
+    "supported": 5
+  },
+  "indemnizacion-despido": {
+    "answer": "Si te despiden sin causa justificada, tienes derecho a una indemnización equivalente a **30 días de salario básico por cada año de servicio**, proporcionalmente por fracciones de año, según el [Código de Trabajo](https://www.mtps.gob.sv/download/decreto-no-15-codigo-de-trabajo-de-el-salvador/).\n\n### Detalles del cálculo\n- La indemnización nunca será menor al equivalente a **15 días de salario básico**.\n- Para el cálculo, el salario considerado no puede superar las **4 veces el salario mínimo diario legal vigente**.\n- Puedes realizar el cálculo informativo de forma presencial en cualquier oficina departamental del [Ministerio de Trabajo y Previsión Social](https://www.mtps.gob.sv/servicios/calculo-de-indemnizacion-en-linea/).",
+    "sources": [
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/download/decreto-no-15-codigo-de-trabajo-de-el-salvador/"
+      },
+      {
+        "title": "Ministerio de Trabajo y Previsión Social",
+        "url": "https://www.mtps.gob.sv/servicios/calculo-de-indemnizacion-en-linea/"
+      },
+      {
+        "title": "CODIGO DE TRABAJO",
+        "url": "https://www.mtps.gob.sv/download/decreto-no-15-codigo-de-trabajo-de-el-salvador/?refresh=6a25d5aea90831780864430&wpdmdl=2256"
+      },
+      {
+        "title": "CODIGO DE TRABAJO",
+        "url": "https://www.mtps.gob.sv/download/decreto-no-15-codigo-de-trabajo-de-el-salvador/?refresh=6886d104aff7e1753665796&wpdmdl=2256"
+      },
+      {
+        "title": "CODIGO DE TRABAJO",
+        "url": "https://infotrade.economia.gob.sv/wp-content/uploads/12-Legislacion_codigo-de-trabajo.pdf"
+      },
+      {
+        "title": "",
+        "url": "https://www.jurisprudencia.gob.sv/DocumentosBoveda/E/1/2010-2019/2013/05/AB5A7.HTML"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 8,
+    "supported": 8
+  },
+  "credito-fsv": {
+    "answer": "Para solicitar un crédito de vivienda en el FSV, primero debes realizar una [precalificación gratuita](https://portal.fsv.gob.sv/2025/08/22/precalificacion-el-primer-paso-para-adquirir-un-credito-con-el-fsv/) para conocer el monto y la cuota estimada.\n\n### Cómo hacerlo\n1. Solicita la precalificación en línea, por el call center 190, la FSV APP o en las agencias.\n2. Consigue los requisitos y formularios de la línea de crédito elegida.\n3. Presenta la documentación completa en las ventanillas del FSV para iniciar el trámite formal.\n\n### Requisitos generales\n- Ser mayor de edad (hasta 69 años).\n- Empleado activo con 6 meses de cotizaciones o independiente con 2 años de actividad.\n- Buen récord crediticio y estar solvente con Hacienda.\n- Estar sujeto a seguro de deuda.\n\nPuedes revisar los detalles específicos de cada línea en el [portal del FSV](https://portal.fsv.gob.sv/pasos-requisitos-adquirir-credito-vivienda-fsv/).",
+    "sources": [
+      {
+        "title": "Fondo Social para la Vivienda - Precalificación, el primer paso para adquirir un crédito con el FSV",
+        "url": "https://portal.fsv.gob.sv/2025/08/22/precalificacion-el-primer-paso-para-adquirir-un-credito-con-el-fsv/"
+      },
+      {
+        "title": "Fondo Social para la Vivienda - Pasos y requisitos para adquirir un Crédito de Vivienda con el FSV",
+        "url": "https://portal.fsv.gob.sv/pasos-requisitos-adquirir-credito-vivienda-fsv/"
+      },
+      {
+        "title": "Fondo social para la vivienda",
+        "url": "https://www.fsv.gob.sv/Precalificacion/Precalificacion/Precalificacion?deviceType=web"
+      },
+      {
+        "title": "Fondo Social para la Vivienda - Conozca los pasos para obtener un crédito con el FSV",
+        "url": "https://portal.fsv.gob.sv/2025/06/16/conozca-los-pasos-para-obtener-un-credito-con-el-fsv/"
+      },
+      {
+        "title": "Fondo Social para la Vivienda - Área de Ventas",
+        "url": "https://portal.fsv.gob.sv/servicios/area-de-ventas/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 8,
+    "supported": 7
+  },
+  "incorporar-titulo": {
+    "answer": "Para incorporar un título universitario del exterior, debes presentar la solicitud ante el [Ministerio de Educación, Ciencia y Tecnología](https://www.mined.gob.sv/servicios/incorporacion-de-titulos-de-educacion-superior-procedentes-del-extranjero/), que no realiza cobros por el trámite.\n\n### Requisitos y costos\n- Debes pagar la publicación del **Acuerdo Ejecutivo** en el Diario Oficial.\n- Si estudiaste en el extranjero, tus notas parciales deben estar apostilladas o autenticadas por la entidad competente de ese país.\n- Se requiere el título de bachiller (o equivalente) debidamente autenticado.\n\nPuedes descargar la [Guía para incorporación de títulos de educación superior](https://www.mined.gob.sv/download/guia-para-incorporacion-de-titulos-de-educacion-superior/) y el [Procedimiento para incorporación de títulos de educación superior procedentes del extranjero](https://www.mined.gob.sv/download/procedimiento-para-incorporacion-de-titulos-de-educacion-superior-procedentes-del-extranjero-2/) para conocer los pasos exactos.",
+    "sources": [
+      {
+        "title": "Ministerio de Educación, Ciencia y Tecnología",
+        "url": "https://www.mined.gob.sv/servicios/incorporacion-de-titulos-de-educacion-superior-procedentes-del-extranjero/"
+      },
+      {
+        "title": "Ministerio de Educación, Ciencia y Tecnología",
+        "url": "https://www.mined.gob.sv/download/guia-para-incorporacion-de-titulos-de-educacion-superior/"
+      },
+      {
+        "title": "Ministerio de Educación, Ciencia y Tecnología",
+        "url": "https://www.mined.gob.sv/download/procedimiento-para-incorporacion-de-titulos-de-educacion-superior-procedentes-del-extranjero-2/"
+      },
+      {
+        "title": "Ministerio de Educación, Ciencia y Tecnología",
+        "url": "https://www.mined.gob.sv/download/procedimiento-para-incorporacion-de-titulos-de-educacion-superior-procedentes-del-extranjero/"
+      },
+      {
+        "title": "Organismo de Mejora Regulatoria",
+        "url": "https://omr.gob.sv/download/registro-y-autentica-de-titulos-y-documentos-de-educacion-superior-modalidad-incorporacion-de-titulo-de-estudios-en-el-extranjero/"
+      },
+      {
+        "title": "Ministerio de Educación, Ciencia y Tecnología",
+        "url": "https://www.mined.gob.sv/servicios/registro-y-autentica-de-titulo-de-educacion-superior-con-estudios-por-equivalencia/"
+      }
+    ],
+    "verifiedAt": "2026-10-13",
+    "claims": 7,
+    "supported": 7
+  }
+}

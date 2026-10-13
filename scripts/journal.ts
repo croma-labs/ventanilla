@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { Redis } from "@upstash/redis";
 import { keywords } from "../src/server/normalize.ts";
+import { country, timeZone } from "./country.ts";
 
 // Pulls the last week of the answer journal from Upstash into .journal/
 // (gitignored) and prints what the weekly review starts from: how questions
@@ -22,10 +23,10 @@ const { UPSTASH_REDIS_REST_URL: url, UPSTASH_REDIS_REST_TOKEN: token } = process
 if (!url || !token) throw new Error("journal: UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are required");
 
 const env = process.argv.includes("--env") ? process.argv[process.argv.indexOf("--env") + 1] : "production";
-const prefix = `ventanilla:${env === "production" ? "" : "dev:"}${process.env.COUNTRY ?? "co"}:`;
+const prefix = `ventanilla:${env === "production" ? "" : "dev:"}${country}:`;
 const redis = new Redis({ url, token });
 
-const day = (offset: number) => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Bogota" }).format(new Date(Date.now() - offset * 86_400_000));
+const day = (offset: number) => new Intl.DateTimeFormat("en-CA", { timeZone }).format(new Date(Date.now() - offset * 86_400_000));
 const days = Array.from({ length: 7 }, (_, offset) => day(offset)).reverse();
 
 const entries: Entry[] = [];

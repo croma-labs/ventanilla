@@ -3,11 +3,15 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { gunzipSync } from "node:zlib";
 import { get } from "@vercel/blob";
 import { buildIndex, corpusDir, corpusFiles, toDoc, type CorpusLine } from "../src/server/corpus-index.ts";
+import { country } from "./country.ts";
 
 // Pulls the procedures corpus from its private store into .corpus/ (gitignored)
 // and builds the search index the chat function loads. Runs before every build.
 // On Vercel a missing token or a failed pull fails the build; locally the
 // corpus is optional and the assistant falls back to live search without it.
+// Countries without a procedures corpus build without one.
+
+const dataset = ({ co: "suit" } as Record<string, string>)[country];
 
 const token = process.env.CORPUS_READ_WRITE_TOKEN;
 const scope = process.env.CORPUS_SCOPE ?? "national";
@@ -21,7 +25,7 @@ async function bytes(path: string) {
 
 async function pull() {
   const started = Date.now();
-  const manifest = JSON.parse((await bytes(`corpus/co/suit/${scope}/latest.json`)).toString("utf8"));
+  const manifest = JSON.parse((await bytes(`corpus/${country}/${dataset}/${scope}/latest.json`)).toString("utf8"));
   const bundle = await bytes(manifest.path);
   if (createHash("sha256").update(bundle).digest("hex") !== manifest.sha256) throw new Error("corpus: bundle does not match its manifest");
 
@@ -36,7 +40,9 @@ async function pull() {
   console.info(`corpus: ${docs.length} procedures (${manifest.scope}, ${manifest.generated_at}) indexed in ${Date.now() - started} ms`);
 }
 
-if (!token) {
+if (!dataset) {
+  console.info(`corpus: none for ${country} (answers use live search only)`);
+} else if (!token) {
   if (required) throw new Error("corpus: CORPUS_READ_WRITE_TOKEN is required to build on Vercel");
   console.warn("corpus: no CORPUS_READ_WRITE_TOKEN, skipping (answers use live search only)");
 } else {

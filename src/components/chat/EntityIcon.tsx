@@ -8,7 +8,7 @@ const vendored: Record<string, string> = icons;
 
 const official = (domain: string) => site.officialSuffixes.some((suffix) => (suffix.startsWith(".") ? domain.endsWith(suffix) : domain === suffix || domain.endsWith(`.${suffix}`)));
 
-const iconFor = (domain: string) => vendored[domain] ?? (official(domain) ? `/api/icon?d=${encodeURIComponent(domain)}` : null);
+const iconFor = (domain: string) => vendored[domain] || (site.liveIcons && official(domain) ? `/api/icon?d=${encodeURIComponent(domain)}` : null);
 
 export default function EntityIcon({ domain, short, className }: { domain: string; short: string; className?: string }) {
   const [failed, setFailed] = useState(false);

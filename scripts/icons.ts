@@ -3,8 +3,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { promisify } from "node:util";
 import sharp from "sharp";
 import { fetchIcon, sniff } from "../src/server/icons.ts";
+import { country } from "./country.ts";
 
-const country = process.env.COUNTRY ?? "co";
 const root = new URL("../", import.meta.url);
 const extensions: Record<string, string> = { "image/png": "png", "image/x-icon": "ico", "image/vnd.microsoft.icon": "ico", "image/svg+xml": "svg", "image/jpeg": "jpg", "image/webp": "webp", "image/gif": "gif" };
 
@@ -43,7 +43,7 @@ const only = process.argv.slice(2);
 
 await mkdir(new URL(`public/icons/${country}/`, root), { recursive: true });
 const failed: string[] = [];
-for (const domain of only.length ? only : domains.filter((domain) => !manifest[domain])) {
+for (const domain of only.length ? only : domains.filter((domain) => !(domain in manifest))) {
   const icon = (await fetchIcon(domain, 12_000)) ?? (await viaCurl(domain));
   if (!icon) {
     failed.push(domain);

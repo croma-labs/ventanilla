@@ -1,4 +1,5 @@
 ---
+import appIcon from "@country/brand/favicon.svg?raw";
 import browser from "../../assets/svg/browser-feature.svg?raw";
 import { site } from "@country/site";
 import { iconOf } from "../../data/orbit";
@@ -8,10 +9,11 @@ import PrivacyCard from "./PrivacyCard";
 
 const card = "squircle relative aspect-square w-full max-w-md shrink-0 overflow-hidden rounded-site-bento";
 const link = `site-underline-link relative inline-block w-fit rounded-4 type-site-link text-text-primary ${focusRing}`;
-const browserMarkup = browser.replace("<svg ", '<svg aria-hidden="true" class="size-full" ');
+const appIconMarkup = appIcon.trim().replace(/^<svg[^>]*>|<\/svg>$/g, "").replaceAll('id="app-icon"', 'id="browser-feature--icon"').replaceAll("url(#app-icon)", "url(#browser-feature--icon)");
+const browserMarkup = browser.replace("<svg ", '<svg aria-hidden="true" class="size-full" ').replace("<!--app-icon-->", appIconMarkup);
 
 const rows = site.features;
-const showcase = site.showcase.map((domain) => ({ domain, icon: iconOf(domain) }));
+const showcase = site.showcase.map((domain) => ({ domain, icon: iconOf(domain), short: site.entities[domain]?.short ?? domain.slice(0, 2).toUpperCase() }));
 ---
 
 <section id="how-it-works" class="site-container flex flex-col items-center gap-20 py-24 mobile:gap-30 mobile:pb-64">
@@ -24,9 +26,13 @@ const showcase = site.showcase.map((domain) => ({ domain, icon: iconOf(domain) }
           {row.key === "sources" && (
             <div class:list={[card, "bg-surface-muted"]}>
               <div aria-hidden="true" class="absolute -inset-[18%] grid grid-cols-3 grid-rows-3 gap-8">
-                {showcase.map(({ icon }) => (
-                  <div class="relative min-h-0 min-w-0 rounded-full bg-white shadow-[0_8px_24px_rgb(14_26_51/12%)] ring-1 ring-[#0e1a33]/5">
-                    <img src={icon} alt="" loading="lazy" decoding="async" class="absolute inset-[22%] size-[56%] object-contain" />
+                {showcase.map(({ icon, short }) => (
+                  <div class="relative flex min-h-0 min-w-0 items-center justify-center rounded-full bg-white shadow-[0_8px_24px_rgb(14_26_51/12%)] ring-1 ring-[#0e1a33]/5">
+                    {icon ? (
+                      <img src={icon} alt="" loading="lazy" decoding="async" class="absolute inset-[22%] size-[56%] object-contain" />
+                    ) : (
+                      <span class="font-serif-display text-[2.5rem] leading-none text-text-primary">{short}</span>
+                    )}
                   </div>
                 ))}
               </div>
