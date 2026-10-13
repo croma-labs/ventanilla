@@ -33,7 +33,10 @@ const authorities: Authority[] = [
   { domain: "csj.gob.sv", covers: "Corte Suprema de Justicia: tribunales, autorización de abogados y notarios, procesos judiciales" },
   { domain: "asamblea.gob.sv", covers: "leyes y decretos de la Asamblea Legislativa" },
   { domain: "conapina.gob.sv", covers: "niñez y adolescencia, protección integral, Ley Crecer Juntos" },
-  { domain: "omr.gob.sv", covers: "catálogo oficial de trámites con requisitos, costos y plazos" },
+  { domain: "omr.gob.sv", covers: "Registro Nacional de Trámites: fichas oficiales de trámites con requisitos, costos y plazos" },
+  { domain: "aduana.gob.sv", covers: "aduanas: equipaje de viajero, importación de mercancías y vehículos, encomiendas y courier" },
+  { domain: "fonat.gob.sv", covers: "Fondo para la Atención a las Víctimas de Accidentes de Tránsito: prestaciones por fallecimiento o lesiones en accidentes viales" },
+  { domain: "srs.gob.sv", covers: "Superintendencia de Regulación Sanitaria: permisos de funcionamiento de farmacias y establecimientos, registro sanitario de alimentos y medicamentos" },
 ];
 
 export const sources: ResearchConfig = {
