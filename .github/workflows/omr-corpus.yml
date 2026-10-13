@@ -1,0 +1,24 @@
+name: El Salvador corpus
+
+on:
+  schedule:
+    - cron: "0 9 1 * *"
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run omr -- --upload
+        env:
+          CORPUS_READ_WRITE_TOKEN: ${{ secrets.CORPUS_READ_WRITE_TOKEN }}
+      - run: curl -fsS -X POST "$SV_DEPLOY_HOOK"
+        env:
+          SV_DEPLOY_HOOK: ${{ secrets.SV_DEPLOY_HOOK }}
