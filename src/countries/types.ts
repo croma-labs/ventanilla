@@ -14,6 +14,9 @@ export type TramiteContent = { answer: string; sources: { title: string; url: st
 
 export type Site = {
   code: string;
+  country: string;
+  currency: string;
+  timeZone: string;
   lang: string;
   locale: string;
   brand: { name: string; tagline: string; notice: string; noticeShort: string; disclaimer: string; poweredBy: string; handledBy: string };
@@ -45,6 +48,8 @@ export type Site = {
   };
   entities: Record<string, Entity>;
   officialSuffixes: readonly string[];
+  /** Fetch icons of official sites missing from icons.json; off where most sites share the national seal. */
+  liveIcons: boolean;
   pii: readonly Detector[];
   nav: { primary: readonly Link[]; legal: readonly Link[] };
   ui: Record<
@@ -90,6 +95,7 @@ export type Site = {
     | "badges"
     | "fingerprint"
     | "fingerprintDone"
+    | "orbit"
     | "orbitPlay"
     | "orbitPause"
     | "star"

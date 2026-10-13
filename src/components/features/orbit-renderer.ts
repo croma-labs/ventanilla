@@ -1,3 +1,4 @@
+import { site } from "@country/site";
 import { Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
 import { iconOf, orbitSites, orbitTiles, projectTile, type OrbitSite } from "../../data/orbit";
 
@@ -23,8 +24,11 @@ void main() {
 
 export const tileSize = { width: 480, height: 334 };
 
-const loadImage = (src: string) =>
+const dots = [...new Set(site.manifesto.flag.map((color) => color.toLowerCase()))];
+
+const loadImage = (src: string | null) =>
   new Promise<HTMLImageElement | null>((resolve) => {
+    if (!src) return resolve(null);
     const image = new Image();
     image.decoding = "async";
     image.onload = () => resolve(image);
@@ -45,11 +49,14 @@ export function drawTile({ label, domain }: OrbitSite, icon: HTMLImageElement | 
   context.beginPath();
   context.roundRect(0, 0, tileSize.width, 52, [28, 28, 0, 0]);
   context.fill();
-  ["#fcd116", "#003893", "#ce1126"].forEach((color, index) => {
+  context.strokeStyle = "#0e1a331f";
+  context.lineWidth = 1;
+  dots.forEach((color, index) => {
     context.fillStyle = color;
     context.beginPath();
     context.arc(30 + index * 20, 26, 6, 0, Math.PI * 2);
     context.fill();
+    context.stroke();
   });
   context.fillStyle = "#0e1a3399";
   context.font = '500 20px "Inter Tight Variable", sans-serif';

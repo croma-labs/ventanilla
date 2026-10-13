@@ -1,9 +1,9 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { ask as request, under } from "./ask.ts";
+import { country } from "./country.ts";
 
 type Case = { id: string; question: string; domains?: string[]; facts?: string[]; forbidden?: string[]; expect?: "answer" | "decline" | "conversational" };
 
-const country = process.env.COUNTRY ?? "co";
 const base = process.env.EVAL_URL ?? "http://localhost:5201";
 const key = process.env.EVAL_KEY;
 if (!key) throw new Error("EVAL_KEY is required (same value as the server)");

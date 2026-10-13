@@ -1,8 +1,8 @@
 # Ventanilla
 
-Answers about government services, from official sources only. Colombia first.
+Answers about government services, from official sources only.
 
-[gov.usecroma.com](https://gov.usecroma.com) · Sources by [Croma](https://docs.usecroma.com) · Not an official government site.
+🇨🇴 [gov.usecroma.com](https://gov.usecroma.com) · 🇸🇻 [sv.usecroma.com](https://sv.usecroma.com) · Sources by [Croma](https://docs.usecroma.com) · Not an official government site.
 
 ![Ventanilla: ask about Colombian government services and get answers from official sources](.github/assets/hero.jpg)
 
@@ -29,7 +29,12 @@ No cookies, no analytics, no tracking. Personal data like ID numbers and phones 
 
 ## Add a country
 
-Copy `src/countries/co/`, adapt it, and build with `COUNTRY=<code>`.
+Each country lives in `src/countries/<code>/`: copy, sources, privacy detectors, trámite guides and `brand/` (mark, favicon, OG image). Photos go in `public/hero/<code>/` and agency icons in `public/icons/<code>/` (`COUNTRY=<code> npm run icons`). Build with `COUNTRY=<code>`.
+
+| Country | Code | Sources |
+| --- | --- | --- |
+| Colombia | `co` | gov.co, Función Pública, Corte Constitucional, DIAN, SUIT corpus |
+| El Salvador | `sv` | gob.sv, Simple.sv, Asamblea Legislativa, Corte Suprema de Justicia |
 
 ## Contributing
 

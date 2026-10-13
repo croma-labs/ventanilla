@@ -177,7 +177,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         followUps = cached.followUps;
       } else {
         try {
-          const today = new Intl.DateTimeFormat(site.locale, { dateStyle: "full", timeZone: "America/Bogota" }).format(new Date());
+          const today = new Intl.DateTimeFormat(site.locale, { dateStyle: "full", timeZone: site.timeZone }).format(new Date());
           let evidence = "";
           if (!conversational) {
             searchUpdate("searching");

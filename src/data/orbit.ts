@@ -5,7 +5,7 @@ export const orbitSites = site.orbit;
 
 const vendored: Record<string, string> = icons;
 
-export const iconOf = (domain: string) => vendored[site.entities[domain]?.iconFrom ?? domain] ?? `/api/icon?d=${encodeURIComponent(domain)}`;
+export const iconOf = (domain: string) => vendored[site.entities[domain]?.iconFrom ?? domain] || (site.liveIcons ? `/api/icon?d=${encodeURIComponent(domain)}` : null);
 
 export type OrbitSite = (typeof orbitSites)[number];
 

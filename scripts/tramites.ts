@@ -1,8 +1,8 @@
 import { readFile, writeFile } from "node:fs/promises";
 import type { TramiteContent } from "../src/countries/types.ts";
 import { ask, host, under, type Reply } from "./ask.ts";
+import { country, timeZone } from "./country.ts";
 
-const country = process.env.COUNTRY ?? "co";
 const base = process.env.EVAL_URL ?? "http://localhost:5201";
 const key = process.env.EVAL_KEY;
 if (!key) throw new Error("EVAL_KEY is required (same value as the server)");
@@ -13,7 +13,7 @@ const content: Record<string, TramiteContent> = JSON.parse(await readFile(output
 const only = process.argv.slice(2);
 const attempts = 3;
 const bar = { claims: 3, support: 0.75, length: 280 };
-const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Bogota" }).format(new Date());
+const today = new Intl.DateTimeFormat("en-CA", { timeZone }).format(new Date());
 
 const grade = (reply: Reply, domains: readonly string[]) => {
   const checks = reply.metadata.diagnostics?.checks ?? [];
