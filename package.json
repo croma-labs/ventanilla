@@ -17,6 +17,7 @@
     "eval": "node --env-file-if-exists=.env.local scripts/eval.ts",
     "tramites": "node --env-file-if-exists=.env.local scripts/tramites.ts",
     "corpus": "node --env-file-if-exists=.env.local scripts/corpus.ts",
+    "omr": "node --env-file-if-exists=.env.local scripts/omr.ts",
     "journal": "node --env-file-if-exists=.env.local scripts/journal.ts"
   },
   "dependencies": {

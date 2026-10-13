@@ -11,7 +11,7 @@ import { country } from "./country.ts";
 // corpus is optional and the assistant falls back to live search without it.
 // Countries without a procedures corpus build without one.
 
-const dataset = ({ co: "suit" } as Record<string, string>)[country];
+const dataset = ({ co: "suit", sv: "omr" } as Record<string, string>)[country];
 
 const token = process.env.CORPUS_READ_WRITE_TOKEN;
 const scope = process.env.CORPUS_SCOPE ?? "national";

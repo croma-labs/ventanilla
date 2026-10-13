@@ -5,7 +5,7 @@ import type { SearchResult } from "minisearch";
 import { corpusFiles, loadIndex, type CorpusDoc } from "./corpus-index.ts";
 import type { Candidate } from "./research";
 
-type Loaded = { index: MiniSearch<CorpusDoc>; docs: Map<number, CorpusDoc>; version: string };
+type Loaded = { index: MiniSearch<CorpusDoc>; docs: Map<number, CorpusDoc>; hosts: Set<string>; version: string };
 
 /** `named`: a query term matched the record's name, not only its body, so the question is about this record's subject. */
 export type CorpusHit = Candidate & { corpusScore: number; named: boolean; host: string };
@@ -32,7 +32,8 @@ export function corpus() {
         docs.set(doc.id, doc);
       }
       const { sha256 = "" } = JSON.parse(manifest) as { sha256?: string };
-      return { index: loadIndex(json), docs, version: sha256.slice(0, 12) || "local" };
+      const hosts = new Set([...docs.values()].map((doc) => doc.host).filter(Boolean));
+      return { index: loadIndex(json), docs, hosts, version: sha256.slice(0, 12) || "local" };
     } catch {
       return null;
     }
@@ -53,7 +54,8 @@ const under = (host: string, domain: string) => host === domain || host.endsWith
 export async function searchCorpus(queries: string[], domains: string[]): Promise<CorpusHit[]> {
   const loaded = await corpus();
   if (!loaded) return [];
-  const scoped = domains.filter((domain) => domain !== "gov.co");
+  // A portal that owns no record, like a one-stop shop, cannot scope the search.
+  const scoped = domains.filter((domain) => domain !== "gov.co" && [...loaded.hosts].some((host) => under(host, domain)));
   // A record whose entity publishes no website cannot be scoped by domain, so it stays in every scope.
   const filter = scoped.length ? (result: SearchResult) => !result.host || scoped.some((domain) => under(String(result.host), domain)) : undefined;
   const best = new Map<number, number>();
