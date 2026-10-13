@@ -136,6 +136,7 @@ const knownSites: [RegExp, string][] = [
   [/^Registro Nacional de las Personas Naturales/, "https://www.rnpn.gob.sv/"],
   [/^Instituto Salvadoreño del Seguro Social/, "https://www.isss.gob.sv/"],
   [/^Ministerio de Vivienda/, "https://www.vivienda.gob.sv/"],
+  [/^Fondo para la Atención a las Víctimas/, "https://www.fonat.gob.sv/"],
 ];
 
 function website(institution: string, text: string | null) {
