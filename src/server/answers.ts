@@ -13,7 +13,7 @@ const liveTtl = Number(process.env.ANSWER_CACHE_SECONDS ?? 7 * day);
 /** Answers from the corpus: they live until the corpus they came from is replaced. */
 const corpusTtl = Number(process.env.CORPUS_ANSWER_CACHE_SECONDS ?? 30 * day);
 
-const keyFor = async (question: string) => `answer:v9:${await sha256(keywords(question))}`;
+const keyFor = async (question: string) => `answer:v10:${await sha256(keywords(question))}`;
 
 export async function recall(question: string) {
   if (!liveTtl && !corpusTtl) return null;
