@@ -13,7 +13,7 @@ export default function CromaCredit({ className, label = site.brand.poweredBy }:
       rel="noopener noreferrer"
       className={cn("group/croma inline-flex items-center gap-1.5 rounded-4 whitespace-nowrap transition-colors duration-200 hover:text-primary", focusRing, className)}
     >
-      <span>{label}</span>
+      <span data-chrome="poweredBy">{label}</span>
       <span className="inline-flex items-center gap-1 font-medium text-primary/80 transition-colors group-hover/croma:text-primary">
         <span className="inline-flex" dangerouslySetInnerHTML={{ __html: symbol }} />
         Croma

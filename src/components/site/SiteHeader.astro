@@ -18,14 +18,14 @@ const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="h-6 w-9
   href="#landing-main"
   class="fixed top-3 left-3 z-[60] -translate-y-[300%] rounded-full bg-blue-700 px-5 py-3 font-medium text-white transition-transform focus-visible:translate-y-0"
 >
-  {chrome.skip}
+  <span data-chrome="skip">{chrome.skip}</span>
 </a>
 <div data-slot="nav-header-flow" class="min-h-10">
   <div class="relative z-30 bg-background-primary">
     <div data-slot="gov-banner-row">
       <p class="type-body-s flex min-h-10 items-center justify-center gap-2 px-4 text-center text-text-secondary">
-        <span class="max-mobile:hidden">{chrome.notice}</span>
-        <span class="mobile:hidden">{chrome.noticeShort}</span>
+        <span class="max-mobile:hidden" data-chrome="notice">{chrome.notice}</span>
+        <span class="mobile:hidden" data-chrome="noticeShort">{chrome.noticeShort}</span>
         <span aria-hidden="true" class="max-mobile:hidden">·</span>
         <CromaCredit className="max-mobile:hidden" label={chrome.poweredBy} />
         <span aria-hidden="true" class="max-mobile:hidden">·</span>

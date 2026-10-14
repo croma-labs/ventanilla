@@ -1,9 +1,10 @@
-import { site } from "@country/site";
+import { useCopy } from "../../lib/language";
 import { snapshotOrigin, submitQuestion } from "../../lib/chat-store";
 
 export default function FollowUps({ suggestions, delayStart, disabled }: { suggestions: string[]; delayStart: number; disabled: boolean }) {
+  const { ui } = useCopy();
   return (
-    <div data-slot="follow-up-suggestions" role="group" aria-label={site.ui.followUps} className="relative mt-3 max-w-full min-w-0">
+    <div data-slot="follow-up-suggestions" role="group" aria-label={ui.followUps} className="relative mt-3 max-w-full min-w-0">
       <div className="flex items-start gap-3 overflow-x-auto [scrollbar-width:none] mobile:flex-col mobile:overflow-visible">
         {suggestions.map((suggestion, index) => (
           <div

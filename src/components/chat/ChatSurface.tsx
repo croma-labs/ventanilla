@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { site } from "@country/site";
 import { onSubmit, setBusy, setTextAppearing, submitQuestion, useChatPhase, type Origin, type Submission } from "../../lib/chat-store";
+import { languageOfText } from "../../lib/english";
+import { copyOf, getLanguage, setLanguage, useCopy } from "../../lib/language";
 import { readUiMessageStream, type SearchData, type Turn } from "../../lib/ui-stream";
 import AssistantMessage, { type AssistantState } from "./AssistantMessage";
 import PendingStatus, { type PendingStage } from "./PendingStatus";
@@ -13,7 +14,10 @@ type Item = UserItem | AssistantItem;
 const pendingDelayMs = 150;
 const uid = () => Math.random().toString(36).slice(2, 12);
 
-const failure = (status: number) => (status === 429 ? site.ui.rateLimited : site.ui.unavailable);
+const failure = (status: number) => {
+  const { ui } = copyOf(getLanguage());
+  return status === 429 ? ui.rateLimited : ui.unavailable;
+};
 
 async function ask(turns: Turn[], signal: AbortSignal) {
   const response = await fetch("/api/chat", {
@@ -40,6 +44,7 @@ function useDelayedFlag(value: boolean, delay: number) {
 
 export default function ChatSurface() {
   const phase = useChatPhase();
+  const { ui, chatTitle } = useCopy();
   const [items, setItems] = useState<Item[]>([]);
   const [busy, setBusyState] = useState(false);
   const [search, setSearch] = useState<SearchData | null>(null);
@@ -54,6 +59,8 @@ export default function ChatSurface() {
     controller.current?.abort();
     const abort = new AbortController();
     controller.current = abort;
+    const written = languageOfText(text);
+    if (written) setLanguage(written);
     const assistantId = uid();
     setItems((current) => [
       ...current,
@@ -78,7 +85,11 @@ export default function ChatSurface() {
           answer += chunk.delta;
           patchAssistant(assistantId, (message) => ({ text: message.text + chunk.delta }));
         }
-        if (chunk.type === "message-metadata" && chunk.messageMetadata.answerComplete) patchAssistant(assistantId, () => ({ streaming: false, tourism: chunk.messageMetadata.tourism }));
+        if (chunk.type === "message-metadata" && chunk.messageMetadata.answerComplete) {
+          const { tourism, language } = chunk.messageMetadata;
+          if (language) setLanguage(language);
+          patchAssistant(assistantId, () => ({ streaming: false, tourism }));
+        }
         if (chunk.type === "finish") {
           signature = chunk.messageMetadata?.signature;
           const metadata = chunk.messageMetadata;
@@ -87,7 +98,7 @@ export default function ChatSurface() {
       }
       turns.current = [...history, { role: "assistant", text: answer, signature }];
     } catch (error) {
-      if (!abort.signal.aborted) patchAssistant(assistantId, () => ({ text: error instanceof Error && error.message ? error.message : site.ui.unavailable }));
+      if (!abort.signal.aborted) patchAssistant(assistantId, () => ({ text: error instanceof Error && error.message ? error.message : copyOf(getLanguage()).ui.unavailable }));
     } finally {
       patchAssistant(assistantId, () => ({ streaming: false }));
       if (controller.current === abort) {
@@ -143,17 +154,21 @@ export default function ChatSurface() {
     setTextAppearing(value);
   }, []);
 
+  useEffect(() => {
+    if (phase === "chat") document.title = chatTitle;
+  }, [phase, chatTitle]);
+
   if (phase !== "chat") return null;
 
   return (
     <>
       <div data-slot="chat-top-fade" aria-hidden />
       <main id="home-chat-main" data-slot="chat-surface" tabIndex={-1} className="relative flex min-h-dvh flex-1 flex-col outline-none">
-        <h1 className="sr-only">{site.ui.conversation}</h1>
+        <h1 className="sr-only">{ui.conversation}</h1>
         <p role="status" aria-live="polite" aria-atomic className="sr-only">
-          {busy ? site.ui.preparing : items.length ? site.ui.ready : ""}
+          {busy ? ui.preparing : items.length ? ui.ready : ""}
         </p>
-        <div role="region" aria-label={site.ui.messages} className="pt-[calc(1.5rem+84px)] sm:pt-[calc(2rem+84px)]">
+        <div role="region" aria-label={ui.messages} className="pt-[calc(1.5rem+84px)] sm:pt-[calc(2rem+84px)]">
           <div
             role="group"
             aria-busy={busy}

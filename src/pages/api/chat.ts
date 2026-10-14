@@ -4,6 +4,7 @@ import { waitUntil } from "@vercel/functions";
 import type { APIRoute } from "astro";
 import { streamText, type ModelMessage } from "ai";
 import { z } from "zod";
+import { looksEnglish } from "../../lib/english";
 import { scrub } from "../../lib/pii";
 import { translatePath } from "../../lib/turismo/labels";
 import { tourismOf } from "../../lib/turismo/mentions";
@@ -108,18 +109,6 @@ function rankSources(sources: Map<string, Source>, answer: string, live = false,
   const room = Math.max(0, maxSources - cited.size);
   return [...cited.values(), ...[...backing, ...(live ? rest.slice(0, 3) : [])].slice(0, room)].map((source) => ({ title: source.title, url: source.url, currency: "verified" }));
 }
-
-const ENGLISH = new Set("the a an on of and or with from at it there this where what how which when why who can could is are was do does i my we our you to for in near best should need want day days trip visit stay eat things place places around recommend hotels beaches restaurants".split(" "));
-const SPANISH = new Set("el la los las de del que en un una unos para por con y mi es son hay como donde cual cuanto puedo quiero tengo necesito al se lo".split(" "));
-
-/** A first guess, before the router reads the question: English when its own words are, place names aside. */
-const looksEnglish = (question: string) => {
-  if (/[¿¡]/.test(question)) return false;
-  const words = new Set(question.replace(/(?<=\s)[A-ZÁÉÍÓÚÑ][\p{L}]*/gu, " ").toLowerCase().match(/\p{L}+/gu) ?? []);
-  const english = [...words].filter((word) => ENGLISH.has(word)).length;
-  const spanish = [...words].filter((word) => SPANISH.has(word)).length;
-  return english >= 2 && english > spanish;
-};
 
 const languageOf = (english: boolean) => (english ? "English (the QUESTION is in English, even though the DRAFT and the EVIDENCE are in Spanish)" : site.locale);
 
@@ -302,7 +291,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       if (!conversational) send({ type: "data-search", id: searchId, data: { status: "done", resultCount: grounded.length, groundings: grounded } });
       send({ type: "finish-step" });
       const tourism = cached ? cached.tourism : conversational ? undefined : tourismOf(answer, found?.listings ?? []);
-      send({ type: "message-metadata", messageMetadata: { answerComplete: true, tourism } });
+      send({ type: "message-metadata", messageMetadata: { answerComplete: true, tourism, language: english ? "en" : "es" } });
       if (outcome === "ok" && grounded.length) {
         followUps = await suggestFollowUps(question, answer, english ? "English" : site.lang);
         // A tourism answer that cites none of the directory's own pages missed it: answer afresh next time.

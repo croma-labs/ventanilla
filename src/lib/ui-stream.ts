@@ -4,7 +4,7 @@ export type SearchData = { status: "searching" | "done"; groundings: Grounding[]
 
 import type { Mentions } from "./turismo/mentions";
 
-export type MessageMetadata = { answerComplete?: boolean; tourism?: Mentions; followUpSuggestions?: string[]; signature?: string; verified?: boolean; conversational?: boolean; diagnostics?: unknown };
+export type MessageMetadata = { answerComplete?: boolean; tourism?: Mentions; language?: "es" | "en"; followUpSuggestions?: string[]; signature?: string; verified?: boolean; conversational?: boolean; diagnostics?: unknown };
 
 export type UiChunk =
   | { type: "start"; messageId: string }

@@ -1,4 +1,4 @@
-import { site } from "@country/site";
+import { useCopy } from "../../lib/language";
 import { Fragment, type ReactNode } from "react";
 import { cn } from "../../lib/cn";
 
@@ -156,6 +156,7 @@ const Phone = () => (
 );
 
 function Link({ text, href, prefix }: { text: string; href: string; prefix: string }) {
+  const { ui } = useCopy();
   if (href.startsWith("tel:")) {
     return (
       <a href={href} data-sd-animate className={cn(classes.link, "inline-block font-normal")}>
@@ -171,7 +172,7 @@ function Link({ text, href, prefix }: { text: string; href: string; prefix: stri
       href={href}
       target="_blank"
       rel="noreferrer noopener"
-      aria-label={`${text} (${site.ui.newTab})`}
+      aria-label={`${text} (${ui.newTab})`}
       data-sd-animate
       key={prefix}
       className={cn(classes.link, "inline")}

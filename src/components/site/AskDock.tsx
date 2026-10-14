@@ -1,4 +1,4 @@
-import { site } from "@country/site";
+import { useCopy } from "../../lib/language";
 import { useEffect, useRef, useState } from "react";
 import { useChatPhase, useTextAppearing } from "../../lib/chat-store";
 import Composer from "../hero/Composer";
@@ -8,6 +8,7 @@ const showBelow = -240;
 const hideAbove = -160;
 
 export default function AskDock() {
+  const { ui } = useCopy();
   const [aside, setAside] = useState(true);
   const conversing = useChatPhase() === "chat";
   const appearing = useTextAppearing();
@@ -83,7 +84,7 @@ export default function AskDock() {
         className="pointer-events-auto relative w-[calc(100vw-2rem)] max-w-[676px] shrink-0 transition-[max-width] duration-250 ease-drawer focus-within:max-w-[684px] hover:max-w-[684px] has-[[data-slot=ai-disclaimer][data-notice-open]]:max-w-[684px]"
       >
         <AiDisclaimer placeholder={!(conversing && atEnd && !appearing)} />
-        <Composer variant="dock" placeholder={site.ui.askAnything} />
+        <Composer variant="dock" placeholder={ui.askAnything} />
       </div>
     </div>
   );

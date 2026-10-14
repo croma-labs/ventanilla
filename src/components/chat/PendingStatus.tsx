@@ -1,13 +1,11 @@
 import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useReducedMotion } from "../../lib/hooks";
-import { site } from "@country/site";
+import { useCopy } from "../../lib/language";
 import EntityIcon from "./EntityIcon";
 import { agencyFor } from "./sources";
 
 export type PendingStage = "thinking" | "searching" | "reviewing";
-
-const phrases = site.pending;
 
 const rotateMs = 2400;
 const longerAfterMs = 10_000;
@@ -49,6 +47,7 @@ function SealStack({ urls }: { urls: string[] }) {
 
 export default function PendingStatus({ stage, sources }: { stage: PendingStage; sources: string[] }) {
   const reduced = useReducedMotion();
+  const phrases = useCopy().pending;
   const [longer, setLonger] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => setLonger(true), longerAfterMs);

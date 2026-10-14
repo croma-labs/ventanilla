@@ -1,4 +1,5 @@
 import { Popover } from "@base-ui/react/popover";
+import { useCopy } from "../../lib/language";
 import { motion } from "motion/react";
 import { useState, type ComponentType } from "react";
 import { cn } from "../../lib/cn";
@@ -6,7 +7,6 @@ import { buttonBase, buttonSecondary } from "../../lib/ui";
 import type { Grounding } from "../../lib/ui-stream";
 import { CheckIcon, CloseIcon } from "../icons";
 import { SourcesChip } from "./SourceList";
-import { site } from "@country/site";
 
 const outQuint = [0.22, 1, 0.36, 1] as const;
 const pill = "h-9 min-h-9 rounded-full type-label-s font-medium tracking-[0] text-secondary hover:text-primary aria-pressed:text-primary";
@@ -42,6 +42,7 @@ const Spinner = () => (
 type Rating = "up" | "down";
 
 function RatingButtons() {
+  const { ui } = useCopy();
   const [rating, setRating] = useState<Rating | null>(null);
   const [sending, setSending] = useState(false);
   const [thanked, setThanked] = useState<Rating | null>(null);
@@ -65,7 +66,7 @@ function RatingButtons() {
     <Popover.Root open={thanked === value} onOpenChange={(open) => !open && setThanked(null)}>
       <Popover.Trigger
         render={<button type="button" />}
-        aria-label={rating === value ? site.ui.unrate : label}
+        aria-label={rating === value ? ui.unrate : label}
         aria-pressed={rating === value}
         aria-busy={sending && rating === value}
         aria-disabled={sending && rating !== value ? true : undefined}
@@ -85,15 +86,15 @@ function RatingButtons() {
       <Popover.Portal>
         <Popover.Positioner side="top" align="center" sideOffset={10} collisionPadding={16} className="z-50">
           <Popover.Popup className="relative flex w-[356px] max-w-[calc(100vw-2rem)] origin-(--transform-origin) flex-col gap-4 rounded-32 bg-background-primary p-4 shadow-elevation-1 ring-1 ring-border-tertiary data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-ending-style:transition-[opacity,scale] data-ending-style:duration-100 data-open:animate-[feedback-popover-in_0.18s_var(--ease-out-quint)_both]">
-            <Popover.Close aria-label={site.ui.close} className={cn(buttonBase, "absolute top-3 right-3 size-8 rounded-full hover:bg-background-tertiary [&_svg]:size-4")}>
+            <Popover.Close aria-label={ui.close} className={cn(buttonBase, "absolute top-3 right-3 size-8 rounded-full hover:bg-background-tertiary [&_svg]:size-4")}>
               <CloseIcon />
             </Popover.Close>
             <div className="flex flex-col gap-1 pr-10 pl-2 pt-2">
-              <Popover.Title className="type-body-m font-medium">{site.ui.thanks}</Popover.Title>
-              <Popover.Description className="type-body-m text-text-secondary">{site.ui.thanksBody}</Popover.Description>
+              <Popover.Title className="type-body-m font-medium">{ui.thanks}</Popover.Title>
+              <Popover.Description className="type-body-m text-text-secondary">{ui.thanksBody}</Popover.Description>
             </div>
             <button type="button" className={cn(buttonBase, buttonSecondary, "h-11 w-full rounded-full px-5 type-body-m")} onClick={() => setThanked(null)}>
-              {site.ui.close}
+              {ui.close}
             </button>
           </Popover.Popup>
         </Popover.Positioner>
@@ -103,19 +104,20 @@ function RatingButtons() {
 
   return (
     <div className="flex items-center rounded-full bg-background-tertiary p-0.5">
-      {thumb("up", site.ui.good, ThumbUp)}
-      {thumb("down", site.ui.bad, ThumbDown)}
+      {thumb("up", ui.good, ThumbUp)}
+      {thumb("down", ui.bad, ThumbDown)}
     </div>
   );
 }
 
 function CopyButton({ text }: { text: string }) {
+  const { ui } = useCopy();
   const [copied, setCopied] = useState(false);
   const layer = "absolute inset-0 flex items-center justify-center transition-[opacity,filter,scale] duration-300 ease-in-out [&_svg]:size-5";
   return (
     <button
       type="button"
-      aria-label={copied ? site.ui.copied : site.ui.copy}
+      aria-label={copied ? ui.copied : ui.copy}
       onClick={() => {
         navigator.clipboard?.writeText(text);
         setCopied(true);
@@ -134,10 +136,11 @@ function CopyButton({ text }: { text: string }) {
 }
 
 export default function MessageActions({ groundings, text }: { groundings: Grounding[]; text: string }) {
+  const { ui } = useCopy();
   const groups = [groundings.length > 0 && <SourcesChip groundings={groundings} />, <RatingButtons />, <CopyButton text={text} />].filter(Boolean);
   return (
     <div className="relative -ml-1 w-full max-w-full min-w-0">
-      <div role="group" aria-label={site.ui.actions} className="mt-3 flex w-full items-center gap-2 overflow-x-auto p-1 [scrollbar-width:none] *:shrink-0">
+      <div role="group" aria-label={ui.actions} className="mt-3 flex w-full items-center gap-2 overflow-x-auto p-1 [scrollbar-width:none] *:shrink-0">
         {groups.map((group, index) => (
           <div key={index} className="animate-message-action-in flex" style={{ animationDelay: `${index * 80}ms` }}>
             {group}

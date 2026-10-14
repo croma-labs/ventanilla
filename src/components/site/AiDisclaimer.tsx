@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { cn } from "../../lib/cn";
 import { focusRing } from "../../lib/ui";
-import { site } from "@country/site";
+import { useCopy } from "../../lib/language";
 import { ClockIcon, InfoIcon, LockOutlineIcon, ShieldIcon } from "../icons";
 import CromaCredit from "./CromaCredit";
 import FactsSheet, { type Fact } from "./FactsSheet";
 
 const privacyIcons = [ShieldIcon, LockOutlineIcon, ClockIcon];
-const privacyFacts: Fact[] = site.disclaimers.privacy.items.map((item, index) => ({ ...item, icon: privacyIcons[index % privacyIcons.length] }));
-const howItWorksFacts: Fact[] = site.disclaimers.ai.items.map((item) => ({ ...item }));
 
 type Notice = "privacy" | "mistakes" | null;
 
@@ -20,6 +18,9 @@ const iconClass = "shrink-0 transition-colors duration-200 group-hover/notice:te
 
 export default function AiDisclaimer({ placeholder }: { placeholder: boolean }) {
   const [notice, setNotice] = useState<Notice>(null);
+  const { disclaimers, chrome } = useCopy();
+  const privacyFacts: Fact[] = disclaimers.privacy.items.map((item, index) => ({ ...item, icon: privacyIcons[index % privacyIcons.length] }));
+  const howItWorksFacts: Fact[] = disclaimers.ai.items.map((item) => ({ ...item }));
   const toggle = (kind: Exclude<Notice, null>) => (open: boolean) => setNotice(open ? kind : null);
 
   return (
@@ -39,26 +40,26 @@ export default function AiDisclaimer({ placeholder }: { placeholder: boolean }) 
         <span className="group/notice inline-flex items-center gap-1.5">
           <LockOutlineIcon size={14} className={iconClass} />
           <FactsSheet
-            title={site.disclaimers.privacy.title}
+            title={disclaimers.privacy.title}
             facts={privacyFacts}
             open={notice === "privacy"}
             onOpenChange={toggle("privacy")}
-            trigger={<button type="button" className={triggerClass}>{site.disclaimers.privacy.title}</button>}
+            trigger={<button type="button" className={triggerClass}>{disclaimers.privacy.title}</button>}
           />
         </span>
         <span aria-hidden>·</span>
         <span className="group/notice inline-flex items-center gap-1.5">
           <InfoIcon size={14} className={iconClass} />
           <FactsSheet
-            title={site.disclaimers.ai.title}
+            title={disclaimers.ai.title}
             facts={howItWorksFacts}
             open={notice === "mistakes"}
             onOpenChange={toggle("mistakes")}
-            trigger={<button type="button" className={triggerClass}>{site.disclaimers.ai.title}</button>}
+            trigger={<button type="button" className={triggerClass}>{disclaimers.ai.title}</button>}
           />
         </span>
         <span aria-hidden className="max-mobile:hidden">·</span>
-        <CromaCredit className="py-1.5 max-mobile:hidden" />
+        <CromaCredit className="py-1.5 max-mobile:hidden" label={chrome.poweredBy} />
       </span>
     </p>
   );
