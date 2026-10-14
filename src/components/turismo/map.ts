@@ -1,4 +1,5 @@
 import type { Map as MapLibreMap, StyleSpecification } from "maplibre-gl";
+import type { Lang } from "../../lib/turismo/labels";
 
 export const STYLE = "https://tiles.openfreemap.org/styles/positron";
 
@@ -8,7 +9,26 @@ export const COUNTRY_BOUNDS: [[number, number], [number, number]] = [
   [-87.65, 14.47],
 ];
 
-export async function createMap(container: HTMLElement, options: { center?: [number, number]; zoom?: number; interactive?: boolean } = {}): Promise<{ map: MapLibreMap; maplibre: typeof import("maplibre-gl") }> {
+const CONTROLS: Record<Lang, Record<string, string>> = {
+  es: {
+    "CooperativeGesturesHandler.WindowsHelpText": "Usa Ctrl + desplazamiento para acercar el mapa",
+    "CooperativeGesturesHandler.MacHelpText": "Usa ⌘ + desplazamiento para acercar el mapa",
+    "CooperativeGesturesHandler.MobileHelpText": "Usa dos dedos para mover el mapa",
+    "NavigationControl.ZoomIn": "Acercar",
+    "NavigationControl.ZoomOut": "Alejar",
+    "GeolocateControl.FindMyLocation": "Mi ubicación",
+  },
+  en: {
+    "CooperativeGesturesHandler.WindowsHelpText": "Use Ctrl + scroll to zoom the map",
+    "CooperativeGesturesHandler.MacHelpText": "Use ⌘ + scroll to zoom the map",
+    "CooperativeGesturesHandler.MobileHelpText": "Use two fingers to move the map",
+    "NavigationControl.ZoomIn": "Zoom in",
+    "NavigationControl.ZoomOut": "Zoom out",
+    "GeolocateControl.FindMyLocation": "Find my location",
+  },
+};
+
+export async function createMap(container: HTMLElement, options: { center?: [number, number]; zoom?: number; interactive?: boolean; lang?: Lang } = {}): Promise<{ map: MapLibreMap; maplibre: typeof import("maplibre-gl") }> {
   const [maplibre, { default: stylesheet }] = await Promise.all([import("maplibre-gl"), import("maplibre-gl/dist/maplibre-gl.css?url")]);
   await linkStylesheet(stylesheet);
   const map = new maplibre.Map({
@@ -27,14 +47,7 @@ export async function createMap(container: HTMLElement, options: { center?: [num
     ],
     dragRotate: false,
     pitchWithRotate: false,
-    locale: {
-      "CooperativeGesturesHandler.WindowsHelpText": "Usa Ctrl + desplazamiento para acercar el mapa",
-      "CooperativeGesturesHandler.MacHelpText": "Usa ⌘ + desplazamiento para acercar el mapa",
-      "CooperativeGesturesHandler.MobileHelpText": "Usa dos dedos para mover el mapa",
-      "NavigationControl.ZoomIn": "Acercar",
-      "NavigationControl.ZoomOut": "Alejar",
-      "GeolocateControl.FindMyLocation": "Mi ubicación",
-    },
+    locale: CONTROLS[options.lang ?? "es"],
   });
   map.touchZoomRotate.disableRotation();
   map.once("load", () => container.querySelector(".maplibregl-ctrl-attrib")?.classList.remove("maplibregl-compact-show"));

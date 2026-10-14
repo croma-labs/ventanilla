@@ -1,27 +1,45 @@
 ---
 import EventCard from "../components/turismo/EventCard.astro";
-import { upcoming } from "../lib/turismo/catalog";
+import { formatDate, langOf, LOCALE, sectionPath, upcoming } from "../lib/turismo/catalog";
 import type { Happening } from "../lib/turismo/types";
 import Layout from "./Layout.astro";
 
+const lang = langOf(Astro.url.pathname);
 const origin = Astro.site ?? new URL(Astro.url.origin);
-const url = new URL("/turismo/eventos", origin).href;
+const url = new URL(sectionPath("events", lang), origin).href;
 const all = upcoming();
 const months = new Map<string, Happening[]>();
 for (const event of all) {
   const key = (event.start ?? "").slice(0, 7);
   months.set(key, [...(months.get(key) ?? []), event]);
 }
-const monthLabel = (key: string) => new Intl.DateTimeFormat("es-SV", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${key}-15T12:00:00Z`));
-const description = `${all.length} eventos próximos en El Salvador: festivales, ferias, conciertos y fiestas de la agenda oficial del Ministerio de Turismo, con fechas y lugares.`;
+const monthLabel = (key: string) => formatDate(`${key}-15`, lang, { month: "long", year: "numeric" });
+const COPY = {
+  es: {
+    title: "Eventos en El Salvador: festivales, ferias y conciertos | Ventanilla",
+    description: `${all.length} eventos próximos en El Salvador: festivales, ferias, conciertos y fiestas de la agenda oficial del Ministerio de Turismo, con fechas y lugares.`,
+    page: "Agenda de eventos en El Salvador",
+    heading: "Agenda de El Salvador",
+    intro: `${all.length} eventos que aún no terminan, de la agenda oficial del Ministerio de Turismo. Agrégalos a tu calendario con un toque.`,
+    empty: "No hay eventos próximos en la agenda oficial por ahora.",
+  },
+  en: {
+    title: "Events in El Salvador: festivals, fairs and concerts | Ventanilla",
+    description: `${all.length} upcoming events in El Salvador: festivals, fairs, concerts and town celebrations from the Ministry of Tourism's official calendar, with dates and venues.`,
+    page: "Events calendar for El Salvador",
+    heading: "What's on in El Salvador",
+    intro: `${all.length} events that haven't ended yet, from the Ministry of Tourism's official calendar. Add any of them to your calendar with one tap.`,
+    empty: "There are no upcoming events on the official calendar right now.",
+  },
+}[lang];
 const schema = [
   {
     "@type": "CollectionPage",
     "@id": `${url}#page`,
     url,
-    name: "Agenda de eventos en El Salvador",
-    description,
-    inLanguage: "es-SV",
+    name: COPY.page,
+    description: COPY.description,
+    inLanguage: LOCALE[lang],
     mainEntity: {
       "@type": "ItemList",
       itemListElement: all.map((event, index) => ({
@@ -43,20 +61,20 @@ const schema = [
 ];
 ---
 
-<Layout title="Eventos en El Salvador: festivales, ferias y conciertos | Ventanilla" description={description} current="eventos" schema={schema}>
+<Layout title={COPY.title} description={COPY.description} current="events" schema={schema}>
   <header class="mt-6">
-    <h1 class="font-serif-display text-[clamp(2.4rem,7vw,4rem)] leading-[0.95] tracking-[-0.02em]">Agenda de El Salvador</h1>
-    <p class="mt-3 max-w-[52ch] text-[17px] text-text-secondary">{all.length} eventos que aún no terminan, de la agenda oficial del Ministerio de Turismo. Agrégalos a tu calendario con un toque.</p>
+    <h1 class="font-serif-display text-[clamp(2.4rem,7vw,4rem)] leading-[0.95] tracking-[-0.02em]">{COPY.heading}</h1>
+    <p class="mt-3 max-w-[52ch] text-[17px] text-text-secondary">{COPY.intro}</p>
   </header>
   {
     [...months.entries()].map(([key, items]) => (
       <section class="mt-10" aria-labelledby={`mes-${key}`}>
         <h2 id={`mes-${key}`} class="sticky top-14 z-10 -mx-4 bg-background-primary/90 px-4 py-2 font-serif-display text-[2rem] leading-none capitalize backdrop-blur mobile:-mx-6 mobile:px-6">{monthLabel(key)}</h2>
         <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 site-desktop:grid-cols-3">
-          {items.map((event) => <EventCard event={event} />)}
+          {items.map((event) => <EventCard event={event} lang={lang} />)}
         </div>
       </section>
     ))
   }
-  {all.length === 0 && <p class="mt-10 text-[17px] text-text-secondary">No hay eventos próximos en la agenda oficial por ahora.</p>}
+  {all.length === 0 && <p class="mt-10 text-[17px] text-text-secondary">{COPY.empty}</p>}
 </Layout>

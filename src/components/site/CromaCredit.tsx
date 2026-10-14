@@ -5,7 +5,7 @@ import { focusRing } from "../../lib/ui";
 
 const symbol = croma.replace("<svg ", '<svg aria-hidden="true" class="h-[1.05em] w-auto" ');
 
-export default function CromaCredit({ className }: { className?: string }) {
+export default function CromaCredit({ className, label = site.brand.poweredBy }: { className?: string; label?: string }) {
   return (
     <a
       href="https://usecroma.com"
@@ -13,7 +13,7 @@ export default function CromaCredit({ className }: { className?: string }) {
       rel="noopener noreferrer"
       className={cn("group/croma inline-flex items-center gap-1.5 rounded-4 whitespace-nowrap transition-colors duration-200 hover:text-primary", focusRing, className)}
     >
-      <span>{site.brand.poweredBy}</span>
+      <span>{label}</span>
       <span className="inline-flex items-center gap-1 font-medium text-primary/80 transition-colors group-hover/croma:text-primary">
         <span className="inline-flex" dangerouslySetInnerHTML={{ __html: symbol }} />
         Croma

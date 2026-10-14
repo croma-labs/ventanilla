@@ -1,21 +1,24 @@
 ---
+import { sectionPath, translatePath, type Lang, type Section } from "../../lib/turismo/labels";
 import { focusRing } from "../../lib/ui";
 
 interface Props {
-  current: "inicio" | "explorar" | "eventos" | "guias" | null;
+  current: Section | null;
+  lang: Lang;
 }
 
-const { current } = Astro.props;
-const tabs = [
-  { key: "inicio", label: "Inicio", href: "/turismo" },
-  { key: "explorar", label: "Explorar y mapa", href: "/turismo/explorar" },
-  { key: "eventos", label: "Eventos", href: "/turismo/eventos" },
-  { key: "guias", label: "Guías", href: "/turismo/guias" },
-] as const;
+const { current, lang } = Astro.props;
+const LABELS: Record<Lang, Record<Section, string>> = {
+  es: { home: "Inicio", explore: "Explorar y mapa", events: "Eventos", guides: "Guías" },
+  en: { home: "Home", explore: "Explore and map", events: "Events", guides: "Guides" },
+};
+const tabs = (["home", "explore", "events", "guides"] as const).map((key) => ({ key, label: LABELS[lang][key], href: sectionPath(key, lang) }));
+const other: Lang = lang === "en" ? "es" : "en";
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
-<nav aria-label="Turismo" class="sticky top-0 z-20 -mx-4 border-b border-border-quaternary bg-background-primary/85 px-4 backdrop-blur-xl mobile:-mx-6 mobile:px-6">
-  <ul class="flex gap-1 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+<nav aria-label={lang === "en" ? "Tourism" : "Turismo"} class="sticky top-0 z-20 -mx-4 flex items-center gap-2 border-b border-border-quaternary bg-background-primary/85 px-4 backdrop-blur-xl mobile:-mx-6 mobile:px-6">
+  <ul class="flex min-w-0 flex-1 gap-1 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
     {
       tabs.map((tab) => (
         <li class="shrink-0">
@@ -30,4 +33,14 @@ const tabs = [
       ))
     }
   </ul>
+  <a
+    href={translatePath(path, other)}
+    hreflang={other}
+    lang={other}
+    data-language-switch
+    class={`inline-flex h-9 shrink-0 items-center rounded-full border border-border-tertiary px-3 text-[13px] font-semibold tracking-wide hover:bg-surface-muted ${focusRing}`}
+    aria-label={other === "en" ? "English version" : "Versión en español"}
+  >
+    {other === "en" ? "EN" : "ES"}
+  </a>
 </nav>

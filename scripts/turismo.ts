@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import type { Catalog, Happening, Kind, Photo, Place, Point, Precision, Social, Theme } from "../src/lib/turismo/types.ts";
@@ -7,15 +8,20 @@ import type { Catalog, Happening, Kind, Photo, Place, Point, Precision, Social, 
 // entry on the map. The directory publishes no coordinates: destinations and
 // tourist sites are looked up by name, everything else sits at its town, and
 // every lookup is kept in src/countries/sv/turismo-geo.json so a build only
-// asks for what is new.
+// asks for what is new. Descriptions and hours are translated for /tourism the
+// same way, once per text, into src/countries/sv/turismo-en.json.
 
 const OUT_DIR = ".turismo";
 const OUT = `${OUT_DIR}/catalog.json`;
 const GEO = "src/countries/sv/turismo-geo.json";
+const EN = "src/countries/sv/turismo-en.json";
 const base = process.env.CROMA_API_URL ?? "https://api.croma.run";
 const key = process.env.CROMA_API_KEY;
 const onVercel = !!process.env.VERCEL;
 const lookupBudget = Number(process.env.TURISMO_GEOCODE_MAX ?? (onVercel ? 40 : 800));
+const translateBudget = Number(process.env.TURISMO_TRANSLATE_MAX ?? (onVercel ? 30 : 1000));
+const groqKey = process.env.GROQ_API_KEY;
+const TRANSLATOR = process.env.TURISMO_TRANSLATE_MODEL ?? "openai/gpt-oss-120b";
 const PER_PAGE = 50;
 const IN_FLIGHT = 4;
 const SV = { south: 13.05, north: 14.5, west: -90.2, east: -87.6 };
@@ -266,6 +272,14 @@ function tidyName(name: string): string {
     .join("");
 }
 
+/** A destination's own story; the "¿Dónde dormir?" contact dump after it is already in the directory, place by place. */
+function story(text: string | null | undefined): string | null {
+  if (!text) return null;
+  const lines = text.split("\n");
+  const cut = lines.findIndex((line) => /^\s*¿?\s*d[oó]nde\s+(dormir|comer|hospedarse|alojarse)\b/i.test(line));
+  return (cut < 0 ? lines : lines.slice(0, cut)).join("\n").trim() || null;
+}
+
 const THEMES = new Set<Theme>(["surf_city", "bitcoin", "nature_adventure", "archaeology", "towns", "wellness", "regional"]);
 
 function place(raw: RawPlace, point: Point | null): Place {
@@ -283,7 +297,7 @@ function place(raw: RawPlace, point: Point | null): Place {
     municipality: townOf(raw),
     region: raw.region,
     languages: raw.languages,
-    description: raw.description ?? null,
+    description: story(raw.description),
     hours: raw.hours,
     phones,
     emails: raw.kind === "guide" ? [] : raw.emails,
@@ -312,6 +326,71 @@ function uniqueSlugs(places: Place[]): Place[] {
   return places.map((entry) => ((seen.get(entry.slug) ?? 0) > 1 ? { ...entry, slug: `${entry.slug}-${entry.id}` } : entry));
 }
 
+// ─── English ───
+
+const TRANSLATE = [
+  "You translate El Salvador's official tourism directory from Spanish into natural, polished US English for international travelers.",
+  "Keep proper names in Spanish: towns, beaches, volcanoes, lakes, parks, festivals, businesses and dishes (pupusas, yuca frita). Translate generic words around them (playa El Tunco becomes El Tunco beach).",
+  "Keep every line break, number, price, phone, time and URL exactly. Use a.m./p.m. times as written. Never use em dashes. Do not add, explain or summarize.",
+  "Answer with the translation only.",
+].join(" ");
+
+const tidyEnglish = (text: string) =>
+  text
+    .replace(/\u2011/g, "-")
+    .replace(/\s*\u2014\s*/g, ", ")
+    .split("\n")
+    .map((line) => line.trimEnd())
+    .join("\n")
+    .trim();
+
+const fingerprint = (text: string) => createHash("sha256").update(text).digest("base64url").slice(0, 16);
+
+let translations = 0;
+
+async function english(text: string, cache: Record<string, string>): Promise<string | undefined> {
+  const id = fingerprint(text);
+  if (id in cache) return cache[id];
+  if (!groqKey || translations >= translateBudget) return undefined;
+  translations++;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${groqKey}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ model: TRANSLATOR, reasoning_effort: "low", temperature: 0.2, messages: [{ role: "system", content: TRANSLATE }, { role: "user", content: text }] }),
+        signal: AbortSignal.timeout(120_000),
+      });
+      if (response.status === 429 || response.status >= 500) {
+        await sleep(attempt * 5000);
+        continue;
+      }
+      if (!response.ok) return undefined;
+      const answer = ((await response.json()) as { choices: { message: { content: string | null } }[] }).choices[0]?.message.content?.trim();
+      if (!answer || answer.length < text.length * 0.5) return undefined;
+      cache[id] = tidyEnglish(answer);
+      return cache[id];
+    } catch {
+      await sleep(attempt * 3000);
+    }
+  }
+  return undefined;
+}
+
+async function inEnglish(places: Place[]): Promise<Place[]> {
+  const cache: Record<string, string> = existsSync(EN) ? JSON.parse(await readFile(EN, "utf8")) : {};
+  const texts = [...new Set(places.flatMap((entry) => [entry.description, entry.hours]).filter((text): text is string => !!text))];
+  await pool(texts, (text) => english(text, cache));
+  const kept = new Set(texts.map(fingerprint));
+  const sorted = Object.fromEntries(Object.entries(cache).filter(([id]) => kept.has(id)).sort(([a], [b]) => a.localeCompare(b)).map(([id, text]) => [id, tidyEnglish(text)]));
+  await writeFile(EN, `${JSON.stringify(sorted, null, 1)}\n`);
+  const of = (text: string | null) => (text ? sorted[fingerprint(text)] : undefined);
+  return places.map((entry) => {
+    const en = { description: of(entry.description), hours: of(entry.hours) };
+    return en.description || en.hours ? { ...entry, en } : entry;
+  });
+}
+
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -331,11 +410,11 @@ async function main() {
   for (const raw of rawPlaces) located.push(place(raw, await locate(raw, cache)));
   const sorted = Object.fromEntries(Object.entries(cache).sort(([a], [b]) => a.localeCompare(b)));
   await writeFile(GEO, `${JSON.stringify(sorted, null, 1)}\n`);
-  const catalog: Catalog = { syncedAt: new Date().toISOString(), places: uniqueSlugs(located), events: rawEvents.map(happening) };
+  const catalog: Catalog = { syncedAt: new Date().toISOString(), places: await inEnglish(uniqueSlugs(located)), events: rawEvents.map(happening) };
   await mkdir(OUT_DIR, { recursive: true });
   await writeFile(OUT, JSON.stringify(catalog));
   const precision = located.reduce<Record<string, number>>((acc, entry) => ({ ...acc, [entry.point?.precision ?? "none"]: (acc[entry.point?.precision ?? "none"] ?? 0) + 1 }), {});
-  console.log(`turismo: ${catalog.places.length} places, ${catalog.events.length} events, ${lookups} new lookups, map ${JSON.stringify(precision)}, ${Math.round((Date.now() - started) / 1000)}s`);
+  console.log(`turismo: ${catalog.places.length} places, ${catalog.events.length} events, ${lookups} new lookups, ${translations} new translations, map ${JSON.stringify(precision)}, ${Math.round((Date.now() - started) / 1000)}s`);
 }
 
 main().catch((error) => {

@@ -12,7 +12,7 @@ const country = process.env.COUNTRY ?? "co";
 const corpus = [".corpus/fichas.jsonl", ".corpus/index.json", ".corpus/manifest.json"].filter((file) => existsSync(file));
 const photos = [{ protocol: "https", hostname: "**.public.blob.vercel-storage.com" }];
 
-/** /turismo exists only where there is a tourism directory to show. */
+/** /turismo and its English twin /tourism exist only where there is a tourism directory to show. */
 const turismo = {
   name: "turismo",
   hooks: {
@@ -26,6 +26,12 @@ const turismo = {
         "/turismo/lugar/[slug]": "lugar.astro",
         "/turismo/departamento/[slug]": "departamento.astro",
         "/turismo/indice.json": "indice.json.ts",
+        "/tourism": "index.astro",
+        "/tourism/explore": "explorar.astro",
+        "/tourism/events": "eventos.astro",
+        "/tourism/guides": "guias.astro",
+        "/tourism/place/[slug]": "lugar.astro",
+        "/tourism/department/[slug]": "departamento.astro",
       };
       for (const [pattern, file] of Object.entries(routes)) injectRoute({ pattern, entrypoint: `./src/turismo/${file}` });
     },

@@ -1,4 +1,5 @@
 import { existsSync, readFileSync } from "node:fs";
+import { LOCALE, type Lang } from "./labels";
 import type { Catalog, Happening, Kind, Place } from "./types";
 
 const FILE = ".turismo/catalog.json";
@@ -13,6 +14,18 @@ export * from "./labels";
 export const byDepartment = (department: string) => places.filter((place) => place.department === department);
 
 export const photoOf = (place: Place) => place.photos[0]?.src ?? null;
+
+/** A place's own words in the reader's language, and which language they are actually in. */
+export function textOf(place: Place, lang: Lang) {
+  const description = lang === "en" ? (place.en?.description ?? null) : null;
+  const hours = lang === "en" ? (place.en?.hours ?? null) : null;
+  return {
+    description: description ?? place.description,
+    descriptionLang: description || !place.description ? lang : ("es" as Lang),
+    hours: hours ?? place.hours,
+    hoursLang: hours || !place.hours ? lang : ("es" as Lang),
+  };
+}
 
 /** A photo for a place that has none of its own: the nearest destination in its town, then its department. */
 export function standIn(place: Place): string | null {
@@ -52,12 +65,15 @@ export const upcoming = (from = new Date()): Happening[] => {
     .sort((a, b) => (a.start ?? "").localeCompare(b.start ?? ""));
 };
 
-export const dateRange = (start: string | null, end: string | null) => {
+export const formatDate = (iso: string, lang: Lang, options: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat(LOCALE[lang], { ...options, timeZone: "UTC" }).format(new Date(iso.length === 10 ? `${iso}T12:00:00Z` : iso));
+
+export const dateRange = (start: string | null, end: string | null, lang: Lang = "es") => {
   if (!start) return "";
-  const format = (iso: string, options: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat("es-SV", { ...options, timeZone: "UTC" }).format(new Date(`${iso}T12:00:00Z`));
+  const format = (iso: string, options: Intl.DateTimeFormatOptions) => formatDate(iso, lang, options);
   if (!end || end === start) return format(start, { weekday: "short", day: "numeric", month: "short" });
   const sameMonth = start.slice(0, 7) === end.slice(0, 7);
-  return sameMonth ? `${format(start, { day: "numeric" })}–${format(end, { day: "numeric", month: "short" })}` : `${format(start, { day: "numeric", month: "short" })} – ${format(end, { day: "numeric", month: "short" })}`;
+  if (sameMonth) return lang === "en" ? `${format(start, { month: "short", day: "numeric" })}–${format(end, { day: "numeric" })}` : `${format(start, { day: "numeric" })}–${format(end, { day: "numeric", month: "short" })}`;
+  return `${format(start, { day: "numeric", month: "short" })} – ${format(end, { day: "numeric", month: "short" })}`;
 };
 
 export const telHref = (phone: string) => {

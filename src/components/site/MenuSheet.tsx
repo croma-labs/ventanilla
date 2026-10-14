@@ -1,12 +1,10 @@
-import { site } from "@country/site";
 import { Dialog } from "@base-ui/react/dialog";
 import { AnimatePresence, MotionConfig, motion, stagger, type Variants } from "motion/react";
 import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
+import type { Chrome } from "../../countries/types";
 import { cn } from "../../lib/cn";
 import { buttonBase, focusRing } from "../../lib/ui";
 import { CloseIcon } from "../icons";
-
-const links = [{ label: "Inicio", href: "/" }, ...site.nav.primary];
 
 const smootherstep = (t: number) => 10 * t ** 2 - 20 * t ** 3 + 15 * t ** 4 - 4 * t ** 5;
 const overshoot = (t: number) => smootherstep(t) + 0.65 * t ** 3 * (1 - t) ** 2;
@@ -37,7 +35,8 @@ const fade: Variants = {
   exit: { opacity: 0, transition: { duration: 0.08 } },
 };
 
-export default function MenuSheet({ pathname = "/" }: { pathname?: string }) {
+export default function MenuSheet({ pathname = "/", chrome, flag }: { pathname?: string; chrome: Chrome; flag: readonly string[] }) {
+  const links = [{ label: chrome.home, href: "/" }, ...chrome.nav.primary];
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<CSSProperties>({});
   const trigger = useRef<HTMLButtonElement>(null);
@@ -88,7 +87,7 @@ export default function MenuSheet({ pathname = "/" }: { pathname?: string }) {
               "type-label-m relative h-11 px-5 pb-0.5 font-medium tracking-[-0.03em] text-white backdrop-blur-frost hover:bg-blue-800",
             )}
           >
-            {site.ui.menu}
+            {chrome.menu}
           </Dialog.Trigger>
         </div>
 
@@ -115,10 +114,10 @@ export default function MenuSheet({ pathname = "/" }: { pathname?: string }) {
                   style={{ borderRadius: 40 }}
                 />
                 <div className="relative flex max-h-[inherit] flex-col gap-11 overflow-y-auto overscroll-contain rounded-40 p-6 mobile:p-10">
-                  <Dialog.Title className="sr-only">{site.ui.menu}</Dialog.Title>
+                  <Dialog.Title className="sr-only">{chrome.menu}</Dialog.Title>
                   <motion.div variants={fade} className="flex shrink-0 justify-end">
                     <Dialog.Close
-                      aria-label={site.ui.closeMenu}
+                      aria-label={chrome.closeMenu}
                       className={cn(
                         buttonBase,
                         "mr-(--menu-close-offset,0px) size-11 rounded-full bg-blue-900/5 text-inherit backdrop-blur-[25px] hover:bg-blue-900/10 [&_svg]:size-4",
@@ -128,7 +127,7 @@ export default function MenuSheet({ pathname = "/" }: { pathname?: string }) {
                     </Dialog.Close>
                   </motion.div>
                   <div className="flex shrink-0 flex-col gap-14">
-                    <nav aria-label={site.ui.menu}>
+                    <nav aria-label={chrome.menu}>
                       <ul className="flex flex-col items-center gap-1">
                         {links.map((link) => (
                           <motion.li key={link.href} variants={item}>
@@ -153,11 +152,11 @@ export default function MenuSheet({ pathname = "/" }: { pathname?: string }) {
                       className="flex flex-col items-center gap-2 rounded-12 bg-[#fafafa] pt-4 pr-8 pb-6 pl-6 text-blue-900/65 ring-1 ring-blue-900/3 ring-inset mobile:rounded-16"
                     >
                       <span aria-hidden className="flex h-3.5 w-6 flex-col overflow-hidden rounded-[2px]">
-                        {site.manifesto.flag.map((color, index) => (
+                        {flag.map((color, index) => (
                           <span key={index} className="flex-1" style={{ backgroundColor: color }} />
                         ))}
                       </span>
-                      <p className="w-[220px] max-w-full text-center font-sans text-sm leading-[19px]">{site.brand.notice}</p>
+                      <p className="w-[220px] max-w-full text-center font-sans text-sm leading-[19px]">{chrome.notice}</p>
                     </motion.div>
                   </div>
                 </div>

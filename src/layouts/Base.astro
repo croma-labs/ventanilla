@@ -16,14 +16,19 @@ interface Props {
   schema?: Record<string, unknown>[];
   /** Pages meant to be read and cited by AI assistants drop the noai hints. */
   aiReadable?: boolean;
+  /** The page's own locale, where it differs from the site's. */
+  locale?: string;
+  /** The same page in every language it exists in, by hreflang, the first being x-default. */
+  alternates?: { hreflang: string; path: string }[];
 }
 
-const { title, description, indexable = true, canonical: canonicalPath, image: share, schema = [], aiReadable = false } = Astro.props;
+const { title, description, indexable = true, canonical: canonicalPath, image: share, schema = [], aiReadable = false, locale = site.locale } = Astro.props;
 const aiHints = aiReadable ? "" : ", noai, noimageai";
 const origin = Astro.site ?? new URL(Astro.url.origin);
 const image = new URL(share?.path ?? "/og.jpg", origin).href;
-const url = new URL(canonicalPath ?? Astro.url.pathname, origin).href;
+const url = new URL((canonicalPath ?? Astro.url.pathname).replace(/(.)\/$/, "$1"), origin).href;
 const home = new URL("/", origin).href;
+const alternates = (Astro.props.alternates ?? [{ hreflang: locale, path: url }]).map((entry) => ({ hreflang: entry.hreflang, href: new URL(entry.path, origin).href }));
 const structured = {
   "@context": "https://schema.org",
   "@graph": [
@@ -59,7 +64,7 @@ const structured = {
 ---
 
 <!doctype html>
-<html lang={site.locale}>
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -70,8 +75,8 @@ const structured = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={site.meta.keywords.join(", ")} />
-    <link rel="alternate" hreflang={site.locale} href={url} />
-    <link rel="alternate" hreflang="x-default" href={url} />
+    {alternates.map((entry) => <link rel="alternate" hreflang={entry.hreflang} href={entry.href} />)}
+    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="manifest" href="/manifest.webmanifest" />
     {indexable && <script type="application/ld+json" set:html={JSON.stringify(structured).replace(/</g, "\\u003c")} />}
@@ -82,7 +87,8 @@ const structured = {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.brand.name} />
-    <meta property="og:locale" content={site.locale.replace("-", "_")} />
+    <meta property="og:locale" content={locale.replace("-", "_")} />
+    {alternates.filter((entry) => entry.href !== url).map((entry) => <meta property="og:locale:alternate" content={entry.hreflang.replace("-", "_")} />)}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url} />

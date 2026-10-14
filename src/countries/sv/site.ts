@@ -178,6 +178,28 @@ export const site: Site = {
     ],
     legal: [{ label: "Fuentes y cobertura", href: "https://docs.usecroma.com" }],
   },
+  english: {
+    skip: "Skip to content",
+    home: "Ask Ventanilla",
+    menu: "Menu",
+    closeMenu: "Close menu",
+    notice: "Independent project. Not an official site of the Government of El Salvador.",
+    noticeShort: "Independent project, not an official site.",
+    disclaimer: "Ventanilla is an independent project. It is not an official site of the Government of El Salvador. Answers cite public sources accessed through Croma.",
+    poweredBy: "Data by",
+    nav: {
+      primary: [
+        { label: "Tourism", href: "/tourism" },
+        { label: "Explore and map", href: "/tourism/explore" },
+        { label: "Events", href: "/tourism/events" },
+        { label: "Tour guides", href: "/tourism/guides" },
+        { label: "En español", href: "/turismo" },
+        { label: "Data by Croma", href: "https://usecroma.com" },
+        { label: "GitHub", href: "https://github.com/croma-labs/ventanilla" },
+      ],
+      legal: [{ label: "Sources and coverage", href: "https://docs.usecroma.com" }],
+    },
+  },
   ui: {
     askAnything: "Pregunta lo que necesites…",
     answered: "{n} preguntas respondidas",
