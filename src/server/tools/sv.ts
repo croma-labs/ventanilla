@@ -29,27 +29,27 @@ type TourismEvent = { id: string; slug: string; name: string; start_date: string
 const departments = ["Ahuachapán", "Cabañas", "Chalatenango", "Cuscatlán", "La Libertad", "La Paz", "La Unión", "Morazán", "San Miguel", "San Salvador", "San Vicente", "Santa Ana", "Sonsonate", "Usulután"] as const;
 
 const kinds: readonly (readonly [RegExp, string])[] = [
-  [/\b(gu[ií]as?|guide|tour guide)\b/i, "guide"],
-  [/\b(escuelas? de surf|clases? de surf|surf school|surf lessons?)\b/i, "surf_school"],
-  [/\b(hotel(es)?|hostal(es)?|hospedaje|alojamiento|dormir|caba[ñn]as?|posada|lodging|hostel|stay|sleep)\b/i, "lodging"],
-  [/\b(restaurantes?|comer|comida|cafeter[ií]a|pupuser[ií]a|restaurant|food|eat)\b/i, "restaurant"],
-  [/\b(transporte|shuttle|transfer|taxi|bus)\b/i, "transport"],
-  [/\b(museos?|parques?|sitios? tur[ií]sticos?|museum|park)\b/i, "attraction"],
+  [/(?<!\p{L})(gu[ií]as?|guides?|tour guides?)(?!\p{L})/iu, "guide"],
+  [/(?<!\p{L})(escuelas? de surf|clases? de surf|surf school|surf lessons?|escolas? de surf|aulas de surf|[ée]coles? de surf|cours de surf)(?!\p{L})/iu, "surf_school"],
+  [/(?<!\p{L})(hotel(es)?|hot[ée]is|h[ôo]tels?|hostal(es)?|hospedaje|alojamento|alojamiento|h[ée]bergements?|logements?|dormir|caba[ñn]as?|posada|pousadas?|auberges?|g[îi]tes?|lodging|hostels?|stay|sleep|ficar)(?!\p{L})/iu, "lodging"],
+  [/(?<!\p{L})(restaurantes?|restaurants?|comer|comida|manger|cuisine|cafeter[ií]a|pupuser[ií]a|food|eat)(?!\p{L})/iu, "restaurant"],
+  [/(?<!\p{L})(transportes?|transports?|shuttle|navettes?|transfer|taxi|bus|autocarros?)(?!\p{L})/iu, "transport"],
+  [/(?<!\p{L})(museos?|museus?|mus[ée]es?|parques?|parcs?|sitios? tur[ií]sticos?|museums?|parks?)(?!\p{L})/iu, "attraction"],
 ];
 
 const themes: readonly (readonly [RegExp, string])[] = [
   [/\bbitcoin\b/i, "bitcoin"],
   [/\bsurf city\b/i, "surf_city"],
-  [/\b(arqueol[oó]gic|ruinas|mayas?|ruins|archaeolog)/i, "archaeology"],
-  [/\b(termales|bienestar|wellness|hot springs)\b/i, "wellness"],
+  [/(?<!\p{L})(arqueol[oó]gic|arqueolog|arch[ée]olog|ruinas|ruines|mayas?|ruins|archaeolog)/iu, "archaeology"],
+  [/(?<!\p{L})(termales|termas|thermes|sources chaudes|bienestar|bem-estar|bien-[êe]tre|wellness|hot springs)(?!\p{L})/iu, "wellness"],
 ];
 
 const languages: readonly (readonly [RegExp, string])[] = [
-  [/\b(ingl[eé]s|english)\b/i, "en"],
-  [/\b(franc[eé]s|french)\b/i, "fr"],
-  [/\b(italiano|italian)\b/i, "it"],
-  [/\b(alem[aá]n|german)\b/i, "de"],
-  [/\b(portugu[eé]s|portuguese)\b/i, "pt"],
+  [/(?<!\p{L})(ingl[eéê]s|english|anglais)(?!\p{L})/iu, "en"],
+  [/(?<!\p{L})(franc[eéê]s|french|fran[çc]ais)(?!\p{L})/iu, "fr"],
+  [/(?<!\p{L})(italiano|italian|italien)(?!\p{L})/iu, "it"],
+  [/(?<!\p{L})(alem[aáã]n?o?|german|allemand)(?!\p{L})/iu, "de"],
+  [/(?<!\p{L})(portugu[eéê]s|portuguese|portugais)(?!\p{L})/iu, "pt"],
 ];
 
 const fold = (text: string) => text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
@@ -61,11 +61,11 @@ export function placeFilters(query: string) {
   const theme = themes.find(([pattern]) => pattern.test(query))?.[1];
   const language = kind === "guide" ? languages.find(([pattern]) => pattern.test(query))?.[1] : undefined;
   const rest = [...kinds, ...themes, ...languages]
-    .reduce((text, [pattern]) => text.replace(new RegExp(pattern.source, "gi"), " "), query)
+    .reduce((text, [pattern]) => text.replace(new RegExp(pattern.source, "giu"), " "), query)
     .replace(department ? new RegExp(department, "i") : /$^/, " ")
-    .replace(/\b(cerca de|en|de|del|la|el|los|las|que|hablen?|speak(s|ing)?|near|in|the|a|un|una|para|donde|d[oó]nde|playa de)\b/gi, " ")
-    .replace(/\b(destinos?|lugares?|sitios?|visitar|turismo|tur[ií]stic[oa]s?|recomendad[oa]s?|mejores?|places?|visit|things to do|best)\b/gi, " ")
-    .replace(kind ? /\bplayas?\b/gi : /$^/, " ")
+    .replace(/(?<!\p{L})(cerca de|perto de|pr[èe]s de|en|em|de|del|do|da|dos|das|du|des|la|el|los|las|le|les|o|os|as|no|na|nos|nas|au|aux|à|que|hablen?|falam|parlent|speak(s|ing)?|near|in|the|a|un|una|um|uma|une|para|pour|dans|donde|d[oó]nde|onde|o[ùu]|playa de|praia de|plage de)(?!\p{L})/giu, " ")
+    .replace(/(?<!\p{L})(destinos?|destinations?|lugares?|locais|s[ií]tios?|lieux|endroits|visitar|visiter|turismo|tourisme|tur[ií]stic[oa]s?|touristiques?|recomendad[oa]s?|recomendados?|mejores?|melhores?|meilleur(e?s)?|places?|visit|things to do|o que fazer|que faire|perto|pr[èe]s|cerca|fazer|faire|hacer|ver|voir|aller|ir|best)(?!\p{L})/giu, " ")
+    .replace(kind ? /(?<!\p{L})(playas?|praias?|plages?)(?!\p{L})/giu : /$^/, " ")
     .replace(/[¿?¡!,.]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -94,10 +94,10 @@ function when(query: string): { from_date?: string; to_date?: string } {
   const iso = (date: Date) => date.toISOString().slice(0, 10);
   const plus = (days: number) => iso(new Date(day.getTime() + days * 86_400_000));
   const weekday = day.getUTCDay();
-  if (/fin de semana|weekend/i.test(query)) return { from_date: weekday === 0 || weekday === 6 ? today : plus(5 - weekday), to_date: plus(weekday === 0 ? 0 : 7 - weekday) };
-  if (/\b(hoy|today)\b/i.test(query)) return { from_date: today, to_date: today };
-  if (/esta semana|this week/i.test(query)) return { from_date: today, to_date: plus(weekday === 0 ? 0 : 7 - weekday) };
-  if (/este mes|this month/i.test(query)) return { from_date: today, to_date: iso(new Date(Date.UTC(day.getUTCFullYear(), day.getUTCMonth() + 1, 0, 12))) };
+  if (/fin de semana|fim de semana|week-?end/i.test(query)) return { from_date: weekday === 0 || weekday === 6 ? today : plus(5 - weekday), to_date: plus(weekday === 0 ? 0 : 7 - weekday) };
+  if (/(?<!\p{L})(hoy|hoje|today|aujourd'hui)(?!\p{L})/iu.test(query)) return { from_date: today, to_date: today };
+  if (/esta semana|this week|cette semaine/i.test(query)) return { from_date: today, to_date: plus(weekday === 0 ? 0 : 7 - weekday) };
+  if (/este m[eê]s|this month|ce mois/i.test(query)) return { from_date: today, to_date: iso(new Date(Date.UTC(day.getUTCFullYear(), day.getUTCMonth() + 1, 0, 12))) };
   const month = MONTHS.findIndex((names) => names.some((name) => new RegExp(`\\b${name}\\b`, "i").test(fold(query))));
   if (month >= 0) {
     const year = day.getUTCFullYear() + (month < day.getUTCMonth() ? 1 : 0);
@@ -110,19 +110,22 @@ function when(query: string): { from_date?: string; to_date?: string } {
 const longDate = (iso: string) => new Intl.DateTimeFormat("es-SV", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${iso}T12:00:00Z`));
 
 const MONTHS = [
-  ["enero", "january"],
-  ["febrero", "february"],
-  ["marzo", "march"],
-  ["abril", "april"],
-  ["mayo", "may"],
-  ["junio", "june"],
-  ["julio", "july"],
-  ["agosto", "august"],
-  ["septiembre", "setiembre", "september"],
-  ["octubre", "october"],
-  ["noviembre", "november"],
-  ["diciembre", "december"],
+  ["enero", "january", "janeiro", "janvier"],
+  ["febrero", "february", "fevereiro", "fevrier", "février"],
+  ["marzo", "march", "marco", "março", "mars"],
+  ["abril", "april", "avril"],
+  ["mayo", "may", "maio", "mai"],
+  ["junio", "june", "junho", "juin"],
+  ["julio", "july", "julho", "juillet"],
+  ["agosto", "august", "aout", "août"],
+  ["septiembre", "setiembre", "september", "setembro", "septembre"],
+  ["octubre", "october", "outubro", "octobre"],
+  ["noviembre", "november", "novembro", "novembre"],
+  ["diciembre", "december", "dezembro", "decembre", "décembre"],
 ];
+
+/** Words that only say when, in the four languages the guide speaks; the dates come from them, the search text does not. */
+const PERIODS = ["fin de semana", "fim de semana", "week-end", "weekend", "esta semana", "cette semaine", "this week", "este mes", "este mês", "ce mois", "this month", "hoy", "hoje", "aujourd'hui", "today", "pr[oó]xim[oa]s?", "prochaine?s?", "upcoming", "soon", "bient[ôo]t"];
 
 /** Tourism answers link to Ventanilla's own /turismo pages, built from the same official directory. */
 const turismo = (path: string) => new URL(path, import.meta.env.SITE ?? "https://sv.usecroma.com").href;
@@ -235,10 +238,10 @@ export const tourismEvents = cromaTool("eventos_turismo", {
     const department = departments.find((name) => new RegExp(`\\b${fold(name)}\\b`).test(fold(query)));
     const text = query
       .replace(department ? new RegExp(department, "i") : /$^/, " ")
-      .replace(/\b(fin de semana|weekend|esta semana|this week|este mes|this month|hoy|today|pr[oó]xim[oa]s?|upcoming|soon|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre|january|february|march|april|may|june|july|august|september|october|november|december)\b/gi, " ")
-      .replace(/\bel salvador\b/gi, " ")
-      .replace(/\b(eventos?|agenda|actividades|qu[eé] hay|events?|what'?s on|happening|festivales|festivals?|ferias?|fairs?|conciertos?|concerts?|shows?|espect[aá]culos?|culturales?|cultural|things to do)\b/gi, " ")
-      .replace(/\b(what|which|are|is|on|and|or|the|a|to|for|any|there|este|esta|this|in|en|de|del|el|la|los|las|y|o|hay|qu[eé]|cu[aá]les)\b/gi, " ")
+      .replace(new RegExp(`(?<!\\p{L})(${[...PERIODS, ...MONTHS.flat()].join("|")})(?!\\p{L})`, "giu"), " ")
+      .replace(/(?<!\p{L})(el salvador|le salvador|du salvador|salvador)(?!\p{L})/giu, " ")
+      .replace(/(?<!\p{L})(eventos?|agenda|actividades|atividades|activit[ée]s|qu[eé] hay|events?|[ée]v[ée]nements?|what'?s on|happening|festivales|festivais|festivals?|ferias?|feiras?|foires?|fairs?|conciertos?|concertos?|concerts?|shows?|espect[aá]culos?|espet[aá]culos?|spectacles?|f[êe]tes?|culturales?|culturais|culturels?|cultural|things to do)(?!\p{L})/giu, " ")
+      .replace(/(?<!\p{L})(what|which|are|is|on|and|or|the|a|to|for|any|there|este|esta|this|in|en|em|de|del|do|da|du|des|el|la|los|las|le|les|os|as|y|e|et|o|ou|hay|h[áa]|il y a|qu[eé]|quais|quels?|quelles?|cu[aá]les|ce|cette|à|au|no|na)(?!\p{L})/giu, " ")
       .replace(/[¿?¡!,.]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
