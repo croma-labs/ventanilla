@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { site as country } from "@country/site";
-import { catalog, DEPARTMENT_LEAD, DEPARTMENTS, departmentPath, KIND_LABEL, placePath, places, upcoming } from "../lib/turismo/catalog";
+import { catalog, DEPARTMENT_LEAD, DEPARTMENTS, departmentPath, KIND_LABEL, placePath, places, sectionPath, textOf, upcoming, type Lang } from "../lib/turismo/catalog";
+import type { Kind } from "../lib/turismo/types";
 import { pathOf, published, summaryOf } from "../lib/tramites";
 
 /** A map of the site for language models: what it is, what each section answers, and where the pages are. */
@@ -17,29 +18,45 @@ export const GET: APIRoute = ({ site }) => {
     ...published.map((tramite) => `- [${tramite.title}](${at(pathOf(tramite.slug))}): ${summaryOf(tramite.answer, 200) || tramite.question}`),
   ];
   if (country.code === "sv" && places.length) {
-    const kinds = [...places.reduce((acc, place) => acc.set(place.kind, (acc.get(place.kind) ?? 0) + 1), new Map<keyof typeof KIND_LABEL, number>()).entries()]
-      .sort((a, b) => b[1] - a[1])
-      .map(([kind, count]) => `${count} ${KIND_LABEL[kind].many.toLowerCase()}`)
-      .join(", ");
+    const counted = [...places.reduce((acc, place) => acc.set(place.kind, (acc.get(place.kind) ?? 0) + 1), new Map<Kind, number>()).entries()].sort((a, b) => b[1] - a[1]);
+    const kinds = (lang: Lang) => counted.map(([kind, count]) => `${count} ${KIND_LABEL[lang][kind].many.toLowerCase()}`).join(", ");
     const destinations = places.filter((place) => place.kind === "destination" && place.description);
+    const synced = catalog.syncedAt.slice(0, 10);
     lines.push(
       "",
       "## Turismo en El Salvador",
       "",
-      `> El directorio oficial de turismo del Ministerio de Turismo de El Salvador: ${kinds}. Cada lugar tiene su departamento, municipio y, para los negocios, teléfonos, WhatsApp, correo, sitio web y redes sociales. Actualizado el ${catalog.syncedAt.slice(0, 10)}.`,
+      `> El directorio oficial de turismo del Ministerio de Turismo de El Salvador: ${kinds("es")}. Cada lugar tiene su departamento, municipio y, para los negocios, teléfonos, WhatsApp, correo, sitio web y redes sociales. Actualizado el ${synced}.`,
       "",
-      `- [Turismo en El Salvador](${at("/turismo")}): portada con destinos por temática, eventos próximos y los 14 departamentos.`,
-      `- [Explorar y mapa](${at("/turismo/explorar")}): búsqueda y filtros por tipo, departamento, temática, idioma del guía e inscripción en el Registro Nacional de Turismo. Acepta ?q=, ?tipo=, ?depto=, ?tema=, ?idioma= y ?rnt=1.`,
-      `- [Agenda de eventos](${at("/turismo/eventos")}): ${upcoming().length} eventos próximos con fechas y lugar.`,
-      `- [Guías certificados](${at("/turismo/guias")}): guías de turismo con sus idiomas y zona.`,
+      `- [Turismo en El Salvador](${at(sectionPath("home", "es"))}): portada con destinos por temática, eventos próximos y los 14 departamentos.`,
+      `- [Explorar y mapa](${at(sectionPath("explore", "es"))}): búsqueda y filtros por tipo, departamento, temática, idioma del guía e inscripción en el Registro Nacional de Turismo. Acepta ?q=, ?tipo=, ?depto=, ?tema=, ?idioma= y ?rnt=1.`,
+      `- [Agenda de eventos](${at(sectionPath("events", "es"))}): ${upcoming().length} eventos próximos con fechas y lugar.`,
+      `- [Guías certificados](${at(sectionPath("guides", "es"))}): guías de turismo con sus idiomas y zona.`,
       "",
       "### Departamentos",
       "",
-      ...DEPARTMENTS.map((name) => `- [${name}](${at(departmentPath(name))}): ${DEPARTMENT_LEAD[name]}`),
+      ...DEPARTMENTS.map((name) => `- [${name}](${at(departmentPath(name, "es"))}): ${DEPARTMENT_LEAD.es[name]}`),
       "",
       "### Destinos",
       "",
-      ...destinations.map((place) => `- [${place.name}](${at(placePath(place))}): ${(place.description ?? "").split("\n")[0].slice(0, 220)}`),
+      ...destinations.map((place) => `- [${place.name}](${at(placePath(place, "es"))}): ${(place.description ?? "").split("\n")[0].slice(0, 220)}`),
+      "",
+      "## El Salvador travel guide (English)",
+      "",
+      `> Every tourism page also exists in English under /tourism, built from the same official directory of El Salvador's Ministry of Tourism: ${kinds("en")}. Each place lists its department, town and, for businesses, phones, WhatsApp, email, website and social media. Updated ${synced}.`,
+      "",
+      `- [El Salvador travel guide](${at(sectionPath("home", "en"))}): destinations by theme, upcoming events and the 14 departments.`,
+      `- [Explore and map](${at(sectionPath("explore", "en"))}): search and filter by type, department, theme, guide language and National Tourism Registry listing. Accepts ?q=, ?type=, ?department=, ?theme=, ?language= and ?rnt=1.`,
+      `- [Events calendar](${at(sectionPath("events", "en"))}): ${upcoming().length} upcoming events with dates and venues.`,
+      `- [Certified tour guides](${at(sectionPath("guides", "en"))}): tour guides with their languages and area.`,
+      "",
+      "### Departments",
+      "",
+      ...DEPARTMENTS.map((name) => `- [${name}](${at(departmentPath(name, "en"))}): ${DEPARTMENT_LEAD.en[name]}`),
+      "",
+      "### Destinations",
+      "",
+      ...destinations.map((place) => `- [${place.name}](${at(placePath(place, "en"))}): ${(textOf(place, "en").description ?? "").split("\n")[0].slice(0, 220)}`),
     );
   }
   return new Response(`${lines.join("\n")}\n`, { headers: { "Content-Type": "text/plain; charset=utf-8" } });

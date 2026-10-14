@@ -1,10 +1,16 @@
 ---
 import { site } from "@country/site";
 import mark from "@country/brand/mark.svg?raw";
+import { chromeOf } from "../../lib/chrome";
 import CromaCredit from "./CromaCredit";
 import MenuSheet from "./MenuSheet";
 import RepoBadge from "./RepoBadge";
 
+interface Props {
+  lang?: string;
+}
+
+const chrome = chromeOf(Astro.props.lang);
 const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="h-6 w-9 shrink-0" ');
 ---
 
@@ -12,16 +18,16 @@ const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="h-6 w-9
   href="#landing-main"
   class="fixed top-3 left-3 z-[60] -translate-y-[300%] rounded-full bg-blue-700 px-5 py-3 font-medium text-white transition-transform focus-visible:translate-y-0"
 >
-  Saltar al contenido
+  {chrome.skip}
 </a>
 <div data-slot="nav-header-flow" class="min-h-10">
   <div class="relative z-30 bg-background-primary">
     <div data-slot="gov-banner-row">
       <p class="type-body-s flex min-h-10 items-center justify-center gap-2 px-4 text-center text-text-secondary">
-        <span class="max-mobile:hidden">{site.brand.notice}</span>
-        <span class="mobile:hidden">{site.brand.noticeShort}</span>
+        <span class="max-mobile:hidden">{chrome.notice}</span>
+        <span class="mobile:hidden">{chrome.noticeShort}</span>
         <span aria-hidden="true" class="max-mobile:hidden">·</span>
-        <CromaCredit className="max-mobile:hidden" />
+        <CromaCredit className="max-mobile:hidden" label={chrome.poweredBy} />
         <span aria-hidden="true" class="max-mobile:hidden">·</span>
         <RepoBadge className="max-mobile:hidden" />
       </p>
@@ -30,11 +36,11 @@ const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="h-6 w-9
       <header
         class="site-header relative mx-(--site-header-inset) mt-4 grid w-[calc(100%-2*var(--site-header-inset))] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 p-6 [--site-header-inset:0.75rem] max-mobile:p-3 mobile:[--site-header-inset:3.5rem]"
       >
-        <a href="/" aria-label={`${site.brand.name}, inicio`} class="flex max-w-full min-w-0 items-center gap-2.5 rounded-4">
+        <a href="/" aria-label={`${site.brand.name}, ${chrome.home.toLowerCase()}`} class="flex max-w-full min-w-0 items-center gap-2.5 rounded-4">
           <Fragment set:html={markMarkup} />
           <span class="font-serif-display text-[1.75rem] leading-none tracking-[-0.01em] text-text-primary">{site.brand.name}</span>
         </a>
-        <MenuSheet client:load pathname={Astro.url.pathname} />
+        <MenuSheet client:load pathname={Astro.url.pathname} chrome={chrome} flag={site.manifesto.flag} />
       </header>
     </div>
   </div>

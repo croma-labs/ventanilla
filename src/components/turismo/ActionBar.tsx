@@ -1,13 +1,20 @@
 import { Check, Navigation, Phone, Share2 } from "lucide-react";
 import { useState } from "react";
+import type { Lang } from "../../lib/turismo/labels";
 import BrandIcon from "./BrandIcon";
 
-type Props = { name: string; phone: string | null; whatsapp: string | null; directions: string | null; url: string };
+type Props = { name: string; phone: string | null; whatsapp: string | null; directions: string | null; url: string; lang: Lang };
+
+const COPY = {
+  es: { call: "Llamar", directions: "Cómo llegar", share: "Compartir", copied: "Enlace copiado" },
+  en: { call: "Call", directions: "Directions", share: "Share", copied: "Link copied" },
+};
 
 const item =
   "flex min-w-0 flex-1 flex-col items-center justify-center gap-1 rounded-16 py-2 text-[12px] font-medium text-text-primary transition-colors active:bg-surface-muted mobile:h-12 mobile:flex-row mobile:gap-2 mobile:rounded-full mobile:border mobile:border-border-tertiary mobile:px-5 mobile:text-[15px] mobile:hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-offset-2";
 
-export default function ActionBar({ name, phone, whatsapp, directions, url }: Props) {
+export default function ActionBar({ name, phone, whatsapp, directions, url, lang }: Props) {
+  const copy = COPY[lang];
   const [copied, setCopied] = useState(false);
 
   const share = async () => {
@@ -30,7 +37,7 @@ export default function ActionBar({ name, phone, whatsapp, directions, url }: Pr
         {phone && (
           <a href={phone} className={item}>
             <Phone size={20} strokeWidth={1.75} />
-            Llamar
+            {copy.call}
           </a>
         )}
         {whatsapp && (
@@ -42,12 +49,12 @@ export default function ActionBar({ name, phone, whatsapp, directions, url }: Pr
         {directions && (
           <a href={directions} target="_blank" rel="noopener noreferrer" className={item}>
             <Navigation size={20} strokeWidth={1.75} />
-            Cómo llegar
+            {copy.directions}
           </a>
         )}
         <button type="button" onClick={share} className={item}>
           {copied ? <Check size={20} strokeWidth={1.75} /> : <Share2 size={20} strokeWidth={1.75} />}
-          {copied ? "Enlace copiado" : "Compartir"}
+          {copied ? copy.copied : copy.share}
         </button>
       </div>
     </div>

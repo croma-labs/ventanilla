@@ -1,6 +1,6 @@
 ---
 import { CalendarPlus, Globe, MapPin } from "lucide-react";
-import { dateRange } from "../../lib/turismo/catalog";
+import { dateRange, formatDate, LOCALE, type Lang } from "../../lib/turismo/catalog";
 import type { Happening } from "../../lib/turismo/types";
 import { focusRing } from "../../lib/ui";
 import BrandIcon, { hasBrand, NETWORK_LABEL } from "./BrandIcon";
@@ -8,13 +8,17 @@ import BrandIcon, { hasBrand, NETWORK_LABEL } from "./BrandIcon";
 interface Props {
   event: Happening;
   variant?: "default" | "compact";
+  lang: Lang;
 }
 
-const { event, variant = "default" } = Astro.props;
-const start = event.start ? new Date(`${event.start}T12:00:00Z`) : null;
-const day = start ? new Intl.DateTimeFormat("es-SV", { day: "numeric", timeZone: "UTC" }).format(start) : "";
-const month = start ? new Intl.DateTimeFormat("es-SV", { month: "short", timeZone: "UTC" }).format(start).replace(".", "") : "";
-const weekday = start ? new Intl.DateTimeFormat("es-SV", { weekday: "short", timeZone: "UTC" }).format(start).replace(".", "") : "";
+const { event, variant = "default", lang } = Astro.props;
+const COPY = {
+  es: { more: "Más información", save: "Agendar" },
+  en: { more: "More info", save: "Add to calendar" },
+}[lang];
+const day = event.start ? formatDate(event.start, lang, { day: "numeric" }) : "";
+const month = event.start ? formatDate(event.start, lang, { month: "short" }).replace(".", "") : "";
+const weekday = event.start ? formatDate(event.start, lang, { weekday: "short" }).replace(".", "") : "";
 const compact = (iso: string) => iso.replaceAll("-", "");
 const nextDay = (iso: string) => new Date(Date.parse(`${iso}T12:00:00Z`) + 86_400_000).toISOString().slice(0, 10);
 const ics =
@@ -22,7 +26,7 @@ const ics =
   [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Ventanilla//Turismo El Salvador//ES",
+    `PRODID:-//Ventanilla//Turismo El Salvador//${LOCALE[lang].slice(0, 2).toUpperCase()}`,
     "BEGIN:VEVENT",
     `UID:${event.id}@sv.usecroma.com`,
     `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").slice(0, 15)}Z`,
@@ -45,7 +49,7 @@ const width = variant === "compact" ? "w-[78vw] max-w-[320px] shrink-0 snap-star
     </div>
     <div class="min-w-0">
       <h3 class="font-serif-display text-[1.4rem] leading-[1.08] text-balance">{event.name}</h3>
-      <p class="mt-1 text-[13px] font-medium text-blue-600"><time datetime={event.start ?? undefined}>{dateRange(event.start, event.end)}</time></p>
+      <p class="mt-1 text-[13px] font-medium text-blue-600"><time datetime={event.start ?? undefined}>{dateRange(event.start, event.end, lang)}</time></p>
       {
         (event.venue || event.department) && (
           <p class="mt-1 flex items-start gap-1 text-[13px] text-text-secondary">
@@ -61,7 +65,7 @@ const width = variant === "compact" ? "w-[78vw] max-w-[320px] shrink-0 snap-star
       event.links.map((link) => (
         <a href={link.url} target="_blank" rel="noopener noreferrer" class={`inline-flex h-9 items-center gap-1.5 rounded-full border border-border-tertiary px-3 text-[13px] font-medium hover:bg-surface-muted ${focusRing}`}>
           {hasBrand(link.label) ? <BrandIcon name={link.label} size={14} /> : <Globe size={14} strokeWidth={1.75} />}
-          {link.label === "web" ? "Más información" : NETWORK_LABEL[link.label as keyof typeof NETWORK_LABEL] ?? "Más información"}
+          {link.label === "web" ? COPY.more : NETWORK_LABEL[link.label as keyof typeof NETWORK_LABEL] ?? COPY.more}
         </a>
       ))
     }
@@ -69,7 +73,7 @@ const width = variant === "compact" ? "w-[78vw] max-w-[320px] shrink-0 snap-star
       ics && (
         <a href={`data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`} download={`${event.slug}.ics`} class={`inline-flex h-9 items-center gap-1.5 rounded-full border border-border-tertiary px-3 text-[13px] font-medium hover:bg-surface-muted ${focusRing}`}>
           <CalendarPlus size={14} strokeWidth={1.75} />
-          Agendar
+          {COPY.save}
         </a>
       )
     }

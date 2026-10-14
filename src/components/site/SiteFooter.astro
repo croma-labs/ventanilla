@@ -1,9 +1,15 @@
 ---
 import { site } from "@country/site";
 import mark from "@country/brand/mark.svg?raw";
+import { chromeOf } from "../../lib/chrome";
 import { focusRing } from "../../lib/ui";
 import CromaCredit from "./CromaCredit";
 
+interface Props {
+  lang?: string;
+}
+
+const chrome = chromeOf(Astro.props.lang);
 const inlineLink = `inline-block rounded-xs underline-offset-4 hover:underline ${focusRing}`;
 const external = (href: string) => (href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {});
 const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="h-7 w-[42px]" ');
@@ -11,10 +17,10 @@ const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="h-7 w-[
 
 <footer data-slot="site-footer" class="bg-surface-footer py-24 text-pretty text-black site-desktop:pt-56 site-desktop:pb-30">
   <div class="site-container site-grid gap-y-20 site-desktop:gap-y-36">
-    <nav aria-label="Pie de página" class="col-span-full min-w-0 text-center wrap-anywhere">
+    <nav aria-label={Astro.props.lang === "en" ? "Footer" : "Pie de página"} class="col-span-full min-w-0 text-center wrap-anywhere">
       <ul class="type-site-3 flex flex-col items-center gap-2.5 max-mobile:gap-6">
         {
-          site.nav.primary.map((link) => (
+          chrome.nav.primary.map((link) => (
             <li class="max-w-full">
               <a href={link.href} {...external(link.href)} class:list={["block max-w-full rounded-8 px-2 underline-offset-4 hover:underline focus-visible:underline", focusRing]}>
                 {link.label}
@@ -32,11 +38,11 @@ const markMarkup = mark.replace("<svg ", '<svg aria-hidden="true" class="h-7 w-[
       <div class="type-site-11 flex w-full min-w-0 flex-col items-center gap-6 pt-4 pb-8 text-center">
         <p class="flex max-w-xl flex-col items-center gap-4 text-text-secondary">
           <Fragment set:html={markMarkup} />
-          {site.brand.disclaimer}
+          {chrome.disclaimer}
         </p>
         <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-          {site.nav.legal.map((link) => <a href={link.href} {...external(link.href)} class={inlineLink}>{link.label}</a>)}
-          <CromaCredit />
+          {chrome.nav.legal.map((link) => <a href={link.href} {...external(link.href)} class={inlineLink}>{link.label}</a>)}
+          <CromaCredit label={chrome.poweredBy} />
         </div>
       </div>
     </div>

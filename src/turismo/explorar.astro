@@ -1,30 +1,35 @@
 ---
 import ExploreApp from "../components/turismo/ExploreApp";
-import { counts, KIND_LABEL, places } from "../lib/turismo/catalog";
+import { counts, KIND_LABEL, langOf, LOCALE, places, sectionPath } from "../lib/turismo/catalog";
 import Layout from "./Layout.astro";
 
+const lang = langOf(Astro.url.pathname);
 const origin = Astro.site ?? new URL(Astro.url.origin);
-const url = new URL("/turismo/explorar", origin).href;
-const byKind = counts();
-const description = `Busca y filtra ${places.length.toLocaleString("es-SV")} lugares turísticos de El Salvador en un mapa: ${[...byKind.entries()]
+const url = new URL(sectionPath("explore", lang), origin).href;
+const number = (value: number) => value.toLocaleString(LOCALE[lang]);
+const top = [...counts().entries()]
   .sort((a, b) => b[1] - a[1])
   .slice(0, 4)
-  .map(([kind, count]) => `${count.toLocaleString("es-SV")} ${KIND_LABEL[kind].many.toLowerCase()}`)
-  .join(", ")} y más, del directorio oficial del Ministerio de Turismo.`;
-const schema = [
-  {
-    "@type": "CollectionPage",
-    "@id": `${url}#page`,
-    url,
-    name: "Explorar El Salvador: mapa de lugares turísticos",
-    description,
-    inLanguage: "es-SV",
-    about: { "@type": "Country", name: "El Salvador" },
+  .map(([kind, count]) => `${number(count)} ${KIND_LABEL[lang][kind].many.toLowerCase()}`)
+  .join(", ");
+const COPY = {
+  es: {
+    title: "Explorar El Salvador: mapa de hoteles, restaurantes, playas y guías | Ventanilla",
+    description: `Busca y filtra ${number(places.length)} lugares turísticos de El Salvador en un mapa: ${top} y más, del directorio oficial del Ministerio de Turismo.`,
+    page: "Explorar El Salvador: mapa de lugares turísticos",
+    heading: "Explora El Salvador",
   },
-];
+  en: {
+    title: "Explore El Salvador: map of hotels, restaurants, beaches and guides | Ventanilla",
+    description: `Search and filter ${number(places.length)} places to visit in El Salvador on a map: ${top} and more, from the Ministry of Tourism's official directory.`,
+    page: "Explore El Salvador: map of places to visit",
+    heading: "Explore El Salvador",
+  },
+}[lang];
+const schema = [{ "@type": "CollectionPage", "@id": `${url}#page`, url, name: COPY.page, description: COPY.description, inLanguage: LOCALE[lang], about: { "@type": "Country", name: "El Salvador" } }];
 ---
 
-<Layout title="Explorar El Salvador: mapa de hoteles, restaurantes, playas y guías | Ventanilla" description={description} current="explorar" schema={schema}>
-  <h1 class="mt-6 font-serif-display text-[clamp(2.2rem,6vw,3.25rem)] leading-none tracking-[-0.02em]">Explora El Salvador</h1>
-  <ExploreApp client:load total={places.length} />
+<Layout title={COPY.title} description={COPY.description} current="explore" schema={schema}>
+  <h1 class="mt-6 font-serif-display text-[clamp(2.2rem,6vw,3.25rem)] leading-none tracking-[-0.02em]">{COPY.heading}</h1>
+  <ExploreApp client:load total={places.length} lang={lang} />
 </Layout>

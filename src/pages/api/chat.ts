@@ -5,6 +5,7 @@ import type { APIRoute } from "astro";
 import { streamText, type ModelMessage } from "ai";
 import { z } from "zod";
 import { scrub } from "../../lib/pii";
+import { translatePath } from "../../lib/turismo/labels";
 import type { Grounding, UiChunk } from "../../lib/ui-stream";
 import { recall, remember } from "../../server/answers";
 import { corpusVersion } from "../../server/corpus";
@@ -37,12 +38,12 @@ const reply = (status: number, error: string, headers: Record<string, string> = 
 
 const ownHost = new URL(import.meta.env.SITE ?? "https://gov.usecroma.com").hostname;
 
-/** An official source, or one of Ventanilla's own /turismo pages, which are built from the official tourism directory. */
+/** An official source, or one of Ventanilla's own tourism pages (/turismo, /tourism), which are built from the official tourism directory. */
 const official = (url: string) => {
   try {
     const { protocol, hostname: host, pathname } = new URL(url);
     if (protocol !== "https:") return false;
-    if (host === ownHost && pathname.startsWith("/turismo/")) return true;
+    if (host === ownHost && (pathname.startsWith("/turismo/") || pathname.startsWith("/tourism/"))) return true;
     return site.officialSuffixes.some((suffix) => (suffix.startsWith(".") ? host.endsWith(suffix) : host === suffix || host.endsWith(`.${suffix}`)));
   } catch {
     return false;
@@ -105,6 +106,14 @@ const languageOf = (question: string) => {
   if (/[¿¡ñ]/i.test(question)) return site.locale;
   return (question.match(ENGLISH)?.length ?? 0) >= 2 ? "English (the QUESTION is in English, even though the DRAFT and the EVIDENCE are in Spanish)" : site.locale;
 };
+
+const ownTourismPage = new RegExp(`https://${ownHost.replace(/\./g, "\\.")}(/turismo(?:/[^\\s)"'\\]]*)?)`, "g");
+
+/** Visitors who ask in English get the English twin of every tourism page. */
+const inEnglish = (text: string) => text.replace(ownTourismPage, (_, path: string) => {
+  const [pathname, hash] = path.split("#");
+  return `https://${ownHost}${translatePath(pathname, "en")}${hash ? `#${hash}` : ""}`;
+});
 
 const stripToolMarkup = (text: string) => text.replace(/<\/?(?:tool_call|function|parameter)[^>]*>/g, "");
 
@@ -177,6 +186,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       send({ type: "start-step" });
 
       const question = String(messages.at(-1)?.content ?? "");
+      const english = languageOf(question) !== site.locale;
       const firstTurn = messages.length === 1;
       let conversational = assistant.smallTalk.test(question.trim());
       const cached = firstTurn && !evaluation ? await recall(question) : null;
@@ -200,6 +210,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
               .join("\n")
               .slice(-900);
             found = await research({ config: assistant.sources, question, context, conversation, fast });
+            if (english) found = { ...found, candidates: found.candidates.map((candidate) => ({ ...candidate, url: inEnglish(candidate.url), text: inEnglish(candidate.text) })) };
             if (found.route && !found.route.inScope) conversational = true;
             found.candidates.forEach((candidate) => sources.set(candidate.url, { title: candidate.title, url: candidate.url }));
             searchUpdate("done");
@@ -275,7 +286,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       send({ type: "finish-step" });
       send({ type: "message-metadata", messageMetadata: { answerComplete: true } });
       if (outcome === "ok" && grounded.length) {
-        followUps = await suggestFollowUps(question, answer, site.lang);
+        followUps = await suggestFollowUps(question, answer, english ? "English" : site.lang);
         const cacheable = (done: Check[]) => done.length > 0 && done.filter((check) => check.status !== "found").length < done.length;
         if (firstTurn && !evaluation && pendingReview) {
           const kept = { answer, groundings: grounded, followUps, corpus: (await corpusVersion()) ?? undefined };

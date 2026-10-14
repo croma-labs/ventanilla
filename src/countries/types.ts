@@ -8,6 +8,18 @@ export type Entity = { name: string; short: string; iconFrom?: string };
 
 export type Link = { label: string; href: string };
 
+export type Chrome = {
+  skip: string;
+  home: string;
+  menu: string;
+  closeMenu: string;
+  notice: string;
+  noticeShort: string;
+  disclaimer: string;
+  poweredBy: string;
+  nav: { primary: readonly Link[]; legal: readonly Link[] };
+};
+
 export type Tramite = { slug: string; category: string; title: string; question: string; entity: string; domains: readonly string[]; image?: string; hold?: string };
 
 export type TramiteContent = { answer: string; sources: { title: string; url: string }[]; verifiedAt: string; claims: number; supported: number };
@@ -52,6 +64,8 @@ export type Site = {
   liveIcons: boolean;
   pii: readonly Detector[];
   nav: { primary: readonly Link[]; legal: readonly Link[] };
+  /** The site's frame in English, for the pages that have an English version. */
+  english?: Chrome;
   ui: Record<
     | "askAnything"
     | "answered"

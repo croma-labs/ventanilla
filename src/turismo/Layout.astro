@@ -4,30 +4,37 @@ import SiteHeader from "../components/site/SiteHeader.astro";
 import { BrandSprite } from "../components/turismo/BrandIcon";
 import TurismoNav from "../components/turismo/TurismoNav.astro";
 import Base from "../layouts/Base.astro";
+import { langOf, LOCALE, translatePath, type Section } from "../lib/turismo/labels";
 
 interface Props {
   title: string;
   description: string;
-  current: "inicio" | "explorar" | "eventos" | "guias" | null;
+  current: Section | null;
   schema?: Record<string, unknown>[];
   image?: { path: string; width: number; height: number; alt: string };
   bleed?: boolean;
 }
 
 const { title, description, current, schema, image, bleed = false } = Astro.props;
+const lang = langOf(Astro.url.pathname);
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const alternates = [
+  { hreflang: "en", path: translatePath(path, "en") },
+  { hreflang: LOCALE.es, path: translatePath(path, "es") },
+];
 ---
 
-<Base title={title} description={description} schema={schema} image={image} aiReadable>
+<Base title={title} description={description} schema={schema} image={image} aiReadable locale={LOCALE[lang]} alternates={alternates}>
   <div class="relative flex min-h-dvh flex-col bg-background-primary text-primary">
     <BrandSprite />
-    <SiteHeader />
+    <SiteHeader lang={lang} />
     <main id="landing-main" tabindex="-1" class="flex-1 pt-24 pb-24 outline-none mobile:pt-36">
       <slot name="hero" />
       <div class={bleed ? "" : "mx-auto w-full max-w-[1200px] px-4 mobile:px-6"}>
-        {!bleed && <TurismoNav current={current} />}
+        {!bleed && <TurismoNav current={current} lang={lang} />}
         <slot />
       </div>
     </main>
-    <SiteFooter />
+    <SiteFooter lang={lang} />
   </div>
 </Base>

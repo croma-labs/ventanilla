@@ -1,15 +1,20 @@
 import { ArrowUp, MessageCircle, Search } from "lucide-react";
 import MiniSearch from "minisearch";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { KIND_LABEL } from "../../lib/turismo/labels";
+import { exploreHref, guidePath, KIND_LABEL, placePath, type Lang } from "../../lib/turismo/labels";
 import type { IndexRow } from "../../lib/turismo/types";
 import KindIcon from "./KindIcon";
 
 const fold = (text: string) => text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
 const QUESTION = /\?|^\s*(¿|qu[eé]|d[oó]nde|c[oó]mo|cu[aá]l|cu[aá]nto|cu[aá]ndo|recomi[eé]nda|what|where|how|which|when|best|is there)\b/i;
-const hrefOf = (row: IndexRow) => (row.k === "guide" ? `/turismo/guias#${row.s}` : `/turismo/lugar/${row.s}`);
+const COPY = {
+  es: { ask: "Preguntar a Ventanilla", search: "Buscar", answer: "Respuesta con fuentes oficiales" },
+  en: { ask: "Ask Ventanilla", search: "Search", answer: "An answer with official sources" },
+};
 
-export default function TurismoSearch({ placeholder, prompts }: { placeholder: string; prompts: string[] }) {
+export default function TurismoSearch({ placeholder, prompts, lang }: { placeholder: string; prompts: string[]; lang: Lang }) {
+  const copy = COPY[lang];
+  const hrefOf = (row: IndexRow) => (row.k === "guide" ? guidePath(row.s, lang) : placePath({ slug: row.s }, lang));
   const [rows, setRows] = useState<IndexRow[] | null>(null);
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
@@ -48,7 +53,7 @@ export default function TurismoSearch({ placeholder, prompts }: { placeholder: s
     const text = query.trim();
     if (!text) return;
     if (active >= 0 && hits[active]) return go(hrefOf(hits[active]));
-    go(asking ? `/?q=${encodeURIComponent(text)}` : `/turismo/explorar?q=${encodeURIComponent(text)}`);
+    go(asking ? `/?q=${encodeURIComponent(text)}` : exploreHref(lang, { q: text }));
   };
 
   return (
@@ -96,7 +101,7 @@ export default function TurismoSearch({ placeholder, prompts }: { placeholder: s
             className="h-12 w-full bg-transparent text-[17px] outline-none placeholder:text-text-tertiary"
           />
         </label>
-        <button type="submit" className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-blue-700 text-white transition-transform active:scale-95" aria-label={asking ? "Preguntar a Ventanilla" : "Buscar"}>
+        <button type="submit" className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-blue-700 text-white transition-transform active:scale-95" aria-label={asking ? copy.ask : copy.search}>
           <ArrowUp size={20} />
         </button>
       </form>
@@ -109,8 +114,8 @@ export default function TurismoSearch({ placeholder, prompts }: { placeholder: s
                   <MessageCircle size={18} />
                 </span>
                 <span>
-                  <span className="block text-[15px] font-medium">Preguntar a Ventanilla</span>
-                  <span className="block text-[13px] text-text-secondary">Respuesta con fuentes oficiales</span>
+                  <span className="block text-[15px] font-medium">{copy.ask}</span>
+                  <span className="block text-[13px] text-text-secondary">{copy.answer}</span>
                 </span>
               </button>
             </li>
@@ -124,7 +129,7 @@ export default function TurismoSearch({ placeholder, prompts }: { placeholder: s
                   <span className="min-w-0">
                     <span className="block truncate text-[15px] font-medium">{row.n}</span>
                     <span className="block truncate text-[13px] text-text-secondary">
-                      {KIND_LABEL[row.k].one} · {[row.m, row.d].filter(Boolean).join(", ")}
+                      {KIND_LABEL[lang][row.k].one} · {[row.m, row.d].filter(Boolean).join(", ")}
                     </span>
                   </span>
                 </a>

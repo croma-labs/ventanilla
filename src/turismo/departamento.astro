@@ -2,7 +2,7 @@
 import KindIcon from "../components/turismo/KindIcon";
 import PlaceCard from "../components/turismo/PlaceCard.astro";
 import PlaceMap from "../components/turismo/PlaceMap";
-import { byDepartment, departmentPath, DEPARTMENT_LEAD, DEPARTMENTS, KIND_LABEL, placePath, slugify } from "../lib/turismo/catalog";
+import { byDepartment, departmentPath, DEPARTMENT_LEAD, DEPARTMENTS, exploreHref, KIND_LABEL, langOf, LOCALE, placePath, sectionPath, slugify } from "../lib/turismo/catalog";
 import { picture } from "../lib/turismo/images";
 import { KINDS, type Kind } from "../lib/turismo/types";
 import { focusRing } from "../lib/ui";
@@ -11,6 +11,7 @@ import Layout from "./Layout.astro";
 export const getStaticPaths = () => DEPARTMENTS.map((name) => ({ params: { slug: slugify(name) }, props: { name } }));
 
 const { name } = Astro.props as { name: string };
+const lang = langOf(Astro.url.pathname);
 const here = byDepartment(name).filter((place) => place.kind !== "guide");
 const guides = byDepartment(name).filter((place) => place.kind === "guide").length;
 const visit = here.filter((place) => place.kind === "destination" || place.kind === "attraction").sort((a, b) => b.photos.length - a.photos.length);
@@ -23,23 +24,54 @@ const towns = [...here.reduce((acc, place) => (place.municipality ? acc.set(plac
 const pins = visit.filter((place) => place.point?.precision === "exact");
 const center = pins[0]?.point ?? here.find((place) => place.point)?.point;
 const origin = Astro.site ?? new URL(Astro.url.origin);
-const url = new URL(departmentPath(name), origin).href;
-const description = `Qué hacer en ${name}, El Salvador: ${DEPARTMENT_LEAD[name] ?? ""} ${here.length.toLocaleString("es-SV")} lugares entre destinos, hospedaje, restaurantes y más.`.replace(/\s+/g, " ");
+const url = new URL(departmentPath(name, lang), origin).href;
+const count = here.length.toLocaleString(LOCALE[lang]);
+const COPY = {
+  es: {
+    title: `Qué hacer en ${name}, El Salvador: lugares, hoteles y restaurantes | Ventanilla`,
+    description: `Qué hacer en ${name}, El Salvador: ${DEPARTMENT_LEAD.es[name] ?? ""} ${count} lugares entre destinos, hospedaje, restaurantes y más.`,
+    page: `Turismo en ${name}, El Salvador`,
+    home: "Turismo",
+    breadcrumb: "Migas de pan",
+    eyebrow: "Departamento",
+    guides: (n: number) => `${n} guías`,
+    onMap: "En el mapa",
+    allOnMap: `Ver los ${count} lugares en el mapa`,
+    seeAll: (n: number) => `Ver ${n}`,
+    towns: "Municipios",
+    others: "Otros departamentos",
+  },
+  en: {
+    title: `Things to do in ${name}, El Salvador: places, hotels and restaurants | Ventanilla`,
+    description: `Things to do in ${name}, El Salvador: ${DEPARTMENT_LEAD.en[name] ?? ""} ${count} places including destinations, places to stay, restaurants and more.`,
+    page: `${name}, El Salvador travel guide`,
+    home: "Tourism",
+    breadcrumb: "Breadcrumb",
+    eyebrow: "Department",
+    guides: (n: number) => `${n} tour guides`,
+    onMap: "On the map",
+    allOnMap: `See all ${count} places on the map`,
+    seeAll: (n: number) => `See all ${n}`,
+    towns: "Towns",
+    others: "Other departments",
+  },
+}[lang];
+const description = COPY.description.replace(/\s+/g, " ");
 const schema = [
   {
     "@type": "CollectionPage",
     "@id": `${url}#page`,
     url,
-    name: `Turismo en ${name}, El Salvador`,
+    name: COPY.page,
     description,
-    inLanguage: "es-SV",
+    inLanguage: LOCALE[lang],
     about: { "@type": "AdministrativeArea", name, containedInPlace: { "@type": "Country", name: "El Salvador" } },
-    mainEntity: { "@type": "ItemList", itemListElement: visit.slice(0, 20).map((place, index) => ({ "@type": "ListItem", position: index + 1, name: place.name, url: new URL(placePath(place), origin).href })) },
+    mainEntity: { "@type": "ItemList", itemListElement: visit.slice(0, 20).map((place, index) => ({ "@type": "ListItem", position: index + 1, name: place.name, url: new URL(placePath(place, lang), origin).href })) },
   },
   {
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Turismo", item: new URL("/turismo", origin).href },
+      { "@type": "ListItem", position: 1, name: COPY.home, item: new URL(sectionPath("home", lang), origin).href },
       { "@type": "ListItem", position: 2, name, item: url },
     ],
   },
@@ -48,11 +80,11 @@ const link = `rounded-4 underline-offset-4 hover:underline ${focusRing}`;
 const featured = (kind: Kind, items: typeof here) => (kind === "destination" || kind === "attraction" ? items : [...items].sort((a, b) => Number(b.registered) - Number(a.registered))).slice(0, 10);
 ---
 
-<Layout title={`Qué hacer en ${name}, El Salvador: lugares, hoteles y restaurantes | Ventanilla`} description={description} current={null} schema={schema} image={cover ? { path: cover.src, width: 1600, height: 1067, alt: name } : undefined}>
+<Layout title={COPY.title} description={description} current={null} schema={schema} image={cover ? { path: cover.src, width: 1600, height: 1067, alt: name } : undefined}>
   <article class="pt-5">
-    <nav aria-label="Migas de pan" class="type-body-s text-text-secondary">
+    <nav aria-label={COPY.breadcrumb} class="type-body-s text-text-secondary">
       <ol class="flex items-center gap-1.5">
-        <li><a href="/turismo" class={link}>Turismo</a></li>
+        <li><a href={sectionPath("home", lang)} class={link}>{COPY.home}</a></li>
         <li aria-hidden="true">/</li>
         <li aria-current="page" class="text-text-primary">{name}</li>
       </ol>
@@ -62,33 +94,34 @@ const featured = (kind: Kind, items: typeof here) => (kind === "destination" || 
       {cover && <img src={cover.src} srcset={cover.srcset} sizes="100vw" alt={lead?.name ?? name} width="1600" height="1067" fetchpriority="high" class="absolute inset-0 size-full object-cover" />}
       <span class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
       <div class="relative p-6 mobile:p-10">
-        <p class="text-[13px] font-semibold tracking-[0.18em] text-white/75 uppercase">Departamento</p>
+        <p class="text-[13px] font-semibold tracking-[0.18em] text-white/75 uppercase">{COPY.eyebrow}</p>
         <h1 class="mt-2 font-serif-display text-[clamp(3rem,11vw,5.5rem)] leading-[0.92] tracking-[-0.02em]">{name}</h1>
-        <p class="mt-3 max-w-[40ch] text-[18px] text-pretty text-white/85">{DEPARTMENT_LEAD[name]}</p>
+        <p class="mt-3 max-w-[40ch] text-[18px] text-pretty text-white/85">{DEPARTMENT_LEAD[lang][name]}</p>
       </div>
     </header>
 
     <ul class="mt-6 flex flex-wrap gap-2">
       {
         byKind.map((group) => (
-          <li><a href={`/turismo/explorar?depto=${encodeURIComponent(name)}&tipo=${group.kind}`} class={`inline-flex h-10 items-center gap-2 rounded-full border border-border-tertiary px-4 text-[14px] font-medium hover:bg-surface-muted ${focusRing}`}><KindIcon kind={group.kind} size={16} />{group.items.length} {(group.items.length === 1 ? KIND_LABEL[group.kind].one : KIND_LABEL[group.kind].many).toLowerCase()}</a></li>
+          <li><a href={exploreHref(lang, { department: name, kind: group.kind })} class={`inline-flex h-10 items-center gap-2 rounded-full border border-border-tertiary px-4 text-[14px] font-medium hover:bg-surface-muted ${focusRing}`}><KindIcon kind={group.kind} size={16} />{group.items.length} {(group.items.length === 1 ? KIND_LABEL[lang][group.kind].one : KIND_LABEL[lang][group.kind].many).toLowerCase()}</a></li>
         ))
       }
-      {guides > 0 && <li><a href={`/turismo/guias`} class={`inline-flex h-10 items-center gap-2 rounded-full border border-border-tertiary px-4 text-[14px] font-medium hover:bg-surface-muted ${focusRing}`}><KindIcon kind="guide" size={16} />{guides} guías</a></li>}
+      {guides > 0 && <li><a href={sectionPath("guides", lang)} class={`inline-flex h-10 items-center gap-2 rounded-full border border-border-tertiary px-4 text-[14px] font-medium hover:bg-surface-muted ${focusRing}`}><KindIcon kind="guide" size={16} />{COPY.guides(guides)}</a></li>}
     </ul>
 
     {
       center && (
         <section class="mt-10" aria-labelledby="mapa-depto">
-          <h2 id="mapa-depto" class="font-serif-display text-[2.2rem] leading-none">En el mapa</h2>
+          <h2 id="mapa-depto" class="font-serif-display text-[2.2rem] leading-none">{COPY.onMap}</h2>
           <PlaceMap
             client:visible
+            lang={lang}
             className="mt-4 h-80 mobile:h-[28rem]"
             zoom={9}
             place={{ lat: center.lat, lng: center.lng, name, approximate: true }}
-            around={pins.map((place) => ({ lat: place.point!.lat, lng: place.point!.lng, name: place.name, href: placePath(place) }))}
+            around={pins.map((place) => ({ lat: place.point!.lat, lng: place.point!.lng, name: place.name, href: placePath(place, lang) }))}
           />
-          <a href={`/turismo/explorar?depto=${encodeURIComponent(name)}&vista=mapa`} class={`mt-3 inline-flex text-[15px] font-medium ${link}`}>Ver los {here.length.toLocaleString("es-SV")} lugares en el mapa</a>
+          <a href={exploreHref(lang, { department: name, view: "map" })} class={`mt-3 inline-flex text-[15px] font-medium ${link}`}>{COPY.allOnMap}</a>
         </section>
       )
     }
@@ -97,11 +130,11 @@ const featured = (kind: Kind, items: typeof here) => (kind === "destination" || 
       byKind.map((group) => (
         <section class="mt-14" aria-labelledby={`grupo-${group.kind}`}>
           <div class="flex items-end justify-between gap-4">
-            <h2 id={`grupo-${group.kind}`} class="font-serif-display text-[2.2rem] leading-none">{KIND_LABEL[group.kind].many}</h2>
-            {group.items.length > 10 && <a href={`/turismo/explorar?depto=${encodeURIComponent(name)}&tipo=${group.kind}`} class={`shrink-0 text-[15px] font-medium ${link}`}>Ver {group.items.length}</a>}
+            <h2 id={`grupo-${group.kind}`} class="font-serif-display text-[2.2rem] leading-none">{KIND_LABEL[lang][group.kind].many}</h2>
+            {group.items.length > 10 && <a href={exploreHref(lang, { department: name, kind: group.kind })} class={`shrink-0 text-[15px] font-medium ${link}`}>{COPY.seeAll(group.items.length)}</a>}
           </div>
           <div class="-mx-4 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] mobile:-mx-6 mobile:px-6 [&::-webkit-scrollbar]:hidden">
-            {featured(group.kind, group.items).map((place) => <PlaceCard place={place} variant="compact" />)}
+            {featured(group.kind, group.items).map((place) => <PlaceCard place={place} variant="compact" lang={lang} />)}
           </div>
         </section>
       ))
@@ -110,18 +143,18 @@ const featured = (kind: Kind, items: typeof here) => (kind === "destination" || 
     {
       towns.length > 0 && (
         <section class="mt-14" aria-labelledby="municipios">
-          <h2 id="municipios" class="font-serif-display text-[2.2rem] leading-none">Municipios</h2>
+          <h2 id="municipios" class="font-serif-display text-[2.2rem] leading-none">{COPY.towns}</h2>
           <ul class="mt-4 flex flex-wrap gap-2">
-            {towns.map(([town, count]) => <li><a href={`/turismo/explorar?depto=${encodeURIComponent(name)}&q=${encodeURIComponent(town)}`} class={`inline-flex h-10 items-center rounded-full bg-surface-muted px-4 text-[14px] hover:bg-background-secondary ${focusRing}`}>{town} <span class="ml-1.5 text-text-tertiary">{count}</span></a></li>)}
+            {towns.map(([town, count]) => <li><a href={exploreHref(lang, { department: name, q: town })} class={`inline-flex h-10 items-center rounded-full bg-surface-muted px-4 text-[14px] hover:bg-background-secondary ${focusRing}`}>{town} <span class="ml-1.5 text-text-tertiary">{count}</span></a></li>)}
           </ul>
         </section>
       )
     }
 
-    <nav class="mt-16 border-t border-border-quaternary pt-8" aria-label="Otros departamentos">
-      <h2 class="text-[13px] font-semibold tracking-wide text-text-tertiary uppercase">Otros departamentos</h2>
+    <nav class="mt-16 border-t border-border-quaternary pt-8" aria-label={COPY.others}>
+      <h2 class="text-[13px] font-semibold tracking-wide text-text-tertiary uppercase">{COPY.others}</h2>
       <ul class="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-        {DEPARTMENTS.filter((other) => other !== name).map((other) => <li><a href={departmentPath(other)} class={`text-[15px] ${link}`}>{other}</a></li>)}
+        {DEPARTMENTS.filter((other) => other !== name).map((other) => <li><a href={departmentPath(other, lang)} class={`text-[15px] ${link}`}>{other}</a></li>)}
       </ul>
     </nav>
   </article>

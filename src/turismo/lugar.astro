@@ -12,15 +12,20 @@ import {
   directionsHref,
   GUIDE_LEVEL_LABEL,
   KIND_LABEL,
+  langOf,
   LANGUAGE_LABEL,
+  LOCALE,
   nearby,
   phoneLabel,
   placePath,
   places,
+  sectionPath,
   standIn,
   telHref,
+  textOf,
   THEME_LABEL,
   wazeHref,
+  exploreHref,
 } from "../lib/turismo/catalog";
 import { picture } from "../lib/turismo/images";
 import type { Place } from "../lib/turismo/types";
@@ -30,39 +35,109 @@ import Layout from "./Layout.astro";
 export const getStaticPaths = () => places.filter((place) => place.kind !== "guide").map((place) => ({ params: { slug: place.slug }, props: { place } }));
 
 const { place } = Astro.props as { place: Place };
+const lang = langOf(Astro.url.pathname);
+const en = lang === "en";
 const origin = Astro.site ?? new URL(Astro.url.origin);
-const url = new URL(placePath(place), origin).href;
-const kind = KIND_LABEL[place.kind];
+const url = new URL(placePath(place, lang), origin).href;
+const kind = KIND_LABEL[lang][place.kind];
+const text = textOf(place, lang);
 const where = [place.municipality, place.department].filter(Boolean).join(", ");
 const photos = (await Promise.all(place.photos.map((photo) => picture(photo.src, [640, 960, 1600])))).filter((photo) => photo !== null);
 const cover = photos[0] ?? (await picture(standIn(place), [640, 960, 1600]));
 const around = nearby(place, 8);
 
-const article = (text: string) => (/^(escuela|guía|recreación)/i.test(text) ? "una" : "un");
-const lead =
-  place.description?.split("\n")[0] ??
-  `${place.name} es ${article(kind.one)} ${kind.one.toLowerCase()}${where ? ` en ${where}` : ""}, El Salvador.${place.registered ? " Está inscrito en el Registro Nacional de Turismo." : ""}`;
+const instagram = place.socials.find((social) => social.network === "instagram");
+const addressLine = `${[place.address?.replace(/[.\s]+$/, ""), place.address && place.municipality && place.address.includes(place.municipality) ? null : where, "El Salvador"].filter(Boolean).join(", ")}.`;
+const COPY = {
+  es: {
+    lead: () => `${place.name} es ${/^(escuela|guía|recreación)/i.test(kind.one) ? "una" : "un"} ${kind.one.toLowerCase()}${where ? ` en ${where}` : ""}, El Salvador.${place.registered ? " Está inscrito en el Registro Nacional de Turismo." : ""}`,
+    title: `${place.name}${place.municipality ? `, ${place.municipality}` : ""} · Turismo en El Salvador | Ventanilla`,
+    contacts: [
+      place.phones.length ? `por teléfono al ${place.phones.map(phoneLabel).join(" o ")}` : null,
+      place.whatsapp ? "por WhatsApp" : null,
+      place.emails.length ? `por correo a ${place.emails.join(", ")}` : null,
+      instagram ? `en Instagram como @${instagram.handle}` : null,
+    ],
+    whereQ: `¿Dónde queda ${place.name}?`,
+    hoursQ: `¿Cuál es el horario de ${place.name}?`,
+    contactQ: `¿Cómo contacto a ${place.name}?`,
+    contactA: (line: string) => `Puedes contactarlo ${line}.`,
+    rntQ: `¿${place.name} está inscrito en el Registro Nacional de Turismo?`,
+    rntA: `Sí. ${place.name} aparece inscrito en el Registro Nacional de Turismo del Ministerio de Turismo de El Salvador.`,
+    home: "Turismo",
+    breadcrumb: "Migas de pan",
+    near: (town: string) => ` en ${town}`,
+    registered: "Inscrito en el RNT",
+    access: { public: "Público", private: "Privado" },
+    about: `Sobre ${place.name}`,
+    faq: "Preguntas frecuentes",
+    contact: "Contacto y horario",
+    whatsapp: "Escribir por WhatsApp",
+    website: "Sitio web",
+    noContact: "El directorio oficial no publica datos de contacto para este lugar.",
+    map: "Mapa",
+    approximate: (precision: "town" | "department") => `Ubicación aproximada: ${precision === "town" ? `centro de ${place.municipality ?? "el municipio"}` : `departamento de ${place.department}`}.`,
+    languages: "Idiomas",
+    askTitle: "¿Tienes preguntas?",
+    askBody: `Pregúntale a Ventanilla sobre ${place.name}.`,
+    ask: `¿Qué me recomiendas saber antes de visitar ${place.name}${place.municipality ? ` en ${place.municipality}` : ""}?`,
+    nearby: "Cerca de aquí",
+    allOf: (department: string) => `Todo ${department}`,
+    original: "",
+    footer: (updated: string, synced: string) => `Información del directorio oficial de turismo del Ministerio de Turismo de El Salvador, consultada a través de Croma. Ficha actualizada el ${updated}; directorio sincronizado el ${synced}. Ventanilla es un proyecto independiente: confirma horarios y precios directamente con el lugar antes de tu visita.`,
+  },
+  en: {
+    lead: () => `${place.name} is ${/^[aeiou]/i.test(kind.one) ? "an" : "a"} ${kind.one.toLowerCase()}${where ? ` in ${where}` : ""}, El Salvador.${place.registered ? " It is listed in the National Tourism Registry." : ""}`,
+    title: `${place.name}${place.municipality ? `, ${place.municipality}` : ""} · El Salvador travel guide | Ventanilla`,
+    contacts: [
+      place.phones.length ? `by phone at ${place.phones.map((phone) => `+503 ${phoneLabel(phone)}`).join(" or ")}` : null,
+      place.whatsapp ? "on WhatsApp" : null,
+      place.emails.length ? `by email at ${place.emails.join(", ")}` : null,
+      instagram ? `on Instagram as @${instagram.handle}` : null,
+    ],
+    whereQ: `Where is ${place.name}?`,
+    hoursQ: `What are the opening hours of ${place.name}?`,
+    contactQ: `How do I contact ${place.name}?`,
+    contactA: (line: string) => `You can reach them ${line}.`,
+    rntQ: `Is ${place.name} listed in the National Tourism Registry?`,
+    rntA: `Yes. ${place.name} is listed in the National Tourism Registry (RNT) of El Salvador's Ministry of Tourism.`,
+    home: "Tourism",
+    breadcrumb: "Breadcrumb",
+    near: (town: string) => ` in ${town}`,
+    registered: "Listed in the RNT",
+    access: { public: "Public", private: "Private" },
+    about: `About ${place.name}`,
+    faq: "Frequently asked questions",
+    contact: "Contact and hours",
+    whatsapp: "Message on WhatsApp",
+    website: "Website",
+    noContact: "The official directory publishes no contact details for this place.",
+    map: "Map",
+    approximate: (precision: "town" | "department") => `Approximate location: ${precision === "town" ? `center of ${place.municipality ?? "the town"}` : `${place.department} department`}.`,
+    languages: "Languages",
+    askTitle: "Have a question?",
+    askBody: `Ask Ventanilla about ${place.name}.`,
+    ask: `What should I know before visiting ${place.name}${place.municipality ? ` in ${place.municipality}` : ""}?`,
+    nearby: "Nearby",
+    allOf: (department: string) => `All of ${department}`,
+    original: "Shown in Spanish, as published by the Ministry of Tourism.",
+    footer: (updated: string, synced: string) => `From the official tourism directory of El Salvador's Ministry of Tourism, accessed through Croma. Listing updated ${updated}; directory synced ${synced}. Ventanilla is an independent project: confirm hours and prices with the place before you go.`,
+  },
+}[lang];
+const lead = text.description?.split("\n")[0] ?? COPY.lead();
 const description = lead.length > 158 ? `${lead.slice(0, lead.lastIndexOf(" ", 155))}…` : lead;
-const title = `${place.name}${place.municipality ? `, ${place.municipality}` : ""} · Turismo en El Salvador | Ventanilla`;
+const title = COPY.title;
 const firstPhone = place.phones[0] ? telHref(place.phones[0]) : null;
 const directions = directionsHref(place);
-const updated = new Intl.DateTimeFormat("es-SV", { dateStyle: "long" }).format(new Date(place.updatedAt));
-const synced = new Intl.DateTimeFormat("es-SV", { dateStyle: "long" }).format(new Date(catalog.syncedAt));
+const updated = new Intl.DateTimeFormat(LOCALE[lang], { dateStyle: "long" }).format(new Date(place.updatedAt));
+const synced = new Intl.DateTimeFormat(LOCALE[lang], { dateStyle: "long" }).format(new Date(catalog.syncedAt));
 
-const contactLine = [
-  place.phones.length ? `por teléfono al ${place.phones.map(phoneLabel).join(" o ")}` : null,
-  place.whatsapp ? "por WhatsApp" : null,
-  place.emails.length ? `por correo a ${place.emails.join(", ")}` : null,
-  place.socials.find((social) => social.network === "instagram") ? `en Instagram como @${place.socials.find((social) => social.network === "instagram")?.handle}` : null,
-].filter(Boolean);
+const contactLine = COPY.contacts.filter(Boolean);
 const faq = [
-  {
-    q: `¿Dónde queda ${place.name}?`,
-    a: `${[place.address?.replace(/[.\s]+$/, ""), place.address && place.municipality && place.address.includes(place.municipality) ? null : where, "El Salvador"].filter(Boolean).join(", ")}.`,
-  },
-  place.hours ? { q: `¿Cuál es el horario de ${place.name}?`, a: place.hours } : null,
-  contactLine.length ? { q: `¿Cómo contacto a ${place.name}?`, a: `Puedes contactarlo ${contactLine.join(", ")}.` } : null,
-  place.registered ? { q: `¿${place.name} está inscrito en el Registro Nacional de Turismo?`, a: `Sí. ${place.name} aparece inscrito en el Registro Nacional de Turismo del Ministerio de Turismo de El Salvador.` } : null,
+  { q: COPY.whereQ, a: addressLine },
+  text.hours ? { q: COPY.hoursQ, a: text.hours } : null,
+  contactLine.length ? { q: COPY.contactQ, a: COPY.contactA(contactLine.join(", ")) } : null,
+  place.registered ? { q: COPY.rntQ, a: COPY.rntA } : null,
 ].filter((entry): entry is { q: string; a: string } => entry !== null);
 
 const SCHEMA_TYPE: Record<Place["kind"], string | string[]> = {
@@ -77,14 +152,14 @@ const SCHEMA_TYPE: Record<Place["kind"], string | string[]> = {
   guide: "Person",
 };
 const home = new URL("/", origin).href;
-const turismo = new URL("/turismo", origin).href;
+const turismo = new URL(sectionPath("home", lang), origin).href;
 const schema = [
   {
     "@type": SCHEMA_TYPE[place.kind],
     "@id": `${url}#place`,
     name: place.name,
     url,
-    description: place.description ?? lead,
+    description: text.description ?? lead,
     ...(cover ? { image: new URL(cover.src, origin).href } : {}),
     address: {
       "@type": "PostalAddress",
@@ -97,8 +172,8 @@ const schema = [
     ...(place.phones.length ? { telephone: place.phones.map((phone) => telHref(phone).slice(4)) } : {}),
     ...(place.emails.length ? { email: place.emails[0] } : {}),
     ...(place.socials.length || place.website ? { sameAs: [...(place.website ? [place.website] : []), ...place.socials.map((social) => social.url)] } : {}),
-    ...(place.themes.length ? { keywords: place.themes.map((theme) => THEME_LABEL[theme]).join(", ") } : {}),
-    ...(place.kind === "attraction" || place.kind === "destination" ? { isAccessibleForFree: place.access === "public" ? true : undefined, touristType: place.themes.map((theme) => THEME_LABEL[theme]) } : {}),
+    ...(place.themes.length ? { keywords: place.themes.map((theme) => THEME_LABEL[lang][theme]).join(", ") } : {}),
+    ...(place.kind === "attraction" || place.kind === "destination" ? { isAccessibleForFree: place.access === "public" ? true : undefined, touristType: place.themes.map((theme) => THEME_LABEL[lang][theme]) } : {}),
     containedInPlace: place.department ? { "@type": "AdministrativeArea", name: place.department, containedInPlace: { "@type": "Country", name: "El Salvador" } } : { "@type": "Country", name: "El Salvador" },
   },
   {
@@ -107,7 +182,7 @@ const schema = [
     url,
     name: title,
     description,
-    inLanguage: "es-SV",
+    inLanguage: LOCALE[lang],
     isPartOf: { "@id": `${home}#website` },
     about: { "@id": `${url}#place` },
     dateModified: place.updatedAt,
@@ -118,8 +193,8 @@ const schema = [
     "@type": "BreadcrumbList",
     "@id": `${url}#breadcrumb`,
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Turismo", item: turismo },
-      ...(place.department ? [{ "@type": "ListItem", position: 2, name: place.department, item: new URL(departmentPath(place.department), origin).href }] : []),
+      { "@type": "ListItem", position: 1, name: COPY.home, item: turismo },
+      ...(place.department ? [{ "@type": "ListItem", position: 2, name: place.department, item: new URL(departmentPath(place.department, lang), origin).href }] : []),
       { "@type": "ListItem", position: place.department ? 3 : 2, name: place.name, item: url },
     ],
   },
@@ -128,19 +203,19 @@ const schema = [
 
 const link = `rounded-4 underline-offset-4 hover:underline ${focusRing}`;
 const row = "flex items-start gap-3 py-3.5";
-const askHref = `/?q=${encodeURIComponent(`¿Qué me recomiendas saber antes de visitar ${place.name}${place.municipality ? ` en ${place.municipality}` : ""}?`)}`;
+const askHref = `/?q=${encodeURIComponent(COPY.ask)}`;
 ---
 
 <Layout title={title} description={description} current={null} schema={schema} image={cover ? { path: cover.src, width: 1600, height: 1067, alt: place.name } : undefined}>
   <article class="pt-5 pb-28 mobile:pb-10">
-    <nav aria-label="Migas de pan" class="type-body-s text-text-secondary">
+    <nav aria-label={COPY.breadcrumb} class="type-body-s text-text-secondary">
       <ol class="flex flex-wrap items-center gap-1.5">
-        <li><a href="/turismo" class={link}>Turismo</a></li>
+        <li><a href={sectionPath("home", lang)} class={link}>{COPY.home}</a></li>
         {
           place.department && (
             <>
               <li aria-hidden="true">/</li>
-              <li><a href={departmentPath(place.department)} class={link}>{place.department}</a></li>
+              <li><a href={departmentPath(place.department, lang)} class={link}>{place.department}</a></li>
             </>
           )
         }
@@ -152,14 +227,14 @@ const askHref = `/?q=${encodeURIComponent(`¿Qué me recomiendas saber antes de 
     <div class="mt-5">
       {
         photos.length ? (
-          <Gallery client:load name={place.name} photos={photos} />
+          <Gallery client:load name={place.name} photos={photos} lang={lang} />
         ) : cover ? (
           <div class="relative aspect-[16/7] overflow-hidden rounded-24 mobile:rounded-32">
             <img src={cover.src} srcset={cover.srcset} sizes="100vw" alt="" class="size-full scale-105 object-cover blur-[2px] brightness-90" width="1600" height="1067" fetchpriority="high" />
             <span class="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
             <span class="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/92 px-3 py-1.5 text-[13px] font-medium text-text-primary backdrop-blur">
               <KindIcon kind={place.kind} size={15} />
-              {kind.one}{place.municipality ? ` en ${place.municipality}` : ""}
+              {kind.one}{place.municipality ? COPY.near(place.municipality) : ""}
             </span>
           </div>
         ) : null
@@ -170,9 +245,9 @@ const askHref = `/?q=${encodeURIComponent(`¿Qué me recomiendas saber antes de 
       <div class="min-w-0">
         <div class="flex flex-wrap items-center gap-2">
           <span class="inline-flex items-center gap-1.5 rounded-full bg-surface-muted px-3 py-1 text-[13px] font-medium"><KindIcon kind={place.kind} size={14} />{kind.one}</span>
-          {place.registered && <span class="rounded-full bg-blue-50 px-3 py-1 text-[13px] font-medium text-blue-600">Inscrito en el RNT</span>}
-          {place.themes.map((theme) => <a href={`/turismo/explorar?tema=${theme}`} class={`rounded-full bg-[#fdf3dc] px-3 py-1 text-[13px] font-medium text-[#8a5a00] ${focusRing}`}>{THEME_LABEL[theme]}</a>)}
-          {place.access && <span class="rounded-full bg-surface-muted px-3 py-1 text-[13px] font-medium">{place.access === "public" ? "Público" : "Privado"}</span>}
+          {place.registered && <span class="rounded-full bg-blue-50 px-3 py-1 text-[13px] font-medium text-blue-600">{COPY.registered}</span>}
+          {place.themes.map((theme) => <a href={exploreHref(lang, { theme })} class={`rounded-full bg-[#fdf3dc] px-3 py-1 text-[13px] font-medium text-[#8a5a00] ${focusRing}`}>{THEME_LABEL[lang][theme]}</a>)}
+          {place.access && <span class="rounded-full bg-surface-muted px-3 py-1 text-[13px] font-medium">{COPY.access[place.access]}</span>}
         </div>
         <h1 class="mt-4 font-serif-display text-[clamp(2.6rem,9vw,4.5rem)] leading-[0.98] tracking-[-0.02em] text-balance">{place.name}</h1>
         {
@@ -180,27 +255,28 @@ const askHref = `/?q=${encodeURIComponent(`¿Qué me recomiendas saber antes de 
             <p class="mt-3 flex items-center gap-1.5 text-[17px] text-text-secondary">
               <MapPin size={17} strokeWidth={1.75} />
               {place.municipality && <span>{place.municipality},</span>}
-              {place.department ? <a href={departmentPath(place.department)} class={link}>{place.department}</a> : null}
+              {place.department ? <a href={departmentPath(place.department, lang)} class={link}>{place.department}</a> : null}
             </p>
           )
         }
         {place.region && <p class="mt-1 text-[15px] text-text-tertiary">{place.region}</p>}
 
         <div class="mt-6">
-          <ActionBar client:load name={place.name} phone={firstPhone} whatsapp={place.whatsapp} directions={directions} url={url} />
+          <ActionBar client:load name={place.name} phone={firstPhone} whatsapp={place.whatsapp} directions={directions} url={url} lang={lang} />
         </div>
 
         <section class="mt-10" aria-labelledby="sobre">
-          <h2 id="sobre" class="font-serif-display text-[2rem] leading-none">Sobre {place.name}</h2>
-          <div class="mt-4 flex max-w-[68ch] flex-col gap-4 text-[17px] leading-relaxed text-pretty text-text-primary/90">
-            {(place.description ?? lead).split("\n").filter(Boolean).map((paragraph) => <p>{paragraph}</p>)}
+          <h2 id="sobre" class="font-serif-display text-[2rem] leading-none">{COPY.about}</h2>
+          <div lang={text.descriptionLang === lang ? undefined : text.descriptionLang} class="mt-4 flex max-w-[68ch] flex-col gap-4 text-[17px] leading-relaxed text-pretty text-text-primary/90">
+            {(text.description ?? lead).split("\n").filter(Boolean).map((paragraph) => <p>{paragraph}</p>)}
           </div>
+          {text.descriptionLang !== lang && <p class="mt-3 text-[13px] text-text-tertiary">{COPY.original}</p>}
         </section>
 
         {
           faq.length > 0 && (
             <section class="mt-12" aria-labelledby="preguntas">
-              <h2 id="preguntas" class="font-serif-display text-[2rem] leading-none">Preguntas frecuentes</h2>
+              <h2 id="preguntas" class="font-serif-display text-[2rem] leading-none">{COPY.faq}</h2>
               <dl class="mt-4 divide-y divide-border-quaternary rounded-24 border border-border-quaternary">
                 {faq.map((entry) => (
                   <div class="p-5">
@@ -216,19 +292,19 @@ const askHref = `/?q=${encodeURIComponent(`¿Qué me recomiendas saber antes de 
 
       <aside class="flex flex-col gap-5 site-desktop:sticky site-desktop:top-20 site-desktop:self-start">
         <section class="rounded-24 border border-border-quaternary p-5" aria-labelledby="contacto">
-          <h2 id="contacto" class="text-[13px] font-semibold tracking-wide text-text-tertiary uppercase">Contacto y horario</h2>
+          <h2 id="contacto" class="text-[13px] font-semibold tracking-wide text-text-tertiary uppercase">{COPY.contact}</h2>
           <ul class="mt-1 divide-y divide-border-quaternary">
             {place.address && (
               <li class={row}><MapPin size={19} strokeWidth={1.75} class="mt-0.5 shrink-0 text-text-tertiary" /><span class="text-[15px]">{place.address}</span></li>
             )}
-            {place.hours && (
-              <li class={row}><Clock size={19} strokeWidth={1.75} class="mt-0.5 shrink-0 text-text-tertiary" /><span class="text-[15px]">{place.hours}</span></li>
+            {text.hours && (
+              <li class={row}><Clock size={19} strokeWidth={1.75} class="mt-0.5 shrink-0 text-text-tertiary" /><span class="text-[15px]" lang={text.hoursLang === lang ? undefined : text.hoursLang}>{text.hours}</span></li>
             )}
             {place.phones.map((phone) => (
               <li class={row}><Phone size={19} strokeWidth={1.75} class="mt-0.5 shrink-0 text-text-tertiary" /><a href={telHref(phone)} class={`text-[15px] font-medium ${link}`}>{phoneLabel(phone)}</a></li>
             ))}
             {place.whatsapp && (
-              <li class={row}><BrandIcon name="whatsapp" size={19} className="mt-0.5 shrink-0 text-[#25D366]" /><a href={place.whatsapp} target="_blank" rel="noopener noreferrer" class={`text-[15px] font-medium ${link}`}>Escribir por WhatsApp</a></li>
+              <li class={row}><BrandIcon name="whatsapp" size={19} className="mt-0.5 shrink-0 text-[#25D366]" /><a href={place.whatsapp} target="_blank" rel="noopener noreferrer" class={`text-[15px] font-medium ${link}`}>{COPY.whatsapp}</a></li>
             )}
             {place.emails.map((email) => (
               <li class={row}><Mail size={19} strokeWidth={1.75} class="mt-0.5 shrink-0 text-text-tertiary" /><a href={`mailto:${email}`} class={`text-[15px] font-medium break-all ${link}`}>{email}</a></li>
@@ -243,7 +319,7 @@ const askHref = `/?q=${encodeURIComponent(`¿Qué me recomiendas saber antes de 
                 {place.socials.map((social) => (
                   <a href={social.url} target="_blank" rel="noopener noreferrer" class={`inline-flex h-10 items-center gap-2 rounded-full border border-border-tertiary px-3.5 text-[14px] font-medium hover:bg-surface-muted ${focusRing}`}>
                     {hasBrand(social.network) ? <BrandIcon name={social.network} size={16} /> : <Globe size={16} strokeWidth={1.75} />}
-                    {social.handle ? (social.network === "web" ? social.handle : `@${social.handle}`) : NETWORK_LABEL[social.network]}
+                    {social.handle ? (social.network === "web" ? social.handle : `@${social.handle}`) : social.network === "web" ? COPY.website : NETWORK_LABEL[social.network]}
                   </a>
                 ))}
               </div>
@@ -251,7 +327,7 @@ const askHref = `/?q=${encodeURIComponent(`¿Qué me recomiendas saber antes de 
           }
           {
             !place.address && !place.hours && !place.phones.length && !place.whatsapp && !place.emails.length && !place.website && !place.socials.length && (
-              <p class="py-3 text-[15px] text-text-secondary">El directorio oficial no publica datos de contacto para este lugar.</p>
+              <p class="py-3 text-[15px] text-text-secondary">{COPY.noContact}</p>
             )
           }
         </section>
@@ -259,15 +335,16 @@ const askHref = `/?q=${encodeURIComponent(`¿Qué me recomiendas saber antes de 
         {
           place.point && (
             <section aria-labelledby="mapa">
-              <h2 id="mapa" class="sr-only">Mapa</h2>
+              <h2 id="mapa" class="sr-only">{COPY.map}</h2>
               <PlaceMap
                 client:visible
+                lang={lang}
                 className="h-72"
                 zoom={{ exact: 13.5, town: 12, department: 9 }[place.point.precision]}
                 place={{ lat: place.point.lat, lng: place.point.lng, name: place.name, approximate: place.point.precision !== "exact" }}
-                around={around.filter((other) => other.point).map((other) => ({ lat: other.point!.lat, lng: other.point!.lng, name: other.name, href: placePath(other) }))}
+                around={around.filter((other) => other.point).map((other) => ({ lat: other.point!.lat, lng: other.point!.lng, name: other.name, href: placePath(other, lang) }))}
               />
-              {place.point.precision !== "exact" && <p class="mt-2 text-[13px] text-text-tertiary">Ubicación aproximada: {place.point.precision === "town" ? `centro de ${place.municipality ?? "el municipio"}` : `departamento de ${place.department}`}.</p>}
+              {place.point.precision !== "exact" && <p class="mt-2 text-[13px] text-text-tertiary">{COPY.approximate(place.point.precision)}</p>}
               <div class="mt-3 grid grid-cols-2 gap-2">
                 <a href={directions} target="_blank" rel="noopener noreferrer" class={`inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border-tertiary text-[14px] font-medium hover:bg-surface-muted ${focusRing}`}>Google Maps</a>
                 <a href={wazeHref(place)} target="_blank" rel="noopener noreferrer" class={`inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border-tertiary text-[14px] font-medium hover:bg-surface-muted ${focusRing}`}><BrandIcon name="waze" size={16} />Waze</a>
@@ -278,15 +355,15 @@ const askHref = `/?q=${encodeURIComponent(`¿Qué me recomiendas saber antes de 
 
         {
           place.kind !== "guide" && place.languages.length > 0 && (
-            <p class="text-[14px] text-text-secondary">Idiomas: {place.languages.map((code) => LANGUAGE_LABEL[code] ?? code).join(", ")}</p>
+            <p class="text-[14px] text-text-secondary">{COPY.languages}: {place.languages.map((code) => LANGUAGE_LABEL[lang][code] ?? code).join(", ")}</p>
           )
         }
-        {place.guideLevel && <p class="text-[14px] text-text-secondary">{GUIDE_LEVEL_LABEL[place.guideLevel]}</p>}
+        {place.guideLevel && <p class="text-[14px] text-text-secondary">{GUIDE_LEVEL_LABEL[lang][place.guideLevel]}</p>}
 
         <a href={askHref} rel="nofollow" class={`flex items-center justify-between gap-3 rounded-24 bg-blue-700 p-5 text-white transition-colors hover:bg-blue-800 ${focusRing}`}>
           <span>
-            <span class="block font-serif-display text-[1.6rem] leading-none">¿Tienes preguntas?</span>
-            <span class="mt-1.5 block text-[14px] text-white/75">Pregúntale a Ventanilla sobre {place.name}.</span>
+            <span class="block font-serif-display text-[1.6rem] leading-none">{COPY.askTitle}</span>
+            <span class="mt-1.5 block text-[14px] text-white/75">{COPY.askBody}</span>
           </span>
           <svg aria-hidden="true" width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
         </a>
@@ -297,18 +374,18 @@ const askHref = `/?q=${encodeURIComponent(`¿Qué me recomiendas saber antes de 
       around.length > 0 && (
         <section class="mt-16" aria-labelledby="cerca">
           <div class="flex items-end justify-between gap-4">
-            <h2 id="cerca" class="font-serif-display text-[2.2rem] leading-none">Cerca de aquí</h2>
-            {place.department && <a href={departmentPath(place.department)} class={`text-[15px] font-medium ${link}`}>Todo {place.department}</a>}
+            <h2 id="cerca" class="font-serif-display text-[2.2rem] leading-none">{COPY.nearby}</h2>
+            {place.department && <a href={departmentPath(place.department, lang)} class={`text-[15px] font-medium ${link}`}>{COPY.allOf(place.department)}</a>}
           </div>
           <div class="-mx-4 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] mobile:-mx-6 mobile:px-6 [&::-webkit-scrollbar]:hidden">
-            {around.map((other) => <PlaceCard place={other} variant="compact" />)}
+            {around.map((other) => <PlaceCard place={other} variant="compact" lang={lang} />)}
           </div>
         </section>
       )
     }
 
     <p class="mt-14 max-w-[68ch] text-[13px] leading-relaxed text-text-tertiary">
-      Información del directorio oficial de turismo del Ministerio de Turismo de El Salvador, consultada a través de Croma. Ficha actualizada el {updated}; directorio sincronizado el {synced}. Ventanilla es un proyecto independiente: confirma horarios y precios directamente con el lugar antes de tu visita.
+      {COPY.footer(updated, synced)}
     </p>
   </article>
 </Layout>
