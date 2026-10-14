@@ -7,7 +7,13 @@ import { clip } from "./tools/kit";
 
 export type Authority = { domain: string; covers: string; pages?: readonly { url: string; title: string }[] };
 
-export type Dataset = { tool: SourceTool; covers: string; reader?: (candidate: Candidate, context: ToolContext) => Promise<string | null> };
+export type Dataset = {
+  tool: SourceTool;
+  covers: string;
+  reader?: (candidate: Candidate, context: ToolContext) => Promise<string | null>;
+  /** A directory: what the router asked it for is kept when the judge finds it on topic, not only when it answers outright. */
+  listing?: boolean;
+};
 
 export type ResearchConfig = {
   web: SourceTool;
@@ -242,8 +248,11 @@ export async function research({
   if (answers.length) return { route, candidates: [...answers, ...unique.filter((candidate) => candidate.origin === "pinned")], considered: pool.length, timings, corpus: true };
 
   const relevant = pool
-    .map((candidate) => ({ ...candidate, score: scores ? (scores.get(candidate.id) ?? 0) : candidate.authority ? keepScore : 1 }))
-    .filter((candidate) => candidate.score >= keepScore)
+    .map((candidate) => {
+      const listing = !!config.datasets[candidate.origin]?.listing;
+      return { ...candidate, listing, score: scores ? (scores.get(candidate.id) ?? (listing ? 1 : 0)) : candidate.authority ? keepScore : 1 };
+    })
+    .filter((candidate) => candidate.score >= (candidate.listing ? 1 : keepScore))
     .sort((a, b) => b.score - a.score || Number(b.authority) - Number(a.authority))
     .slice(0, 6);
 
