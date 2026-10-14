@@ -1,3 +1,4 @@
+import type { Mentions } from "../lib/turismo/mentions";
 import type { Grounding } from "../lib/ui-stream";
 import { corpusVersion } from "./corpus";
 import { sha256 } from "./crypto";
@@ -5,7 +6,7 @@ import { keywords } from "./normalize";
 import { store } from "./store";
 
 /** `corpus` is the corpus version an answer was written from; a new corpus retires it. */
-export type CachedAnswer = { answer: string; groundings: Grounding[]; followUps: string[]; corpus?: string };
+export type CachedAnswer = { answer: string; groundings: Grounding[]; followUps: string[]; corpus?: string; tourism?: Mentions };
 
 const day = 24 * 3600;
 /** Answers from live search: nothing says when those pages change, so they age out. */

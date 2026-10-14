@@ -1,3 +1,5 @@
+import type { Lang } from "./labels";
+
 export const KINDS = ["destination", "attraction", "lodging", "restaurant", "surf_school", "recreation", "transport", "tourist_info", "guide"] as const;
 export type Kind = (typeof KINDS)[number];
 
@@ -65,3 +67,31 @@ export type IndexRow = {
   p?: [number, number, 0 | 1 | 2];
   i?: string;
 };
+
+/** What the chat draws for a place, its card and its sheet, in both languages. */
+export type Ficha = {
+  slug: string;
+  name: string;
+  kind: Kind;
+  registered: boolean;
+  municipality: string | null;
+  department: string | null;
+  summary: Record<Lang, string | null>;
+  description: Record<Lang, string | null>;
+  hours: Record<Lang, string | null>;
+  phones: { href: string; label: string }[];
+  whatsapp: string | null;
+  emails: string[];
+  website: string | null;
+  address: string | null;
+  socials: Social[];
+  photos: { src: string; srcset: string }[];
+  ownPhotos: boolean;
+  point: Point | null;
+  directions: string;
+  waze: string;
+  pages: Record<Lang, string>;
+};
+
+/** What the chat draws for an event. */
+export type AgendaItem = Pick<Happening, "id" | "slug" | "name" | "start" | "end" | "venue" | "department" | "links">;

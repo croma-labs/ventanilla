@@ -28,7 +28,8 @@ export type Candidate = { id: string; origin: string; title: string; url: string
 
 export type Route = { inScope: boolean; language: string; authorities: string[]; queries: string[]; datasets: Record<string, string | null> };
 
-export type Research = { route: Route | null; candidates: Candidate[]; considered: number; timings: Record<string, number>; corpus?: boolean };
+/** `listings` holds every link the router's listing datasets returned, judged or not: what an interface can draw beside the answer. */
+export type Research = { route: Route | null; candidates: Candidate[]; considered: number; timings: Record<string, number>; corpus?: boolean; listings?: string[] };
 
 const deadlines = { route: 4_000, search: 8_000, dataset: 7_000, judge: 5_000, read: 7_000 };
 const maxEvidence = 30_000;
@@ -229,6 +230,7 @@ export async function research({
     .map(([name, query]) => within(config.datasets[name].tool.run({ query }, context), deadlines.dataset, null).then((result) => collect(name, result)));
 
   const gathered = (await Promise.all([broad.then((result) => collect("web", result)), ...scoped, ...extra, ...datasets, pinned])).flat();
+  const listings = gathered.filter((candidate) => config.datasets[candidate.origin]?.listing).map((candidate) => candidate.url);
   mark("search");
 
   const unique = [...new Map(gathered.map((candidate) => [candidate.url, candidate])).values()].map((candidate, index) => ({
@@ -239,13 +241,13 @@ export async function research({
   // Corpus records and web pages face the judge together; a record it scores as the answer answers alone,
   // the rest of them stay in the pool as ordinary evidence.
   const pool = [...records, ...unique];
-  if (!pool.length) return { route, candidates: [], considered: 0, timings };
+  if (!pool.length) return { route, candidates: [], considered: 0, timings, listings };
 
   const scores = await scoreSources(question, pool, fast);
   mark("judge");
   const answers = answering(hits, scores);
   // The entity's own pages ride along: they carry fees and dates newer than the register's record.
-  if (answers.length) return { route, candidates: [...answers, ...unique.filter((candidate) => candidate.origin === "pinned")], considered: pool.length, timings, corpus: true };
+  if (answers.length) return { route, candidates: [...answers, ...unique.filter((candidate) => candidate.origin === "pinned")], considered: pool.length, timings, corpus: true, listings };
 
   const relevant = pool
     .map((candidate) => {
@@ -256,7 +258,7 @@ export async function research({
     .sort((a, b) => b.score - a.score || Number(b.authority) - Number(a.authority))
     .slice(0, 6);
 
-  return { route, candidates: relevant, considered: pool.length, timings };
+  return { route, candidates: relevant, considered: pool.length, timings, listings };
 }
 
 export async function deepen(config: ResearchConfig, candidates: Candidate[], context: ToolContext) {

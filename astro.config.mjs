@@ -26,6 +26,8 @@ const turismo = {
         "/turismo/lugar/[slug]": "lugar.astro",
         "/turismo/departamento/[slug]": "departamento.astro",
         "/turismo/indice.json": "indice.json.ts",
+        "/turismo/ficha/[slug].json": "ficha.json.ts",
+        "/turismo/agenda.json": "agenda.json.ts",
         "/tourism": "index.astro",
         "/tourism/explore": "explorar.astro",
         "/tourism/events": "eventos.astro",

@@ -38,6 +38,15 @@ export function BrandSprite() {
   );
 }
 
+/** The same sprite, added to a page that renders brand icons only on the client, such as the chat. */
+export function ensureBrandSprite() {
+  if (document.getElementById("brand-sprite")) return;
+  const symbols = Object.entries(PATHS)
+    .map(([name, path]) => `<symbol id="brand-${name}" viewBox="0 0 24 24"><path d="${path}"/></symbol>`)
+    .join("");
+  document.body.insertAdjacentHTML("afterbegin", `<svg id="brand-sprite" aria-hidden="true" width="0" height="0" style="position:absolute">${symbols}</svg>`);
+}
+
 export default function BrandIcon({ name, size = 18, className }: { name: Brand; size?: number; className?: string }) {
   return (
     <svg aria-hidden="true" width={size} height={size} className={className} fill="currentColor">

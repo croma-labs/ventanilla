@@ -1,0 +1,48 @@
+import type { Lang } from "../../../lib/turismo/labels";
+
+export const COPY = {
+  es: {
+    places: "Lugares en esta respuesta",
+    map: "En el mapa",
+    events: "Eventos",
+    call: "Llamar",
+    whatsapp: "WhatsApp",
+    directions: "Cómo llegar",
+    details: "Ver detalles",
+    registered: "RNT",
+    registeredLong: "Inscrito en el Registro Nacional de Turismo",
+    about: "Sobre el lugar",
+    more: "Leer más",
+    less: "Leer menos",
+    contact: "Contacto y horario",
+    page: "Abrir la ficha completa",
+    close: "Cerrar",
+    approximate: "Ubicación aproximada",
+    addToCalendar: "Agendar",
+    moreInfo: "Más información",
+    original: "Texto en español, como lo publica el Ministerio de Turismo.",
+  },
+  en: {
+    places: "Places in this answer",
+    map: "On the map",
+    events: "Events",
+    call: "Call",
+    whatsapp: "WhatsApp",
+    directions: "Directions",
+    details: "Details",
+    registered: "RNT",
+    registeredLong: "Listed in the National Tourism Registry",
+    about: "About",
+    more: "Read more",
+    less: "Show less",
+    contact: "Contact and hours",
+    page: "Open the full page",
+    close: "Close",
+    approximate: "Approximate location",
+    addToCalendar: "Add to calendar",
+    moreInfo: "More info",
+    original: "In Spanish, as published by the Ministry of Tourism.",
+  },
+} satisfies Record<Lang, Record<string, string>>;
+
+export type Copy = (typeof COPY)[Lang];
