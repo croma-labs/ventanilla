@@ -8,6 +8,8 @@ type Props = { name: string; phone: string | null; whatsapp: string | null; dire
 const COPY = {
   es: { call: "Llamar", directions: "Cómo llegar", share: "Compartir", copied: "Enlace copiado" },
   en: { call: "Call", directions: "Directions", share: "Share", copied: "Link copied" },
+  pt: { call: "Ligar", directions: "Como chegar", share: "Partilhar", copied: "Ligação copiada" },
+  fr: { call: "Appeler", directions: "Itinéraire", share: "Partager", copied: "Lien copié" },
 };
 
 const item =

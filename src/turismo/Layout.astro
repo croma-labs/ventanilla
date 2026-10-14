@@ -4,7 +4,7 @@ import SiteHeader from "../components/site/SiteHeader.astro";
 import { BrandSprite } from "../components/turismo/BrandIcon";
 import TurismoNav from "../components/turismo/TurismoNav.astro";
 import Base from "../layouts/Base.astro";
-import { langOf, LOCALE, translatePath, type Section } from "../lib/turismo/labels";
+import { HREFLANG, langOf, LANGS, LOCALE, translatePath, type Lang, type Section } from "../lib/turismo/labels";
 
 interface Props {
   title: string;
@@ -18,10 +18,8 @@ interface Props {
 const { title, description, current, schema, image, bleed = false } = Astro.props;
 const lang = langOf(Astro.url.pathname);
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
-const alternates = [
-  { hreflang: "en", path: translatePath(path, "en") },
-  { hreflang: LOCALE.es, path: translatePath(path, "es") },
-];
+const order: Lang[] = ["en", ...LANGS.filter((other) => other !== "en")];
+const alternates = order.map((other) => ({ hreflang: HREFLANG[other], path: translatePath(path, other) }));
 ---
 
 <Base title={title} description={description} schema={schema} image={image} aiReadable locale={LOCALE[lang]} alternates={alternates}>

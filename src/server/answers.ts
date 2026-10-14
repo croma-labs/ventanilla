@@ -14,12 +14,13 @@ const liveTtl = Number(process.env.ANSWER_CACHE_SECONDS ?? 7 * day);
 /** Answers from the corpus: they live until the corpus they came from is replaced. */
 const corpusTtl = Number(process.env.CORPUS_ANSWER_CACHE_SECONDS ?? 30 * day);
 
-const keyFor = async (question: string) => `answer:v10:${await sha256(keywords(question))}`;
+/** Spanish answers keep the plain key; one in another language is keyed by that language too, so a short question never comes back in the wrong one. */
+const keyFor = async (question: string, language = "es") => `answer:v10:${language === "es" ? "" : `${language}:`}${await sha256(keywords(question))}`;
 
-export async function recall(question: string) {
+export async function recall(question: string, language?: string) {
   if (!liveTtl && !corpusTtl) return null;
   try {
-    const cached = await store.get<CachedAnswer>(await keyFor(question));
+    const cached = await store.get<CachedAnswer>(await keyFor(question, language));
     if (!cached) return null;
     if (cached.corpus && cached.corpus !== (await corpusVersion())) return null;
     return cached;
@@ -28,10 +29,10 @@ export async function recall(question: string) {
   }
 }
 
-export async function remember(question: string, value: CachedAnswer) {
+export async function remember(question: string, value: CachedAnswer, language?: string) {
   const ttl = value.corpus ? corpusTtl : liveTtl;
   if (!ttl || !value.groundings.length) return;
   try {
-    await store.set(await keyFor(question), value, ttl);
+    await store.set(await keyFor(question, language), value, ttl);
   } catch {}
 }

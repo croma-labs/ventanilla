@@ -10,6 +10,8 @@ const QUESTION = /\?|^\s*(¿|qu[eé]|d[oó]nde|c[oó]mo|cu[aá]l|cu[aá]nto|cu[a
 const COPY = {
   es: { ask: "Preguntar a Ventanilla", search: "Buscar", answer: "Respuesta con fuentes oficiales" },
   en: { ask: "Ask Ventanilla", search: "Search", answer: "An answer with official sources" },
+  pt: { ask: "Perguntar à Ventanilla", search: "Pesquisar", answer: "Uma resposta com fontes oficiais" },
+  fr: { ask: "Demander à Ventanilla", search: "Rechercher", answer: "Une réponse avec des sources officielles" },
 };
 
 export default function TurismoSearch({ placeholder, prompts, lang }: { placeholder: string; prompts: string[]; lang: Lang }) {

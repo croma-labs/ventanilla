@@ -1,20 +1,31 @@
 import { site } from "@country/site";
 import { useSyncExternalStore } from "react";
-import type { Chrome, Site } from "../countries/types";
+import type { Chrome, Site, Translation } from "../countries/types";
 import { chromeOf } from "./chrome";
+import type { Lang } from "./turismo/labels";
 
-export type Language = "es" | "en";
+export type Language = Lang;
 
 export type Copy = { chrome: Chrome; ui: Site["ui"]; pending: Site["pending"]; disclaimers: Site["disclaimers"]; chatTitle: string };
 
-const listeners = new Set<() => void>();
-let current: Language = typeof document !== "undefined" && document.documentElement.lang.startsWith("en") && site.english ? "en" : "es";
+const translation = (language: Language): Translation | undefined => (language === "es" ? undefined : site.languages?.[language]);
 
-/** The language the visitor is writing in; the chat speaks it back where the country has an English version. */
+/** The languages the country's site speaks, its own first. */
+export const spoken = (): Language[] => ["es", ...(Object.keys(site.languages ?? {}) as Language[])];
+
+const listeners = new Set<() => void>();
+const fromPage = (): Language => {
+  if (typeof document === "undefined") return "es";
+  const code = document.documentElement.lang.slice(0, 2) as Language;
+  return translation(code) ? code : "es";
+};
+let current: Language = fromPage();
+
+/** The language the visitor is writing in; the chat speaks it back where the country has that language. */
 export function setLanguage(next: Language) {
-  if (next === current || (next === "en" && !site.english)) return;
+  if (next === current || (next !== "es" && !translation(next))) return;
   current = next;
-  document.documentElement.lang = next === "en" ? "en" : site.locale;
+  document.documentElement.lang = next === "es" ? site.locale : next;
   listeners.forEach((listener) => listener());
 }
 
@@ -30,13 +41,13 @@ const subscribe = (listener: () => void) => {
 export const useLanguage = () => useSyncExternalStore(subscribe, getLanguage, () => "es" as Language);
 
 export function copyOf(language: Language): Copy {
-  const english = language === "en" ? site.english : undefined;
+  const other = translation(language);
   return {
     chrome: chromeOf(language),
-    ui: english ? { ...site.ui, ...english.ui } : site.ui,
-    pending: english?.pending ?? site.pending,
-    disclaimers: english?.disclaimers ?? site.disclaimers,
-    chatTitle: english?.chatTitle ?? site.meta.chatTitle,
+    ui: other ? { ...site.ui, ...other.ui } : site.ui,
+    pending: other?.pending ?? site.pending,
+    disclaimers: other?.disclaimers ?? site.disclaimers,
+    chatTitle: other?.chatTitle ?? site.meta.chatTitle,
   };
 }
 

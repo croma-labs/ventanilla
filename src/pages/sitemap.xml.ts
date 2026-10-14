@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { site as country } from "@country/site";
-import { catalog, DEPARTMENTS, departmentPath, LANGS, LOCALE, placePath, places, sectionPath, type Lang } from "../lib/turismo/catalog";
+import { catalog, DEPARTMENTS, departmentPath, HREFLANG, LANGS, placePath, places, sectionPath, type Lang } from "../lib/turismo/catalog";
 import { pathOf, published } from "../lib/tramites";
 
 type Entry = { path: string; lastmod: string; priority: string; alternates?: { hreflang: string; path: string }[] };
@@ -19,9 +19,8 @@ function turismo(): Entry[] {
       .filter((place) => place.kind !== "guide")
       .map((place) => ({ path: (lang: Lang) => placePath(place, lang), lastmod: place.updatedAt.slice(0, 10), priority: place.kind === "destination" || place.kind === "attraction" ? "0.7" : "0.5" })),
   ];
-  const hreflang = (lang: Lang) => (lang === "en" ? "en" : LOCALE[lang]);
   return pages.flatMap((page) => {
-    const alternates = LANGS.map((lang) => ({ hreflang: hreflang(lang), path: page.path(lang) }));
+    const alternates = LANGS.map((lang) => ({ hreflang: HREFLANG[lang], path: page.path(lang) }));
     return LANGS.map((lang) => ({ path: page.path(lang), lastmod: page.lastmod, priority: page.priority, alternates }));
   });
 }

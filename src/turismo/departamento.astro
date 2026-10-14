@@ -2,7 +2,7 @@
 import KindIcon from "../components/turismo/KindIcon";
 import PlaceCard from "../components/turismo/PlaceCard.astro";
 import PlaceMap from "../components/turismo/PlaceMap";
-import { byDepartment, departmentPath, DEPARTMENT_LEAD, DEPARTMENTS, exploreHref, KIND_LABEL, langOf, LOCALE, placePath, sectionPath, slugify } from "../lib/turismo/catalog";
+import { byDepartment, deFr, departmentPath, DEPARTMENT_LEAD, DEPARTMENTS, exploreHref, KIND_LABEL, langOf, LOCALE, placePath, sectionPath, slugify } from "../lib/turismo/catalog";
 import { picture } from "../lib/turismo/images";
 import { KINDS, type Kind } from "../lib/turismo/types";
 import { focusRing } from "../lib/ui";
@@ -54,6 +54,34 @@ const COPY = {
     seeAll: (n: number) => `See all ${n}`,
     towns: "Towns",
     others: "Other departments",
+  },
+  pt: {
+    title: `O que fazer em ${name}, El Salvador: locais, hotéis e restaurantes | Ventanilla`,
+    description: `O que fazer em ${name}, El Salvador: ${DEPARTMENT_LEAD.pt[name] ?? ""} ${count} locais entre destinos, alojamento, restaurantes e mais.`,
+    page: `Guia de viagem de ${name}, El Salvador`,
+    home: "Turismo",
+    breadcrumb: "Navegação estrutural",
+    eyebrow: "Departamento",
+    guides: (n: number) => `${n} guias turísticos`,
+    onMap: "No mapa",
+    allOnMap: `Ver os ${count} locais no mapa`,
+    seeAll: (n: number) => `Ver todos (${n})`,
+    towns: "Municípios",
+    others: "Outros departamentos",
+  },
+  fr: {
+    title: `Que faire à ${name}, Salvador : lieux, hôtels et restaurants | Ventanilla`,
+    description: `Que faire à ${name}, au Salvador : ${DEPARTMENT_LEAD.fr[name] ?? ""} ${count} lieux, dont des destinations, des hébergements, des restaurants et plus encore.`,
+    page: `Guide de voyage ${deFr(name)}, Salvador`,
+    home: "Tourisme",
+    breadcrumb: "Fil d'Ariane",
+    eyebrow: "Département",
+    guides: (n: number) => `${n} guides touristiques`,
+    onMap: "Sur la carte",
+    allOnMap: `Voir les ${count} lieux sur la carte`,
+    seeAll: (n: number) => `Tout voir (${n})`,
+    towns: "Communes",
+    others: "Autres départements",
   },
 }[lang];
 const description = COPY.description.replace(/\s+/g, " ");

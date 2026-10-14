@@ -4,6 +4,8 @@ import { KIND_LABEL, type Lang } from "../../lib/turismo/labels";
 import type { IndexRow } from "../../lib/turismo/types";
 import { COUNTRY_BOUNDS, createMap } from "./map";
 
+const APPROXIMATE: Record<Lang, string> = { es: "aprox.", en: "approx.", pt: "aprox.", fr: "approx." };
+
 type Props = { rows: IndexRow[]; hrefOf: (row: IndexRow) => string; className?: string; lang: Lang };
 
 const escape = (text: string) => text.replace(/[&<>"']/g, (char) => `&#${char.charCodeAt(0)};`);
@@ -91,7 +93,7 @@ export default function ExploreMap({ rows, hrefOf, className, lang }: Props) {
             .setHTML(
               `<a href="${href}" style="display:flex;gap:10px;align-items:center;text-decoration:none;color:#0e1a33;font-family:var(--font-body)">${
                 props.i ? `<img src="${props.i}" alt="" width="56" height="56" style="width:56px;height:56px;border-radius:12px;object-fit:cover;flex-shrink:0">` : ""
-              }<span><span style="display:block;font-size:12px;color:#0e1a33a8">${escape(KIND_LABEL[lang][props.k].one)}${props.exact ? "" : lang === "en" ? " · approx." : " · aprox."}</span><span style="display:block;font:400 19px/1.1 var(--font-serif-display)">${escape(props.n)}</span><span style="display:block;font-size:12px;color:#0e1a33a8;margin-top:2px">${escape([props.m, props.d].filter(Boolean).join(", "))}</span></span></a>`,
+              }<span><span style="display:block;font-size:12px;color:#0e1a33a8">${escape(KIND_LABEL[lang][props.k].one)}${props.exact ? "" : ` · ${APPROXIMATE[lang]}`}</span><span style="display:block;font:400 19px/1.1 var(--font-serif-display)">${escape(props.n)}</span><span style="display:block;font-size:12px;color:#0e1a33a8;margin-top:2px">${escape([props.m, props.d].filter(Boolean).join(", "))}</span></span></a>`,
             )
             .addTo(map);
         });

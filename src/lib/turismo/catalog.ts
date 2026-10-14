@@ -18,8 +18,9 @@ export const photoOf = (place: Place) => place.photos[0]?.src ?? null;
 
 /** A place's own words in the reader's language, and which language they are actually in. */
 export function textOf(place: Place, lang: Lang) {
-  const description = lang === "en" ? (place.en?.description ?? null) : null;
-  const hours = lang === "en" ? (place.en?.hours ?? null) : null;
+  const own = lang === "es" ? undefined : place.i18n?.[lang];
+  const description = own?.description ?? null;
+  const hours = own?.hours ?? null;
   return {
     description: description ?? place.description,
     descriptionLang: description || !place.description ? lang : ("es" as Lang),

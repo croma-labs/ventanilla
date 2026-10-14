@@ -1,5 +1,5 @@
 ---
-import { sectionPath, translatePath, type Lang, type Section } from "../../lib/turismo/labels";
+import { ENDONYM, LANGS, sectionPath, translatePath, type Lang, type Section } from "../../lib/turismo/labels";
 import { focusRing } from "../../lib/ui";
 
 interface Props {
@@ -8,16 +8,18 @@ interface Props {
 }
 
 const { current, lang } = Astro.props;
-const LABELS: Record<Lang, Record<Section, string>> = {
-  es: { home: "Inicio", explore: "Explorar y mapa", events: "Eventos", guides: "Guías" },
-  en: { home: "Home", explore: "Explore and map", events: "Events", guides: "Guides" },
+const LABELS: Record<Lang, Record<Section, string> & { nav: string; language: string }> = {
+  es: { home: "Inicio", explore: "Explorar y mapa", events: "Eventos", guides: "Guías", nav: "Turismo", language: "Idioma" },
+  en: { home: "Home", explore: "Explore and map", events: "Events", guides: "Guides", nav: "Tourism", language: "Language" },
+  pt: { home: "Início", explore: "Explorar e mapa", events: "Eventos", guides: "Guias", nav: "Turismo", language: "Idioma" },
+  fr: { home: "Accueil", explore: "Explorer et carte", events: "Événements", guides: "Guides", nav: "Tourisme", language: "Langue" },
 };
-const tabs = (["home", "explore", "events", "guides"] as const).map((key) => ({ key, label: LABELS[lang][key], href: sectionPath(key, lang) }));
-const other: Lang = lang === "en" ? "es" : "en";
+const copy = LABELS[lang];
+const tabs = (["home", "explore", "events", "guides"] as const).map((key) => ({ key, label: copy[key], href: sectionPath(key, lang) }));
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
-<nav aria-label={lang === "en" ? "Tourism" : "Turismo"} class="sticky top-0 z-20 -mx-4 flex items-center gap-2 border-b border-border-quaternary bg-background-primary/85 px-4 backdrop-blur-xl mobile:-mx-6 mobile:px-6">
+<nav aria-label={copy.nav} class="sticky top-0 z-20 -mx-4 flex items-center gap-2 border-b border-border-quaternary bg-background-primary/85 px-4 backdrop-blur-xl mobile:-mx-6 mobile:px-6">
   <ul class="flex min-w-0 flex-1 gap-1 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
     {
       tabs.map((tab) => (
@@ -33,14 +35,43 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
       ))
     }
   </ul>
-  <a
-    href={translatePath(path, other)}
-    hreflang={other}
-    lang={other}
-    data-language-switch
-    class={`inline-flex h-9 shrink-0 items-center rounded-full border border-border-tertiary px-3 text-[13px] font-semibold tracking-wide hover:bg-surface-muted ${focusRing}`}
-    aria-label={other === "en" ? "English version" : "Versión en español"}
-  >
-    {other === "en" ? "EN" : "ES"}
-  </a>
+  <details class="group relative shrink-0" data-language-picker>
+    <summary
+      class={`inline-flex h-9 cursor-pointer list-none items-center gap-1 rounded-full border border-border-tertiary px-3 text-[13px] font-semibold tracking-wide uppercase hover:bg-surface-muted [&::-webkit-details-marker]:hidden ${focusRing}`}
+      aria-label={`${copy.language}: ${ENDONYM[lang]}`}
+    >
+      {lang}
+      <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" class="transition-transform group-open:rotate-180"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </summary>
+    <ul class="absolute top-[calc(100%+8px)] right-0 z-30 w-44 overflow-hidden rounded-[18px] border border-border-quaternary bg-background-primary p-1.5 shadow-glass-toast">
+      {
+        LANGS.map((other) => (
+          <li>
+            <a
+              href={translatePath(path, other)}
+              hreflang={other}
+              lang={other}
+              data-language-option={other}
+              aria-current={other === lang ? "true" : undefined}
+              class={`flex items-center justify-between rounded-[12px] px-3 py-2.5 text-[15px] hover:bg-surface-muted ${other === lang ? "font-semibold" : ""} ${focusRing}`}
+            >
+              {ENDONYM[other]}
+              <span class="text-[12px] font-semibold tracking-wide text-text-tertiary uppercase">{other}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
 </nav>
+
+<script>
+  for (const picker of document.querySelectorAll<HTMLDetailsElement>("[data-language-picker]")) {
+    document.addEventListener("click", (event) => {
+      if (picker.open && !picker.contains(event.target as Node)) picker.open = false;
+    });
+    picker.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") picker.open = false;
+    });
+  }
+</script>

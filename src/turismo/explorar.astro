@@ -25,6 +25,18 @@ const COPY = {
     page: "Explore El Salvador: map of places to visit",
     heading: "Explore El Salvador",
   },
+  pt: {
+    title: "Explorar El Salvador: mapa de hotéis, restaurantes, praias e guias | Ventanilla",
+    description: `Pesquise e filtre ${number(places.length)} locais para visitar em El Salvador num mapa: ${top} e mais, do diretório oficial do Ministério do Turismo.`,
+    page: "Explorar El Salvador: mapa de locais para visitar",
+    heading: "Explore El Salvador",
+  },
+  fr: {
+    title: "Explorer le Salvador : carte des hôtels, restaurants, plages et guides | Ventanilla",
+    description: `Recherchez et filtrez ${number(places.length)} lieux à visiter au Salvador sur une carte : ${top} et plus, de l'annuaire officiel du ministère du Tourisme.`,
+    page: "Explorer le Salvador : carte des lieux à visiter",
+    heading: "Explorez le Salvador",
+  },
 }[lang];
 const schema = [{ "@type": "CollectionPage", "@id": `${url}#page`, url, name: COPY.page, description: COPY.description, inLanguage: LOCALE[lang], about: { "@type": "Country", name: "El Salvador" } }];
 ---

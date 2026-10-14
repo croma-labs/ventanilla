@@ -3,7 +3,8 @@ import { AnimatePresence, MotionConfig, motion, stagger, type Variants } from "m
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import type { Chrome } from "../../countries/types";
 import { cn } from "../../lib/cn";
-import { copyOf, useLanguage } from "../../lib/language";
+import { copyOf, setLanguage, spoken, useLanguage } from "../../lib/language";
+import { ENDONYM, isGuidePath, translatePath } from "../../lib/turismo/labels";
 import { buttonBase, focusRing } from "../../lib/ui";
 import { CloseIcon } from "../icons";
 
@@ -49,6 +50,8 @@ export default function MenuSheet({ pathname = "/", chrome: initial, flag }: { p
     }
   }, [hydrated, language]);
   const links = [{ label: chrome.home, href: "/" }, ...chrome.nav.primary];
+  const languages = spoken();
+  const guide = isGuidePath(pathname);
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<CSSProperties>({});
   const trigger = useRef<HTMLButtonElement>(null);
@@ -159,6 +162,37 @@ export default function MenuSheet({ pathname = "/", chrome: initial, flag }: { p
                         ))}
                       </ul>
                     </nav>
+                    {languages.length > 1 && (
+                      <motion.div variants={fade} role="group" aria-label={ENDONYM[language]} className="flex justify-center gap-1.5">
+                        {languages.map((option) => {
+                          const className = cn(
+                            "inline-flex h-10 min-w-12 items-center justify-center rounded-full px-3 text-[14px] font-semibold tracking-wide uppercase transition-colors",
+                            focusRing,
+                            option === language ? "bg-blue-900 text-white" : "bg-blue-900/5 text-blue-900 hover:bg-blue-900/10",
+                          );
+                          return guide ? (
+                            <a key={option} href={translatePath(pathname, option)} hrefLang={option} lang={option} aria-label={ENDONYM[option]} aria-current={option === language ? "true" : undefined} className={className}>
+                              {option}
+                            </a>
+                          ) : (
+                            <button
+                              key={option}
+                              type="button"
+                              lang={option}
+                              aria-label={ENDONYM[option]}
+                              aria-pressed={option === language}
+                              onClick={() => {
+                                setLanguage(option);
+                                setOpen(false);
+                              }}
+                              className={className}
+                            >
+                              {option}
+                            </button>
+                          );
+                        })}
+                      </motion.div>
+                    )}
                     <motion.div
                       variants={fade}
                       className="flex flex-col items-center gap-2 rounded-12 bg-[#fafafa] pt-4 pr-8 pb-6 pl-6 text-blue-900/65 ring-1 ring-blue-900/3 ring-inset mobile:rounded-16"

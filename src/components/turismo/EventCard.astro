@@ -16,6 +16,8 @@ const { event, variant = "default", lang } = Astro.props;
 const COPY = {
   es: { more: "Más información", save: "Agendar" },
   en: { more: "More info", save: "Add to calendar" },
+  pt: { more: "Mais informações", save: "Adicionar ao calendário" },
+  fr: { more: "Plus d'infos", save: "Ajouter au calendrier" },
 }[lang];
 const day = event.start ? formatDate(event.start, lang, { day: "numeric" }) : "";
 const month = event.start ? formatDate(event.start, lang, { month: "short" }).replace(".", "") : "";
