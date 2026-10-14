@@ -1,4 +1,5 @@
 import { site } from "@country/site";
+import { useCopy } from "../../lib/language";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { snapshotOrigin, submitQuestion, useChatBusy, useChatPhase } from "../../lib/chat-store";
@@ -35,6 +36,7 @@ const StopIcon = () => (
 );
 
 export default function Composer({ variant, placeholder = "", fallback, preview, autoFocus, onInteract }: ComposerProps) {
+  const { ui } = useCopy();
   const [value, setValue] = useState("");
   const busy = useChatBusy();
   const form = useRef<HTMLFormElement>(null);
@@ -93,7 +95,7 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
         action="/"
         method="get"
         data-slot="chat-input-shell"
-        aria-label={site.ui.describe}
+        aria-label={ui.describe}
         onSubmit={submit}
         onPointerDownCapture={onInteract}
         onKeyDownCapture={onInteract}
@@ -120,7 +122,7 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
                 onChange={(event) => setValue(event.target.value)}
                 onKeyDown={onKeyDown}
                 placeholder={preview ? " " : placeholder}
-                aria-label={variant === "hero" ? site.ui.describe : site.ui.ask}
+                aria-label={variant === "hero" ? ui.describe : ui.ask}
                 aria-invalid={blocked || undefined}
                 aria-describedby={blocked ? `${variant}-pii` : undefined}
                 className="type-body-m -my-2 min-w-0 flex-1 resize-none overscroll-contain bg-transparent py-2 leading-normal text-primary outline-none placeholder:text-secondary"
@@ -140,7 +142,7 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
           <div className="flex min-h-9 shrink-0 items-center gap-1 max-md:self-end">
             <motion.button
               type="submit"
-              aria-label={busy && variant === "dock" ? site.ui.stop : site.ui.send}
+              aria-label={busy && variant === "dock" ? ui.stop : ui.send}
               aria-disabled={blocked || undefined}
               whileTap={{ scale: 0.94 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
@@ -176,7 +178,7 @@ export default function Composer({ variant, placeholder = "", fallback, preview,
             exit={{ opacity: 0, y: -4 }}
             className="relative z-10 mx-6 mt-3 rounded-16 bg-background-primary px-4 py-2.5 type-body-s text-text-primary shadow-elevation-1"
           >
-            {site.ui.piiBlocked.replace("{labels}", sensitive.join(", "))}
+            {ui.piiBlocked.replace("{labels}", sensitive.join(", "))}
           </motion.p>
         )}
       </AnimatePresence>

@@ -1,8 +1,9 @@
 import { Dialog } from "@base-ui/react/dialog";
 import { AnimatePresence, MotionConfig, motion, stagger, type Variants } from "motion/react";
-import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import type { Chrome } from "../../countries/types";
 import { cn } from "../../lib/cn";
+import { copyOf, useLanguage } from "../../lib/language";
 import { buttonBase, focusRing } from "../../lib/ui";
 import { CloseIcon } from "../icons";
 
@@ -35,7 +36,18 @@ const fade: Variants = {
   exit: { opacity: 0, transition: { duration: 0.08 } },
 };
 
-export default function MenuSheet({ pathname = "/", chrome, flag }: { pathname?: string; chrome: Chrome; flag: readonly string[] }) {
+export default function MenuSheet({ pathname = "/", chrome: initial, flag }: { pathname?: string; chrome: Chrome; flag: readonly string[] }) {
+  const language = useLanguage();
+  const [hydrated, setHydrated] = useState(false);
+  const chrome = hydrated ? copyOf(language).chrome : initial;
+  useEffect(() => setHydrated(true), []);
+  useEffect(() => {
+    if (!hydrated) return;
+    for (const element of document.querySelectorAll<HTMLElement>("[data-chrome]")) {
+      const text = chrome[element.dataset.chrome as "notice" | "noticeShort" | "skip" | "poweredBy"];
+      if (typeof text === "string") element.textContent = text;
+    }
+  }, [hydrated, language]);
   const links = [{ label: chrome.home, href: "/" }, ...chrome.nav.primary];
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<CSSProperties>({});

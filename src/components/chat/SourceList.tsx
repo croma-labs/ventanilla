@@ -1,5 +1,5 @@
 import { Dialog } from "@base-ui/react/dialog";
-import { site } from "@country/site";
+import { useCopy } from "../../lib/language";
 import { motion } from "motion/react";
 import type { Grounding } from "../../lib/ui-stream";
 import { cn } from "../../lib/cn";
@@ -15,14 +15,15 @@ const cleanTitle = (title: string) => title.split(/\s[|·–-]\s/)[0].trim();
 const label = (domain: string) => domain.charAt(0).toUpperCase() + domain.slice(1);
 
 export function SourcesChip({ groundings }: { groundings: Grounding[] }) {
+  const { ui } = useCopy();
   const groups = groupByAgency(groundings);
   const badges = groups.slice(0, 3);
-  const name = groups.length === 1 ? label(groups[0].domain) : site.ui.sources;
+  const name = groups.length === 1 ? label(groups[0].domain) : ui.sources;
   return (
     <Dialog.Root>
       <motion.div initial={{ width: 0 }} animate={{ width: "auto" }} transition={{ duration: 0.6, ease: outQuint }} className="flex shrink-0 overflow-clip focus-within:overflow-visible">
         <Dialog.Trigger
-          aria-label={`${site.ui.officialSources}: ${groups.map((group) => group.agency.name).join(", ")}`}
+          aria-label={`${ui.officialSources}: ${groups.map((group) => group.agency.name).join(", ")}`}
           className={cn(buttonBase, buttonSecondary, "h-9 min-h-9 gap-1.5 rounded-full py-1.5 pr-3 pl-1.5 type-label-s font-medium tracking-[0] text-secondary hover:text-primary")}
         >
           <span className="flex items-center -space-x-2">
@@ -43,8 +44,8 @@ export function SourcesChip({ groundings }: { groundings: Grounding[] }) {
         <Dialog.Backdrop className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm transition-opacity duration-300 data-ending-style:opacity-0 data-starting-style:opacity-0" />
         <Dialog.Popup className="fixed top-1/2 left-1/2 z-50 flex max-h-[min(680px,calc(100vh-112px))] w-[min(432px,calc(100%-32px))] -translate-1/2 flex-col overflow-hidden rounded-32 bg-background-primary text-text-primary shadow-[2px_11px_24px_#0000001a,8px_42px_43px_#00000017] transition-[opacity,scale] duration-300 ease-out-quint outline-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0">
           <div className="flex items-center justify-between gap-4 px-6 pt-6 pb-4">
-            <Dialog.Title className="type-body-m font-medium">{site.ui.officialSources}</Dialog.Title>
-            <Dialog.Close aria-label={site.ui.close} className={cn(buttonBase, "size-10 rounded-full bg-blue-900/5 hover:bg-blue-900/10 [&_svg]:size-4")}>
+            <Dialog.Title className="type-body-m font-medium">{ui.officialSources}</Dialog.Title>
+            <Dialog.Close aria-label={ui.close} className={cn(buttonBase, "size-10 rounded-full bg-blue-900/5 hover:bg-blue-900/10 [&_svg]:size-4")}>
               <CloseIcon />
             </Dialog.Close>
           </div>
@@ -86,10 +87,11 @@ export function SourcesChip({ groundings }: { groundings: Grounding[] }) {
 }
 
 export function Unverified() {
+  const { ui } = useCopy();
   return (
     <p role="note" className="animate-message-action-in mt-4 flex items-start gap-2 rounded-16 bg-[#fff6e5] px-4 py-3 type-body-s text-[#6b4a00]">
       <span aria-hidden className="mt-0.5">⚠︎</span>
-      {site.ui.unverified}
+      {ui.unverified}
     </p>
   );
 }

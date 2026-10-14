@@ -64,8 +64,8 @@ export type Site = {
   liveIcons: boolean;
   pii: readonly Detector[];
   nav: { primary: readonly Link[]; legal: readonly Link[] };
-  /** The site's frame in English, for the pages that have an English version. */
-  english?: Chrome;
+  /** The site in English: the frame of the pages that have an English version, and the chat when a visitor writes in English. */
+  english?: English;
   ui: Record<
     | "askAnything"
     | "answered"
@@ -118,4 +118,11 @@ export type Site = {
   >;
   pending: Record<"thinking" | "searching" | "reviewing" | "longer", readonly string[]>;
   disclaimers: { privacy: { title: string; items: readonly { heading: string; body: string }[] }; ai: { title: string; items: readonly { heading: string; body: string }[] } };
+};
+
+export type English = Chrome & {
+  chatTitle: string;
+  ui: Partial<Site["ui"]>;
+  pending: Site["pending"];
+  disclaimers: Site["disclaimers"];
 };
