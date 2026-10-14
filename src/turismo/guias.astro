@@ -1,5 +1,5 @@
 ---
-import { DEPARTMENTS, GUIDE_LEVEL_LABEL, KIND_LABEL, langOf, LANGUAGE_LABEL, LOCALE, places, sectionPath } from "../lib/turismo/catalog";
+import { DEPARTMENTS, GUIDE_LEVEL_LABEL, KIND_LABEL, langOf, LANGUAGE_LABEL, LOCALE, PARAM, places, sectionPath } from "../lib/turismo/catalog";
 import { focusRing } from "../lib/ui";
 import Layout from "./Layout.astro";
 
@@ -35,6 +35,30 @@ const COPY = {
     one: "guide",
     many: "guides",
   },
+  pt: {
+    title: "Guias turísticos certificados em El Salvador | Ventanilla",
+    description: `${guides.length} guias turísticos certificados em El Salvador, de local, locais e nacionais, com os idiomas em que trabalham: ${spoken} e espanhol.`,
+    heading: "Guias certificados",
+    intro: `${guides.length} guias turísticos certificados pelo Ministério do Turismo. São pessoas particulares, por isso aqui só vê o nome, os idiomas e a zona. Para contratar um, pergunte no local turístico ou a um operador turístico registado.`,
+    language: "Idioma",
+    allLanguages: "Todos os idiomas",
+    department: "Departamento",
+    country: "Todo o país",
+    one: "guia",
+    many: "guias",
+  },
+  fr: {
+    title: "Guides touristiques certifiés au Salvador | Ventanilla",
+    description: `${guides.length} guides touristiques certifiés au Salvador, de site, locaux et nationaux, avec les langues dans lesquelles ils travaillent : ${spoken} et espagnol.`,
+    heading: "Guides certifiés",
+    intro: `${guides.length} guides touristiques certifiés par le ministère du Tourisme. Ce sont des particuliers : vous ne voyez ici que leur nom, leurs langues et leur zone. Pour en engager un, renseignez-vous sur le site touristique ou auprès d'un voyagiste enregistré.`,
+    language: "Langue",
+    allLanguages: "Toutes les langues",
+    department: "Département",
+    country: "Tout le pays",
+    one: "guide",
+    many: "guides",
+  },
 }[lang];
 const description = COPY.description;
 const schema = [{ "@type": "CollectionPage", "@id": `${url}#page`, url, name: COPY.title.replace(" | Ventanilla", ""), description, inLanguage: LOCALE[lang] }];
@@ -47,7 +71,7 @@ const option = `inline-flex h-10 shrink-0 items-center rounded-full border borde
     <p class="mt-3 max-w-[56ch] text-[17px] text-text-secondary">{COPY.intro}</p>
   </header>
 
-  <div class="mt-6 flex flex-col gap-3" data-guide-filters data-one={COPY.one} data-many={COPY.many} data-param={lang === "en" ? "language" : "idioma"}>
+  <div class="mt-6 flex flex-col gap-3" data-guide-filters data-one={COPY.one} data-many={COPY.many} data-param={PARAM[lang].language}>
     <div class="-mx-4 flex gap-2 overflow-x-auto px-4 [scrollbar-width:none] mobile:-mx-6 mobile:px-6 [&::-webkit-scrollbar]:hidden" role="group" aria-label={COPY.language}>
       <button type="button" class={option} data-lang="" aria-pressed="true">{COPY.allLanguages}</button>
       {languages.map((code) => <button type="button" class={option} data-lang={code} aria-pressed="false">{LANGUAGE_LABEL[lang][code] ?? code}</button>)}

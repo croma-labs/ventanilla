@@ -2,7 +2,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Picture } from "../../lib/turismo/images";
-import type { Lang } from "../../lib/turismo/labels";
+import { deFr, type Lang } from "../../lib/turismo/labels";
 
 type Props = { name: string; photos: Picture[]; lang: Lang };
 
@@ -24,6 +24,24 @@ const COPY = {
     fullscreen: "View full screen",
     photos: (name: string) => `Photos of ${name}`,
     close: "Close",
+  },
+  pt: {
+    open: (index: number, total: number, name: string) => `Abrir a foto ${index} de ${total} de ${name} em ecrã inteiro`,
+    photo: (name: string, index: number) => `${name}, foto ${index}`,
+    previous: "Foto anterior",
+    next: "Foto seguinte",
+    fullscreen: "Ver em ecrã inteiro",
+    photos: (name: string) => `Fotos de ${name}`,
+    close: "Fechar",
+  },
+  fr: {
+    open: (index: number, total: number, name: string) => `Ouvrir la photo ${index} sur ${total} ${deFr(name)} en plein écran`,
+    photo: (name: string, index: number) => `${name}, photo ${index}`,
+    previous: "Photo précédente",
+    next: "Photo suivante",
+    fullscreen: "Voir en plein écran",
+    photos: (name: string) => `Photos ${deFr(name)}`,
+    close: "Fermer",
   },
 };
 

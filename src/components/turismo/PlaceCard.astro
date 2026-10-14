@@ -13,6 +13,12 @@ interface Props {
 }
 
 const { place, variant = "default", lang } = Astro.props;
+const REGISTERED: Record<Lang, string> = {
+  es: "Inscrito en el Registro Nacional de Turismo",
+  en: "Listed in the National Tourism Registry",
+  pt: "Inscrito no Registo Nacional de Turismo",
+  fr: "Inscrit au Registre national du tourisme",
+};
 const own = place.photos.length > 0;
 const photo = await picture(own ? place.photos[0].src : standIn(place), [400, 640]);
 const where = [place.municipality, place.department].filter(Boolean).join(", ");
@@ -47,7 +53,7 @@ const width = variant === "compact" ? "w-[72vw] max-w-[300px] shrink-0 snap-star
     </span>
     {
       place.registered && (
-        <span class="absolute top-3 right-3 rounded-full bg-blue-700/90 px-2 py-1 text-[11px] font-semibold tracking-wide text-white backdrop-blur" title={lang === "en" ? "Listed in the National Tourism Registry" : "Inscrito en el Registro Nacional de Turismo"}>
+        <span class="absolute top-3 right-3 rounded-full bg-blue-700/90 px-2 py-1 text-[11px] font-semibold tracking-wide text-white backdrop-blur" title={REGISTERED[lang]}>
           RNT
         </span>
       )

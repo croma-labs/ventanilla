@@ -26,6 +26,22 @@ const CONTROLS: Record<Lang, Record<string, string>> = {
     "NavigationControl.ZoomOut": "Zoom out",
     "GeolocateControl.FindMyLocation": "Find my location",
   },
+  pt: {
+    "CooperativeGesturesHandler.WindowsHelpText": "Use Ctrl + deslocamento para aproximar o mapa",
+    "CooperativeGesturesHandler.MacHelpText": "Use ⌘ + deslocamento para aproximar o mapa",
+    "CooperativeGesturesHandler.MobileHelpText": "Use dois dedos para mover o mapa",
+    "NavigationControl.ZoomIn": "Aproximar",
+    "NavigationControl.ZoomOut": "Afastar",
+    "GeolocateControl.FindMyLocation": "A minha localização",
+  },
+  fr: {
+    "CooperativeGesturesHandler.WindowsHelpText": "Utilisez Ctrl + défilement pour zoomer sur la carte",
+    "CooperativeGesturesHandler.MacHelpText": "Utilisez ⌘ + défilement pour zoomer sur la carte",
+    "CooperativeGesturesHandler.MobileHelpText": "Utilisez deux doigts pour déplacer la carte",
+    "NavigationControl.ZoomIn": "Zoomer",
+    "NavigationControl.ZoomOut": "Dézoomer",
+    "GeolocateControl.FindMyLocation": "Ma position",
+  },
 };
 
 export async function createMap(container: HTMLElement, options: { center?: [number, number]; zoom?: number; interactive?: boolean; lang?: Lang } = {}): Promise<{ map: MapLibreMap; maplibre: typeof import("maplibre-gl") }> {

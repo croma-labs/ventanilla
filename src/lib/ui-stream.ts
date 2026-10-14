@@ -2,9 +2,10 @@ export type Grounding = { title: string; url: string; currency: "verified" | "un
 
 export type SearchData = { status: "searching" | "done"; groundings: Grounding[]; resultCount?: number };
 
+import type { Lang } from "./turismo/labels";
 import type { Mentions } from "./turismo/mentions";
 
-export type MessageMetadata = { answerComplete?: boolean; tourism?: Mentions; language?: "es" | "en"; followUpSuggestions?: string[]; signature?: string; verified?: boolean; conversational?: boolean; diagnostics?: unknown };
+export type MessageMetadata = { answerComplete?: boolean; tourism?: Mentions; language?: Lang; followUpSuggestions?: string[]; signature?: string; verified?: boolean; conversational?: boolean; diagnostics?: unknown };
 
 export type UiChunk =
   | { type: "start"; messageId: string }

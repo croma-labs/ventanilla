@@ -66,6 +66,58 @@ const COPY = {
     clear: "Clear",
     show: (count: string) => `Show ${count} places`,
   },
+  pt: {
+    search: "Pesquisar locais",
+    placeholder: (total: string) => `Pesquise entre ${total} locais`,
+    clearSearch: "Limpar pesquisa",
+    filters: "Filtros",
+    kinds: "Tipo de local",
+    all: "Tudo",
+    count: (count: string, one: boolean) => `${count} ${one ? "local" : "locais"}`,
+    loading: "A carregar o diretório…",
+    in: (department: string) => ` em ${department}`,
+    clearAll: "Limpar tudo",
+    emptyTitle: "Nada por aqui",
+    emptyBody: "Experimente outra palavra ou retire um filtro.",
+    ask: "Perguntar à Ventanilla",
+    showMap: "Ver mapa",
+    showList: "Ver lista",
+    closeFilters: "Fechar filtros",
+    department: "Departamento",
+    country: "Todo o país",
+    theme: "Tema",
+    guideLanguage: "Idioma do guia",
+    registered: "Só inscritos no RNT",
+    registeredHint: "Negócios no Registo Nacional de Turismo",
+    clear: "Limpar",
+    show: (count: string) => `Ver ${count} locais`,
+  },
+  fr: {
+    search: "Rechercher des lieux",
+    placeholder: (total: string) => `Rechercher parmi ${total} lieux`,
+    clearSearch: "Effacer la recherche",
+    filters: "Filtres",
+    kinds: "Type de lieu",
+    all: "Tout",
+    count: (count: string, one: boolean) => `${count} ${one ? "lieu" : "lieux"}`,
+    loading: "Chargement de l'annuaire…",
+    in: (department: string) => ` à ${department}`,
+    clearAll: "Tout effacer",
+    emptyTitle: "Rien ici",
+    emptyBody: "Essayez un autre mot ou retirez un filtre.",
+    ask: "Demander à Ventanilla",
+    showMap: "Voir la carte",
+    showList: "Voir la liste",
+    closeFilters: "Fermer les filtres",
+    department: "Département",
+    country: "Tout le pays",
+    theme: "Thème",
+    guideLanguage: "Langue du guide",
+    registered: "Inscrits au RNT uniquement",
+    registeredHint: "Entreprises du Registre national du tourisme",
+    clear: "Effacer",
+    show: (count: string) => `Voir ${count} lieux`,
+  },
 };
 
 const hrefOf = (lang: Lang) => (row: IndexRow) => (row.k === "guide" ? guidePath(row.s, lang) : placePath({ slug: row.s }, lang));
@@ -106,9 +158,10 @@ function writeUrl(lang: Lang, filters: Filters, view: View) {
     return text ? `?${text}` : "";
   };
   history.replaceState(null, "", `${location.pathname}${query(lang)}`);
-  const other: Lang = lang === "en" ? "es" : "en";
-  const toggle = document.querySelector<HTMLAnchorElement>("[data-language-switch]");
-  if (toggle) toggle.href = `${sectionPath("explore", other)}${query(other)}`;
+  for (const option of document.querySelectorAll<HTMLAnchorElement>("[data-language-option]")) {
+    const to = option.dataset.languageOption as Lang;
+    option.href = `${sectionPath("explore", to)}${query(to)}`;
+  }
 }
 
 export default function ExploreApp({ total, lang }: { total: number; lang: Lang }) {

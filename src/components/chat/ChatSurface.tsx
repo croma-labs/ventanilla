@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { onSubmit, setBusy, setTextAppearing, submitQuestion, useChatPhase, type Origin, type Submission } from "../../lib/chat-store";
-import { languageOfText } from "../../lib/english";
+import { detectLanguage } from "../../lib/detect-language";
 import { copyOf, getLanguage, setLanguage, useCopy } from "../../lib/language";
 import { readUiMessageStream, type SearchData, type Turn } from "../../lib/ui-stream";
 import AssistantMessage, { type AssistantState } from "./AssistantMessage";
@@ -23,7 +23,7 @@ async function ask(turns: Turn[], signal: AbortSignal) {
   const response = await fetch("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ messages: turns }),
+    body: JSON.stringify({ messages: turns, language: getLanguage() }),
     signal,
     credentials: "omit",
     referrerPolicy: "no-referrer",
@@ -59,7 +59,7 @@ export default function ChatSurface() {
     controller.current?.abort();
     const abort = new AbortController();
     controller.current = abort;
-    const written = languageOfText(text);
+    const written = detectLanguage(text);
     if (written) setLanguage(written);
     const assistantId = uid();
     setItems((current) => [

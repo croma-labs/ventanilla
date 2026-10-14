@@ -38,7 +38,7 @@ export type Place = {
   photos: Photo[];
   point: Point | null;
   updatedAt: string;
-  en?: { description?: string; hours?: string };
+  i18n?: Partial<Record<Exclude<Lang, "es">, { description?: string; hours?: string }>>;
 };
 
 export type Happening = {

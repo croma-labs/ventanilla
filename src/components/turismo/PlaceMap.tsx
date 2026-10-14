@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import type { Lang } from "../../lib/turismo/labels";
+import { deFr, type Lang } from "../../lib/turismo/labels";
 import { createMap, pinElement } from "./map";
 
 type Pin = { lat: number; lng: number; name: string; href?: string };
+
+const MAP_OF: Record<Lang, (name: string) => string> = { es: (name) => `Mapa de ${name}`, en: (name) => `Map of ${name}`, pt: (name) => `Mapa de ${name}`, fr: (name) => `Carte ${deFr(name)}` };
 
 type Props = { place: Pin & { approximate: boolean }; around?: Pin[]; className?: string; zoom?: number; lang: Lang };
 
@@ -37,7 +39,7 @@ export default function PlaceMap({ place, around = [], className, zoom, lang }: 
 
   return (
     <div className={`relative overflow-hidden rounded-24 bg-surface-muted ${className ?? ""}`}>
-      <div ref={container} className="size-full" aria-label={lang === "en" ? `Map of ${place.name}` : `Mapa de ${place.name}`} role="region" />
+      <div ref={container} className="size-full" aria-label={MAP_OF[lang](place.name)} role="region" />
       {!ready && <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-surface-muted to-blue-50" aria-hidden="true" />}
     </div>
   );

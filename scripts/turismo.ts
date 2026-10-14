@@ -8,18 +8,18 @@ import type { Catalog, Happening, Kind, Photo, Place, Point, Precision, Social, 
 // entry on the map. The directory publishes no coordinates: destinations and
 // tourist sites are looked up by name, everything else sits at its town, and
 // every lookup is kept in src/countries/sv/turismo-geo.json so a build only
-// asks for what is new. Descriptions and hours are translated for /tourism the
-// same way, once per text, into src/countries/sv/turismo-en.json.
+// asks for what is new. Descriptions and hours are translated for the English,
+// Portuguese and French guides the same way, once per text, into
+// src/countries/sv/turismo-{en,pt,fr}.json.
 
 const OUT_DIR = ".turismo";
 const OUT = `${OUT_DIR}/catalog.json`;
 const GEO = "src/countries/sv/turismo-geo.json";
-const EN = "src/countries/sv/turismo-en.json";
 const base = process.env.CROMA_API_URL ?? "https://api.croma.run";
 const key = process.env.CROMA_API_KEY;
 const onVercel = !!process.env.VERCEL;
 const lookupBudget = Number(process.env.TURISMO_GEOCODE_MAX ?? (onVercel ? 40 : 800));
-const translateBudget = Number(process.env.TURISMO_TRANSLATE_MAX ?? (onVercel ? 30 : 1000));
+const translateBudget = Number(process.env.TURISMO_TRANSLATE_MAX ?? (onVercel ? 90 : 3000));
 const groqKey = process.env.GROQ_API_KEY;
 const TRANSLATOR = process.env.TURISMO_TRANSLATE_MODEL ?? "openai/gpt-oss-120b";
 const PER_PAGE = 50;
@@ -326,16 +326,25 @@ function uniqueSlugs(places: Place[]): Place[] {
   return places.map((entry) => ((seen.get(entry.slug) ?? 0) > 1 ? { ...entry, slug: `${entry.slug}-${entry.id}` } : entry));
 }
 
-// ─── English ───
+// ─── Translations ───
 
-const TRANSLATE = [
-  "You translate El Salvador's official tourism directory from Spanish into natural, polished US English for international travelers.",
-  "Keep proper names in Spanish: towns, beaches, volcanoes, lakes, parks, festivals, businesses and dishes (pupusas, yuca frita). Translate generic words around them (playa El Tunco becomes El Tunco beach).",
-  "Keep every line break, number, price, phone, time and URL exactly. Use a.m./p.m. times as written. Never use em dashes. Do not add, explain or summarize.",
-  "Answer with the translation only.",
-].join(" ");
+type Target = "en" | "pt" | "fr";
 
-const tidyEnglish = (text: string) =>
+const TARGETS: Record<Target, { file: string; reader: string; style: string }> = {
+  en: { file: "src/countries/sv/turismo-en.json", reader: "natural, polished US English", style: "Use a.m./p.m. times as written." },
+  pt: { file: "src/countries/sv/turismo-pt.json", reader: "natural European Portuguese, as written in Portugal (never Brazilian Portuguese)", style: "Write times as written in the source." },
+  fr: { file: "src/countries/sv/turismo-fr.json", reader: "natural, polished French, as written in France", style: "Write times as written in the source." },
+};
+
+const instructions = (target: Target) =>
+  [
+    `You translate El Salvador's official tourism directory from Spanish into ${TARGETS[target].reader} for international travelers.`,
+    "Keep proper names in Spanish: towns, beaches, volcanoes, lakes, parks, festivals, businesses and dishes (pupusas, yuca frita). Translate generic words around them.",
+    `Keep every line break, number, price, phone and URL exactly. ${TARGETS[target].style} Never use em dashes. Do not add, explain or summarize.`,
+    "Answer with the translation only.",
+  ].join(" ");
+
+const tidy = (text: string) =>
   text
     .replace(/\u2011/g, "-")
     .replace(/\s*\u2014\s*/g, ", ")
@@ -348,7 +357,7 @@ const fingerprint = (text: string) => createHash("sha256").update(text).digest("
 
 let translations = 0;
 
-async function english(text: string, cache: Record<string, string>): Promise<string | undefined> {
+async function translate(text: string, target: Target, cache: Record<string, string>): Promise<string | undefined> {
   const id = fingerprint(text);
   if (id in cache) return cache[id];
   if (!groqKey || translations >= translateBudget) return undefined;
@@ -358,7 +367,7 @@ async function english(text: string, cache: Record<string, string>): Promise<str
       const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: { Authorization: `Bearer ${groqKey}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ model: TRANSLATOR, reasoning_effort: "low", temperature: 0.2, messages: [{ role: "system", content: TRANSLATE }, { role: "user", content: text }] }),
+        body: JSON.stringify({ model: TRANSLATOR, reasoning_effort: "low", temperature: 0.2, messages: [{ role: "system", content: instructions(target) }, { role: "user", content: text }] }),
         signal: AbortSignal.timeout(120_000),
       });
       if (response.status === 429 || response.status >= 500) {
@@ -368,7 +377,7 @@ async function english(text: string, cache: Record<string, string>): Promise<str
       if (!response.ok) return undefined;
       const answer = ((await response.json()) as { choices: { message: { content: string | null } }[] }).choices[0]?.message.content?.trim();
       if (!answer || answer.length < text.length * 0.5) return undefined;
-      cache[id] = tidyEnglish(answer);
+      cache[id] = tidy(answer);
       return cache[id];
     } catch {
       await sleep(attempt * 3000);
@@ -377,17 +386,26 @@ async function english(text: string, cache: Record<string, string>): Promise<str
   return undefined;
 }
 
-async function inEnglish(places: Place[]): Promise<Place[]> {
-  const cache: Record<string, string> = existsSync(EN) ? JSON.parse(await readFile(EN, "utf8")) : {};
+/** Each place's description and hours in every target language, translated once and kept in a cache per language. */
+async function translated(places: Place[]): Promise<Place[]> {
   const texts = [...new Set(places.flatMap((entry) => [entry.description, entry.hours]).filter((text): text is string => !!text))];
-  await pool(texts, (text) => english(text, cache));
   const kept = new Set(texts.map(fingerprint));
-  const sorted = Object.fromEntries(Object.entries(cache).filter(([id]) => kept.has(id)).sort(([a], [b]) => a.localeCompare(b)).map(([id, text]) => [id, tidyEnglish(text)]));
-  await writeFile(EN, `${JSON.stringify(sorted, null, 1)}\n`);
-  const of = (text: string | null) => (text ? sorted[fingerprint(text)] : undefined);
+  const caches = {} as Record<Target, Record<string, string>>;
+  for (const target of Object.keys(TARGETS) as Target[]) {
+    const { file } = TARGETS[target];
+    const cache: Record<string, string> = existsSync(file) ? JSON.parse(await readFile(file, "utf8")) : {};
+    await pool(texts, (text) => translate(text, target, cache));
+    caches[target] = Object.fromEntries(Object.entries(cache).filter(([id]) => kept.has(id)).sort(([a], [b]) => a.localeCompare(b)).map(([id, text]) => [id, tidy(text)]));
+    await writeFile(file, `${JSON.stringify(caches[target], null, 1)}\n`);
+  }
   return places.map((entry) => {
-    const en = { description: of(entry.description), hours: of(entry.hours) };
-    return en.description || en.hours ? { ...entry, en } : entry;
+    const i18n: Place["i18n"] = {};
+    for (const target of Object.keys(TARGETS) as Target[]) {
+      const of = (text: string | null) => (text ? caches[target][fingerprint(text)] : undefined);
+      const text = { description: of(entry.description), hours: of(entry.hours) };
+      if (text.description || text.hours) i18n[target] = text;
+    }
+    return Object.keys(i18n).length ? { ...entry, i18n } : entry;
   });
 }
 
@@ -410,7 +428,7 @@ async function main() {
   for (const raw of rawPlaces) located.push(place(raw, await locate(raw, cache)));
   const sorted = Object.fromEntries(Object.entries(cache).sort(([a], [b]) => a.localeCompare(b)));
   await writeFile(GEO, `${JSON.stringify(sorted, null, 1)}\n`);
-  const catalog: Catalog = { syncedAt: new Date().toISOString(), places: await inEnglish(uniqueSlugs(located)), events: rawEvents.map(happening) };
+  const catalog: Catalog = { syncedAt: new Date().toISOString(), places: await translated(uniqueSlugs(located)), events: rawEvents.map(happening) };
   await mkdir(OUT_DIR, { recursive: true });
   await writeFile(OUT, JSON.stringify(catalog));
   const precision = located.reduce<Record<string, number>>((acc, entry) => ({ ...acc, [entry.point?.precision ?? "none"]: (acc[entry.point?.precision ?? "none"] ?? 0) + 1 }), {});

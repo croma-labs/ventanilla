@@ -34,6 +34,22 @@ const ROWS: Record<typeof lang, { theme: Theme; title: string; lead: string }[]>
     { theme: "archaeology", title: "Maya El Salvador", lead: "Tazumal, Joya de Cerén, San Andrés and Cihuatán." },
     { theme: "wellness", title: "Hot springs and wellness", lead: "Thermal waters and mountain retreats." },
   ],
+  pt: [
+    { theme: "surf_city", title: "Surf City", lead: "Ondas de classe mundial a uma hora da capital." },
+    { theme: "towns", title: "Vilas com encanto", lead: "Ruas de calçada, café, artesanato e festas populares." },
+    { theme: "nature_adventure", title: "Natureza e aventura", lead: "Vulcões, lagos, florestas nubladas e miradouros." },
+    { theme: "bitcoin", title: "Destinos Bitcoin", lead: "Onde nasceu a economia bitcoin do país." },
+    { theme: "archaeology", title: "El Salvador maia", lead: "Tazumal, Joya de Cerén, San Andrés e Cihuatán." },
+    { theme: "wellness", title: "Termas e bem-estar", lead: "Águas termais e descanso na montanha." },
+  ],
+  fr: [
+    { theme: "surf_city", title: "Surf City", lead: "Des vagues de classe mondiale à une heure de la capitale." },
+    { theme: "towns", title: "Villages de charme", lead: "Rues pavées, café, artisanat et fêtes patronales." },
+    { theme: "nature_adventure", title: "Nature et aventure", lead: "Volcans, lacs, forêts de nuages et belvédères." },
+    { theme: "bitcoin", title: "Destinations Bitcoin", lead: "Là où est née l'économie bitcoin du pays." },
+    { theme: "archaeology", title: "Le Salvador maya", lead: "Tazumal, Joya de Cerén, San Andrés et Cihuatán." },
+    { theme: "wellness", title: "Thermes et bien-être", lead: "Sources chaudes et repos en montagne." },
+  ],
 };
 const rows = ROWS[lang];
 const themed = rows
@@ -50,7 +66,8 @@ const quick = (["lodging", "restaurant", "surf_school", "guide", "transport", "a
 const surf = destinations.filter((place) => place.themes.includes("surf_city")).map((place) => place.name);
 const bitcoin = destinations.filter((place) => place.themes.includes("bitcoin")).map((place) => place.name);
 const guides = byKind.get("guide") ?? 0;
-const list = (names: string[], limit = 5) => (names.length <= 1 ? names.join("") : `${names.slice(0, limit - 1).join(", ")} ${lang === "en" ? "and" : "y"} ${names.slice(limit - 1, limit)[0] ?? names.at(-1)}`);
+const AND: Record<typeof lang, string> = { es: "y", en: "and", pt: "e", fr: "et" };
+const list = (names: string[], limit = 5) => (names.length <= 1 ? names.join("") : `${names.slice(0, limit - 1).join(", ")} ${AND[lang]} ${names.slice(limit - 1, limit)[0] ?? names.at(-1)}`);
 const COPY = {
   es: {
     title: "Turismo en El Salvador: playas, volcanes, hoteles y qué hacer | Ventanilla",
@@ -112,6 +129,68 @@ const COPY = {
     asks: ["What do I need to enter El Salvador as a tourist?", "How much can I bring in my luggage without paying duties?", "Recommend hotels near Lake Coatepeque"],
     faqTitle: "Frequently asked questions",
     footer: "Data from the official tourism directory and events calendar of El Salvador's Ministry of Tourism, accessed through Croma and updated daily. Ventanilla is an independent project and does not represent the Government of El Salvador.",
+  },
+  pt: {
+    title: "Guia de viagem de El Salvador: praias, vulcões, hotéis e o que fazer | Ventanilla",
+    description: `Planeie a sua viagem a El Salvador: praias de surf, vulcões, vilas coloniais, ${number(byKind.get("lodging") ?? 0)} alojamentos, ${number(byKind.get("restaurant") ?? 0)} restaurantes, guias certificados e eventos, com mapa e contactos.`,
+    page: "Guia de viagem de El Salvador",
+    pageDescription: `Praias, vulcões, vilas, hotéis, restaurantes, guias e eventos em El Salvador: ${number(total)} locais do diretório oficial do Ministério do Turismo.`,
+    region: "América Central",
+    faq: [
+      { q: "O que há para ver e fazer em El Salvador?", a: `O diretório oficial do Ministério do Turismo reúne ${number(total)} locais: ${destinations.length} destinos e atrações, ${number(byKind.get("lodging") ?? 0)} alojamentos, ${number(byKind.get("restaurant") ?? 0)} restaurantes, escolas de surf, transportes e ${number(guides)} guias turísticos certificados nos 14 departamentos.` },
+      surf.length ? { q: "Onde fazer surf em El Salvador?", a: `A Surf City é a costa de surf do país, com praias como ${list(surf)}. A maioria fica em La Libertad, a menos de uma hora de San Salvador.` } : null,
+      bitcoin.length ? { q: "O que são os Destinos Bitcoin?", a: `São destinos que o Ministério do Turismo promove pela sua ligação à bitcoin: ${list(bitcoin, bitcoin.length)}.` } : null,
+      { q: "Como encontro um guia turístico certificado?", a: `O diretório inclui ${number(guides)} guias certificados, de local, locais e nacionais, com os idiomas em que trabalham. Pode filtrá-los por departamento e idioma na secção de guias.` },
+      { q: "Este é o site oficial de turismo de El Salvador?", a: "Não. A Ventanilla é um projeto independente. As suas páginas de turismo são criadas todos os dias a partir do diretório oficial e da agenda do Ministério do Turismo, consultados através da Croma." },
+    ],
+    hero: { image: "Praia de El Tunco ao pôr do sol", eyebrow: "Guia de viagem de El Salvador", title: "El Salvador, de perto.", lead: `Praias, vulcões, vilas e a sua gente: ${number(total)} locais do diretório oficial, com mapa e contactos.`, search: "Pesquise ou pergunte o que quiser" },
+    prompts: ["Onde fazer surf se for principiante?", "Um dia na Ruta de las Flores", "O que fazer em Suchitoto?"],
+    themes: "Temas",
+    soon: "Em breve",
+    soonLead: "Festivais, feiras e eventos da agenda oficial.",
+    agenda: "Ver agenda",
+    seeAll: "Ver tudo",
+    plan: "Planeie a sua viagem",
+    inDirectory: "no diretório",
+    departments: "Os 14 departamentos",
+    departmentsLead: "Cada canto do país, da costa à montanha.",
+    places: "locais",
+    askTitle: "Tem uma pergunta?",
+    askBody: "A Ventanilla responde em português com o diretório oficial de turismo e fontes do Estado: requisitos de entrada, alfândega, transportes e o que visitar.",
+    asks: ["O que preciso para entrar em El Salvador como turista?", "Quanto posso trazer na bagagem sem pagar impostos?", "Recomende-me hotéis perto do lago de Coatepeque"],
+    faqTitle: "Perguntas frequentes",
+    footer: "Dados do diretório oficial de turismo e da agenda do Ministério do Turismo de El Salvador, consultados através da Croma e atualizados diariamente. A Ventanilla é um projeto independente e não representa o Governo de El Salvador.",
+  },
+  fr: {
+    title: "Guide de voyage du Salvador : plages, volcans, hôtels et que faire | Ventanilla",
+    description: `Préparez votre voyage au Salvador : plages de surf, volcans, villages coloniaux, ${number(byKind.get("lodging") ?? 0)} hébergements, ${number(byKind.get("restaurant") ?? 0)} restaurants, guides certifiés et événements, avec carte et coordonnées.`,
+    page: "Guide de voyage du Salvador",
+    pageDescription: `Plages, volcans, villages, hôtels, restaurants, guides et événements au Salvador : ${number(total)} lieux de l'annuaire officiel du ministère du Tourisme.`,
+    region: "Amérique centrale",
+    faq: [
+      { q: "Que voir et que faire au Salvador ?", a: `L'annuaire officiel du ministère du Tourisme recense ${number(total)} lieux : ${destinations.length} destinations et sites, ${number(byKind.get("lodging") ?? 0)} hébergements, ${number(byKind.get("restaurant") ?? 0)} restaurants, des écoles de surf, des transports et ${number(guides)} guides touristiques certifiés dans les 14 départements.` },
+      surf.length ? { q: "Où surfer au Salvador ?", a: `Surf City est la côte du surf du pays, avec des plages comme ${list(surf)}. La plupart se trouvent à La Libertad, à moins d'une heure de San Salvador.` } : null,
+      bitcoin.length ? { q: "Que sont les Destinations Bitcoin ?", a: `Ce sont des destinations que le ministère du Tourisme met en avant pour leur lien avec le bitcoin : ${list(bitcoin, bitcoin.length)}.` } : null,
+      { q: "Comment trouver un guide touristique certifié ?", a: `L'annuaire compte ${number(guides)} guides certifiés, de site, locaux et nationaux, avec les langues dans lesquelles ils travaillent. Vous pouvez les filtrer par département et par langue dans la section des guides.` },
+      { q: "Est-ce le site officiel du tourisme au Salvador ?", a: "Non. Ventanilla est un projet indépendant. Ses pages touristiques sont générées chaque jour à partir de l'annuaire officiel et de l'agenda du ministère du Tourisme, consultés via Croma." },
+    ],
+    hero: { image: "La plage d'El Tunco au coucher du soleil", eyebrow: "Guide de voyage du Salvador", title: "Le Salvador, de près.", lead: `Plages, volcans, villages et leurs habitants : ${number(total)} lieux de l'annuaire officiel, avec carte et coordonnées.`, search: "Cherchez ou posez votre question" },
+    prompts: ["Où surfer quand on débute ?", "Une journée sur la Ruta de las Flores", "Que faire à Suchitoto ?"],
+    themes: "Thèmes",
+    soon: "À venir",
+    soonLead: "Festivals, foires et événements de l'agenda officiel.",
+    agenda: "Voir l'agenda",
+    seeAll: "Tout voir",
+    plan: "Préparez votre voyage",
+    inDirectory: "dans l'annuaire",
+    departments: "Les 14 départements",
+    departmentsLead: "Chaque recoin du pays, de la côte à la montagne.",
+    places: "lieux",
+    askTitle: "Une question ?",
+    askBody: "Ventanilla répond en français à partir de l'annuaire officiel du tourisme et des sources de l'État : conditions d'entrée, douane, transports et que visiter.",
+    asks: ["De quoi ai-je besoin pour entrer au Salvador en tant que touriste ?", "Combien puis-je apporter dans mes bagages sans payer de taxes ?", "Recommandez-moi des hôtels près du lac de Coatepeque"],
+    faqTitle: "Questions fréquentes",
+    footer: "Données de l'annuaire officiel du tourisme et de l'agenda du ministère du Tourisme du Salvador, consultées via Croma et mises à jour chaque jour. Ventanilla est un projet indépendant et ne représente pas le gouvernement du Salvador.",
   },
 }[lang];
 const faq = COPY.faq.filter((entry): entry is { q: string; a: string } => entry !== null);

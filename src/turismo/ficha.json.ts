@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
-import { directionsHref, phoneLabel, placePath, places, standIn, telHref, textOf, wazeHref } from "../lib/turismo/catalog";
+import { directionsHref, LANGS, phoneLabel, placePath, places, standIn, telHref, textOf, wazeHref } from "../lib/turismo/catalog";
 import { picture } from "../lib/turismo/images";
+import type { Lang } from "../lib/turismo/labels";
 import type { Ficha, Place } from "../lib/turismo/types";
 
 export const getStaticPaths = () => places.filter((place) => place.kind !== "guide").map((place) => ({ params: { slug: place.slug }, props: { place } }));
@@ -19,11 +20,11 @@ const lead = (text: string | null, limit = 260) => {
 /** One place as the chat draws it: a card in the answer and a sheet when tapped. */
 export const GET: APIRoute = async ({ props }) => {
   const { place } = props as { place: Place };
-  const own = place.photos.length > 0;
-  const sources = own ? place.photos.slice(0, 8).map((photo) => photo.src) : [standIn(place)].filter((src): src is string => !!src);
+  const ownPhotos = place.photos.length > 0;
+  const sources = ownPhotos ? place.photos.slice(0, 8).map((photo) => photo.src) : [standIn(place)].filter((src): src is string => !!src);
   const photos = (await Promise.all(sources.map((src) => picture(src, [480, 960])))).filter((photo) => photo !== null);
-  const es = textOf(place, "es");
-  const en = textOf(place, "en");
+  const texts = LANGS.map((lang) => [lang, textOf(place, lang)] as const);
+  const own = <T>(pick: (text: ReturnType<typeof textOf>, lang: Lang) => T) => Object.fromEntries(texts.map(([lang, text]) => [lang, pick(text, lang)])) as Record<Lang, T>;
   const ficha: Ficha = {
     slug: place.slug,
     name: place.name,
@@ -31,9 +32,9 @@ export const GET: APIRoute = async ({ props }) => {
     registered: place.registered,
     municipality: place.municipality,
     department: place.department,
-    summary: { es: lead(es.description), en: lead(en.descriptionLang === "en" ? en.description : null) },
-    description: { es: es.description, en: en.descriptionLang === "en" ? en.description : null },
-    hours: { es: es.hours, en: en.hoursLang === "en" ? en.hours : null },
+    summary: own((text, lang) => lead(text.descriptionLang === lang ? text.description : null)),
+    description: own((text, lang) => (text.descriptionLang === lang ? text.description : null)),
+    hours: own((text, lang) => (text.hoursLang === lang ? text.hours : null)),
     phones: place.phones.map((phone) => ({ href: telHref(phone), label: phoneLabel(phone) })),
     whatsapp: place.whatsapp,
     emails: place.emails,
@@ -41,11 +42,11 @@ export const GET: APIRoute = async ({ props }) => {
     address: place.address,
     socials: place.socials,
     photos,
-    ownPhotos: own,
+    ownPhotos,
     point: place.point,
     directions: directionsHref(place),
     waze: wazeHref(place),
-    pages: { es: placePath(place, "es"), en: placePath(place, "en") },
+    pages: own((_, lang) => placePath(place, lang)),
   };
   return new Response(JSON.stringify(ficha), { headers: { "Content-Type": "application/json; charset=utf-8" } });
 };

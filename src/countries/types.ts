@@ -5,7 +5,7 @@ export type HeroCard = { slug: string; title: string; prompt: string; alt: strin
 export type FeatureRow = { key: "ask" | "privacy" | "sources" | "browser"; title: string; body: string; cta: string; href?: string };
 
 /** `chip` is what the sources button reads when this is the only source; the domain otherwise. */
-export type Entity = { name: string; short: string; iconFrom?: string; chip?: { es: string; en: string } };
+export type Entity = { name: string; short: string; iconFrom?: string; chip?: Partial<Record<"es" | "en" | "pt" | "fr", string>> };
 
 export type Link = { label: string; href: string };
 
@@ -65,8 +65,8 @@ export type Site = {
   liveIcons: boolean;
   pii: readonly Detector[];
   nav: { primary: readonly Link[]; legal: readonly Link[] };
-  /** The site in English: the frame of the pages that have an English version, and the chat when a visitor writes in English. */
-  english?: English;
+  /** The site in other languages: the frame of the pages translated into them, and the chat when a visitor writes in one. */
+  languages?: Partial<Record<"en" | "pt" | "fr", Translation>>;
   ui: Record<
     | "askAnything"
     | "answered"
@@ -121,7 +121,7 @@ export type Site = {
   disclaimers: { privacy: { title: string; items: readonly { heading: string; body: string }[] }; ai: { title: string; items: readonly { heading: string; body: string }[] } };
 };
 
-export type English = Chrome & {
+export type Translation = Chrome & {
   chatTitle: string;
   ui: Partial<Site["ui"]>;
   pending: Site["pending"];
