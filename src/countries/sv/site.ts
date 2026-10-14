@@ -161,7 +161,7 @@ export const site: Site = {
     "investinelsalvador.gob.sv": { name: "Invest in El Salvador", short: "IN", iconFrom: "invest.gob.sv" },
     "transparencia.gob.sv": { name: "Portal de Transparencia", short: "TR" },
     "elsalvador.travel": { name: "Ministerio de Turismo", short: "MT" },
-    "sv.usecroma.com": { name: "Turismo en El Salvador", short: "TU", iconFrom: "elsalvador.travel" },
+    "sv.usecroma.com": { name: "Turismo en El Salvador", short: "TU", iconFrom: "elsalvador.travel", chip: { es: "Turismo en El Salvador", en: "El Salvador tourism guide" } },
     "mitur.gob.sv": { name: "Ministerio de Turismo", short: "MT", iconFrom: "elsalvador.travel" },
   },
   officialSuffixes: [".gob.sv", "simple.sv", "sertracen.com.sv"],

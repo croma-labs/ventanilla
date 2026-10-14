@@ -1,5 +1,5 @@
 import { Dialog } from "@base-ui/react/dialog";
-import { useCopy } from "../../lib/language";
+import { useCopy, useLanguage } from "../../lib/language";
 import { motion } from "motion/react";
 import type { Grounding } from "../../lib/ui-stream";
 import { cn } from "../../lib/cn";
@@ -16,9 +16,11 @@ const label = (domain: string) => domain.charAt(0).toUpperCase() + domain.slice(
 
 export function SourcesChip({ groundings }: { groundings: Grounding[] }) {
   const { ui } = useCopy();
+  const language = useLanguage();
   const groups = groupByAgency(groundings);
   const badges = groups.slice(0, 3);
-  const name = groups.length === 1 ? label(groups[0].domain) : ui.sources;
+  const only = groups.length === 1 ? groups[0] : null;
+  const name = only ? (only.agency.chip?.[language] ?? label(only.domain)) : ui.sources;
   return (
     <Dialog.Root>
       <motion.div initial={{ width: 0 }} animate={{ width: "auto" }} transition={{ duration: 0.6, ease: outQuint }} className="flex shrink-0 overflow-clip focus-within:overflow-visible">
