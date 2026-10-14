@@ -1,0 +1,62 @@
+---
+import EventCard from "../components/turismo/EventCard.astro";
+import { upcoming } from "../lib/turismo/catalog";
+import type { Happening } from "../lib/turismo/types";
+import Layout from "./Layout.astro";
+
+const origin = Astro.site ?? new URL(Astro.url.origin);
+const url = new URL("/turismo/eventos", origin).href;
+const all = upcoming();
+const months = new Map<string, Happening[]>();
+for (const event of all) {
+  const key = (event.start ?? "").slice(0, 7);
+  months.set(key, [...(months.get(key) ?? []), event]);
+}
+const monthLabel = (key: string) => new Intl.DateTimeFormat("es-SV", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${key}-15T12:00:00Z`));
+const description = `${all.length} eventos próximos en El Salvador: festivales, ferias, conciertos y fiestas de la agenda oficial del Ministerio de Turismo, con fechas y lugares.`;
+const schema = [
+  {
+    "@type": "CollectionPage",
+    "@id": `${url}#page`,
+    url,
+    name: "Agenda de eventos en El Salvador",
+    description,
+    inLanguage: "es-SV",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: all.map((event, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Event",
+          name: event.name,
+          url: `${url}#${event.slug}`,
+          ...(event.start ? { startDate: event.start, endDate: event.end ?? event.start } : {}),
+          eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+          eventStatus: "https://schema.org/EventScheduled",
+          location: { "@type": "Place", name: event.venue ?? event.department ?? "El Salvador", address: { "@type": "PostalAddress", ...(event.department ? { addressRegion: event.department } : {}), addressCountry: "SV" } },
+          ...(event.links.length ? { sameAs: event.links.map((link) => link.url) } : {}),
+        },
+      })),
+    },
+  },
+];
+---
+
+<Layout title="Eventos en El Salvador: festivales, ferias y conciertos | Ventanilla" description={description} current="eventos" schema={schema}>
+  <header class="mt-6">
+    <h1 class="font-serif-display text-[clamp(2.4rem,7vw,4rem)] leading-[0.95] tracking-[-0.02em]">Agenda de El Salvador</h1>
+    <p class="mt-3 max-w-[52ch] text-[17px] text-text-secondary">{all.length} eventos que aún no terminan, de la agenda oficial del Ministerio de Turismo. Agrégalos a tu calendario con un toque.</p>
+  </header>
+  {
+    [...months.entries()].map(([key, items]) => (
+      <section class="mt-10" aria-labelledby={`mes-${key}`}>
+        <h2 id={`mes-${key}`} class="sticky top-14 z-10 -mx-4 bg-background-primary/90 px-4 py-2 font-serif-display text-[2rem] leading-none capitalize backdrop-blur mobile:-mx-6 mobile:px-6">{monthLabel(key)}</h2>
+        <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 site-desktop:grid-cols-3">
+          {items.map((event) => <EventCard event={event} />)}
+        </div>
+      </section>
+    ))
+  }
+  {all.length === 0 && <p class="mt-10 text-[17px] text-text-secondary">No hay eventos próximos en la agenda oficial por ahora.</p>}
+</Layout>

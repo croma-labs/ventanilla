@@ -1,0 +1,203 @@
+---
+import EventCard from "../components/turismo/EventCard.astro";
+import KindIcon from "../components/turismo/KindIcon";
+import PlaceCard from "../components/turismo/PlaceCard.astro";
+import TurismoSearch from "../components/turismo/TurismoSearch";
+import { byDepartment, counts, departmentPath, DEPARTMENT_LEAD, DEPARTMENTS, KIND_LABEL, places, placePath, THEME_LABEL, upcoming } from "../lib/turismo/catalog";
+import { picture } from "../lib/turismo/images";
+import type { Kind, Theme } from "../lib/turismo/types";
+import { focusRing } from "../lib/ui";
+import Layout from "./Layout.astro";
+
+const origin = Astro.site ?? new URL(Astro.url.origin);
+const url = new URL("/turismo", origin).href;
+const total = places.length;
+const byKind = counts();
+const soon = upcoming().slice(0, 10);
+const destinations = places.filter((place) => place.kind === "destination" || place.kind === "attraction");
+const rows: { theme: Theme; title: string; lead: string }[] = [
+  { theme: "surf_city", title: "Surf City", lead: "Olas de clase mundial a una hora de la capital." },
+  { theme: "towns", title: "Pueblos con encanto", lead: "Calles empedradas, café, artesanía y fiestas patronales." },
+  { theme: "nature_adventure", title: "Naturaleza y aventura", lead: "Volcanes, lagos, bosques nublados y miradores." },
+  { theme: "bitcoin", title: "Destinos Bitcoin", lead: "Donde nació la economía bitcoin del país." },
+  { theme: "archaeology", title: "El Salvador maya", lead: "Tazumal, Joya de Cerén, San Andrés y Cihuatán." },
+  { theme: "wellness", title: "Termales y bienestar", lead: "Aguas termales y descanso en la montaña." },
+];
+const themed = rows
+  .map((row) => ({ ...row, items: destinations.filter((place) => place.themes.includes(row.theme)).sort((a, b) => b.photos.length - a.photos.length).slice(0, 10) }))
+  .filter((row) => row.items.length);
+const departments = await Promise.all(
+  DEPARTMENTS.map(async (name) => {
+    const here = byDepartment(name);
+    const lead = here.find((place) => place.photos.length && place.kind === "destination") ?? here.find((place) => place.photos.length);
+    return { name, count: here.length, lead: DEPARTMENT_LEAD[name], photo: await picture(lead?.photos[0]?.src, [480, 800]) };
+  }),
+);
+const quick = (["lodging", "restaurant", "surf_school", "guide", "transport", "attraction"] as Kind[]).filter((kind) => (byKind.get(kind) ?? 0) > 0);
+const prompts = ["¿Dónde surfear si soy principiante?", "Un día en la Ruta de las Flores", "¿Qué hacer en Suchitoto?"];
+
+const surf = destinations.filter((place) => place.themes.includes("surf_city")).map((place) => place.name);
+const bitcoin = destinations.filter((place) => place.themes.includes("bitcoin")).map((place) => place.name);
+const list = (names: string[], limit = 5) => (names.length <= 1 ? names.join("") : `${names.slice(0, limit - 1).join(", ")} y ${names.slice(limit - 1, limit)[0] ?? names.at(-1)}`);
+const faq = [
+  {
+    q: "¿Qué lugares turísticos hay en El Salvador?",
+    a: `El directorio oficial del Ministerio de Turismo reúne ${total.toLocaleString("es-SV")} lugares: ${destinations.length} destinos y sitios turísticos, ${(byKind.get("lodging") ?? 0).toLocaleString("es-SV")} opciones de hospedaje, ${(byKind.get("restaurant") ?? 0).toLocaleString("es-SV")} restaurantes, escuelas de surf, transporte y ${(byKind.get("guide") ?? 0).toLocaleString("es-SV")} guías de turismo certificados en los 14 departamentos.`,
+  },
+  surf.length ? { q: "¿Dónde surfear en El Salvador?", a: `Surf City agrupa las playas de surf del país, entre ellas ${list(surf)}. La mayoría están en La Libertad, a menos de una hora de San Salvador.` } : null,
+  bitcoin.length ? { q: "¿Qué son los Destinos Bitcoin?", a: `Son destinos que el Ministerio de Turismo promueve por su relación con bitcoin: ${list(bitcoin, bitcoin.length)}.` } : null,
+  { q: "¿Cómo encuentro un guía de turismo certificado?", a: `El directorio incluye ${(byKind.get("guide") ?? 0).toLocaleString("es-SV")} guías certificados, de sitio, locales y nacionales, con los idiomas en que trabajan. Puedes filtrarlos por departamento e idioma en la sección de guías.` },
+].filter((entry): entry is { q: string; a: string } => entry !== null);
+
+const schema = [
+  {
+    "@type": "CollectionPage",
+    "@id": `${url}#page`,
+    url,
+    name: "Turismo en El Salvador",
+    description: `Playas, volcanes, pueblos, hoteles, restaurantes, guías y eventos de El Salvador: ${total.toLocaleString("es-SV")} lugares del directorio oficial del Ministerio de Turismo.`,
+    inLanguage: "es-SV",
+    about: { "@type": "TouristDestination", name: "El Salvador", containedInPlace: { "@type": "Continent", name: "América Central" } },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: destinations.slice(0, 30).map((place, index) => ({ "@type": "ListItem", position: index + 1, name: place.name, url: new URL(placePath(place), origin).href })),
+    },
+  },
+  { "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: faq.map((entry) => ({ "@type": "Question", name: entry.q, acceptedAnswer: { "@type": "Answer", text: entry.a } })) },
+];
+const description = `Planea tu viaje a El Salvador: playas de surf, volcanes, pueblos, ${(byKind.get("lodging") ?? 0).toLocaleString("es-SV")} hospedajes, ${(byKind.get("restaurant") ?? 0).toLocaleString("es-SV")} restaurantes, guías certificados y eventos, con mapa y contactos.`;
+const link = `rounded-4 underline-offset-4 hover:underline ${focusRing}`;
+---
+
+<Layout title="Turismo en El Salvador: playas, volcanes, hoteles y qué hacer | Ventanilla" description={description} current="inicio" schema={schema} image={{ path: "/hero/sv/el-tunco.webp", width: 1344, height: 896, alt: "Playa El Tunco al atardecer" }}>
+  <section slot="hero" class="relative isolate -mt-24 mb-2 flex min-h-[86svh] items-end overflow-hidden mobile:-mt-36 mobile:min-h-[78svh]" aria-labelledby="turismo-title">
+    <img
+      src="/hero/sv/el-tunco.webp"
+      srcset="/hero/sv/el-tunco-640.webp 640w, /hero/sv/el-tunco-800.webp 800w, /hero/sv/el-tunco.webp 1344w"
+      sizes="100vw"
+      alt="Playa El Tunco al atardecer"
+      width="1344"
+      height="896"
+      fetchpriority="high"
+      class="absolute inset-0 -z-10 size-full object-cover"
+    />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#050b1c] via-[#050b1c]/55 to-[#050b1c]/10"></div>
+    <div class="mx-auto w-full max-w-[860px] px-4 pt-40 pb-12 text-center text-white mobile:px-6 mobile:pb-16">
+      <p class="text-[13px] font-semibold tracking-[0.18em] text-white/75 uppercase">Turismo en El Salvador</p>
+      <h1 id="turismo-title" class="mt-3 font-serif-display text-[clamp(3.2rem,12vw,6.5rem)] leading-[0.92] tracking-[-0.025em] text-balance">El Salvador, de cerca.</h1>
+      <p class="mx-auto mt-5 max-w-[34ch] text-[18px] leading-snug text-pretty text-white/85 mobile:text-[20px]">
+        Playas, volcanes, pueblos y su gente: {total.toLocaleString("es-SV")} lugares del directorio oficial, con mapa y contactos.
+      </p>
+      <div class="mx-auto mt-8 max-w-[620px]">
+        <TurismoSearch client:load placeholder="Busca o pregunta lo que quieras" prompts={prompts} />
+      </div>
+    </div>
+  </section>
+
+  <nav aria-label="Temáticas" class="mt-6">
+    <ul class="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] mobile:-mx-6 mobile:px-6 [&::-webkit-scrollbar]:hidden">
+      {rows.map((row) => <li class="shrink-0"><a href={`/turismo/explorar?tema=${row.theme}`} class={`inline-flex h-10 items-center rounded-full border border-border-tertiary px-4 text-[14px] font-medium hover:bg-surface-muted ${focusRing}`}>{THEME_LABEL[row.theme]}</a></li>)}
+    </ul>
+  </nav>
+
+  {
+    soon.length > 0 && (
+      <section class="mt-14" aria-labelledby="pronto">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h2 id="pronto" class="font-serif-display text-[2.4rem] leading-none">Qué hay pronto</h2>
+            <p class="mt-2 text-[15px] text-text-secondary">Festivales, ferias y eventos de la agenda oficial.</p>
+          </div>
+          <a href="/turismo/eventos" class={`shrink-0 text-[15px] font-medium ${link}`}>Ver agenda</a>
+        </div>
+        <div class="-mx-4 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] mobile:-mx-6 mobile:px-6 [&::-webkit-scrollbar]:hidden">
+          {soon.map((event) => <EventCard event={event} variant="compact" />)}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    themed.map((row) => (
+      <section class="mt-14" aria-labelledby={`tema-${row.theme}`}>
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h2 id={`tema-${row.theme}`} class="font-serif-display text-[2.4rem] leading-none">{row.title}</h2>
+            <p class="mt-2 text-[15px] text-text-secondary">{row.lead}</p>
+          </div>
+          <a href={`/turismo/explorar?tema=${row.theme}`} class={`shrink-0 text-[15px] font-medium ${link}`}>Ver todo</a>
+        </div>
+        <div class="-mx-4 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] mobile:-mx-6 mobile:px-6 [&::-webkit-scrollbar]:hidden">
+          {row.items.map((place) => <PlaceCard place={place} variant="compact" />)}
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="mt-16" aria-labelledby="planea">
+    <h2 id="planea" class="font-serif-display text-[2.4rem] leading-none">Planea tu viaje</h2>
+    <ul class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {
+        quick.map((kind) => (
+          <li>
+            <a href={kind === "guide" ? "/turismo/guias" : `/turismo/explorar?tipo=${kind}`} class={`flex h-full flex-col gap-3 rounded-24 bg-surface-muted p-4 transition-colors hover:bg-background-secondary ${focusRing}`}>
+              <span class="inline-flex size-11 items-center justify-center rounded-full bg-white shadow-sm"><KindIcon kind={kind} size={20} /></span>
+              <span class="font-serif-display text-[1.45rem] leading-none">{KIND_LABEL[kind].many}</span>
+              <span class="text-[13px] text-text-secondary">{(byKind.get(kind) ?? 0).toLocaleString("es-SV")} en el directorio</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-16" aria-labelledby="departamentos">
+    <h2 id="departamentos" class="font-serif-display text-[2.4rem] leading-none">Los 14 departamentos</h2>
+    <p class="mt-2 text-[15px] text-text-secondary">Cada rincón del país, de la costa a la montaña.</p>
+    <ul class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 site-desktop:grid-cols-3">
+      {
+        departments.map((department) => (
+          <li>
+            <a href={departmentPath(department.name)} class={`group relative flex aspect-[5/3] overflow-hidden rounded-24 bg-blue-700 ${focusRing}`}>
+              {department.photo && <img src={department.photo.src} srcset={department.photo.srcset} sizes="(min-width: 1145px) 380px, (min-width: 640px) 45vw, 92vw" alt="" width="800" height="533" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover transition-transform duration-500 ease-out-quint group-hover:scale-[1.04]" />}
+              <span class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <span class="relative mt-auto flex flex-col gap-1 p-5 text-white">
+                <span class="font-serif-display text-[2rem] leading-none">{department.name}</span>
+                <span class="text-[14px] text-pretty text-white/85">{department.lead}</span>
+                <span class="mt-1 text-[12px] font-medium text-white/70">{department.count.toLocaleString("es-SV")} lugares</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-16 overflow-hidden rounded-32 bg-blue-700 p-6 text-white mobile:p-10" aria-labelledby="pregunta">
+    <h2 id="pregunta" class="font-serif-display text-[clamp(2.2rem,6vw,3.2rem)] leading-[0.98]">¿Tienes una pregunta?</h2>
+    <p class="mt-3 max-w-[46ch] text-[16px] text-white/75">Ventanilla responde con el directorio oficial de turismo y fuentes del Estado: requisitos de entrada, aduanas, transporte y qué visitar.</p>
+    <ul class="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+      {
+        ["¿Qué necesito para entrar a El Salvador como turista?", "¿Cuánto equipaje puedo traer sin pagar impuestos?", "Recomiéndame hoteles cerca del lago de Coatepeque"].map((prompt) => (
+          <li><a href={`/?q=${encodeURIComponent(prompt)}`} rel="nofollow" class={`inline-flex rounded-full bg-white/10 px-4 py-2.5 text-[15px] ring-1 ring-white/20 transition-colors hover:bg-white/20 ${focusRing}`}>{prompt}</a></li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-16" aria-labelledby="faq">
+    <h2 id="faq" class="font-serif-display text-[2.4rem] leading-none">Preguntas frecuentes</h2>
+    <dl class="mt-5 divide-y divide-border-quaternary rounded-24 border border-border-quaternary">
+      {faq.map((entry) => (
+        <div class="p-5">
+          <dt class="font-medium">{entry.q}</dt>
+          <dd class="mt-1.5 text-[15px] leading-relaxed text-text-secondary">{entry.a}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <p class="mt-12 max-w-[68ch] text-[13px] leading-relaxed text-text-tertiary">
+    Datos del directorio oficial de turismo y la agenda del Ministerio de Turismo de El Salvador, consultados a través de Croma y actualizados a diario. Ventanilla es un proyecto independiente y no representa al Gobierno de El Salvador.
+  </p>
+</Layout>

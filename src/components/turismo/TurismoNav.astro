@@ -1,0 +1,33 @@
+---
+import { focusRing } from "../../lib/ui";
+
+interface Props {
+  current: "inicio" | "explorar" | "eventos" | "guias" | null;
+}
+
+const { current } = Astro.props;
+const tabs = [
+  { key: "inicio", label: "Inicio", href: "/turismo" },
+  { key: "explorar", label: "Explorar y mapa", href: "/turismo/explorar" },
+  { key: "eventos", label: "Eventos", href: "/turismo/eventos" },
+  { key: "guias", label: "Guías", href: "/turismo/guias" },
+] as const;
+---
+
+<nav aria-label="Turismo" class="sticky top-0 z-20 -mx-4 border-b border-border-quaternary bg-background-primary/85 px-4 backdrop-blur-xl mobile:-mx-6 mobile:px-6">
+  <ul class="flex gap-1 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    {
+      tabs.map((tab) => (
+        <li class="shrink-0">
+          <a
+            href={tab.href}
+            aria-current={current === tab.key ? "page" : undefined}
+            class={`inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium transition-colors ${current === tab.key ? "bg-blue-700 text-white" : "text-text-secondary hover:bg-surface-muted hover:text-text-primary"} ${focusRing}`}
+          >
+            {tab.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

@@ -161,14 +161,16 @@ export const site: Site = {
     "investinelsalvador.gob.sv": { name: "Invest in El Salvador", short: "IN", iconFrom: "invest.gob.sv" },
     "transparencia.gob.sv": { name: "Portal de Transparencia", short: "TR" },
     "elsalvador.travel": { name: "Ministerio de Turismo", short: "MT" },
+    "sv.usecroma.com": { name: "Turismo en El Salvador", short: "TU", iconFrom: "elsalvador.travel" },
     "mitur.gob.sv": { name: "Ministerio de Turismo", short: "MT", iconFrom: "elsalvador.travel" },
   },
-  officialSuffixes: [".gob.sv", "simple.sv", "sertracen.com.sv", "elsalvador.travel"],
+  officialSuffixes: [".gob.sv", "simple.sv", "sertracen.com.sv"],
   liveIcons: false,
   pii: detectors,
   nav: {
     primary: [
       { label: "Trámites", href: "/tramites" },
+      { label: "Turismo", href: "/turismo" },
       { label: "Cómo funciona", href: "/#how-it-works" },
       { label: "Privacidad", href: "/#privacidad" },
       { label: "Datos por Croma", href: "https://usecroma.com" },

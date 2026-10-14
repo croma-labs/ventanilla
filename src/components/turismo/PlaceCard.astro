@@ -1,0 +1,60 @@
+---
+import { KIND_LABEL, placePath, standIn, THEME_LABEL } from "../../lib/turismo/catalog";
+import { picture } from "../../lib/turismo/images";
+import type { Place } from "../../lib/turismo/types";
+import { focusRing } from "../../lib/ui";
+import KindIcon from "./KindIcon";
+
+interface Props {
+  place: Place;
+  /** Wide cards lead a row; compact ones fill a scroller. */
+  variant?: "default" | "compact";
+}
+
+const { place, variant = "default" } = Astro.props;
+const own = place.photos.length > 0;
+const photo = await picture(own ? place.photos[0].src : standIn(place), [400, 640]);
+const where = [place.municipality, place.department].filter(Boolean).join(", ");
+const theme = place.themes[0];
+const width = variant === "compact" ? "w-[72vw] max-w-[300px] shrink-0 snap-start" : "";
+---
+
+<a href={placePath(place)} class={`group flex flex-col overflow-hidden rounded-24 border border-border-quaternary bg-background-primary transition-[box-shadow,transform] duration-300 ease-out-quint hover:-translate-y-0.5 hover:shadow-elevation-1 ${width} ${focusRing}`}>
+  <span class="relative block aspect-4/3 overflow-hidden bg-surface-muted">
+    {
+      photo ? (
+        <img
+          src={photo.src}
+          srcset={photo.srcset}
+          sizes={variant === "compact" ? "300px" : "(min-width: 1145px) 380px, (min-width: 640px) 45vw, 92vw"}
+          alt={own ? place.name : ""}
+          width="640"
+          height="427"
+          loading="lazy"
+          decoding="async"
+          class={`size-full object-cover transition-transform duration-500 ease-out-quint group-hover:scale-[1.03] ${own ? "" : "opacity-80 saturate-[.85]"}`}
+        />
+      ) : (
+        <span class="flex size-full items-center justify-center bg-gradient-to-br from-blue-50 via-surface-muted to-[#fdf3dc]">
+          <KindIcon kind={place.kind} size={44} className="text-text-tertiary" />
+        </span>
+      )
+    }
+    <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/92 px-2.5 py-1 text-[12px] font-medium text-text-primary shadow-sm backdrop-blur">
+      <KindIcon kind={place.kind} size={13} />
+      {KIND_LABEL[place.kind].one}
+    </span>
+    {
+      place.registered && (
+        <span class="absolute top-3 right-3 rounded-full bg-blue-700/90 px-2 py-1 text-[11px] font-semibold tracking-wide text-white backdrop-blur" title="Inscrito en el Registro Nacional de Turismo">
+          RNT
+        </span>
+      )
+    }
+  </span>
+  <span class="flex flex-1 flex-col gap-1.5 p-4">
+    <span class="font-serif-display text-[1.45rem] leading-[1.05] text-balance text-text-primary">{place.name}</span>
+    {where && <span class="text-[13px] text-text-secondary">{where}</span>}
+    {theme && <span class="mt-auto pt-2 text-[12px] font-medium text-blue-500">{THEME_LABEL[theme]}</span>}
+  </span>
+</a>

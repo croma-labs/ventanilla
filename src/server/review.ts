@@ -74,6 +74,8 @@ type Options = {
   draft: string;
   evidence: string;
   language: string;
+  /** Today's date, so "this weekend" or "upcoming" in a question resolves against the real calendar. */
+  today?: string;
 };
 
 export async function verify({ question, draft, evidence, fast, fallback, deadline }: Pick<Options, "question" | "draft" | "evidence"> & { fast: Resolved; fallback: Resolved; deadline: number }) {
@@ -119,10 +121,10 @@ export function supporters<T extends { url: string; text: string }>(candidates: 
   return candidates.filter((candidate) => found.some((check) => checkClaims(candidate.text, [{ claim: check.claim, terms: check.terms }])[0].status === "found"));
 }
 
-export function rewrite({ model, providerOptions, question, draft, evidence, language, checks, signal }: Options & { checks: Check[]; signal: AbortSignal }) {
+export function rewrite({ model, providerOptions, question, draft, evidence, language, today, checks, signal }: Options & { checks: Check[]; signal: AbortSignal }) {
   return streamText({
     model,
-    system: writeInstructions(language),
+    system: `${writeInstructions(language)}${today ? `\n- Today is ${today}. Resolve relative dates in the QUESTION against it.` : ""}`,
     prompt: `${context(question, evidence, draft)}\n\nCHECKS:\n${checks.length ? JSON.stringify(checks) : "(no checks ran: keep only what plainly appears in the EVIDENCE)"}`,
     temperature: 0,
     providerOptions,

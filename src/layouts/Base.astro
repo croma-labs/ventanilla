@@ -14,9 +14,12 @@ interface Props {
   canonical?: string;
   image?: { path: string; width: number; height: number; alt: string };
   schema?: Record<string, unknown>[];
+  /** Pages meant to be read and cited by AI assistants drop the noai hints. */
+  aiReadable?: boolean;
 }
 
-const { title, description, indexable = true, canonical: canonicalPath, image: share, schema = [] } = Astro.props;
+const { title, description, indexable = true, canonical: canonicalPath, image: share, schema = [], aiReadable = false } = Astro.props;
+const aiHints = aiReadable ? "" : ", noai, noimageai";
 const origin = Astro.site ?? new URL(Astro.url.origin);
 const image = new URL(share?.path ?? "/og.jpg", origin).href;
 const url = new URL(canonicalPath ?? Astro.url.pathname, origin).href;
@@ -61,7 +64,7 @@ const structured = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="referrer" content="no-referrer" />
-    <meta name="robots" content={indexable ? "index, follow, max-image-preview:large, max-snippet:-1, noai, noimageai" : "noindex, follow, noai, noimageai"} />
+    <meta name="robots" content={indexable ? `index, follow, max-image-preview:large, max-snippet:-1${aiHints}` : `noindex, follow${aiHints}`} />
     <link rel="preload" href={serif} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={sans} as="font" type="font/woff2" crossorigin />
     <title>{title}</title>

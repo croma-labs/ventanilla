@@ -1,0 +1,16 @@
+name: El Salvador tourism
+
+# /turismo is built from Croma's copy of the Ministerio de Turismo's directory,
+# which refreshes every morning; a fresh build picks up what changed.
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -fsS -X POST "$SV_DEPLOY_HOOK"
+        env:
+          SV_DEPLOY_HOOK: ${{ secrets.SV_DEPLOY_HOOK }}

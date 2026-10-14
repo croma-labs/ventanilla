@@ -35,10 +35,15 @@ const payload = z.object({ messages: z.array(turn).min(1).max(16) });
 const reply = (status: number, error: string, headers: Record<string, string> = {}) =>
   Response.json({ error }, { status, headers: { "Cache-Control": "no-store", ...headers } });
 
+const ownHost = new URL(import.meta.env.SITE ?? "https://gov.usecroma.com").hostname;
+
+/** An official source, or one of Ventanilla's own /turismo pages, which are built from the official tourism directory. */
 const official = (url: string) => {
   try {
-    const { protocol, hostname: host } = new URL(url);
-    return protocol === "https:" && site.officialSuffixes.some((suffix) => (suffix.startsWith(".") ? host.endsWith(suffix) : host === suffix || host.endsWith(`.${suffix}`)));
+    const { protocol, hostname: host, pathname } = new URL(url);
+    if (protocol !== "https:") return false;
+    if (host === ownHost && pathname.startsWith("/turismo/")) return true;
+    return site.officialSuffixes.some((suffix) => (suffix.startsWith(".") ? host.endsWith(suffix) : host === suffix || host.endsWith(`.${suffix}`)));
   } catch {
     return false;
   }
@@ -92,6 +97,14 @@ function rankSources(sources: Map<string, Source>, answer: string, live = false,
   const room = Math.max(0, maxSources - cited.size);
   return [...cited.values(), ...[...backing, ...(live ? rest.slice(0, 3) : [])].slice(0, room)].map((source) => ({ title: source.title, url: source.url, currency: "verified" }));
 }
+
+const ENGLISH = /\b(the|where|what|how|which|when|can|is|are|do|does|i|my|to|for|in|near|best|should|need)\b/gi;
+
+/** English when the question plainly is (visitors ask in English); otherwise the site's own language. */
+const languageOf = (question: string) => {
+  if (/[¿¡ñ]/i.test(question)) return site.locale;
+  return (question.match(ENGLISH)?.length ?? 0) >= 2 ? "English (the QUESTION is in English, even though the DRAFT and the EVIDENCE are in Spanish)" : site.locale;
+};
 
 const stripToolMarkup = (text: string) => text.replace(/<\/?(?:tool_call|function|parameter)[^>]*>/g, "");
 
@@ -241,7 +254,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
               checks = await verify({ question, draft: text, evidence, fast, fallback: resolved, deadline });
             }
             supporting = supporters(found?.candidates ?? [], checks).map((candidate) => candidate.url);
-            const review = { model: resolved.model, providerOptions: resolved.providerOptions, question, draft: text, evidence, language: `the same language as the QUESTION, even when the DRAFT and the EVIDENCE are in another (a question in English gets an answer in English; ${site.locale} when unclear)` };
+            const review = { model: resolved.model, providerOptions: resolved.providerOptions, question, draft: text, evidence, language: languageOf(question), today: new Intl.DateTimeFormat("en-US", { dateStyle: "full", timeZone: site.timeZone }).format(new Date()) };
             for await (const delta of rewrite({ ...review, checks, signal }).textStream) write(stripToolMarkup(delta));
             reviewMs = Date.now() - reviewStarted;
           }

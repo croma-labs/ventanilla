@@ -1,0 +1,1523 @@
+{
+ "a nivel nacional, san salvador, el salvador": null,
+ "a nivel nacional, santa ana, el salvador": null,
+ "acajutla, sonsonate, el salvador": {
+  "lat": 13.5898,
+  "lng": -89.82976
+ },
+ "acuatica water city, el salvador": null,
+ "acuatico splash, el salvador": null,
+ "agua caliente, chalatenango, el salvador": {
+  "lat": 14.18533,
+  "lng": -89.22721
+ },
+ "agua fria, el salvador": {
+  "lat": 13.84981,
+  "lng": -88.13579
+ },
+ "aguilares, san salvador, el salvador": {
+  "lat": 13.95836,
+  "lng": -89.18711
+ },
+ "ahuachapan, ahuachapan, el salvador": {
+  "lat": 13.92342,
+  "lng": -89.84629
+ },
+ "alameda manuel enrique araujo, san salvador, el salvador": {
+  "lat": 13.68557,
+  "lng": -89.23959
+ },
+ "alegria, usulutan, el salvador": {
+  "lat": 13.49869,
+  "lng": -88.48785
+ },
+ "alejandro cotto, el salvador": {
+  "lat": 13.93782,
+  "lng": -89.02718
+ },
+ "alimentacion, la libertad, el salvador": null,
+ "altos de la cueva, el salvador": {
+  "lat": 13.50004,
+  "lng": -88.17669
+ },
+ "amapulapa, san vicente, el salvador": {
+  "lat": 13.62724,
+  "lng": -88.77466
+ },
+ "anamoros, la union, el salvador": {
+  "lat": 13.74154,
+  "lng": -87.87152
+ },
+ "anp complejo los volcanes-istu, santa ana, el salvador": null,
+ "anp complejo los volcanes, santa ana, el salvador": null,
+ "anp cv, santa ana, el salvador": null,
+ "anp la magdalena, santa ana, el salvador": null,
+ "anp los cobanos, sonsonate, el salvador": null,
+ "anp montecrito y anp san diego y san felipe las barras, la libertad, el salvador": null,
+ "anp san diego y san felipe las barras, la libertad, el salvador": null,
+ "antiguo cuscatlan, la libertad, el salvador": {
+  "lat": 13.67281,
+  "lng": -89.24665
+ },
+ "apaneca, ahuachapan, el salvador": {
+  "lat": 13.85885,
+  "lng": -89.80398
+ },
+ "apastepeque, san vicente, el salvador": {
+  "lat": 13.66792,
+  "lng": -88.77962
+ },
+ "apopa, san salvador, el salvador": {
+  "lat": 13.8013,
+  "lng": -89.17908
+ },
+ "apulo, el salvador": {
+  "lat": 13.70177,
+  "lng": -89.07782
+ },
+ "arambala, morazan, el salvador": {
+  "lat": 13.92087,
+  "lng": -88.13365
+ },
+ "arcatao, chalatenango, el salvador": {
+  "lat": 14.09368,
+  "lng": -88.74914
+ },
+ "armenia, sonsonate, el salvador": {
+  "lat": 13.74545,
+  "lng": -89.50058
+ },
+ "arqueologico cihuatan, san salvador, el salvador": {
+  "lat": 13.98125,
+  "lng": -89.16507
+ },
+ "arqueologico el tazumal, santa ana, el salvador": null,
+ "arqueologico joya de ceren, el salvador": {
+  "lat": 13.82843,
+  "lng": -89.35644
+ },
+ "arqueologico san andres, la libertad, el salvador": {
+  "lat": 13.80046,
+  "lng": -89.3889
+ },
+ "arriba de farmacia san nicolas, san salvador, el salvador": null,
+ "atecozol, el salvador": {
+  "lat": 13.76091,
+  "lng": -89.66251
+ },
+ "atiquizaya, ahuachapan, el salvador": {
+  "lat": 13.97427,
+  "lng": -89.75502
+ },
+ "avion, la paz, el salvador": null,
+ "avion, san salvador, el salvador": null,
+ "ayutuxtepeque, la paz, el salvador": null,
+ "ayutuxtepeque, san salvador, el salvador": {
+  "lat": 13.75484,
+  "lng": -89.21859
+ },
+ "azacualpa, chalatenango, el salvador": {
+  "lat": 13.98967,
+  "lng": -88.98337
+ },
+ "bahia de jiquilisco, san salvador, el salvador": null,
+ "bahia de jiquilisco, usulutan, el salvador": {
+  "lat": 13.24127,
+  "lng": -88.55737
+ },
+ "balboa, el salvador": {
+  "lat": 13.63911,
+  "lng": -89.18892
+ },
+ "balboa, san salvador, el salvador": {
+  "lat": 13.63911,
+  "lng": -89.18892
+ },
+ "barra de santiago, ahuachapan, el salvador": {
+  "lat": 13.68965,
+  "lng": -90.00099
+ },
+ "barra salada rancho, sonsonate, el salvador": null,
+ "barra salada, sonsonate, el salvador": {
+  "lat": 13.53145,
+  "lng": -89.7054
+ },
+ "berlin, usulutan, el salvador": {
+  "lat": 13.49713,
+  "lng": -88.53032
+ },
+ "binaes, el salvador": {
+  "lat": 13.69666,
+  "lng": -89.19126
+ },
+ "cabanas, cabanas, el salvador": {
+  "lat": 13.88449,
+  "lng": -88.61814
+ },
+ "cacaopera, morazan, el salvador": {
+  "lat": 13.77219,
+  "lng": -88.07854
+ },
+ "california, san miguel, el salvador": {
+  "lat": 13.46013,
+  "lng": -88.16111
+ },
+ "caluco, sonsonate, el salvador": {
+  "lat": 13.72534,
+  "lng": -89.66155
+ },
+ "candelaria de la frontera, santa ana, el salvador": {
+  "lat": 14.11495,
+  "lng": -89.65029
+ },
+ "candelaria, cuscatlan, el salvador": {
+  "lat": 13.68902,
+  "lng": -88.97551
+ },
+ "canopy y cafe miranda, el salvador": null,
+ "carolina, san miguel, el salvador": {
+  "lat": 13.84919,
+  "lng": -88.30616
+ },
+ "casa cuarenta y dos, san miguel, el salvador": null,
+ "casa degraciela – hotel boutique, ahuachapan, el salvador": null,
+ "casa degraciela – hotel boutique, el salvador": null,
+ "cascadas de tamanique, la libertad, el salvador": {
+  "lat": 13.58937,
+  "lng": -89.42295
+ },
+ "cascadas el escuco, sonsonate, el salvador": {
+  "lat": 13.73267,
+  "lng": -89.7982
+ },
+ "cascadas los tercios, cuscatlan, el salvador": null,
+ "cascadas los tercios, el salvador": null,
+ "caserio el progreso, san salvador, el salvador": null,
+ "central, san salvador, el salvador": {
+  "lat": 13.69382,
+  "lng": -89.11022
+ },
+ "centro america, san salvador, el salvador": {
+  "lat": 13.69928,
+  "lng": -89.13805
+ },
+ "centro historico de san salvador, san salvador, el salvador": {
+  "lat": 13.69772,
+  "lng": -89.19181
+ },
+ "centro historico, san salvador, el salvador": {
+  "lat": 13.69886,
+  "lng": -89.19413
+ },
+ "centro obrero dr mario rivas zamora «el refugio», el salvador": null,
+ "cerro de las pavas, el salvador": {
+  "lat": 13.71337,
+  "lng": -88.93713
+ },
+ "cerro el pital- campamento el pital, chalatenango, el salvador": null,
+ "cerro el pital- campamento el pital, el salvador": null,
+ "cerro el pital, chalatenango, el salvador": {
+  "lat": 14.38439,
+  "lng": -89.12915
+ },
+ "cerro eramon- eramon paradise 360, el salvador": null,
+ "cerro eramon-eramon paradise 360, el salvador": null,
+ "cerro eramon, chalatenango, el salvador": {
+  "lat": 14.02882,
+  "lng": -88.75243
+ },
+ "cerro las pavas, cuscatlan, el salvador": {
+  "lat": 13.71337,
+  "lng": -88.93713
+ },
+ "cerro miramundo, chalatenango, el salvador": null,
+ "cerro miramundo, el salvador": {
+  "lat": 14.41619,
+  "lng": -89.36721
+ },
+ "cerro verde y anp complejo los volcanes, santa ana, el salvador": null,
+ "chalatenango sur, chalatenango, el salvador": {
+  "lat": 14.06655,
+  "lng": -88.87045
+ },
+ "chalatenango, chalatenango, el salvador": {
+  "lat": 14.04139,
+  "lng": -88.93941
+ },
+ "chalchuapa, santa ana, el salvador": {
+  "lat": 13.98532,
+  "lng": -89.68024
+ },
+ "chapeltique, san miguel, el salvador": {
+  "lat": 13.63663,
+  "lng": -88.26401
+ },
+ "chilanga, morazan, el salvador": {
+  "lat": 13.72192,
+  "lng": -88.12068
+ },
+ "chiltiupan, la libertad, el salvador": {
+  "lat": 13.59143,
+  "lng": -89.46714
+ },
+ "chinameca, san miguel, el salvador": {
+  "lat": 13.51224,
+  "lng": -88.34797
+ },
+ "chirilagua, san miguel, el salvador": {
+  "lat": 13.2196,
+  "lng": -88.13813
+ },
+ "cinquera, cabanas, el salvador": {
+  "lat": 13.88862,
+  "lng": -88.96014
+ },
+ "citala), chalatenango, el salvador": {
+  "lat": 14.3749,
+  "lng": -89.21396
+ },
+ "ciudad arce, la libertad, el salvador": {
+  "lat": 13.84029,
+  "lng": -89.44376
+ },
+ "ciudad barrios, san miguel, el salvador": {
+  "lat": 13.76593,
+  "lng": -88.27129
+ },
+ "ciudad delgado, san salvador, el salvador": {
+  "lat": 13.72264,
+  "lng": -89.17052
+ },
+ "ciudad suchitoto, cuscatlan, el salvador": {
+  "lat": 13.85956,
+  "lng": -89.03257
+ },
+ "coatepeque, santa ana, el salvador": {
+  "lat": 13.92545,
+  "lng": -89.50428
+ },
+ "cojutepeque, cuscatlan, el salvador": {
+  "lat": 13.72174,
+  "lng": -88.93454
+ },
+ "col. escalon, san salvador, el salvador": {
+  "lat": 13.70483,
+  "lng": -89.24149
+ },
+ "col. layco, san salvador, el salvador": {
+  "lat": 13.71339,
+  "lng": -89.19665
+ },
+ "colon, la libertad, el salvador": {
+  "lat": 13.70477,
+  "lng": -89.3413
+ },
+ "columpio buena vista, el salvador": null,
+ "comalapa, chalatenango, el salvador": {
+  "lat": 14.13978,
+  "lng": -88.95624
+ },
+ "comasagua, la libertad, el salvador": {
+  "lat": 13.63733,
+  "lng": -89.37681
+ },
+ "complejo los volcanes, santa ana, el salvador": null,
+ "complejo turistico del puerto de la libertad, el salvador": null,
+ "complejo turistico del puerto de la libertad, la libertad, el salvador": null,
+ "concepcion batres, usulutan, el salvador": {
+  "lat": 13.34168,
+  "lng": -88.37148
+ },
+ "concepcion de ataco, ahuachapan, el salvador": {
+  "lat": 13.87037,
+  "lng": -89.8509
+ },
+ "concepcion de oriente, la union, el salvador": {
+  "lat": 13.79155,
+  "lng": -87.71284
+ },
+ "concepcion quezaltepeque, chalatenango, el salvador": {
+  "lat": 14.08881,
+  "lng": -88.95528
+ },
+ "conchagua, la union, el salvador": {
+  "lat": 13.28418,
+  "lng": -87.87129
+ },
+ "corinto, morazan, el salvador": {
+  "lat": 13.80924,
+  "lng": -87.96966
+ },
+ "costa del sol, la paz, el salvador": {
+  "lat": 13.33878,
+  "lng": -88.99518
+ },
+ "cuisnahuat, sonsonate, el salvador": {
+  "lat": 13.63863,
+  "lng": -89.60388
+ },
+ "cultura y necroturismo, sonsonate, el salvador": null,
+ "cuscatancingo, san salvador, el salvador": {
+  "lat": 13.72728,
+  "lng": -89.18078
+ },
+ "cuscatlan, cuscatlan, el salvador": {
+  "lat": 13.87437,
+  "lng": -89.06955
+ },
+ "de aventuras surf city walter thilo deininger, la libertad, el salvador": null,
+ "de cinquera, cabanas, el salvador": {
+  "lat": 13.88862,
+  "lng": -88.96014
+ },
+ "de diversiones jardin infantil, el salvador": null,
+ "del divisadero, morazan, el salvador": {
+  "lat": 13.60178,
+  "lng": -88.04954
+ },
+ "del municipio de san miguel, san miguel, el salvador": {
+  "lat": 13.48401,
+  "lng": -88.17244
+ },
+ "del puerto de la libertad, la libertad, el salvador": {
+  "lat": 13.48746,
+  "lng": -89.31975
+ },
+ "delicias de concepcion, morazan, el salvador": {
+  "lat": 13.78954,
+  "lng": -88.13954
+ },
+ "departamento de ahuachapan, el salvador": {
+  "lat": 13.8635,
+  "lng": -89.92739
+ },
+ "departamento de cabanas, el salvador": {
+  "lat": 13.88329,
+  "lng": -88.73831
+ },
+ "departamento de chalatenango, el salvador": {
+  "lat": 14.17653,
+  "lng": -89.0933
+ },
+ "departamento de cuscatlan, el salvador": {
+  "lat": 13.85869,
+  "lng": -89.06326
+ },
+ "departamento de la libertad, el salvador": {
+  "lat": 13.74496,
+  "lng": -89.36108
+ },
+ "departamento de la paz, el salvador": {
+  "lat": 13.46698,
+  "lng": -88.98506
+ },
+ "departamento de la union, el salvador": {
+  "lat": 13.53263,
+  "lng": -87.90258
+ },
+ "departamento de morazan, el salvador": {
+  "lat": 13.77262,
+  "lng": -88.0952
+ },
+ "departamento de san miguel, el salvador": {
+  "lat": 13.53935,
+  "lng": -88.20019
+ },
+ "departamento de san salvador, el salvador": {
+  "lat": 13.77023,
+  "lng": -89.15836
+ },
+ "departamento de san vicente, el salvador": {
+  "lat": 13.52749,
+  "lng": -88.7397
+ },
+ "departamento de santa ana, el salvador": {
+  "lat": 14.11456,
+  "lng": -89.56781
+ },
+ "departamento de sonsonate, el salvador": {
+  "lat": 13.71151,
+  "lng": -89.66058
+ },
+ "departamento de usulutan, el salvador": {
+  "lat": 13.43247,
+  "lng": -88.53984
+ },
+ "dolores, cabanas, el salvador": {
+  "lat": 13.77783,
+  "lng": -88.56613
+ },
+ "dulce nombre de maria, chalatenango, el salvador": {
+  "lat": 14.15691,
+  "lng": -89.01123
+ },
+ "eco le doratt, el salvador": null,
+ "el carmen, cuscatlan, el salvador": {
+  "lat": 13.72267,
+  "lng": -88.90434
+ },
+ "el carmen, la union, el salvador": {
+  "lat": 13.35602,
+  "lng": -87.99747
+ },
+ "el cocal, la libertad, el salvador": {
+  "lat": 13.48607,
+  "lng": -89.34246
+ },
+ "el congo, santa ana, el salvador": {
+  "lat": 13.90534,
+  "lng": -89.49639
+ },
+ "el divisadero, morazan, el salvador": {
+  "lat": 13.6016,
+  "lng": -88.05344
+ },
+ "el espino, usulutan, el salvador": {
+  "lat": 13.17099,
+  "lng": -88.29413
+ },
+ "el icacal, la union, el salvador": {
+  "lat": 13.17319,
+  "lng": -88.03442
+ },
+ "el obispo, la libertad, el salvador": {
+  "lat": 13.48666,
+  "lng": -89.31766
+ },
+ "el paisnal, san salvador, el salvador": {
+  "lat": 13.97392,
+  "lng": -89.21722
+ },
+ "el palmarcito, la libertad, el salvador": {
+  "lat": 13.50304,
+  "lng": -89.42318
+ },
+ "el paraiso, chalatenango, el salvador": {
+  "lat": 14.10597,
+  "lng": -89.06886
+ },
+ "el porvenir, santa ana, el salvador": {
+  "lat": 14.04498,
+  "lng": -89.6493
+ },
+ "el refugio, ahuachapan, el salvador": {
+  "lat": 13.97501,
+  "lng": -89.70599
+ },
+ "el rosario, la paz, el salvador": {
+  "lat": 13.49837,
+  "lng": -89.02839
+ },
+ "el salvador, san salvador, el salvador": {
+  "lat": 13.69907,
+  "lng": -89.21964
+ },
+ "el salvador, santa ana, el salvador": {
+  "lat": 13.98273,
+  "lng": -89.54849
+ },
+ "el salvador, un tesoro de aves por descubrir en centroamerica, el salvador": null,
+ "el sunzal, la libertad, el salvador": {
+  "lat": 13.49495,
+  "lng": -89.38881
+ },
+ "el tamarindo, la union, el salvador": {
+  "lat": 13.18366,
+  "lng": -87.91727
+ },
+ "el triunfo, usulutan, el salvador": {
+  "lat": 13.55927,
+  "lng": -88.42896
+ },
+ "el tunco, la libertad, el salvador": {
+  "lat": 13.49483,
+  "lng": -89.38286
+ },
+ "el zonte, la libertad, el salvador": {
+  "lat": 13.49779,
+  "lng": -89.44074
+ },
+ "especialidad: anp complejo los cobanos, santa ana, el salvador": null,
+ "especialidad: anp complejo los cobanos, sonsonate, el salvador": null,
+ "especialidad: anp complejo los volcanes, santa ana, el salvador": null,
+ "especialidad: zona central, san salvador, el salvador": null,
+ "especialidad: zona occidental, ahuachapan, el salvador": null,
+ "especialidad: zona occidental, santa ana, el salvador": null,
+ "especialidad:el mozote, morazan, el salvador": null,
+ "espenol, san miguel, el salvador": null,
+ "estanzuelas, usulutan, el salvador": {
+  "lat": 13.64381,
+  "lng": -88.49358
+ },
+ "excapres, el salvador": null,
+ "finca agroturistica casa grande, el salvador": null,
+ "finca agustina, el salvador": null,
+ "finca buena vista, el salvador": {
+  "lat": 13.91794,
+  "lng": -89.7703
+ },
+ "fincas cafetaleras en la ruta de las flores, el salvador": null,
+ "fincas cafetaleras en la ruta de las flores, usulutan, el salvador": null,
+ "frente a la base naval, la union, el salvador": null,
+ "geoturistico el limo, el salvador": null,
+ "golfo de fonseca, la union, el salvador": {
+  "lat": 13.18975,
+  "lng": -87.71169
+ },
+ "guacotecti, cabanas, el salvador": {
+  "lat": 13.86334,
+  "lng": -88.65756
+ },
+ "guadalupe, san vicente, el salvador": {
+  "lat": 13.61865,
+  "lng": -88.87996
+ },
+ "gualococti, morazan, el salvador": {
+  "lat": 13.81917,
+  "lng": -88.21064
+ },
+ "guazapa, san salvador, el salvador": {
+  "lat": 13.87685,
+  "lng": -89.17189
+ },
+ "guia de turismo local:zona oriente, san miguel, el salvador": null,
+ "hacienda la carrera, usulutan, el salvador": null,
+ "honduras y guatemala, santa ana, el salvador": null,
+ "hostal club de mochileros, la libertad, el salvador": {
+  "lat": 13.48216,
+  "lng": -89.3318
+ },
+ "hotel entre pinos resort, el salvador": null,
+ "hotel la palma, chalatenango, el salvador": {
+  "lat": 14.3154,
+  "lng": -89.16836
+ },
+ "hotel novo, san salvador, el salvador": {
+  "lat": 13.70384,
+  "lng": -89.22168
+ },
+ "huizucar, la libertad, el salvador": {
+  "lat": 13.58735,
+  "lng": -89.23571
+ },
+ "ichanmichen, el salvador": {
+  "lat": 13.49711,
+  "lng": -88.87469
+ },
+ "ilobasco, cabanas, el salvador": {
+  "lat": 13.84301,
+  "lng": -88.84892
+ },
+ "ilopango, san salvador, el salvador": {
+  "lat": 13.67088,
+  "lng": -89.04485
+ },
+ "intipu, la union, el salvador": null,
+ "intipuca, la union, el salvador": {
+  "lat": 13.19588,
+  "lng": -88.05373
+ },
+ "izalco, sonsonate, el salvador": {
+  "lat": 13.74621,
+  "lng": -89.67563
+ },
+ "jayaque, la libertad, el salvador": {
+  "lat": 13.67412,
+  "lng": -89.43804
+ },
+ "jicalapa, la libertad, el salvador": {
+  "lat": 13.55242,
+  "lng": -89.50642
+ },
+ "jiquilisco, usulutan, el salvador": {
+  "lat": 13.32666,
+  "lng": -88.57021
+ },
+ "joateca, morazan, el salvador": {
+  "lat": 13.89403,
+  "lng": -88.04373
+ },
+ "jocoaitique, morazan, el salvador": {
+  "lat": 13.90596,
+  "lng": -88.15824
+ },
+ "jocoro, morazan, el salvador": {
+  "lat": 13.6121,
+  "lng": -88.02481
+ },
+ "juayua, sonsonate, el salvador": {
+  "lat": 13.84323,
+  "lng": -89.74647
+ },
+ "jucuapa, usulutan, el salvador": {
+  "lat": 13.51393,
+  "lng": -88.38468
+ },
+ "jucuaran, usulutan, el salvador": {
+  "lat": 13.25434,
+  "lng": -88.24767
+ },
+ "jujutla, ahuachapan, el salvador": {
+  "lat": 13.78616,
+  "lng": -89.86053
+ },
+ "k59, la libertad, el salvador": {
+  "lat": 13.49395,
+  "lng": -89.38117
+ },
+ "k61, la libertad, el salvador": {
+  "lat": 13.49847,
+  "lng": -89.47749
+ },
+ "la casa de la fresa, el salvador": null,
+ "la laguna, chalatenango, el salvador": {
+  "lat": 14.16237,
+  "lng": -88.94432
+ },
+ "la libertad principalmente, san salvador, el salvador": null,
+ "la libertad, la libertad, el salvador": {
+  "lat": 13.48884,
+  "lng": -89.31914
+ },
+ "la memoria historica, el salvador": {
+  "lat": 13.89906,
+  "lng": -88.11524
+ },
+ "la palma, chalatenango, el salvador": {
+  "lat": 14.31732,
+  "lng": -89.17048
+ },
+ "la paz, la paz, el salvador": {
+  "lat": 13.44646,
+  "lng": -89.05355
+ },
+ "la pergola de san ignacio, chalatenango, el salvador": null,
+ "la pergola de san ignacio, el salvador": null,
+ "la union, la union, el salvador": {
+  "lat": 13.33715,
+  "lng": -87.84305
+ },
+ "lago de coatepeque, santa ana, el salvador": {
+  "lat": 13.86333,
+  "lng": -89.54733
+ },
+ "lago de guija-hotel y restaurante los huacales, el salvador": null,
+ "lago de guija, santa ana, el salvador": {
+  "lat": 14.26759,
+  "lng": -89.52381
+ },
+ "lago de ilopango, san salvador, el salvador": {
+  "lat": 13.6694,
+  "lng": -89.0491
+ },
+ "lago suchitlan, el salvador": {
+  "lat": 14.01316,
+  "lng": -89.03579
+ },
+ "laguna de alegria, usulutan, el salvador": {
+  "lat": 13.49305,
+  "lng": -88.49381
+ },
+ "laguna de apastepeque, san vicente, el salvador": {
+  "lat": 13.69262,
+  "lng": -88.74546
+ },
+ "laguna de olomega, san miguel, el salvador": {
+  "lat": 13.3104,
+  "lng": -88.06069
+ },
+ "las flores, san miguel, el salvador": {
+  "lat": 13.16814,
+  "lng": -88.11898
+ },
+ "las tunas, la union, el salvador": {
+  "lat": 13.16214,
+  "lng": -87.96687
+ },
+ "lempa turismo rafting/rancho de papa tono, el salvador": null,
+ "lolotique, san miguel, el salvador": {
+  "lat": 13.55611,
+  "lng": -88.35089
+ },
+ "lolotiquillo, morazan, el salvador": {
+  "lat": 13.72653,
+  "lng": -88.09078
+ },
+ "los chorros, el salvador": {
+  "lat": 13.89446,
+  "lng": -87.88308
+ },
+ "los cobanos, sonsonate, el salvador": {
+  "lat": 13.52525,
+  "lng": -89.80563
+ },
+ "los volcanes, santa ana, el salvador": {
+  "lat": 13.81899,
+  "lng": -89.63006
+ },
+ "lourdes colon, la libertad, el salvador": {
+  "lat": 13.7246,
+  "lng": -89.3669
+ },
+ "meanguera, morazan, el salvador": {
+  "lat": 13.85239,
+  "lng": -88.15363
+ },
+ "medicentro la esperanza, san salvador, el salvador": {
+  "lat": 13.71243,
+  "lng": -89.20424
+ },
+ "mejicanos, san salvador, el salvador": {
+  "lat": 13.72248,
+  "lng": -89.18699
+ },
+ "mercado del mar, la libertad, el salvador": {
+  "lat": 13.48693,
+  "lng": -89.31822
+ },
+ "mercedes umana, usulutan, el salvador": {
+  "lat": 13.56221,
+  "lng": -88.48923
+ },
+ "metalio, sonsonate, el salvador": {
+  "lat": 13.64496,
+  "lng": -89.88131
+ },
+ "metapan, santa ana, el salvador": {
+  "lat": 14.33218,
+  "lng": -89.4481
+ },
+ "mirador el cerrito – camino de la cruz, el salvador": null,
+ "mizata, la libertad, el salvador": {
+  "lat": 13.51984,
+  "lng": -89.59154
+ },
+ "moncagua, san miguel, el salvador": {
+  "lat": 13.53304,
+  "lng": -88.2556
+ },
+ "morazan, morazan, el salvador": {
+  "lat": 13.86762,
+  "lng": -88.09512
+ },
+ "muelle turistico del puerto la libertad, la libertad, el salvador": {
+  "lat": 13.48582,
+  "lng": -89.3183
+ },
+ "municipio de ahuachapan, ahuachapan, el salvador": {
+  "lat": 13.97588,
+  "lng": -89.7541
+ },
+ "municipio de san salvador, san salvador, el salvador": {
+  "lat": 13.70261,
+  "lng": -89.18864
+ },
+ "municipio de santa ana centro, santa ana, el salvador": {
+  "lat": 13.97211,
+  "lng": -89.56053
+ },
+ "municipio de soyapango, san salvador, el salvador": {
+  "lat": 13.69994,
+  "lng": -89.15834
+ },
+ "municipio el carmen, cuscatlan, el salvador": {
+  "lat": 13.72231,
+  "lng": -88.9044
+ },
+ "museo alejandro cotto, el salvador": null,
+ "museo de la memoria historica, el salvador": null,
+ "museo y tienda fernando llort, el salvador": null,
+ "nacional, san salvador, el salvador": {
+  "lat": 13.69555,
+  "lng": -89.18762
+ },
+ "nahuizalco, ahuachapan, el salvador": null,
+ "nahuizalco, sonsonate, el salvador": {
+  "lat": 13.77922,
+  "lng": -89.73729
+ },
+ "nahulingo, sonsonate, el salvador": {
+  "lat": 13.66092,
+  "lng": -89.72612
+ },
+ "nejapa, san salvador, el salvador": {
+  "lat": 13.81421,
+  "lng": -89.2303
+ },
+ "nivel nacional, san salvador, el salvador": null,
+ "nombre de jesus, chalatenango, el salvador": {
+  "lat": 14.00634,
+  "lng": -88.73032
+ },
+ "nueva concepcion, chalatenango, el salvador": {
+  "lat": 14.12895,
+  "lng": -89.29084
+ },
+ "nueva guadalupe, san miguel, el salvador": {
+  "lat": 13.53241,
+  "lng": -88.35058
+ },
+ "nuevo cuscatlan, la libertad, el salvador": {
+  "lat": 13.64712,
+  "lng": -89.26526
+ },
+ "olocuilta, la paz, el salvador": {
+  "lat": 13.56648,
+  "lng": -89.11661
+ },
+ "oriental, morazan, el salvador": null,
+ "osicala, morazan, el salvador": {
+  "lat": 13.80432,
+  "lng": -88.15282
+ },
+ "panchimalco, san salvador, el salvador": {
+  "lat": 13.56052,
+  "lng": -89.16131
+ },
+ "parque acuatico splash, el salvador": null,
+ "parque arqueologico casa blanca, santa ana, el salvador": {
+  "lat": 13.98913,
+  "lng": -89.67187
+ },
+ "parque arqueologico cihuatan, el salvador": null,
+ "parque arqueologico cihuatan, san salvador, el salvador": null,
+ "parque arqueologico el tazumal, el salvador": null,
+ "parque arqueologico el tazumal, santa ana, el salvador": null,
+ "parque arqueologico joya de ceren, el salvador": null,
+ "parque arqueologico san andres, el salvador": null,
+ "parque arqueologico san andres, la libertad, el salvador": null,
+ "parque bicentenario, san salvador, el salvador": {
+  "lat": 13.69073,
+  "lng": -89.25362
+ },
+ "parque de aventuras surf city walter thilo deininger, el salvador": null,
+ "parque de aventuras surf city walter thilo deininger, la libertad, el salvador": null,
+ "parque de diversiones jardin infantil, el salvador": null,
+ "parque ecologico de cinquera, cabanas, el salvador": null,
+ "parque ecologico de cinquera, el salvador": null,
+ "parque geoturistico el limo, el salvador": null,
+ "parque nacional el boqueron, el salvador": {
+  "lat": 13.73497,
+  "lng": -89.2795
+ },
+ "parque nacional el boqueron, san salvador, el salvador": null,
+ "parque nacional el imposible, ahuachapan, el salvador": {
+  "lat": 13.83074,
+  "lng": -89.93929
+ },
+ "parque nacional montecristo, santa ana, el salvador": {
+  "lat": 14.38742,
+  "lng": -89.3866
+ },
+ "parque natural balboa, el salvador": null,
+ "parque natural balboa, san salvador, el salvador": null,
+ "parque natural cerro verde, santa ana, el salvador": {
+  "lat": 13.82689,
+  "lng": -89.62464
+ },
+ "parque natural puerta del diablo, el salvador": null,
+ "parque natural puerta del diablo, san salvador, el salvador": null,
+ "parque recreativo agua fria, chalatenango, el salvador": {
+  "lat": 14.04648,
+  "lng": -88.93604
+ },
+ "parque recreativo altos de la cueva, el salvador": null,
+ "parque recreativo altos de la cueva, san miguel, el salvador": null,
+ "parque recreativo amapulapa, san vicente, el salvador": {
+  "lat": 13.62724,
+  "lng": -88.77466
+ },
+ "parque recreativo apulo, san salvador, el salvador": {
+  "lat": 13.70151,
+  "lng": -89.07631
+ },
+ "parque recreativo atecozol, el salvador": null,
+ "parque recreativo atecozol, sonsonate, el salvador": null,
+ "parque recreativo cerro verde, el salvador": null,
+ "parque recreativo cerro verde, santa ana, el salvador": null,
+ "parque recreativo ichanmichen, la paz, el salvador": {
+  "lat": 13.49518,
+  "lng": -88.87744
+ },
+ "parque recreativo laguna de apastepeque, san vicente, el salvador": {
+  "lat": 13.69233,
+  "lng": -88.74881
+ },
+ "parque recreativo sihuatehuacan, santa ana, el salvador": {
+  "lat": 13.99179,
+  "lng": -89.54495
+ },
+ "parque saburo hirao, el salvador": {
+  "lat": 13.67733,
+  "lng": -89.19599
+ },
+ "parque san diego y san felipe de las barras, el salvador": null,
+ "paseo general escalon, san salvador, el salvador": {
+  "lat": 13.70163,
+  "lng": -89.22745
+ },
+ "penon de cayaguanca, chalatenango, el salvador": {
+  "lat": 14.36593,
+  "lng": -89.16817
+ },
+ "penon de comasagua, la libertad, el salvador": {
+  "lat": 13.59464,
+  "lng": -89.37674
+ },
+ "perquin, morazan, el salvador": {
+  "lat": 13.95852,
+  "lng": -88.16137
+ },
+ "planes de renderos, san salvador, el salvador": {
+  "lat": 13.64733,
+  "lng": -89.20042
+ },
+ "playa el cuco, san miguel, el salvador": {
+  "lat": 13.17433,
+  "lng": -88.11013
+ },
+ "playa la paz, la libertad, el salvador": {
+  "lat": 13.48612,
+  "lng": -89.32284
+ },
+ "poloros, la union, el salvador": {
+  "lat": 13.81082,
+  "lng": -87.8166
+ },
+ "por el salvador del mundo, san salvador, el salvador": null,
+ "potonico, chalatenango, el salvador": {
+  "lat": 13.96466,
+  "lng": -88.89166
+ },
+ "puerta del diablo, san salvador, el salvador": {
+  "lat": 13.62512,
+  "lng": -89.1901
+ },
+ "puerto de la libertad, la libertad, el salvador": {
+  "lat": 13.48884,
+  "lng": -89.31914
+ },
+ "puerto el triunfo, usulutan, el salvador": {
+  "lat": 13.27479,
+  "lng": -88.54717
+ },
+ "punta el jaguey, el salvador": null,
+ "punta el jaguey, la union, el salvador": null,
+ "punta mango, el salvador": {
+  "lat": 13.16732,
+  "lng": -88.18908
+ },
+ "punta mango, usulutan, el salvador": null,
+ "punta roca, la libertad, el salvador": {
+  "lat": 13.4848,
+  "lng": -89.35308
+ },
+ "quelepa, san miguel, el salvador": {
+  "lat": 13.51976,
+  "lng": -88.23393
+ },
+ "quezaltepeque, la libertad, el salvador": {
+  "lat": 13.83373,
+  "lng": -89.27085
+ },
+ "recreativo altos de la cueva, san miguel, el salvador": null,
+ "recreativo atecozol, sonsonate, el salvador": null,
+ "recreativo cerro verde, santa ana, el salvador": null,
+ "reparto santa fe, san salvador, el salvador": {
+  "lat": 13.71889,
+  "lng": -89.2081
+ },
+ "residencial decapolis, san salvador, el salvador": null,
+ "restaurante el paso, san miguel, el salvador": null,
+ "rio sumpul, el salvador": {
+  "lat": 14.14678,
+  "lng": -88.84981
+ },
+ "sala de exposiciones san jacinto, el salvador": null,
+ "salcoatitan, sonsonate, el salvador": {
+  "lat": 13.83356,
+  "lng": -89.76129
+ },
+ "salinitas, sonsonate, el salvador": {
+  "lat": 13.54038,
+  "lng": -89.82197
+ },
+ "salto de malacatiupan, ahuachapan, el salvador": null,
+ "salto de malacatiupan, el salvador": null,
+ "san alejo, la union, el salvador": {
+  "lat": 13.43152,
+  "lng": -87.9611
+ },
+ "san ana, santa ana, el salvador": {
+  "lat": 13.98583,
+  "lng": -89.62952
+ },
+ "san antonio de la cruz, chalatenango, el salvador": {
+  "lat": 14.014,
+  "lng": -88.79077
+ },
+ "san antonio del monte, sonsonate, el salvador": {
+  "lat": 13.71943,
+  "lng": -89.73882
+ },
+ "san antonio del mosco, san miguel, el salvador": null,
+ "san antonio los ranchos, chalatenango, el salvador": {
+  "lat": 14.00479,
+  "lng": -88.89503
+ },
+ "san antonio silva, san miguel, el salvador": {
+  "lat": 13.39254,
+  "lng": -88.03064
+ },
+ "san benito, san salvador, el salvador": {
+  "lat": 13.69339,
+  "lng": -89.24245
+ },
+ "san blas, la libertad, el salvador": {
+  "lat": 13.48733,
+  "lng": -89.36114
+ },
+ "san carlos, morazan, el salvador": {
+  "lat": 13.64725,
+  "lng": -88.09646
+ },
+ "san cayetano istepeque, san vicente, el salvador": {
+  "lat": 13.64987,
+  "lng": -88.80943
+ },
+ "san cristobal, cuscatlan, el salvador": {
+  "lat": 13.69993,
+  "lng": -88.89987
+ },
+ "san diego y san felipe de las barras, el salvador": null,
+ "san dionisio, usulutan, el salvador": {
+  "lat": 13.2845,
+  "lng": -88.45725
+ },
+ "san emigdio, la paz, el salvador": {
+  "lat": 13.64631,
+  "lng": -88.98411
+ },
+ "san esteban catarina, san vicente, el salvador": {
+  "lat": 13.68509,
+  "lng": -88.78763
+ },
+ "san fernando, morazan, el salvador": {
+  "lat": 13.96155,
+  "lng": -88.19787
+ },
+ "san francisco chinameca, la paz, el salvador": {
+  "lat": 13.6058,
+  "lng": -89.09466
+ },
+ "san francisco gotera, morazan, el salvador": {
+  "lat": 13.6789,
+  "lng": -88.0924
+ },
+ "san francisco lempa, chalatenango, el salvador": {
+  "lat": 13.97251,
+  "lng": -89.00217
+ },
+ "san francisco menendez, ahuachapan, el salvador": {
+  "lat": 13.80155,
+  "lng": -90.02644
+ },
+ "san francisco morazan, chalatenango, el salvador": {
+  "lat": 14.1793,
+  "lng": -89.04973
+ },
+ "san gerardo, san miguel, el salvador": {
+  "lat": 13.8092,
+  "lng": -88.40754
+ },
+ "san ignacio, chalatenango, el salvador": {
+  "lat": 14.33874,
+  "lng": -89.17849
+ },
+ "san isidro, cabanas, el salvador": {
+  "lat": 13.83448,
+  "lng": -88.7181
+ },
+ "san isidro, morazan, el salvador": {
+  "lat": 13.85949,
+  "lng": -88.23261
+ },
+ "san jose la fuente, la union, el salvador": {
+  "lat": 13.74572,
+  "lng": -89.10673
+ },
+ "san jose las flores, chalatenango, el salvador": {
+  "lat": 14.05055,
+  "lng": -88.8376
+ },
+ "san jose villanueva, la libertad, el salvador": {
+  "lat": 13.57665,
+  "lng": -89.26508
+ },
+ "san juan de opico, la libertad, el salvador": {
+  "lat": 13.7873,
+  "lng": -89.36179
+ },
+ "san juan opico, la libertad, el salvador": {
+  "lat": 13.8764,
+  "lng": -89.35845
+ },
+ "san juan talpa, la paz, el salvador": {
+  "lat": 13.50243,
+  "lng": -89.08936
+ },
+ "san julian, sonsonate, el salvador": {
+  "lat": 13.69736,
+  "lng": -89.55816
+ },
+ "san lorenzo, ahuachapan, el salvador": {
+  "lat": 14.02608,
+  "lng": -89.78403
+ },
+ "san luis de la reina, san miguel, el salvador": {
+  "lat": 13.81396,
+  "lng": -88.34629
+ },
+ "san luis del carmen, chalatenango, el salvador": {
+  "lat": 13.95909,
+  "lng": -88.97201
+ },
+ "san luis la herradura, la paz, el salvador": {
+  "lat": 13.35025,
+  "lng": -88.95163
+ },
+ "san luis talpa, la paz, el salvador": {
+  "lat": 13.47355,
+  "lng": -89.08884
+ },
+ "san marcos, san salvador, el salvador": {
+  "lat": 13.65787,
+  "lng": -89.183
+ },
+ "san martin, san salvador, el salvador": {
+  "lat": 13.73862,
+  "lng": -89.05522
+ },
+ "san miguel centro municipio de chirilagua, san miguel, el salvador": {
+  "lat": 13.30122,
+  "lng": -88.15453
+ },
+ "san miguel centro, san miguel, el salvador": {
+  "lat": 13.39335,
+  "lng": -88.14665
+ },
+ "san miguel de mercedes, chalatenango, el salvador": {
+  "lat": 14.00938,
+  "lng": -88.94022
+ },
+ "san miguel tepezontes, la paz, el salvador": {
+  "lat": 13.62207,
+  "lng": -89.02075
+ },
+ "san miguel, san miguel, el salvador": {
+  "lat": 13.48039,
+  "lng": -88.17722
+ },
+ "san pedro masahuat, la paz, el salvador": {
+  "lat": 13.45572,
+  "lng": -89.03814
+ },
+ "san pedro perulapan, cuscatlan, el salvador": {
+  "lat": 13.76693,
+  "lng": -89.03763
+ },
+ "san rafael cedros, cuscatlan, el salvador": {
+  "lat": 13.73107,
+  "lng": -88.88738
+ },
+ "san rafael, chalatenango, el salvador": {
+  "lat": 14.13419,
+  "lng": -89.02912
+ },
+ "san ramon, cuscatlan, el salvador": {
+  "lat": 13.68269,
+  "lng": -88.92642
+ },
+ "san salvador centro, san salvador, el salvador": {
+  "lat": 13.73559,
+  "lng": -89.20055
+ },
+ "san salvador municipio de san salvador centro, san salvador, el salvador": {
+  "lat": 13.69907,
+  "lng": -89.21964
+ },
+ "san salvador, la union, el salvador": {
+  "lat": 13.18511,
+  "lng": -87.69822
+ },
+ "san salvador, san salvador, el salvador": {
+  "lat": 13.69763,
+  "lng": -89.19116
+ },
+ "san salvador, santa ana, el salvador": {
+  "lat": 13.98359,
+  "lng": -89.54664
+ },
+ "san salvador, sonsonate, el salvador": {
+  "lat": 13.74977,
+  "lng": -89.5974
+ },
+ "san sebastian salitrillo, santa ana, el salvador": {
+  "lat": 13.96961,
+  "lng": -89.63823
+ },
+ "san sebastian, san vicente, el salvador": {
+  "lat": 13.72298,
+  "lng": -88.81654
+ },
+ "san simon, morazan, el salvador": {
+  "lat": 13.8303,
+  "lng": -88.22734
+ },
+ "san vicente, san vicente, el salvador": {
+  "lat": 13.64332,
+  "lng": -88.78364
+ },
+ "santa ana, santa ana, el salvador": {
+  "lat": 13.97211,
+  "lng": -89.56053
+ },
+ "santa clara, san vicente, el salvador": {
+  "lat": 13.7027,
+  "lng": -88.72797
+ },
+ "santa cruz michapa, cuscatlan, el salvador": {
+  "lat": 13.738,
+  "lng": -88.97795
+ },
+ "santa elena, usulutan, el salvador": {
+  "lat": 13.38161,
+  "lng": -88.41158
+ },
+ "santa isabel ishuatan, sonsonate, el salvador": {
+  "lat": 13.61468,
+  "lng": -89.58339
+ },
+ "santa maria, usulutan, el salvador": {
+  "lat": 13.34756,
+  "lng": -88.4164
+ },
+ "santa rita, chalatenango, el salvador": {
+  "lat": 14.12718,
+  "lng": -89.00442
+ },
+ "santa rosa de lima, la union, el salvador": {
+  "lat": 13.62592,
+  "lng": -87.89113
+ },
+ "santa tecla, la libertad, el salvador": {
+  "lat": 13.67375,
+  "lng": -89.2886
+ },
+ "santiago de la frontera, santa ana, el salvador": {
+  "lat": 14.1834,
+  "lng": -89.60801
+ },
+ "santiago de maria, usulutan, el salvador": {
+  "lat": 13.48223,
+  "lng": -88.46526
+ },
+ "santiago nonualco, la paz, el salvador": {
+  "lat": 13.51232,
+  "lng": -88.94018
+ },
+ "santiago texacuangos, san salvador, el salvador": {
+  "lat": 13.64305,
+  "lng": -89.11712
+ },
+ "santo domingo de guzman, sonsonate, el salvador": {
+  "lat": 13.71784,
+  "lng": -89.79755
+ },
+ "santo domingo, san vicente, el salvador": {
+  "lat": 13.71858,
+  "lng": -88.85632
+ },
+ "santo tomas, san salvador, el salvador": {
+  "lat": 13.64299,
+  "lng": -89.13357
+ },
+ "segundo planta, san salvador, el salvador": null,
+ "sensuntepeque, cabanas, el salvador": {
+  "lat": 13.87618,
+  "lng": -88.62849
+ },
+ "sesori, san miguel, el salvador": {
+  "lat": 13.72074,
+  "lng": -88.3608
+ },
+ "sihuatehuacan, el salvador": {
+  "lat": 13.99685,
+  "lng": -89.54974
+ },
+ "sonsonate, sonsonate, el salvador": {
+  "lat": 13.63507,
+  "lng": -89.75256
+ },
+ "sonzacate, sonsonate, el salvador": {
+  "lat": 13.75404,
+  "lng": -89.70756
+ },
+ "soyapango, san salvador, el salvador": {
+  "lat": 13.70374,
+  "lng": -89.15007
+ },
+ "suchitoto, cuscatlan, el salvador": {
+  "lat": 13.93672,
+  "lng": -89.02593
+ },
+ "sunset park, el salvador": {
+  "lat": 13.48684,
+  "lng": -89.32101
+ },
+ "sunset park, la libertad, el salvador": {
+  "lat": 13.48684,
+  "lng": -89.32101
+ },
+ "taller patty, el salvador": null,
+ "talnique, la libertad, el salvador": {
+  "lat": 13.6817,
+  "lng": -89.39548
+ },
+ "tamanique, la libertad, el salvador": {
+  "lat": 13.57231,
+  "lng": -89.41707
+ },
+ "taquillo, la libertad, el salvador": {
+  "lat": 13.53628,
+  "lng": -89.48941
+ },
+ "tecoluca, san vicente, el salvador": {
+  "lat": 13.53697,
+  "lng": -88.78129
+ },
+ "tejutepeque, cabanas, el salvador": {
+  "lat": 13.85238,
+  "lng": -88.90478
+ },
+ "tejutla, chalatenango, el salvador": {
+  "lat": 14.17046,
+  "lng": -89.10038
+ },
+ "tenancingo, cuscatlan, el salvador": {
+  "lat": 13.83553,
+  "lng": -88.98492
+ },
+ "teotepeque, la libertad, el salvador": {
+  "lat": 13.58507,
+  "lng": -89.51773
+ },
+ "tepecoyo, la libertad, el salvador": {
+  "lat": 13.70071,
+  "lng": -89.4657
+ },
+ "tepetitan, san vicente, el salvador": {
+  "lat": 13.64729,
+  "lng": -88.8349
+ },
+ "termales alicante, ahuachapan, el salvador": {
+  "lat": 13.90377,
+  "lng": -89.82221
+ },
+ "termales de santa teresa, ahuachapan, el salvador": {
+  "lat": 13.90181,
+  "lng": -89.8187
+ },
+ "termales la montana, el salvador": null,
+ "terminal turistica de san sebastian, el salvador": null,
+ "texistepeque, santa ana, el salvador": {
+  "lat": 14.12436,
+  "lng": -89.49561
+ },
+ "thermal paradise villa, el salvador": null,
+ "thermal paradise villa, sonsonate, el salvador": null,
+ "todo el pais, la libertad, el salvador": null,
+ "todo el salvador, san salvador, el salvador": {
+  "lat": 13.696,
+  "lng": -89.19828
+ },
+ "todo el territorio nacional, sonsonate, el salvador": null,
+ "todo el territorio salvadoreno, san salvador, el salvador": null,
+ "tonacatepeque, san salvador, el salvador": {
+  "lat": 13.77996,
+  "lng": -89.11817
+ },
+ "tour del ron cihuatan, el salvador": null,
+ "tour del ron cihuatan, san salvador, el salvador": null,
+ "transporte, la union, el salvador": null,
+ "tres volcanes, el salvador": null,
+ "tres volcanes, usulutan, el salvador": null,
+ "turicentro rio sumpul, el salvador": null,
+ "turin, ahuachapan, el salvador": {
+  "lat": 13.96469,
+  "lng": -89.76622
+ },
+ "uluazapa, san miguel, el salvador": {
+  "lat": 13.50217,
+  "lng": -88.07095
+ },
+ "usulutan este, usulutan, el salvador": {
+  "lat": 13.3174,
+  "lng": -88.40715
+ },
+ "usulutan, usulutan, el salvador": {
+  "lat": 13.34382,
+  "lng": -88.43823
+ },
+ "verapaz, san vicente, el salvador": {
+  "lat": 13.65986,
+  "lng": -88.87231
+ },
+ "victoria, cabanas, el salvador": {
+  "lat": 13.95089,
+  "lng": -88.63818
+ },
+ "volcan de conchagua, la union, el salvador": {
+  "lat": 13.28029,
+  "lng": -87.82925
+ },
+ "volcan de san salvador – parque nacional el boqueron, el salvador": null,
+ "volcan de san salvador – parque nacional el boqueron, san salvador, el salvador": null,
+ "volcan de san vicente – chinchontepec, el salvador": null,
+ "volcan de san vicente – chinchontepec, san vicente, el salvador": null,
+ "volcan de santa ana – ilamatepec, el salvador": null,
+ "volcan de santa ana – ilamatepec, santa ana, el salvador": null,
+ "walter thilo deninger, el salvador": {
+  "lat": 13.67342,
+  "lng": -89.24276
+ },
+ "xtreme park el salvador, el salvador": null,
+ "y tienda fernando llort, el salvador": null,
+ "yoloaiquin, morazan, el salvador": {
+  "lat": 13.76562,
+  "lng": -88.1259
+ },
+ "yucuaiquin, la union, el salvador": {
+  "lat": 13.5483,
+  "lng": -88.00183
+ },
+ "zacatecoluca, la paz, el salvador": {
+  "lat": 13.50732,
+  "lng": -88.87021
+ },
+ "zaragoza, la libertad, el salvador": {
+  "lat": 13.58756,
+  "lng": -89.28855
+ },
+ "zona occidental, ahuachapan, el salvador": null,
+ "zona oriental, morazan, el salvador": null,
+ "zona oriental, san salvador, el salvador": null,
+ "zona rosa, san salvador, el salvador": {
+  "lat": 13.6986,
+  "lng": -89.197
+ },
+ "zonte, la libertad, el salvador": {
+  "lat": 13.50148,
+  "lng": -89.43158
+ }
+}

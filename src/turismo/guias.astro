@@ -1,0 +1,83 @@
+---
+import { DEPARTMENTS, GUIDE_LEVEL_LABEL, LANGUAGE_LABEL, places } from "../lib/turismo/catalog";
+import { focusRing } from "../lib/ui";
+import Layout from "./Layout.astro";
+
+const guides = places.filter((place) => place.kind === "guide").sort((a, b) => a.name.localeCompare(b.name, "es"));
+const languages = [...new Set(guides.flatMap((guide) => guide.languages))].filter((code) => code !== "es");
+const departments = DEPARTMENTS.filter((name) => guides.some((guide) => guide.department === name));
+const origin = Astro.site ?? new URL(Astro.url.origin);
+const url = new URL("/turismo/guias", origin).href;
+const description = `${guides.length} guías de turismo certificados en El Salvador, de sitio, locales y nacionales, con los idiomas en que trabajan: ${languages.map((code) => LANGUAGE_LABEL[code] ?? code).join(", ")} y español.`;
+const schema = [{ "@type": "CollectionPage", "@id": `${url}#page`, url, name: "Guías de turismo certificados en El Salvador", description, inLanguage: "es-SV" }];
+const option = `inline-flex h-10 shrink-0 items-center rounded-full border border-border-tertiary px-4 text-[14px] font-medium hover:bg-surface-muted aria-pressed:border-blue-700 aria-pressed:bg-blue-700 aria-pressed:text-white ${focusRing}`;
+---
+
+<Layout title="Guías de turismo certificados en El Salvador | Ventanilla" description={description} current="guias" schema={schema}>
+  <header class="mt-6">
+    <h1 class="font-serif-display text-[clamp(2.4rem,7vw,4rem)] leading-[0.95] tracking-[-0.02em]">Guías certificados</h1>
+    <p class="mt-3 max-w-[56ch] text-[17px] text-text-secondary">{guides.length} guías de turismo certificados por el Ministerio de Turismo. Son personas: aquí ves su nombre, idiomas y zona. Para contratar uno, consulta en el sitio turístico o con un tour operador registrado.</p>
+  </header>
+
+  <div class="mt-6 flex flex-col gap-3" data-guide-filters>
+    <div class="-mx-4 flex gap-2 overflow-x-auto px-4 [scrollbar-width:none] mobile:-mx-6 mobile:px-6 [&::-webkit-scrollbar]:hidden" role="group" aria-label="Idioma">
+      <button type="button" class={option} data-lang="" aria-pressed="true">Todos los idiomas</button>
+      {languages.map((code) => <button type="button" class={option} data-lang={code} aria-pressed="false">{LANGUAGE_LABEL[code] ?? code}</button>)}
+    </div>
+    <label class="flex items-center gap-3 text-[14px]">
+      <span class="text-text-secondary">Departamento</span>
+      <select data-dept class="h-10 rounded-full border border-border-tertiary bg-background-primary px-3 text-[14px]">
+        <option value="">Todo el país</option>
+        {departments.map((name) => <option value={name}>{name}</option>)}
+      </select>
+    </label>
+    <p class="text-[14px] text-text-secondary" aria-live="polite" data-count>{guides.length} guías</p>
+  </div>
+
+  <ul class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 site-desktop:grid-cols-3">
+    {
+      guides.map((guide) => (
+        <li id={guide.slug} class="scroll-mt-28 rounded-24 border border-border-quaternary p-5" data-langs={guide.languages.join(" ")} data-dept={guide.department ?? ""}>
+          <p class="text-[12px] font-medium tracking-wide text-text-tertiary uppercase">{guide.guideLevel ? GUIDE_LEVEL_LABEL[guide.guideLevel] : "Guía de turismo"}</p>
+          <h2 class="mt-1.5 font-serif-display text-[1.5rem] leading-[1.05]">{guide.name}</h2>
+          {[guide.municipality, guide.department].filter(Boolean).length > 0 && <p class="mt-1 text-[14px] text-text-secondary">{[guide.municipality, guide.department].filter(Boolean).join(", ")}</p>}
+          {guide.languages.length > 0 && (
+            <ul class="mt-3 flex flex-wrap gap-1.5">
+              {guide.languages.map((code) => <li class="rounded-full bg-surface-muted px-2.5 py-1 text-[12px] font-medium">{LANGUAGE_LABEL[code] ?? code}</li>)}
+            </ul>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-guide-filters]");
+  const cards = [...document.querySelectorAll<HTMLElement>("[data-langs]")];
+  let language = "";
+  let department = "";
+  const apply = () => {
+    let shown = 0;
+    for (const card of cards) {
+      const visible = (!language || (card.dataset.langs ?? "").split(" ").includes(language)) && (!department || card.dataset.dept === department);
+      card.hidden = !visible;
+      if (visible) shown++;
+    }
+    const count = root?.querySelector("[data-count]");
+    if (count) count.textContent = `${shown} ${shown === 1 ? "guía" : "guías"}`;
+  };
+  root?.querySelectorAll<HTMLButtonElement>("[data-lang]").forEach((button) =>
+    button.addEventListener("click", () => {
+      language = button.dataset.lang ?? "";
+      root.querySelectorAll("[data-lang]").forEach((other) => other.setAttribute("aria-pressed", String(other === button)));
+      apply();
+    }),
+  );
+  root?.querySelector<HTMLSelectElement>("[data-dept]")?.addEventListener("change", (event) => {
+    department = (event.target as HTMLSelectElement).value;
+    apply();
+  });
+  const preset = new URLSearchParams(location.search).get("idioma");
+  if (preset) root?.querySelector<HTMLButtonElement>(`[data-lang="${CSS.escape(preset)}"]`)?.click();
+</script>

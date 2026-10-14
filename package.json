@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev --port 5201",
-    "prebuild": "node --env-file-if-exists=.env.local scripts/corpus.ts",
+    "prebuild": "node --env-file-if-exists=.env.local scripts/corpus.ts && node --env-file-if-exists=.env.local scripts/turismo.ts",
     "build": "astro build",
     "preview": "astro preview --port 5201",
     "check": "astro check",
@@ -17,6 +17,7 @@
     "eval": "node --env-file-if-exists=.env.local scripts/eval.ts",
     "tramites": "node --env-file-if-exists=.env.local scripts/tramites.ts",
     "corpus": "node --env-file-if-exists=.env.local scripts/corpus.ts",
+    "turismo": "COUNTRY=sv node --env-file-if-exists=.env.local scripts/turismo.ts",
     "omr": "node --env-file-if-exists=.env.local scripts/omr.ts",
     "journal": "node --env-file-if-exists=.env.local scripts/journal.ts"
   },
@@ -37,11 +38,14 @@
     "astro": "^7.3.5",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
+    "lucide-react": "^1.57.0",
+    "maplibre-gl": "^5.24.0",
     "minisearch": "^7.2.0",
     "motion": "^14.0.0",
     "ogl": "^1.0.11",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "simple-icons": "^16.35.0",
     "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.3.3",
     "zod": "^4.6.5"
