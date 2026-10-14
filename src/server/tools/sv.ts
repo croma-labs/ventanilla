@@ -5,6 +5,86 @@ const hour = 3600;
 const year = z.number().int().min(1821).max(2100).nullish().describe("Año, solo si la persona lo menciona");
 
 type Decree = { id: string; number: string; type: string; title: string; summary: string | null; issue_date: string | null; official_url: string };
+type Place = {
+  id: string;
+  name: string;
+  kind: string;
+  themes: string[];
+  registered: boolean;
+  department: string | null;
+  municipality: string | null;
+  region: string | null;
+  languages: string[];
+  hours: string | null;
+  phones: string[];
+  address: string | null;
+  website: string | null;
+  official_url: string;
+  description?: string | null;
+};
+type TourismEvent = { id: string; name: string; start_date: string | null; end_date: string | null; venue: string | null; department: string | null; links: string[]; official_url: string };
+
+const departments = ["Ahuachapán", "Cabañas", "Chalatenango", "Cuscatlán", "La Libertad", "La Paz", "La Unión", "Morazán", "San Miguel", "San Salvador", "San Vicente", "Santa Ana", "Sonsonate", "Usulután"] as const;
+
+const kinds: readonly (readonly [RegExp, string])[] = [
+  [/\b(gu[ií]as?|guide|tour guide)\b/i, "guide"],
+  [/\b(escuelas? de surf|clases? de surf|surf school|surf lessons?)\b/i, "surf_school"],
+  [/\b(hotel(es)?|hostal(es)?|hospedaje|alojamiento|dormir|caba[ñn]as?|posada|lodging|hostel|stay|sleep)\b/i, "lodging"],
+  [/\b(restaurantes?|comer|comida|cafeter[ií]a|pupuser[ií]a|restaurant|food|eat)\b/i, "restaurant"],
+  [/\b(transporte|shuttle|transfer|taxi|bus)\b/i, "transport"],
+  [/\b(museos?|parques?|sitios? tur[ií]sticos?|museum|park)\b/i, "attraction"],
+];
+
+const themes: readonly (readonly [RegExp, string])[] = [
+  [/\bbitcoin\b/i, "bitcoin"],
+  [/\bsurf city\b/i, "surf_city"],
+  [/\b(arqueol[oó]gic|ruinas|mayas?|ruins|archaeolog)/i, "archaeology"],
+  [/\b(termales|bienestar|wellness|hot springs)\b/i, "wellness"],
+];
+
+const languages: readonly (readonly [RegExp, string])[] = [
+  [/\b(ingl[eé]s|english)\b/i, "en"],
+  [/\b(franc[eé]s|french)\b/i, "fr"],
+  [/\b(italiano|italian)\b/i, "it"],
+  [/\b(alem[aá]n|german)\b/i, "de"],
+  [/\b(portugu[eé]s|portuguese)\b/i, "pt"],
+];
+
+const fold = (text: string) => text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
+
+/** The router hands datasets one keyword query; the directory's filters are read back out of it. */
+export function placeFilters(query: string) {
+  const department = departments.find((name) => new RegExp(`(?<!playa )\\b${fold(name)}\\b`).test(fold(query)));
+  const kind = kinds.find(([pattern]) => pattern.test(query))?.[1];
+  const theme = themes.find(([pattern]) => pattern.test(query))?.[1];
+  const language = kind === "guide" ? languages.find(([pattern]) => pattern.test(query))?.[1] : undefined;
+  const rest = [...kinds, ...themes, ...languages]
+    .reduce((text, [pattern]) => text.replace(new RegExp(pattern.source, "gi"), " "), query)
+    .replace(department ? new RegExp(department, "i") : /$^/, " ")
+    .replace(/\b(cerca de|en|de|del|la|el|los|las|que|hablen?|speak(s|ing)?|near|in|the|a|un|una|para|donde|d[oó]nde|playa de)\b/gi, " ")
+    .replace(/\b(destinos?|lugares?|sitios?|visitar|turismo|tur[ií]stic[oa]s?|recomendad[oa]s?|mejores?|places?|visit|things to do|best)\b/gi, " ")
+    .replace(kind ? /\bplayas?\b/gi : /$^/, " ")
+    .replace(/[¿?¡!,.]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const name = department && fold(rest) === fold(department) ? "" : rest;
+  return { query: name || undefined, kind, theme, department, language };
+}
+
+const placeLine = (place: Place) =>
+  [
+    place.region,
+    place.address,
+    place.hours && `Horario: ${place.hours}`,
+    place.phones.length ? `Tel. ${place.phones.slice(0, 2).join(", ")}` : null,
+    place.website && `Sitio: ${place.website}`,
+    place.languages.length ? `Idiomas: ${place.languages.join(", ")}` : null,
+    place.registered ? "Inscrito en el Registro Nacional de Turismo" : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
+const where = (item: { municipality?: string | null; department: string | null }) => [item.municipality, item.department].filter(Boolean).join(", ");
 type Ruling = { id: string; registration_number: string; ruling_date: string; court: string; type: string; decision: string | null; facts: string | null; official_url: string };
 
 export const decrees = cromaTool("decretos", {
@@ -63,5 +143,67 @@ export const constitutionalRulings = cromaTool("jurisprudencia_constitucional", 
       url: ruling.official_url,
     })),
     sources: data.results.map((ruling) => ({ title: `${ruling.type} ${ruling.registration_number} · Sala de lo Constitucional`, url: ruling.official_url })),
+  }),
+});
+
+export const tourismPlaces = cromaTool("turismo", {
+  description:
+    "Directorio oficial de turismo del Ministerio de Turismo de El Salvador: destinos, playas, sitios turísticos, hoteles y alojamiento, restaurantes, transporte turístico, escuelas de surf y guías de turismo certificados, con departamento, municipio y contactos de los negocios.",
+  input: z.object({ query: z.string().min(2).max(200).describe("Qué y dónde, p. ej. \"hotel El Tunco\", \"guía inglés Santa Ana\", \"destinos bitcoin\"") }),
+  path: "/sv/mitur-sv/places-search/v1",
+  ttl: 12 * hour,
+  body: ({ query }) => ({ ...placeFilters(query), per_page: 8 }),
+  shape: (data: { total: number; results: Place[] }) => ({
+    results: {
+      total: data.total,
+      places: data.results.map((place) => ({
+        id: place.id,
+        title: place.name,
+        kind: place.kind,
+        where: where(place),
+        summary: clip(placeLine(place), 420),
+        url: place.official_url,
+      })),
+    },
+    sources: data.results.map((place) => ({ title: `${place.name} · Ministerio de Turismo`, url: place.official_url })),
+  }),
+});
+
+export const tourismPlace = cromaTool("lugar_turistico", {
+  description: "Ficha completa de un lugar del directorio oficial de turismo por su id (de un resultado de turismo): descripción, horarios, contactos.",
+  input: z.object({ place_id: z.string().min(1).max(300) }),
+  path: "/sv/mitur-sv/place/v1",
+  ttl: 24 * hour,
+  body: ({ place_id }) => ({ place_id }),
+  shape: ({ place }: { place: Place | null }) => ({
+    results: place ? { title: place.name, url: place.official_url, text: [place.description, placeLine(place)].filter(Boolean).join("\n") } : null,
+    sources: place ? [{ title: `${place.name} · Ministerio de Turismo`, url: place.official_url }] : [],
+  }),
+});
+
+export const tourismEvents = cromaTool("eventos_turismo", {
+  description: "Agenda oficial del Ministerio de Turismo de El Salvador: festivales, ferias, conciertos y eventos culturales que aún no terminan, con fechas, lugar y departamento.",
+  input: z.object({ query: z.string().min(2).max(200).describe("Tipo de evento o lugar, p. ej. \"festival Suchitoto\", \"eventos San Salvador\"") }),
+  path: "/sv/mitur-sv/events-search/v1",
+  ttl: 6 * hour,
+  body: ({ query }) => {
+    const department = departments.find((name) => new RegExp(`\\b${fold(name)}\\b`).test(fold(query)));
+    const text = query
+      .replace(department ? new RegExp(department, "i") : /$^/, " ")
+      .replace(/\b(eventos?|agenda|qu[eé] hay|este fin de semana|esta semana|hoy|events?|what'?s on|this weekend|in|en|de)\b/gi, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    return { query: text.length > 2 ? text : undefined, department, per_page: 8 };
+  },
+  shape: (data: { total: number; results: TourismEvent[] }) => ({
+    results: {
+      total: data.total,
+      events: data.results.map((event) => ({
+        title: event.name,
+        summary: [event.start_date === event.end_date ? event.start_date : `${event.start_date} a ${event.end_date}`, event.venue, event.department].filter(Boolean).join(" · "),
+        url: event.official_url,
+      })),
+    },
+    sources: data.results.map((event) => ({ title: `${event.name} · Agenda del Ministerio de Turismo`, url: event.official_url })),
   }),
 });
