@@ -20,7 +20,7 @@ export type ResearchConfig = {
 
 export type Candidate = { id: string; origin: string; title: string; url: string; text: string; ref?: string; score?: number; read?: boolean; authority?: boolean };
 
-export type Route = { inScope: boolean; authorities: string[]; queries: string[]; datasets: Record<string, string | null> };
+export type Route = { inScope: boolean; language: string; authorities: string[]; queries: string[]; datasets: Record<string, string | null> };
 
 export type Research = { route: Route | null; candidates: Candidate[]; considered: number; timings: Record<string, number>; corpus?: boolean };
 
@@ -91,6 +91,7 @@ ${Object.entries(config.datasets)
   .join("\n")}
 
 Return:
+- language: the ISO 639-1 code of the language the QUESTION itself is written in, judged by its grammar, not by the place names in it ("A day on the Ruta de las Flores" is en).
 - in_scope: true if the question is about ${config.scope ?? "the State, public services, procedures, rights, laws or taxes of this country"}; false for anything else (sports, trivia, general knowledge, chit-chat).
 - authorities: the 1 or 2 domains legally competent for this question, most competent first. Empty only if none applies.
 - queries: 1 to 3 precise search queries in the question's language, one per distinct thing to find out (e.g. requirements and cost are two), naming the procedure or right with its official terms. No personal data.
@@ -157,6 +158,7 @@ export async function research({
 
   const domains = config.authorities.map((authority) => authority.domain) as [string, ...string[]];
   const routeSchema = z.object({
+    language: z.string(),
     in_scope: z.boolean(),
     authorities: z.array(z.enum(domains)),
     queries: z.array(z.string()),
@@ -175,6 +177,7 @@ export async function research({
   })
     .then(({ output }) => ({
       inScope: output.in_scope,
+      language: output.language.trim().toLowerCase().slice(0, 2),
       authorities: output.authorities.slice(0, 2),
       queries: output.queries.filter((query) => query.trim().length > 2).slice(0, 3),
       datasets: output.datasets as Record<string, string | null>,

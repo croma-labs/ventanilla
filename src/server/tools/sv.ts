@@ -22,6 +22,7 @@ type Place = {
   website: string | null;
   official_url: string;
   description?: string | null;
+  summary?: string | null;
 };
 type TourismEvent = { id: string; slug: string; name: string; start_date: string | null; end_date: string | null; venue: string | null; department: string | null; links: string[]; official_url: string };
 
@@ -74,6 +75,7 @@ export function placeFilters(query: string) {
 
 const placeLine = (place: Place) =>
   [
+    place.summary,
     place.region,
     place.address,
     place.hours && `Horario: ${place.hours}`,
