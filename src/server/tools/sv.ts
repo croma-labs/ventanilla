@@ -7,6 +7,7 @@ const year = z.number().int().min(1821).max(2100).nullish().describe("Año, solo
 type Decree = { id: string; number: string; type: string; title: string; summary: string | null; issue_date: string | null; official_url: string };
 type Place = {
   id: string;
+  slug: string;
   name: string;
   kind: string;
   themes: string[];
@@ -22,7 +23,7 @@ type Place = {
   official_url: string;
   description?: string | null;
 };
-type TourismEvent = { id: string; name: string; start_date: string | null; end_date: string | null; venue: string | null; department: string | null; links: string[]; official_url: string };
+type TourismEvent = { id: string; slug: string; name: string; start_date: string | null; end_date: string | null; venue: string | null; department: string | null; links: string[]; official_url: string };
 
 const departments = ["Ahuachapán", "Cabañas", "Chalatenango", "Cuscatlán", "La Libertad", "La Paz", "La Unión", "Morazán", "San Miguel", "San Salvador", "San Vicente", "Santa Ana", "Sonsonate", "Usulután"] as const;
 
@@ -83,6 +84,47 @@ const placeLine = (place: Place) =>
   ]
     .filter(Boolean)
     .join(" · ");
+
+/** The dates a question about the agenda means, in El Salvador's time: this weekend, today, this week or this month. */
+function when(query: string): { from_date?: string; to_date?: string } {
+  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/El_Salvador" }).format(new Date());
+  const day = new Date(`${today}T12:00:00Z`);
+  const iso = (date: Date) => date.toISOString().slice(0, 10);
+  const plus = (days: number) => iso(new Date(day.getTime() + days * 86_400_000));
+  const weekday = day.getUTCDay();
+  if (/fin de semana|weekend/i.test(query)) return { from_date: weekday === 0 || weekday === 6 ? today : plus(5 - weekday), to_date: plus(weekday === 0 ? 0 : 7 - weekday) };
+  if (/\b(hoy|today)\b/i.test(query)) return { from_date: today, to_date: today };
+  if (/esta semana|this week/i.test(query)) return { from_date: today, to_date: plus(weekday === 0 ? 0 : 7 - weekday) };
+  if (/este mes|this month/i.test(query)) return { from_date: today, to_date: iso(new Date(Date.UTC(day.getUTCFullYear(), day.getUTCMonth() + 1, 0, 12))) };
+  const month = MONTHS.findIndex((names) => names.some((name) => new RegExp(`\\b${name}\\b`, "i").test(fold(query))));
+  if (month >= 0) {
+    const year = day.getUTCFullYear() + (month < day.getUTCMonth() ? 1 : 0);
+    const first = iso(new Date(Date.UTC(year, month, 1, 12)));
+    return { from_date: first < today ? today : first, to_date: iso(new Date(Date.UTC(year, month + 1, 0, 12))) };
+  }
+  return {};
+}
+
+const longDate = (iso: string) => new Intl.DateTimeFormat("es-SV", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${iso}T12:00:00Z`));
+
+const MONTHS = [
+  ["enero", "january"],
+  ["febrero", "february"],
+  ["marzo", "march"],
+  ["abril", "april"],
+  ["mayo", "may"],
+  ["junio", "june"],
+  ["julio", "july"],
+  ["agosto", "august"],
+  ["septiembre", "setiembre", "september"],
+  ["octubre", "october"],
+  ["noviembre", "november"],
+  ["diciembre", "december"],
+];
+
+/** Tourism answers link to Ventanilla's own /turismo pages, built from the same official directory. */
+const turismo = (path: string) => new URL(path, import.meta.env.SITE ?? "https://sv.usecroma.com").href;
+const placeUrl = (place: Pick<Place, "slug" | "kind">) => turismo(place.kind === "guide" ? `/turismo/guias#${place.slug}` : `/turismo/lugar/${place.slug}`);
 
 const where = (item: { municipality?: string | null; department: string | null }) => [item.municipality, item.department].filter(Boolean).join(", ");
 type Ruling = { id: string; registration_number: string; ruling_date: string; court: string; type: string; decision: string | null; facts: string | null; official_url: string };
@@ -162,10 +204,10 @@ export const tourismPlaces = cromaTool("turismo", {
         kind: place.kind,
         where: where(place),
         summary: clip(placeLine(place), 420),
-        url: place.official_url,
+        url: placeUrl(place),
       })),
     },
-    sources: data.results.map((place) => ({ title: `${place.name} · Ministerio de Turismo`, url: place.official_url })),
+    sources: data.results.map((place) => ({ title: `${place.name} · Turismo en El Salvador`, url: placeUrl(place) })),
   }),
 });
 
@@ -176,8 +218,8 @@ export const tourismPlace = cromaTool("lugar_turistico", {
   ttl: 24 * hour,
   body: ({ place_id }) => ({ place_id }),
   shape: ({ place }: { place: Place | null }) => ({
-    results: place ? { title: place.name, url: place.official_url, text: [place.description, placeLine(place)].filter(Boolean).join("\n") } : null,
-    sources: place ? [{ title: `${place.name} · Ministerio de Turismo`, url: place.official_url }] : [],
+    results: place ? { title: place.name, url: placeUrl(place), text: [place.description, placeLine(place)].filter(Boolean).join("\n") } : null,
+    sources: place ? [{ title: `${place.name} · Turismo en El Salvador`, url: placeUrl(place) }] : [],
   }),
 });
 
@@ -190,20 +232,27 @@ export const tourismEvents = cromaTool("eventos_turismo", {
     const department = departments.find((name) => new RegExp(`\\b${fold(name)}\\b`).test(fold(query)));
     const text = query
       .replace(department ? new RegExp(department, "i") : /$^/, " ")
-      .replace(/\b(eventos?|agenda|qu[eé] hay|este fin de semana|esta semana|hoy|events?|what'?s on|this weekend|in|en|de)\b/gi, " ")
+      .replace(/\b(fin de semana|weekend|esta semana|this week|este mes|this month|hoy|today|pr[oó]xim[oa]s?|upcoming|soon|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre|january|february|march|april|may|june|july|august|september|october|november|december)\b/gi, " ")
+      .replace(/\b(eventos?|agenda|actividades|qu[eé] hay|events?|what'?s on|happening|este|esta|this|in|en|de|el|la|los|las)\b/gi, " ")
+      .replace(/[¿?¡!,.]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
-    return { query: text.length > 2 ? text : undefined, department, per_page: 8 };
+    return { query: text.length > 2 ? text : undefined, department, ...when(query), per_page: 8 };
   },
-  shape: (data: { total: number; results: TourismEvent[] }) => ({
+  shape: (data: { total: number; from_date: string; to_date: string | null; results: TourismEvent[] }) => ({
     results: {
       total: data.total,
+      period: {
+        title: "Agenda de turismo de El Salvador",
+        summary: `Periodo consultado en la agenda oficial: ${longDate(data.from_date)}${data.to_date ? ` al ${longDate(data.to_date)}` : " en adelante"}. Eventos en ese periodo: ${data.total}.`,
+        url: turismo("/turismo/eventos"),
+      },
       events: data.results.map((event) => ({
         title: event.name,
         summary: [event.start_date === event.end_date ? event.start_date : `${event.start_date} a ${event.end_date}`, event.venue, event.department].filter(Boolean).join(" · "),
-        url: event.official_url,
+        url: turismo(`/turismo/eventos#${event.slug}`),
       })),
     },
-    sources: data.results.map((event) => ({ title: `${event.name} · Agenda del Ministerio de Turismo`, url: event.official_url })),
+    sources: data.results.map((event) => ({ title: `${event.name} · Agenda de turismo`, url: turismo(`/turismo/eventos#${event.slug}`) })),
   }),
 });
