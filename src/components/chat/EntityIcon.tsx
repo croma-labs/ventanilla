@@ -1,10 +1,11 @@
 import icons from "@country/icons.json";
+import logos from "@country/logos.json";
 import { site } from "@country/site";
 import { useState } from "react";
 import { cn } from "../../lib/cn";
 import Monogram from "./Monogram";
 
-const vendored: Record<string, string> = icons;
+const vendored: Record<string, string> = { ...icons, ...logos };
 
 const official = (domain: string) => site.officialSuffixes.some((suffix) => (suffix.startsWith(".") ? domain.endsWith(suffix) : domain === suffix || domain.endsWith(`.${suffix}`)));
 
