@@ -1,5 +1,5 @@
 import type { Authority, ResearchConfig } from "../../server/research";
-import { constitutionalRulings, decrees, readDecree } from "../../server/tools/sv";
+import { constitutionalRulings, decrees, readDecree, tourismEvents, tourismPlace, tourismPlaces } from "../../server/tools/sv";
 import { readPage, webSearch } from "../../server/tools/global";
 
 const authorities: Authority[] = [
@@ -37,6 +37,7 @@ const authorities: Authority[] = [
   { domain: "aduana.gob.sv", covers: "aduanas: equipaje de viajero, importación de mercancías y vehículos, encomiendas y courier" },
   { domain: "fonat.gob.sv", covers: "Fondo para la Atención a las Víctimas de Accidentes de Tránsito: prestaciones por fallecimiento o lesiones en accidentes viales" },
   { domain: "srs.gob.sv", covers: "Superintendencia de Regulación Sanitaria: permisos de funcionamiento de farmacias y establecimientos, registro sanitario de alimentos y medicamentos" },
+  { domain: "elsalvador.travel", covers: "turismo oficial del Ministerio de Turismo: destinos, playas, Surf City, pueblos, hoteles, restaurantes, guías de turismo, eventos y festivales" },
 ];
 
 export const sources: ResearchConfig = {
@@ -54,5 +55,17 @@ export const sources: ResearchConfig = {
       },
     },
     jurisprudencia: { tool: constitutionalRulings, covers: "resoluciones de la Sala de lo Constitucional: amparos, hábeas corpus e inconstitucionalidades" },
+    turismo: {
+      tool: tourismPlaces,
+      covers: "directorio oficial de turismo: destinos, playas, pueblos, sitios turísticos, hoteles, restaurantes, transporte, escuelas de surf y guías certificados (query: qué y dónde, p. ej. \"hotel El Tunco\", \"guía inglés Santa Ana\")",
+      reader: async (candidate, context) => {
+        if (!candidate.ref) return null;
+        const result = await tourismPlace.run({ place_id: candidate.ref }, context);
+        return "error" in result ? null : ((result.results as { text?: string } | null)?.text ?? null);
+      },
+    },
+    eventos: { tool: tourismEvents, covers: "agenda oficial de eventos turísticos: festivales, ferias, conciertos y eventos culturales próximos (query: tipo de evento o lugar)" },
   },
+  scope:
+    "the State, public services, procedures, rights, laws or taxes of El Salvador, or visiting it as a tourist (destinations, beaches, lodging, food, tour guides, events listed by the Ministerio de Turismo)",
 };

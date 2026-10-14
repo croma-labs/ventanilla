@@ -241,7 +241,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
               checks = await verify({ question, draft: text, evidence, fast, fallback: resolved, deadline });
             }
             supporting = supporters(found?.candidates ?? [], checks).map((candidate) => candidate.url);
-            const review = { model: resolved.model, providerOptions: resolved.providerOptions, question, draft: text, evidence, language: site.locale };
+            const review = { model: resolved.model, providerOptions: resolved.providerOptions, question, draft: text, evidence, language: `the same language as the QUESTION, even when the DRAFT and the EVIDENCE are in another (a question in English gets an answer in English; ${site.locale} when unclear)` };
             for await (const delta of rewrite({ ...review, checks, signal }).textStream) write(stripToolMarkup(delta));
             reviewMs = Date.now() - reviewStarted;
           }

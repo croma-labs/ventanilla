@@ -14,6 +14,8 @@ export type ResearchConfig = {
   read: SourceTool;
   datasets: Record<string, Dataset>;
   authorities: readonly Authority[];
+  /** What the router keeps in scope; the State and its services when left out. */
+  scope?: string;
 };
 
 export type Candidate = { id: string; origin: string; title: string; url: string; text: string; ref?: string; score?: number; read?: boolean; authority?: boolean };
@@ -89,10 +91,10 @@ ${Object.entries(config.datasets)
   .join("\n")}
 
 Return:
-- in_scope: true if the question is about the State, public services, procedures, rights, laws or taxes of this country; false for anything else (sports, trivia, general knowledge, chit-chat).
+- in_scope: true if the question is about ${config.scope ?? "the State, public services, procedures, rights, laws or taxes of this country"}; false for anything else (sports, trivia, general knowledge, chit-chat).
 - authorities: the 1 or 2 domains legally competent for this question, most competent first. Empty only if none applies.
 - queries: 1 to 3 precise search queries in the question's language, one per distinct thing to find out (e.g. requirements and cost are two), naming the procedure or right with its official terms. No personal data.
-- datasets: for each dataset, a short keyword query if it is needed to answer (laws, rulings, tax doctrine), otherwise null. Procedures usually need none.`;
+- datasets: for each dataset, a short keyword query if it is needed to answer (laws, rulings, tax doctrine, tourism listings), otherwise null. Procedures usually need none.`;
 
 const judge = (question: string, candidates: Candidate[]) => `Score how well each official source answers the citizen's question.
 QUESTION: ${question}
