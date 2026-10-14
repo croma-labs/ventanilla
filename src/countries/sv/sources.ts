@@ -57,6 +57,7 @@ export const sources: ResearchConfig = {
     jurisprudencia: { tool: constitutionalRulings, covers: "resoluciones de la Sala de lo Constitucional: amparos, hábeas corpus e inconstitucionalidades" },
     turismo: {
       tool: tourismPlaces,
+      listing: true,
       covers: "directorio oficial de turismo: destinos, playas, pueblos, sitios turísticos, hoteles, restaurantes, transporte, escuelas de surf y guías certificados (query: qué y dónde, p. ej. \"hotel El Tunco\", \"guía inglés Santa Ana\")",
       reader: async (candidate, context) => {
         if (!candidate.ref) return null;
@@ -64,7 +65,7 @@ export const sources: ResearchConfig = {
         return "error" in result ? null : ((result.results as { text?: string } | null)?.text ?? null);
       },
     },
-    eventos: { tool: tourismEvents, covers: "agenda oficial de eventos turísticos: festivales, ferias, conciertos y eventos culturales próximos (query: tipo de evento o lugar)" },
+    eventos: { tool: tourismEvents, listing: true, covers: "agenda oficial de eventos turísticos: festivales, ferias, conciertos y eventos culturales próximos (query: tipo de evento o lugar)" },
   },
   scope:
     "the State, public services, procedures, rights, laws or taxes of El Salvador, or visiting it as a tourist (destinations, beaches, lodging, food, tour guides, events listed by the Ministerio de Turismo)",

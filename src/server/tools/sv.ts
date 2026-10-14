@@ -197,6 +197,7 @@ export const tourismPlaces = cromaTool("turismo", {
   path: "/sv/mitur-sv/places-search/v1",
   ttl: 12 * hour,
   body: ({ query }) => ({ ...placeFilters(query), per_page: 8 }),
+  cacheKey: (body) => `summaries:${JSON.stringify(body)}`,
   shape: (data: { total: number; results: Place[] }) => ({
     results: {
       total: data.total,
