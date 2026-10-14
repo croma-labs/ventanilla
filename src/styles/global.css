@@ -366,3 +366,10 @@
   filter: blur(24px);
   transform: scale(0.45);
 }
+
+@keyframes chat-rise {
+  from { opacity: 0; transform: translateY(10px) scale(0.985); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-chat-rise] { animation: chat-rise 460ms cubic-bezier(0.22, 1, 0.36, 1) var(--rise-delay, 0ms) both; }
+}

@@ -6,6 +6,7 @@ import { streamText, type ModelMessage } from "ai";
 import { z } from "zod";
 import { scrub } from "../../lib/pii";
 import { translatePath } from "../../lib/turismo/labels";
+import { tourismOf } from "../../lib/turismo/mentions";
 import type { Grounding, UiChunk } from "../../lib/ui-stream";
 import { recall, remember } from "../../server/answers";
 import { corpusVersion } from "../../server/corpus";
@@ -225,8 +226,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
               .join("\n")
               .slice(-900);
             found = await research({ config: assistant.sources, question, context, conversation, fast });
-            if (found.route?.language) english = found.route.language === "en";
-            if (english) found = { ...found, candidates: found.candidates.map((candidate) => ({ ...candidate, url: inEnglish(candidate.url), text: inEnglish(candidate.text) })) };
+            if (found.route?.language === "en") english = true;
+            if (english) found = { ...found, candidates: found.candidates.map((candidate) => ({ ...candidate, url: inEnglish(candidate.url), text: inEnglish(candidate.text) })), listings: found.listings?.map(inEnglish) };
             if (found.route && !found.route.inScope) conversational = true;
             found.candidates.forEach((candidate) => sources.set(candidate.url, { title: candidate.title, url: candidate.url }));
             searchUpdate("done");
@@ -300,16 +301,17 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       if (open) send({ type: "text-end", id: textId });
       if (!conversational) send({ type: "data-search", id: searchId, data: { status: "done", resultCount: grounded.length, groundings: grounded } });
       send({ type: "finish-step" });
-      send({ type: "message-metadata", messageMetadata: { answerComplete: true } });
+      const tourism = cached ? cached.tourism : conversational ? undefined : tourismOf(answer, found?.listings ?? []);
+      send({ type: "message-metadata", messageMetadata: { answerComplete: true, tourism } });
       if (outcome === "ok" && grounded.length) {
         followUps = await suggestFollowUps(question, answer, english ? "English" : site.lang);
         // A tourism answer that cites none of the directory's own pages missed it: answer afresh next time.
         const missedDirectory = ["turismo", "eventos"].some((name) => found?.route?.datasets[name]) && !grounded.some((grounding) => ownTourism(grounding.url));
         const cacheable = (done: Check[]) => !missedDirectory && done.length > 0 && done.filter((check) => check.status !== "found").length < done.length;
         if (firstTurn && !evaluation && pendingReview) {
-          const kept = { answer, groundings: grounded, followUps, corpus: (await corpusVersion()) ?? undefined };
+          const kept = { answer, groundings: grounded, followUps, tourism, corpus: (await corpusVersion()) ?? undefined };
           waitUntil(pendingReview.then((done) => (cacheable(done) ? remember(question, kept) : undefined)).catch(() => undefined));
-        } else if (firstTurn && !evaluation && cacheable(checks)) await remember(question, { answer, groundings: grounded, followUps });
+        } else if (firstTurn && !evaluation && cacheable(checks)) await remember(question, { answer, groundings: grounded, followUps, tourism });
       }
       const diagnostics = evaluation
         ? {

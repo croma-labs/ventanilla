@@ -1,6 +1,7 @@
 ---
 import { CalendarPlus, Globe, MapPin } from "lucide-react";
-import { dateRange, formatDate, LOCALE, type Lang } from "../../lib/turismo/catalog";
+import { calendarHref } from "../../lib/turismo/calendar";
+import { dateRange, formatDate, type Lang } from "../../lib/turismo/catalog";
 import type { Happening } from "../../lib/turismo/types";
 import { focusRing } from "../../lib/ui";
 import BrandIcon, { hasBrand, NETWORK_LABEL } from "./BrandIcon";
@@ -19,24 +20,7 @@ const COPY = {
 const day = event.start ? formatDate(event.start, lang, { day: "numeric" }) : "";
 const month = event.start ? formatDate(event.start, lang, { month: "short" }).replace(".", "") : "";
 const weekday = event.start ? formatDate(event.start, lang, { weekday: "short" }).replace(".", "") : "";
-const compact = (iso: string) => iso.replaceAll("-", "");
-const nextDay = (iso: string) => new Date(Date.parse(`${iso}T12:00:00Z`) + 86_400_000).toISOString().slice(0, 10);
-const ics =
-  event.start &&
-  [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    `PRODID:-//Ventanilla//Turismo El Salvador//${LOCALE[lang].slice(0, 2).toUpperCase()}`,
-    "BEGIN:VEVENT",
-    `UID:${event.id}@sv.usecroma.com`,
-    `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").slice(0, 15)}Z`,
-    `DTSTART;VALUE=DATE:${compact(event.start)}`,
-    `DTEND;VALUE=DATE:${compact(nextDay(event.end ?? event.start))}`,
-    `SUMMARY:${event.name.replace(/[,;]/g, "\\$&")}`,
-    ...(event.venue ? [`LOCATION:${[event.venue, event.department, "El Salvador"].filter(Boolean).join(", ").replace(/[,;]/g, "\\$&")}`] : []),
-    "END:VEVENT",
-    "END:VCALENDAR",
-  ].join("\r\n");
+const calendar = calendarHref(event, lang);
 const width = variant === "compact" ? "w-[78vw] max-w-[320px] shrink-0 snap-start" : "";
 ---
 
@@ -70,8 +54,8 @@ const width = variant === "compact" ? "w-[78vw] max-w-[320px] shrink-0 snap-star
       ))
     }
     {
-      ics && (
-        <a href={`data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`} download={`${event.slug}.ics`} class={`inline-flex h-9 items-center gap-1.5 rounded-full border border-border-tertiary px-3 text-[13px] font-medium hover:bg-surface-muted ${focusRing}`}>
+      calendar && (
+        <a href={calendar} download={`${event.slug}.ics`} class={`inline-flex h-9 items-center gap-1.5 rounded-full border border-border-tertiary px-3 text-[13px] font-medium hover:bg-surface-muted ${focusRing}`}>
           <CalendarPlus size={14} strokeWidth={1.75} />
           {COPY.save}
         </a>

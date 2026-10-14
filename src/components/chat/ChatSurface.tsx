@@ -78,7 +78,7 @@ export default function ChatSurface() {
           answer += chunk.delta;
           patchAssistant(assistantId, (message) => ({ text: message.text + chunk.delta }));
         }
-        if (chunk.type === "message-metadata" && chunk.messageMetadata.answerComplete) patchAssistant(assistantId, () => ({ streaming: false }));
+        if (chunk.type === "message-metadata" && chunk.messageMetadata.answerComplete) patchAssistant(assistantId, () => ({ streaming: false, tourism: chunk.messageMetadata.tourism }));
         if (chunk.type === "finish") {
           signature = chunk.messageMetadata?.signature;
           const metadata = chunk.messageMetadata;

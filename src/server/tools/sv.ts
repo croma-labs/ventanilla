@@ -236,7 +236,9 @@ export const tourismEvents = cromaTool("eventos_turismo", {
     const text = query
       .replace(department ? new RegExp(department, "i") : /$^/, " ")
       .replace(/\b(fin de semana|weekend|esta semana|this week|este mes|this month|hoy|today|pr[oó]xim[oa]s?|upcoming|soon|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre|january|february|march|april|may|june|july|august|september|october|november|december)\b/gi, " ")
-      .replace(/\b(eventos?|agenda|actividades|qu[eé] hay|events?|what'?s on|happening|este|esta|this|in|en|de|el|la|los|las)\b/gi, " ")
+      .replace(/\bel salvador\b/gi, " ")
+      .replace(/\b(eventos?|agenda|actividades|qu[eé] hay|events?|what'?s on|happening|festivales|festivals?|ferias?|fairs?|conciertos?|concerts?|shows?|espect[aá]culos?|culturales?|cultural|things to do)\b/gi, " ")
+      .replace(/\b(what|which|are|is|on|and|or|the|a|to|for|any|there|este|esta|this|in|en|de|del|el|la|los|las|y|o|hay|qu[eé]|cu[aá]les)\b/gi, " ")
       .replace(/[¿?¡!,.]/g, " ")
       .replace(/\s+/g, " ")
       .trim();

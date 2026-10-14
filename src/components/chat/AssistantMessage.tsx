@@ -1,10 +1,12 @@
 import { useEffect } from "react";
+import type { Mentions } from "../../lib/turismo/mentions";
 import type { Grounding } from "../../lib/ui-stream";
 import { useTextPlayout } from "../../lib/playout";
 import FollowUps from "./FollowUps";
 import Markdown, { holdBackTail } from "./Markdown";
 import MessageActions, { actionGroupCount } from "./MessageActions";
 import { Unverified } from "./SourceList";
+import TourismPanel from "./tourism/TourismPanel";
 
 export type AssistantState = {
   id: string;
@@ -14,6 +16,7 @@ export type AssistantState = {
   followUps: string[];
   verified?: boolean;
   conversational?: boolean;
+  tourism?: Mentions;
 };
 
 type Props = {
@@ -40,6 +43,7 @@ export default function AssistantMessage({ message, animate, isLast, busy, onPla
         <div className="flex flex-col gap-4 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
           <Markdown text={shown} animate={animate} links={message.groundings.map((grounding) => grounding.url)} />
         </div>
+        {done && <TourismPanel text={message.text} tourism={message.tourism} />}
         {done && message.verified === false && !message.conversational && <Unverified />}
         {done && <MessageActions groundings={message.groundings} text={message.text} />}
         {done && isLast && message.followUps.length > 0 && (
