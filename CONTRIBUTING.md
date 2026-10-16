@@ -16,6 +16,7 @@ You need a `CROMA_API_KEY` ([docs.usecroma.com](https://docs.usecroma.com)) and 
 Before opening a pull request:
 
 ```bash
+npm test
 npm run check
 npm run build
 ```
