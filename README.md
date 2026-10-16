@@ -25,7 +25,7 @@ Requires Node 24.
 
 ## Privacy
 
-No cookies, no analytics, no tracking. Personal data like ID numbers and phones is blocked before it's sent. More in [SECURITY.md](SECURITY.md).
+No cookies and no cross-site tracking; page views are counted with cookieless Vercel Web Analytics. Personal data like ID numbers and phones is blocked before it's sent, and questions are kept without it for 7 days to improve the answers. More in [SECURITY.md](SECURITY.md).
 
 ## Add a country
 
