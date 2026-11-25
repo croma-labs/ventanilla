@@ -1,0 +1,24 @@
+name: Argentina corpus
+
+on:
+  schedule:
+    - cron: "0 9 2 * *"
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run ar -- --upload
+        env:
+          CORPUS_READ_WRITE_TOKEN: ${{ secrets.CORPUS_READ_WRITE_TOKEN }}
+      - run: curl -fsS -X POST "$AR_DEPLOY_HOOK"
+        env:
+          AR_DEPLOY_HOOK: ${{ secrets.AR_DEPLOY_HOOK }}
