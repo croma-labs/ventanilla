@@ -21,7 +21,7 @@ export type Chrome = {
   nav: { primary: readonly Link[]; legal: readonly Link[] };
 };
 
-export type Tramite = { slug: string; category: string; title: string; question: string; entity: string; domains: readonly string[]; image?: string; hold?: string };
+export type Tramite = { slug: string; category: string; title: string; question: string; entity: string; domains: readonly string[]; image?: string; hold?: string; local?: boolean };
 
 export type TramiteContent = { answer: string; sources: { title: string; url: string }[]; verifiedAt: string; claims: number; supported: number };
 

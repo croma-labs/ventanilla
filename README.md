@@ -2,7 +2,7 @@
 
 Answers about government services, from official sources only.
 
-🇨🇴 [gov.usecroma.com](https://gov.usecroma.com) · 🇸🇻 [sv.usecroma.com](https://sv.usecroma.com) · Sources by [Croma](https://docs.usecroma.com) · Not an official government site.
+🇨🇴 [gov.usecroma.com](https://gov.usecroma.com) · 🇸🇻 [sv.usecroma.com](https://sv.usecroma.com) · 🇦🇷 [ar.usecroma.com](https://ar.usecroma.com) · Sources by [Croma](https://docs.usecroma.com) · Not an official government site.
 
 ![Ventanilla: ask about Colombian government services and get answers from official sources](.github/assets/hero.jpg)
 
@@ -35,8 +35,11 @@ Each country lives in `src/countries/<code>/`: copy, sources, privacy detectors,
 | --- | --- | --- |
 | Colombia | `co` | gov.co, Función Pública, Corte Constitucional, DIAN, SUIT corpus |
 | El Salvador | `sv` | gob.sv, Simple.sv, Asamblea Legislativa, Corte Suprema de Justicia, OMR corpus |
+| Argentina | `ar` | gob.ar and gov.ar, argentina.gob.ar services and Buenos Aires City Guía de Trámites corpus |
 
 El Salvador's procedures corpus is built from the Registro Nacional de Trámites with `npm run omr -- --upload` (needs `CORPUS_READ_WRITE_TOKEN`); rerun it to refresh.
+
+Argentina's corpus is built from the national portal's service pages and the City of Buenos Aires' Guía de Trámites with `npm run ar -- --upload`; each record says whether it applies nationwide or only in the City.
 
 ## Contributing
 

@@ -1,0 +1,594 @@
+{
+  "habilitar-un-comercio": {
+    "answer": "La ficha oficial disponible solo cubre la solicitud de antecedentes de habilitaciones, no el trámite completo para habilitar un local comercial en la Ciudad de Buenos Aires.\n\nPara conocer los requisitos específicos de la habilitación, debés consultar directamente a la [Agencia Gubernamental de Control](https://buenosaires.gob.ar/tramites/solicitud-de-antecedentes-de-habilitaciones-en-locales-comerciales), que es el organismo responsable. Podés hacer consultas online a través de su [mesa de atención virtual](https://atencionvirtual.agcontrol.gob.ar/users/select/department) o de forma presencial en su sede de Tte. Gral. Juan Domingo Perón 2491, de lunes a viernes de 9 a 13.30 h.",
+    "sources": [
+      {
+        "title": "Solicitud de antecedentes de habilitaciones en locales comerciales (Gobierno de la Ciudad de Buenos Aires)",
+        "url": "https://buenosaires.gob.ar/tramites/solicitud-de-antecedentes-de-habilitaciones-en-locales-comerciales"
+      },
+      {
+        "title": "Mesa de atención virtual",
+        "url": "https://atencionvirtual.agcontrol.gob.ar/users/select/department"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 8
+  },
+  "habilitacion-expres": {
+    "answer": "La habilitación de actividad económica exprés es un trámite online y **gratuito** para locales de la Ciudad de Buenos Aires con menos de 200 m² que cumplan ciertos requisitos de ubicación y uso.\n\n### Cómo hacerlo\n- Ingresá a la [Plataforma SSIT](https://tad.buenosaires.gob.ar/tramitesadistancia/nuevo-tramite) con tu usuario y clave miBA nivel 3.\n- Seleccioná \"Habilitación de actividad económica exprés\" y declará la ubicación de tu local.\n- Completá los formularios con los datos del titular, las características del local y los rubros de actividad.\n- Al finalizar, el sistema genera automáticamente el Certificado de Aptitud Ambiental.\n\n### Requisitos clave\n- Superficie total no mayor a 200 m².\n- No comercializar explosivos, inflamables ni productos medicinales sin envasar.\n- No estar ubicado en galerías, centros comerciales, estaciones de transporte o áreas especiales protegidas.\n- No realizar actividades que requieran normativas específicas (como farmacias o agencias de lotería).\n\nPodés consultar la [ficha oficial del trámite](https://buenosaires.gob.ar/tramites/habilitacion-de-actividad-economica-expres) para más detalles.",
+    "sources": [
+      {
+        "title": "Plataforma SSIT",
+        "url": "https://tad.buenosaires.gob.ar/tramitesadistancia/nuevo-tramite"
+      },
+      {
+        "title": "Habilitación de actividad económica exprés (Gobierno de la Ciudad de Buenos Aires)",
+        "url": "https://buenosaires.gob.ar/tramites/habilitacion-de-actividad-economica-expres"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 7
+  },
+  "baja-de-habilitacion": {
+    "answer": "Para pedir la baja de tu habilitación comercial en la Ciudad de Buenos Aires, debés iniciar el trámite de forma online a través del Sistema de Tramitación a Distancia (TAD).\n\n### Cómo hacerlo\n- Ingresá a [TAD](https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&scope=profileopenid%20profile%20email%20login1%20validation%20contact%20agip-tokens&redirect_uri=https%3A//tad.buenosaires.gob.ar/tad2-rest/miba/ServletLogin%3FiniciarNuevoTramite%3D297) con tu usuario y clave miBA nivel 3.\n- Completá el formulario de baja como declaración jurada y cargá la placha de habilitación o disposición de autorización.\n- Adjuntá tu DNI y, si sos persona jurídica, el estatuto de la empresa.\n- La [Agencia Gubernamental de Control](https://buenosaires.gob.ar/tramites/solicitud-de-baja-de-habilitacion-comercial) realizará una inspección para verificar el cese de la actividad antes de darla de baja de oficio.\n\nEl trámite es **gratuito** según la Ley Tarifaria vigente. Si tenés dudas, podés consultar en la [Mesa de Atención Virtual](https://atencionvirtual.agcontrol.gob.ar/users/select/department).",
+    "sources": [
+      {
+        "title": "TAD",
+        "url": "https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&scope=profileopenid%20profile%20email%20login1%20validation%20contact%20agip-tokens&redirect_uri=https%3A//tad.buenosaires.gob.ar/tad2-rest/miba/ServletLogin%3FiniciarNuevoTramite%3D297"
+      },
+      {
+        "title": "Solicitud de baja de habilitación comercial (Gobierno de la Ciudad de Buenos Aires, Agencia Gubernamental de Control)",
+        "url": "https://buenosaires.gob.ar/tramites/solicitud-de-baja-de-habilitacion-comercial"
+      },
+      {
+        "title": "Mesa de Atención Virtual",
+        "url": "https://atencionvirtual.agcontrol.gob.ar/users/select/department"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 7,
+    "supported": 7
+  },
+  "constancia-de-habilitacion": {
+    "answer": "Podés solicitar la constancia de habilitación de forma online a través del Sistema de Tramitación a Distancia (TAD), un trámite gratuito y exclusivo para la Ciudad de Buenos Aires.\n\n### Cómo hacerlo\n- Ingresá a [TAD](https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&scope=profileopenid%20profile%20email%20login1%20validation%20contact%20agip-tokens&redirect_uri=https%3A//tad.buenosaires.gob.ar/tad2-rest/miba/ServletLogin%3FiniciarNuevoTramite%3D1523) con tu usuario y clave **miBA nivel 3**.\n- Hacé clic en “Iniciar trámite” y seguí las indicaciones para generar tu expediente.\n- Si tu habilitación es anterior al 06/07/2016, deberás presentar un formulario, tu DNI y la plancheta de habilitación ante la Dirección General de Habilitaciones y Permisos.\n\n### Requisitos\n- Usuario y clave miBA nivel 3.\n- Para apoderados: poder certificado ante escribano.\n- Para personas jurídicas: contrato o estatuto social y acta de directorio.\n\nEl trámite es **gratuito** según la Ley Tarifaria vigente. Podés consultar más detalles en la [ficha oficial del trámite](https://buenosaires.gob.ar/tramites/solicitud-de-constancia-de-habilitacion-otorgada-o-en-tramite).",
+    "sources": [
+      {
+        "title": "TAD",
+        "url": "https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&scope=profileopenid%20profile%20email%20login1%20validation%20contact%20agip-tokens&redirect_uri=https%3A//tad.buenosaires.gob.ar/tad2-rest/miba/ServletLogin%3FiniciarNuevoTramite%3D1523"
+      },
+      {
+        "title": "Solicitud de constancia de habilitación otorgada o en trámite (Gobierno de la Ciudad de Buenos Aires)",
+        "url": "https://buenosaires.gob.ar/tramites/solicitud-de-constancia-de-habilitacion-otorgada-o-en-tramite"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 8
+  },
+  "food-truck": {
+    "answer": "Para habilitar un food truck en la Ciudad de Buenos Aires, debés iniciar el trámite online ante la Agencia Gubernamental de Control (AGC).\n\n### Cómo hacerlo\n- Registrate en el [sistema de UTAS/Foodtrucks](http://vmt.agcontrol.gob.ar/#nbb) y completá los datos del vehículo.\n- Cargá la documentación requerida, como el título del vehículo, la Verificación Técnica Vehicular vigente y la cobertura de responsabilidad civil.\n- Una vez validada la documentación, sacá un [turno](https://formulario-sigeci.buenosaires.gob.ar/InicioTramiteComun?idPrestacion=1434) para la inspección presencial en Gral. Enrique Martínez esq. Concepción Arenal.\n- Si aprobás, recibís un código QR que funciona como oblea habilitante con una **vigencia de 3 años**.\n\n### Requisitos clave\n- Domicilio en CABA y CUIT/CUIL del titular.\n- Certificado de Antecedentes Penales (personas físicas) o estatuto (personas jurídicas).\n- Si generás Aceites Vegetales Usados, necesitás el certificado de la [APRA](https://buenosaires.gob.ar/agenciaambiental).\n- El personal debe tener el [Curso de Manipulación de Alimentos](https://buenosaires.gob.ar/tramites/curso-de-manipulacion-higienica-de-los-alimentos).\n\nEl trámite es **gratuito** según la Ley Tarifaria vigente. Podés consultar la [ficha oficial del trámite](https://buenosaires.gob.ar/tramites/habilitacion-de-foodtrucks) para más detalles.",
+    "sources": [
+      {
+        "title": "Turno",
+        "url": "https://formulario-sigeci.buenosaires.gob.ar/InicioTramiteComun?idPrestacion=1434"
+      },
+      {
+        "title": "APRA",
+        "url": "https://buenosaires.gob.ar/agenciaambiental"
+      },
+      {
+        "title": "Curso de Manipulación de Alimentos",
+        "url": "https://buenosaires.gob.ar/tramites/curso-de-manipulacion-higienica-de-los-alimentos"
+      },
+      {
+        "title": "Habilitación de foodtrucks (Gobierno de la Ciudad de Buenos Aires)",
+        "url": "https://buenosaires.gob.ar/tramites/habilitacion-de-foodtrucks"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 6
+  },
+  "vender-en-ferias-barriales": {
+    "answer": "Para vender frutas y verduras en una feria barrial de la Ciudad de Buenos Aires, debés inscribirte en el Registro de Postulantes de Ferias Itinerantes de Abastecimiento Barrial (FIABs), un trámite **gratuito** y online que vale solo en la Ciudad.\n\n### Cómo hacerlo\n- Ingresá a la [plataforma TAD](https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&scope=profileopenid%20profile%20email%20login1%20validation%20contact%20agip-tokens&redirect_uri=https%3A//tad.buenosaires.gob.ar/tad2-rest/miba/ServletLogin%3FiniciarNuevoTramite%3D254) con tu usuario y clave miBA nivel 1.\n- Cargá la documentación obligatoria: DNI, foto 4x4, rubro a comercializar, constancias de no ser funcionario ni tener juicios con el GCBA, y [Certificado de Antecedentes Penales](http://www.dnrec.jus.gov.ar/Atencion_Particulares.aspx?id=priv).\n- Si sos seleccionado, deberás presentar además el [Curso de Manipulación Higiénica de los Alimentos](https://buenosaires.gob.ar/tramites/curso-de-manipulacion-higienica-de-los-alimentos), inscripción a ARCA e Ingresos Brutos, y una póliza de seguro de $60.000.000.\n\nLa inscripción tiene una vigencia de 1 año. Podés consultar la [ficha oficial del trámite](https://buenosaires.gob.ar/tramites/inscripcion-en-el-registro-de-postulantes-de-ferias-itinerantes-de-abastecimiento-barrial) para más detalles.",
+    "sources": [
+      {
+        "title": "Plataforma TAD",
+        "url": "https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&scope=profileopenid%20profile%20email%20login1%20validation%20contact%20agip-tokens&redirect_uri=https%3A//tad.buenosaires.gob.ar/tad2-rest/miba/ServletLogin%3FiniciarNuevoTramite%3D254"
+      },
+      {
+        "title": "Curso de Manipulación Higiénica de los Alimentos",
+        "url": "https://buenosaires.gob.ar/tramites/curso-de-manipulacion-higienica-de-los-alimentos"
+      },
+      {
+        "title": "Inscripción en el Registro de Postulantes de Ferias Itinerantes de Abastecimiento Barrial y Ferias Especiales (Gobierno de la Ciudad de Buenos Aires, Espacio Público)",
+        "url": "https://buenosaires.gob.ar/tramites/inscripcion-en-el-registro-de-postulantes-de-ferias-itinerantes-de-abastecimiento-barrial"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 8
+  },
+  "venta-de-alimentos-en-la-calle": {
+    "answer": "Para pedir el permiso de venta de alimentos en la vía pública en la Ciudad de Buenos Aires, debés iniciar el trámite online a través del Sistema de Tramitación a Distancia (TAD).\n\n### Cómo hacerlo\n- Ingresá a [TAD](https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&scope=profileopenid%20profile%20email%20login1%20validation%20contact%20agip-tokens&redirect_uri=https%3A//tad.buenosaires.gob.ar/tramitesadistancia/miba/ServletLogin%3FiniciarNuevoTramite%3D224) con tu usuario y clave miBA nivel 1.\n- Seguí las indicaciones de la plataforma para generar tu expediente y cargar la documentación solicitada.\n- La Subgerencia Operativa evaluará tu solicitud y te informará el resultado por correo electrónico o notificación electrónica.\n\n### Requisitos principales\n- Estar inscripto en el Registro de Postulantes para venta de alimentos en el espacio público.\n- Contar con un seguro de responsabilidad civil vigente (los montos varían según la categoría de venta).\n- Presentar DNI, certificado del Curso de Manipulación Higiénica de Alimentos y constancias de inscripción fiscal (Monotributo e Ingresos Brutos).\n- El trámite es **gratuito** según la Ley Tarifaria vigente.\n\nPodés consultar el estado de tu solicitud en el [portal de Localización de Expedientes](https://www.buenosaires.gob.ar/localizacion-expediente).",
+    "sources": [
+      {
+        "title": "TAD",
+        "url": "https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&scope=profileopenid%20profile%20email%20login1%20validation%20contact%20agip-tokens&redirect_uri=https%3A//tad.buenosaires.gob.ar/tramitesadistancia/miba/ServletLogin%3FiniciarNuevoTramite%3D224"
+      },
+      {
+        "title": "Portal de Localización de Expedientes",
+        "url": "https://www.buenosaires.gob.ar/localizacion-expediente"
+      },
+      {
+        "title": "Solicitud de permiso de venta de alimentos en la vía pública (Gobierno de la Ciudad de Buenos Aires)",
+        "url": "https://buenosaires.gob.ar/tramites/solicitud-de-permiso-de-venta-de-alimentos-en-la-publica"
+      },
+      {
+        "title": "Otorgamiento de permisos de venta de alimentos en el espacio público (Gobierno de la Ciudad de Buenos Aires)",
+        "url": "https://buenosaires.gob.ar/tramites/otorgamiento-de-permisos-de-venta-de-alimentos-en-el-espacio-publico"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 7
+  },
+  "feria-artesanal": {
+    "answer": "Para pedir el permiso de uso precario en ferias artesanales de la Ciudad de Buenos Aires, debés iniciar el trámite de forma online a través de la plataforma TAD.\n\n### Cómo hacerlo\n- Ingresá a [TAD](https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&scope=profileopenid%20profile%20email%20login1%20validation%20contact%20agip-tokens&redirect_uri=https%3A//tad.buenosaires.gob.ar/tad2-rest/miba/ServletLogin%3FiniciarNuevoTramite%3D359) con tu usuario y clave miBA nivel 1.\n- Cargá la documentación: copia de ambos lados del DNI, foto 4x4 a color con fondo blanco y [certificado de domicilio](https://buenosaires.gob.ar/tramites/constancia-de-ultimo-domicilio-en-dni).\n- Completá la declaración jurada indicando el rubro a comercializar y confirmando que no sos funcionario del GCBA ni tenés juicios pendientes.\n- Una vez iniciado, la Dirección General de Permisos y Ferias te contactará para coordinar la **prueba de taller** ante la Comisión Técnica Interferias.\n\nEl trámite es **gratuito** según la Ley Tarifaria vigente. Tené en cuenta que la inscripción tiene una vigencia de 1 año y que la aprobación de la prueba no garantiza el puesto, ya que depende de la disponibilidad de vacantes.",
+    "sources": [
+      {
+        "title": "TAD",
+        "url": "https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&scope=profileopenid%20profile%20email%20login1%20validation%20contact%20agip-tokens&redirect_uri=https%3A//tad.buenosaires.gob.ar/tad2-rest/miba/ServletLogin%3FiniciarNuevoTramite%3D359"
+      },
+      {
+        "title": "Certificado de domicilio",
+        "url": "https://buenosaires.gob.ar/tramites/constancia-de-ultimo-domicilio-en-dni"
+      },
+      {
+        "title": "Permiso de Uso Precario en ferias artesanales (Gobierno de la Ciudad de Buenos Aires, Espacio Público)",
+        "url": "https://buenosaires.gob.ar/tramites/permiso-de-uso-precario-en-ferias-artesanales"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 6
+  },
+  "certificado-de-aptitud-ambiental": {
+    "answer": "Para sacar el Certificado de Aptitud Ambiental (CAA) en la Ciudad de Buenos Aires, debés iniciar el trámite de forma online a través de la plataforma TAD.\n\n### Cómo hacerlo\n- Ingresá a [TAD](https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&SCOPE=PROFILE&redirect_uri=https%3A//tad.buenosaires.gob.ar/tad2-rest/miba/ServletLogin%3FiniciarNuevoTramiteExterno%3D2232) con tu CUIT y elegí la opción correspondiente.\n- Completá los datos en el [Sistema Público de Solicitudes de APRA (SIPSA)](https://dghpsh.agcontrol.gob.ar/sipsa/).\n- Necesitás tener usuario y clave de miBA nivel 1.\n\n### Requisitos\n- Contar con los datos del establecimiento: domicilio, superficie, cantidad de plantas, datos del titular y rubro según el Código Urbanístico.\n- El trámite es **gratuito** según la Ley Tarifaria vigente.\n- Dependiendo de la categorización de tu actividad, puede requerir la intervención de un profesional inscripto en el Registro de Evaluación Ambiental.\n\nConsultá la [ficha oficial del trámite](https://buenosaires.gob.ar/tramites/impacto-ambiental-certificado-de-aptitud-ambiental-caa) para más detalles sobre la categorización de tu rubro.",
+    "sources": [
+      {
+        "title": "TAD",
+        "url": "https://login.buenosaires.gob.ar/auth/realms/miba/protocol/openid-connect/auth?client_id=tad&response_type=code&SCOPE=PROFILE&redirect_uri=https%3A//tad.buenosaires.gob.ar/tad2-rest/miba/ServletLogin%3FiniciarNuevoTramiteExterno%3D2232"
+      },
+      {
+        "title": "Sistema Público de Solicitudes de APRA (SIPSA)",
+        "url": "https://dghpsh.agcontrol.gob.ar/sipsa/"
+      },
+      {
+        "title": "Impacto Ambiental: Certificado de Aptitud Ambiental (CAA) (Gobierno de la Ciudad de Buenos Aires)",
+        "url": "https://buenosaires.gob.ar/tramites/impacto-ambiental-certificado-de-aptitud-ambiental-caa"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 7,
+    "supported": 6
+  },
+  "manipulacion-de-alimentos": {
+    "answer": "Para sacar el carnet de manipulador de alimentos en la Ciudad de Buenos Aires, debés inscribirte en el curso de la [Agencia Gubernamental de Control (AGC)](https://buenosaires.gob.ar/tramites/inscripcion-al-curso-de-manipulacion-de-alimentos), aprobar el examen y descargar el documento digital.\n\n### Cómo hacerlo\n- Registrate como alumno en la [Plataforma de la AGC](https://alimentos.agcontrol.gob.ar/) con tu DNI, correo electrónico y foto.\n- Elegí la modalidad: curso online, presencial o renovación online (si ya tenías carnet desde 2014).\n- Si es presencial, presentate en [Tte. Gral. Juan Domingo Perón 2941](https://mapa.buenosaires.gob.ar/comollego/?lat=-34.607815&lng=-58.408234&zl=15&modo=transporte&dir=Peron%2C+Juan%20Domingo%2C+Tte.+General+2941) con tu documento original y lapicera.\n- Aprueba el examen con al menos el 80% de respuestas correctas.\n- Una vez aprobado, respondé la encuesta de satisfacción para habilitar la descarga del carnet desde \"Mis inscripciones\".\n\nEl trámite es **gratuito** según la Ley Tarifaria vigente. La vigencia del carnet es de 3 años.",
+    "sources": [
+      {
+        "title": "Inscripción al Curso de Manipulación de Alimentos (Gobierno de la Ciudad de Buenos Aires)",
+        "url": "https://buenosaires.gob.ar/tramites/inscripcion-al-curso-de-manipulacion-de-alimentos"
+      },
+      {
+        "title": "Plataforma de la AGC",
+        "url": "https://alimentos.agcontrol.gob.ar/"
+      },
+      {
+        "title": "Tte. Gral. Juan Domingo Perón 2941",
+        "url": "https://mapa.buenosaires.gob.ar/comollego/?lat=-34.607815&lng=-58.408234&zl=15&modo=transporte&dir=Peron%2C+Juan%20Domingo%2C+Tte.+General+2941"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 7,
+    "supported": 7
+  },
+  "registrar-una-marca": {
+    "answer": "Para registrar la marca de tu emprendimiento, debés hacerlo online a través del [portal de trámites del INPI](https://www.argentina.gob.ar/inpi/marcas/registrar-una-marca).\n\n### Requisitos y pasos\n- Tener **Clave Fiscal nivel 2** vinculada al servicio del INPI en tu cuenta de ARCA, ser mayor de edad y declarar un domicilio legal electrónico.\n- Verificar la disponibilidad del nombre en el [buscador de marcas](https://www.argentina.gob.ar/inpi/marcas/preguntas-frecuentes-de-marcas-0).\n- Ingresar al portal, seleccionar **MARCAS / TRÁMITES / SOLICITUD NUEVA**, elegir el tipo de marca y la clase según el Nomenclador de Niza, y abonar el arancel.\n\nImportante: no podés seleccionar \"toda la clase\" en los productos o servicios, ya que la solicitud será denegada.",
+    "sources": [
+      {
+        "title": "Presidencia de la Nación",
+        "url": "https://www.argentina.gob.ar/inpi/marcas/registrar-una-marca"
+      },
+      {
+        "title": "Presidencia de la Nación",
+        "url": "https://www.argentina.gob.ar/inpi/marcas/preguntas-frecuentes-de-marcas-0"
+      },
+      {
+        "title": "5- COMO SOLICITAR UNA MARCA NUEVA",
+        "url": "https://portaltramites.inpi.gob.ar/Instructivos/marcas/SolicitarRegistroMarca_JUL-26.pdf"
+      },
+      {
+        "title": "Registrar Marca – INPI (Instituto Nacional de Propiedad Intelectual) | Atencion Ciudadana",
+        "url": "https://atencionciudadana.mendoza.gob.ar/registrar-marca-inpi-instituto-nacional-de-propiedad-intelectual/"
+      },
+      {
+        "title": "instructivo MARCAS 2021.04.",
+        "url": "https://portaltramites.inpi.gob.ar/Instructivos/marcas/Marcas_Nuevas.pdf"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 7
+  },
+  "alta-monotributo": {
+    "answer": "Para darte de alta en el monotributo, el trámite es **nacional**, gratuito y se realiza en línea en 15 minutos.\n\n### Requisitos previos\n- Contar con [CUIT](https://www.arca.gob.ar/monotributo/ayuda/CUIT.asp) y [clave fiscal](https://www.arca.gob.ar/monotributo/ayuda/clave-fiscal.asp) de ARCA.\n- Tener [domicilio fiscal electrónico](https://www.arca.gob.ar/monotributo/ayuda/domicilio-fiscal-electronico.asp).\n- No superar los $108.357.084,05 de ingresos brutos anuales ni el precio unitario de $613.492,31 (datos actualizados al 12/02/2026).\n\n### Cómo hacerlo\n1. Ingresá a tu [portal personal ARCA](https://auth.arca.gob.ar/contribuyente_/login.xhtml?action=SYSTEM&system=padron-puc-consulta-internet) con tus credenciales.\n2. Buscá \"Monotributo\" y presioná \"Agregar\".\n3. Seleccioná \"Darse de Alta\" y elegí cómo vas a trabajar (trabajo independiente, cooperativa, etc.).\n4. Completá los datos de tu actividad, facturación estimada, local y aportes jubilatorios.\n5. Elegí tu obra social y confirmá la información.\n\nPodés iniciar el trámite directamente desde el [portal de ARCA](https://auth.afip.gob.ar/contribuyente_/login.xhtml?action=SYSTEM&system=admin_mono).",
+    "sources": [
+      {
+        "title": "CUIT",
+        "url": "https://www.arca.gob.ar/monotributo/ayuda/CUIT.asp"
+      },
+      {
+        "title": "Clave fiscal",
+        "url": "https://www.arca.gob.ar/monotributo/ayuda/clave-fiscal.asp"
+      },
+      {
+        "title": "Domicilio fiscal electrónico",
+        "url": "https://www.arca.gob.ar/monotributo/ayuda/domicilio-fiscal-electronico.asp"
+      },
+      {
+        "title": "Portal personal ARCA",
+        "url": "https://auth.arca.gob.ar/contribuyente_/login.xhtml?action=SYSTEM&system=padron-puc-consulta-internet"
+      },
+      {
+        "title": "Portal de ARCA",
+        "url": "https://auth.afip.gob.ar/contribuyente_/login.xhtml?action=SYSTEM&system=admin_mono"
+      },
+      {
+        "title": "Inscribirme como monotributista (ARCA, Ministerio de Economía)",
+        "url": "https://www.argentina.gob.ar/servicio/inscribirme-como-monotributista"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 7
+  },
+  "clave-fiscal": {
+    "answer": "Obtener la clave fiscal de ARCA es un trámite nacional, gratuito y que se puede iniciar en línea o de forma presencial.\n\n### Cómo hacerlo\n- **Nivel 2:** Ingresá a tu homebanking, seleccioná Servicios ARCA y elegí \"Crear clave fiscal\".\n- **Nivel 3:** Descargá la app [ARCA Móvil](https://play.google.com/store/apps/details?id=ar.gob.afip.mobile.android.contribuyentes.mi_afip&hl=es) para escanear tu DNI y tomar fotos, o presentate en una dependencia con turno y el Formulario 206.\n- **Nivel 4:** Solicitala presencialmente o en el cajero automático usando la app \"Token\" para el doble factor de autenticación.\n\n### Requisitos\n- Tener CUIT, CUIL o CDI.\n- DNI argentino en formato tarjeta (para niveles 3 o superiores).\n- Si sos extranjero, presentá tu documento de origen, pasaporte o cédula de identidad.\n\nLa clave tiene una vigencia de 365 días desde su obtención o modificación. Podés iniciar el trámite en [ARCA](https://www.arca.gob.ar/claveFiscal/informacion-basica/solicitud.asp) o consultar la [ficha oficial del trámite](https://www.argentina.gob.ar/servicio/obtener-la-clave-fiscal).",
+    "sources": [
+      {
+        "title": "ARCA",
+        "url": "https://www.arca.gob.ar/claveFiscal/informacion-basica/solicitud.asp"
+      },
+      {
+        "title": "Obtener la clave fiscal (ARCA, Ministerio de Economía)",
+        "url": "https://www.argentina.gob.ar/servicio/obtener-la-clave-fiscal"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 6
+  },
+  "cuit": {
+    "answer": "Para obtener el CUIT como persona humana, debés completar el Formulario N° 460/F y presentar la documentación en una dependencia de ARCA, trámite que es **gratuito**.\n\n### Cómo hacerlo\n- Completá el [Formulario N° 460/F](https://serviciosweb.afip.gob.ar/genericos/formularios/pdf/interactivos/f460f.pdf) con tus datos y domicilio fiscal.\n- Reservá un turno en la [dependencia de ARCA](https://serviciosweb.afip.gob.ar/genericos/buscadordependencias/dependencias.aspx) correspondiente a tu domicilio fiscal.\n- Presentá tu DNI vigente y acreditá tu domicilio fiscal con al menos 2 constancias (ej. contrato de alquiler o factura de servicio).\n- Si tenés DNI nuevo, podés iniciar la \"Inscripción Digital\" por internet.\n\n### Requisitos\n- Argentinos: DNI original y copia, más 2 comprobantes de domicilio fiscal.\n- Extranjeros: Pasaporte/cédula y comprobante de expediente migratorio, o DNI extranjero si ya lo poseés.\n\nEsta información corresponde a la [ficha oficial del trámite en la Guía de Trámites de la Ciudad](https://buenosaires.gob.ar/tramites/codigo-unico-de-identificacion-tributaria-cuit), actualizada el 14/02/2026.",
+    "sources": [
+      {
+        "title": "Formulario N° 460/F",
+        "url": "https://serviciosweb.afip.gob.ar/genericos/formularios/pdf/interactivos/f460f.pdf"
+      },
+      {
+        "title": "Dependencia de ARCA",
+        "url": "https://serviciosweb.afip.gob.ar/genericos/buscadordependencias/dependencias.aspx"
+      },
+      {
+        "title": "Código Único de Identificación Tributaria (CUIT) (Gobierno de la Ciudad de Buenos Aires, Gobierno y Vínculo Ciudadano)",
+        "url": "https://buenosaires.gob.ar/tramites/codigo-unico-de-identificacion-tributaria-cuit"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 8
+  },
+  "ingresos-brutos-caba": {
+    "answer": "Para obtener la constancia de inscripción en Ingresos Brutos como Contribuyente Local en la Ciudad de Buenos Aires, debés hacerlo de forma online a través de la Administración Gubernamental de Ingresos Públicos (AGIP).\n\n### Cómo hacerlo\n- Ingresá a [AGIP](https://claveciudad.agip.gob.ar/) con tu usuario y clave **miBA nivel 3**.\n- Seleccioná \"Adherir aplicativo\" y elegí \"Ingresos Brutos\" como servicio, completando tu CUIT.\n- Buscá \"Impresión y Re-Impresión de Constancia de Inscripción ISIB\", ingresá tu CUIT y descargá el documento.\n\nEl trámite es **gratuito** según la Ley Tarifaria vigente. Si tenés dudas sobre tu cuenta miBA, podés consultar en [miBA](http://buenosaires.gob.ar/innovacionytransformaciondigital/login-miba).",
+    "sources": [
+      {
+        "title": "AGIP",
+        "url": "https://claveciudad.agip.gob.ar/"
+      },
+      {
+        "title": "Ingresos Brutos/Contribuyentes Locales - Obtención de Constancia de Inscripción (Gobierno de la Ciudad de Buenos Aires, Hacienda y Finanzas)",
+        "url": "https://buenosaires.gob.ar/tramites/ingresos-brutoscontribuyentes-locales-obtencion-de-constancia-de-inscripcion"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 6,
+    "supported": 6
+  },
+  "renovar-dni": {
+    "answer": "Para renovar tu DNI, tenés que sacar un turno y presentarte en un Registro Civil o Centro de Documentación Renaper.\n\n### Cómo hacerlo\n- Sacá turno en la [app Mi Argentina](https://mi.argentina.gob.ar/turnos/seleccion-turno/1737) o en la web de [RENAPER](https://www.argentina.gob.ar/servicio/tramitar-un-nuevo-ejemplar-de-dni).\n- Si sos mayor de 14 años, llevá tu DNI anterior (si lo tenés).\n- Si es para un menor de 14 años, debe ir acompañado por un padre o tutor con su DNI y la partida de nacimiento original.\n- El trámite regular tarda hasta 25 días hábiles en llegar por correo; si necesitás urgencia, existe la modalidad [DNI exprés](https://www.argentina.gob.ar/servicio/dni-expres) que entrega el documento en 96 horas hábiles.\n\nEste trámite es **nacional** y vale en todo el país.",
+    "sources": [
+      {
+        "title": "App Mi Argentina",
+        "url": "https://mi.argentina.gob.ar/turnos/seleccion-turno/1737"
+      },
+      {
+        "title": "Presidencia de la Nación",
+        "url": "https://www.argentina.gob.ar/servicio/tramitar-un-nuevo-ejemplar-de-dni"
+      },
+      {
+        "title": "DNI exprés (Tramitar el DNI, Renaper, Vicejefatura de Gabinete del Interior, Jefatura de Gabinete de Ministros)",
+        "url": "https://www.argentina.gob.ar/servicio/dni-expres"
+      },
+      {
+        "title": "",
+        "url": "https://www.argentina.gob.ar/sites/default/files/2019/10/guiadocumentonacionaldeidentidad_mayo2022.pdf"
+      },
+      {
+        "title": "¿Qué estás buscando?",
+        "url": "https://www.anses.gob.ar/dni-y-pasaporte"
+      },
+      {
+        "title": "DNI - Nuevo ejemplar | Municipalidad de Morteros",
+        "url": "https://morteros.gob.ar/documentacion/tramites/dni-nuevo-ejemplar-5"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 12,
+    "supported": 12
+  },
+  "dni-perdido": {
+    "answer": "Para sacar un nuevo ejemplar por pérdida, el trámite es **nacional** y se realiza ante [Renaper](https://www.argentina.gob.ar/servicio/tramitar-un-nuevo-ejemplar-de-dni).\n\n### Cómo hacerlo\n- Sacá turno en la app [Mi Argentina](https://mi.argentina.gob.ar/turnos/seleccion-turno/1070) para un Centro de Documentación Renaper o elegí el Registro Civil más cercano a tu domicilio.\n- Presentate con tu DNI anterior si lo tenés; si lo perdiste, llevá la denuncia policial (no es excluyente).\n- Si sos menor de 14 años, debés ir acompañado por un padre, madre o tutor con su DNI.\n- El trámite dura 15 minutos y el costo es de **$10.000** (dato actualizado al 06/03/2026).\n- Recibirás el nuevo documento por correo o lo retirás en la oficina con la constancia de solicitud.\n\nPodés hacer el seguimiento online desde [Renaper](https://mitramite.renaper.gob.ar/).",
+    "sources": [
+      {
+        "title": "Tramitar un nuevo ejemplar de DNI (Tramitar el DNI, Renaper, Vicejefatura de Gabinete del Interior, Jefatura de Gabinete de Ministros)",
+        "url": "https://www.argentina.gob.ar/servicio/tramitar-un-nuevo-ejemplar-de-dni"
+      },
+      {
+        "title": "Mi Argentina",
+        "url": "https://mi.argentina.gob.ar/turnos/seleccion-turno/1070"
+      },
+      {
+        "title": "Renaper",
+        "url": "https://mitramite.renaper.gob.ar/"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 8
+  },
+  "partida-de-nacimiento": {
+    "answer": "Podés pedir la partida de nacimiento online a través del [Sistema de Tramitación a Distancia (TAD)](https://buenosaires.gob.ar/tramites/solicitud-partidas), siempre que el nacimiento haya sido inscripto en la Ciudad de Buenos Aires.\n\n### Cómo hacerlo\n- Ingresá a TAD con tu usuario y clave [miBA](https://buenosaires.gob.ar/tramites/solicitud-partidas).\n- Completá la solicitud con el nombre completo y la fecha aproximada del nacimiento.\n- Aboná la [Boleta Única Inteligente (BUI)](https://buenosaires.gob.ar/tramites/solicitud-partidas) si corresponde.\n- Recibí un mail cuando la partida esté disponible en la sección \"Mis trámites\".\n\n### Costos y plazos\n- El envío regular demora **15 días hábiles**.\n- Si conocés los datos exactos (tomo, acta, año, sección), el trámite es **gratuito**.\n- Si no conocés esos datos, el costo es de **$ 11.910,00**.\n- Existe una opción urgente con envío en **3 días hábiles** por **$ 17.540,00**, que requiere tarjeta de crédito y los datos exactos de inscripción.\n\nSi vivís en otra provincia, debés gestionar la partida ante el Registro Civil de tu jurisdicción.",
+    "sources": [
+      {
+        "title": "Solicitud partidas | Buenos Aires Ciudad",
+        "url": "https://buenosaires.gob.ar/tramites/solicitud-partidas"
+      },
+      {
+        "title": "Cómo solicitar partidas de nacimiento, matrimonio o defunción online | Buenos Aires Ciudad - Gobierno de la Ciudad Autónoma de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/noticias/como-solicitar-partidas-de-nacimiento-matrimonio-o-defuncion-online"
+      },
+      {
+        "title": "Solicitud partidas urgentes | Buenos Aires Ciudad",
+        "url": "https://buenosaires.gob.ar/tramites/solicitud-partidas-urgentes"
+      },
+      {
+        "title": "El Gobierno porteño habilitó el trámite para solicitar las partidas de nacimiento, defunción o matrimonio a través de BOTI | Buenos Aires Ciudad - Gobierno de la Ciudad Autónoma de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/noticias/el-gobierno-porteno-habilito-el-tramite-para-solicitar-las-partidas-de"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 7
+  },
+  "licencia-de-conducir": {
+    "answer": "Para obtener la licencia de conducir por primera vez en la Ciudad de Buenos Aires, debés iniciar el trámite online con tu usuario miBA y cumplir con los requisitos específicos, como el curso de educación vial y los exámenes.\n\n### Cómo hacerlo\n- Iniciá el [trámite online](https://buenosaires.gob.ar/tramites/otorgamiento-de-licencia-de-conducir) con tu usuario y clave miBA.\n- Completá la declaración jurada de aptitud psicofísica.\n- Realizá el curso de educación vial (virtual o presencial) dentro de las 48 horas de recibir el link.\n- Seleccioná tu turno en una de las 15 sedes habilitadas y aboná la Boleta Única Inteligente (BUI) dentro de las 48 horas.\n- Asistí a la sede para la evaluación psicofísica, el examen teórico y el examen práctico.\n\n### Requisitos\n- DNI vigente con domicilio en la Ciudad de Buenos Aires.\n- Certificado Nacional de Antecedentes de Tránsito (CENAT) abonado y vigente.\n- No tener infracciones de tránsito vigentes en la Ciudad.\n- Saber leer y escribir.\n\nEl plazo para finalizar todo el proceso es de 180 días corridos. Si vivís en otra provincia, el trámite se realiza ante el gobierno de esa jurisdicción.",
+    "sources": [
+      {
+        "title": "Otorgamiento de licencia de conducir (Gobierno de la Ciudad de Buenos Aires, Gobierno y Vínculo Ciudadano)",
+        "url": "https://buenosaires.gob.ar/tramites/otorgamiento-de-licencia-de-conducir"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 8
+  },
+  "renovar-licencia": {
+    "answer": "Para renovar tu licencia de conducir en la Ciudad de Buenos Aires, debés iniciar el trámite online con tu usuario miBA y luego asistir a una sede para los exámenes. Tenés 1 año de gracia desde el vencimiento para hacerlo.\n\n### Cómo hacerlo\n- Verificá no tener [infracciones de tránsito](https://buenosaires.gob.ar/tramites/consulta-de-infracciones) vigentes.\n- Aboná el [CENAT](https://boletadepago.seguridadvial.gob.ar/) (vigencia 60 días) y llevá el comprobante impreso.\n- Realizá la [charla virtual de renovación](https://licenciascharlavirtual.buenosaires.gob.ar/charla) (duración aprox. 50 min, validez 1 año).\n- Ingresá a [Iniciar Trámite](https://buenosaires.gob.ar/tramites/renovacion-de-licencia-de-conducir) con tu cuenta miBA, completá la declaración jurada y elegí tu turno.\n- Aboná la BUI dentro de las 48 horas para confirmar el turno.\n- Asistí a la sede para los exámenes de aptitud psicofísica (psicología, visión, audición y médica).\n\n### Costos\n- Renovación (BUI): **$ 42.230,00**.\n- CENAT: **$ 10.150,00**.\n- Estos valores corresponden a la [Ley Tarifaria vigente](https://buenosaires.gob.ar/sites/default/files/LEY_6711_Tarifaria_VIGENTE.pdf).\n\nSi vivís en otra provincia, el trámite se realiza ante el gobierno de esa jurisdicción.",
+    "sources": [
+      {
+        "title": "Infracciones de tránsito",
+        "url": "https://buenosaires.gob.ar/tramites/consulta-de-infracciones"
+      },
+      {
+        "title": "CENAT",
+        "url": "https://boletadepago.seguridadvial.gob.ar/"
+      },
+      {
+        "title": "Charla virtual de renovación",
+        "url": "https://licenciascharlavirtual.buenosaires.gob.ar/charla"
+      },
+      {
+        "title": "Renovación de licencia de conducir (Gobierno de la Ciudad de Buenos Aires, Gobierno y Vínculo Ciudadano)",
+        "url": "https://buenosaires.gob.ar/tramites/renovacion-de-licencia-de-conducir"
+      },
+      {
+        "title": "Ley Tarifaria vigente",
+        "url": "https://buenosaires.gob.ar/sites/default/files/LEY_6711_Tarifaria_VIGENTE.pdf"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 8
+  },
+  "transferencia-de-auto": {
+    "answer": "Para transferir un auto usado, debés presentar la documentación en el Registro de la Propiedad Automotor correspondiente a tu domicilio, un trámite nacional que lleva 48 horas.\n\n### Cómo hacerlo\n- Verificá la situación registral del vehículo (embargos, denuncias) mediante un [informe de dominio](https://www.argentina.gob.ar/solicitar-un-informe-de-dominio-del-automotor).\n- Realizá la **verificación física** en una [planta verificadora policial](https://sistemas.dnrpa.gov.ar/plantas_verificadoras/plantas_verificadoras.php) habilitada.\n- Completá el [Formulario 08](https://www.argentina.gob.ar/tramitar-en-linea-el-formulario-08-para-transferencia-automotor) en línea o presencialmente.\n- Presentate con el vendedor en el Registro con DNI, CUIT/CUIL, título de propiedad y cédulas.\n\n### Requisitos y costos\n- Tenés **30 días** desde la firma del Formulario 08 para concretar la inscripción.\n- El costo incluye un 1,5% del valor del vehículo (si es nacional) o 2% (si es importado), más aranceles por títulos, cédulas y sellos provinciales.\n- Podés estimar el total en el [estimador de costos](https://www2.jus.gov.ar/site/#!/estimador) y consultar los [aranceles vigentes](https://www.dnrpa.gov.ar/portal_dnrpa/aranceles2.php).\n- Iniciá el trámite en la [plataforma oficial](https://www2.jus.gov.ar/site).",
+    "sources": [
+      {
+        "title": "Informe de dominio",
+        "url": "https://www.argentina.gob.ar/solicitar-un-informe-de-dominio-del-automotor"
+      },
+      {
+        "title": "Planta verificadora policial",
+        "url": "https://sistemas.dnrpa.gov.ar/plantas_verificadoras/plantas_verificadoras.php"
+      },
+      {
+        "title": "Formulario 08",
+        "url": "https://www.argentina.gob.ar/tramitar-en-linea-el-formulario-08-para-transferencia-automotor"
+      },
+      {
+        "title": "Estimador de costos",
+        "url": "https://www2.jus.gov.ar/site/#!/estimador"
+      },
+      {
+        "title": "Aranceles vigentes",
+        "url": "https://www.dnrpa.gov.ar/portal_dnrpa/aranceles2.php"
+      },
+      {
+        "title": "Plataforma oficial",
+        "url": "https://www2.jus.gov.ar/site"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 8
+  },
+  "cuil": {
+    "answer": "Podés obtener tu constancia de CUIL de forma gratuita y sin turno previo, ya sea online o en una oficina de ANSES.\n\n### Cómo hacerlo\n- Ingresá a [Mi Argentina](https://mi.argentina.gob.ar/) para descargarla directamente desde tu cuenta.\n- Completá tus datos en el [formulario de ANSES](https://www.argentina.gob.ar/descarga-constancia-cuil) para obtenerla.\n- Acercate a cualquier oficina de ANSES para solicitarla personalmente.\n\nLa constancia es válida para cualquier trámite, no tiene vencimiento y no requiere firma ni sello. Este trámite es **nacional** y vale en todo el país.",
+    "sources": [
+      {
+        "title": "Mi Argentina",
+        "url": "https://mi.argentina.gob.ar/"
+      },
+      {
+        "title": "Formulario de ANSES",
+        "url": "https://www.argentina.gob.ar/descarga-constancia-cuil"
+      },
+      {
+        "title": "Solicitar constancia de CUIL (ANSES, Ministerio de Capital Humano)",
+        "url": "https://www.argentina.gob.ar/servicio/solicitar-constancia-de-cuil"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 6,
+    "supported": 6
+  },
+  "prestacion-por-desempleo": {
+    "answer": "La prestación por desempleo es un trámite **nacional** que gestionás en [ANSES](https://www.argentina.gob.ar/servicio/tramitar-la-prestacion-por-desempleo-para-trabajadores-en-relacion-de-dependencia) si fuiste despedido sin justa causa, por finalización de contrato o por causas externas.\n\n### Cómo hacerlo\n- Ingresá a [Atención Virtual](https://servicioscorp.anses.gob.ar/clavelogon/logon.aspx?system=siexp2) con tu CUIL y Clave de la Seguridad Social.\n- También podés hacerlo en una oficina de ANSES, pero necesitás sacar [turno previo](https://servicioswww.anses.gob.ar/TurnosInternet/Solicitud/IngresoSolicitud?idprest=15).\n\n### Requisitos\n- DNI original y copia.\n- Documentación que pruebe el cese (telegrama de despido, carta documento, copia del contrato vencido, etc.).\n- Haber trabajado al menos 6 meses con aportes en los últimos 3 años (si sos trabajador permanente).\n\nEl trámite es **gratuito**. El monto y la cantidad de cuotas (de 2 a 12) dependen de tus ingresos y meses trabajados.",
+    "sources": [
+      {
+        "title": "Tramitar la prestación por desempleo para trabajadores en relación de dependencia (ANSES, Ministerio de Capital Humano)",
+        "url": "https://www.argentina.gob.ar/servicio/tramitar-la-prestacion-por-desempleo-para-trabajadores-en-relacion-de-dependencia"
+      },
+      {
+        "title": "Atención Virtual",
+        "url": "https://servicioscorp.anses.gob.ar/clavelogon/logon.aspx?system=siexp2"
+      },
+      {
+        "title": "Turno previo",
+        "url": "https://servicioswww.anses.gob.ar/TurnosInternet/Solicitud/IngresoSolicitud?idprest=15"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 12,
+    "supported": 11
+  },
+  "residencia": {
+    "answer": "La residencia temporaria se tramita de forma **semipresencial** a través del sistema [RaDEX](https://www.migraciones.gob.ar/radex/index.html) de la Dirección Nacional de Migraciones.\n\n### Cómo hacerlo\n- Iniciá el trámite online en [RaDEX](https://www.migraciones.gob.ar/radex/index.html), registrándote con tu correo electrónico.\n- Completá el formulario, subí la documentación requerida y aboná las tasas.\n- Recibirás un email con la fecha de tu cita presencial en la sede migratoria.\n\n### Requisitos generales\n- Estar dentro del territorio argentino con ingreso regular.\n- Pasaporte válido y certificado de antecedentes penales argentinos (integrado al sistema).\n- Documentación específica según tu motivo de estadía.\n\nEl trámite es personal y no necesitás gestores. Los costos varían según el tipo de residencia y si elegís cita preferencial; podés ver el detalle en el [cuadro de tasas migratorias](https://www.argentina.gob.ar/cuadro-tasas-migratorias).",
+    "sources": [
+      {
+        "title": "RaDEX",
+        "url": "https://www.migraciones.gob.ar/radex/index.html"
+      },
+      {
+        "title": "Cuadro de tasas migratorias",
+        "url": "https://www.argentina.gob.ar/cuadro-tasas-migratorias"
+      },
+      {
+        "title": "Radex | Dirección Nacional de Migraciones",
+        "url": "https://www.migraciones.gov.ar/radex/inicio-pasos.html"
+      },
+      {
+        "title": "Radex | Dirección Nacional de Migraciones",
+        "url": "https://www.migraciones.gob.ar/radex/inicio-pasos.html"
+      },
+      {
+        "title": "Radicación a distancia Radex",
+        "url": "https://www.migraciones.gob.ar/radex/archivos/guia-radex.pdf"
+      },
+      {
+        "title": "Obtener una residencia temporaria como estudiante (Migraciones, Ministerio de Seguridad Nacional)",
+        "url": "https://www.argentina.gob.ar/servicio/obtener-una-residencia-temporaria-como-estudiante"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 6
+  },
+  "apostilla": {
+    "answer": "Podés apostillar un documento argentino de forma remota a través de [Trámites a Distancia (TAD)](https://tramitesadistancia.gob.ar/), un trámite nacional que vale en todo el país.\n\n### Cómo hacerlo\n- Ingresá a [TAD](https://tramitesadistancia.gob.ar/) con tu CUIL y Clave Fiscal Nivel 2 o superior.\n- Buscá \"Apostilla\", elegí la opción para documentos públicos electrónicos e iniciá el trámite.\n- Adjuntá el documento con firma digital y confirmá.\n- Pagá el VEP generado automáticamente desde tu home banking (red Link o Banelco).\n- Esperá 72 horas hábiles para la confirmación del pago; el expediente se resuelve en un promedio de 30 días hábiles.\n\n### Requisitos y costo\n- Ser mayor de 18 años y tener cuenta bancaria argentina asociada a tu Clave Fiscal.\n- El costo es de $4.500,00 (o $1.500,00 solo para legalización de partidas de estado civil), según la [ficha oficial del trámite en argentina.gob.ar](https://www.argentina.gob.ar/servicio/legalizar-o-apostillar-un-documento-traves-de-tad) actualizada en noviembre de 2024.",
+    "sources": [
+      {
+        "title": "Trámites a Distancia (TAD)",
+        "url": "https://tramitesadistancia.gob.ar/"
+      },
+      {
+        "title": "Legalizar o apostillar un documento a través de TAD (Ministerio de Relaciones Exteriores, Comercio Internacional y Culto)",
+        "url": "https://www.argentina.gob.ar/servicio/legalizar-o-apostillar-un-documento-traves-de-tad"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 7
+  },
+  "convalidar-titulo": {
+    "answer": "Para convalidar tu título universitario extranjero, debés iniciar el trámite en la plataforma [Trámites a Distancia](https://tramitesadistancia.gob.ar) si tu país tiene convenio con Argentina; de lo contrario, debés realizar una **reválida** en una universidad nacional.\n\n### Cómo hacerlo\n- Si tu país tiene convenio (Bolivia, Chile, Colombia, Cuba, Ecuador, España, México, Perú, Ucrania, entre otros), el trámite se gestiona ante el [Ministerio de Capital Humano](https://www.argentina.gob.ar/educacion/tramites/convalidaciones-universitarias-extranjeros).\n- Si no hay convenio, dirigite a una universidad nacional que dicte una carrera similar para solicitar la reválida.\n\n### Requisitos\n- DNI argentino y documento de identidad del país de origen.\n- Diploma y certificado de calificaciones con Apostilla de la Haya.\n- Certificación del Ministerio de Educación del país de origen.\n- Certificado de carga horaria en horas reloj.\n\nPodés consultar el estado de tu trámite o la documentación exacta en [Argentina.gob.ar](https://www.argentina.gob.ar/educacion/tramites/convalidaciones-universitarias-extranjeros).",
+    "sources": [
+      {
+        "title": "Trámites a Distancia",
+        "url": "https://tramitesadistancia.gob.ar"
+      },
+      {
+        "title": "Presidencia de la Nación",
+        "url": "https://www.argentina.gob.ar/educacion/tramites/convalidaciones-universitarias-extranjeros"
+      },
+      {
+        "title": "Presidencia de la Nación",
+        "url": "https://www.argentina.gob.ar/noticias/como-convalidar-titulos-universitarios-extranjeros"
+      },
+      {
+        "title": "Presidencia de la Nación",
+        "url": "https://www.argentina.gob.ar/capital-humano/educacion/universidades/direccion-nacional-de-gestion-universitaria/convalidacion"
+      },
+      {
+        "title": "Presidencia de la Nación",
+        "url": "https://www.argentina.gob.ar/educacion/progresar/progresar-es-para-vos/tramita/tramites-educativos/convalidar-tu-titulo"
+      },
+      {
+        "title": "Presidencia de la Nación",
+        "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-3720-2017-280633/texto"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 8
+  },
+  "reclamo-defensa-del-consumidor": {
+    "answer": "Para reclamar ante Defensa del Consumidor, debés iniciar el trámite de forma gratuita y en línea a través de la Ventanilla Federal Única, que es de alcance nacional.\n\n### Cómo hacerlo\n- Ingresá a la [Ventanilla Federal Única de Defensa del Consumidor](https://autogestion.produccion.gob.ar/consumidores).\n- Completá el formulario con tus datos personales, los del reclamo y los del proveedor.\n- Enviá el formulario para que se derive al organismo competente.\n- Recibí por correo electrónico el número de reclamo asignado.\n\n### Requisitos\n- Tu número de DNI o Pasaporte.\n- Un teléfono o correo electrónico de contacto.\n- Nombre y localidad del proveedor.\n- Información básica de la compra (provincia de adquisición y uso).\n\nPodés consultar la [ficha oficial del trámite en argentina.gob.ar](https://www.argentina.gob.ar/servicio/iniciar-un-reclamo-ante-defensa-del-consumidor) para más detalles.",
+    "sources": [
+      {
+        "title": "Ventanilla Federal Única de Defensa del Consumidor",
+        "url": "https://autogestion.produccion.gob.ar/consumidores"
+      },
+      {
+        "title": "Iniciar un reclamo ante Defensa del Consumidor (Defensa del consumidor, Industria, Comercio y PyME, Ministerio de Economía)",
+        "url": "https://www.argentina.gob.ar/servicio/iniciar-un-reclamo-ante-defensa-del-consumidor"
+      }
+    ],
+    "verifiedAt": "2026-11-25",
+    "claims": 8,
+    "supported": 7
+  }
+}

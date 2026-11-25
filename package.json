@@ -19,6 +19,7 @@
     "corpus": "node --env-file-if-exists=.env.local scripts/corpus.ts",
     "turismo": "COUNTRY=sv node --env-file-if-exists=.env.local scripts/turismo.ts",
     "omr": "node --env-file-if-exists=.env.local scripts/omr.ts",
+    "ar": "node --env-file-if-exists=.env.local scripts/ar.ts",
     "journal": "node --env-file-if-exists=.env.local scripts/journal.ts"
   },
   "dependencies": {
